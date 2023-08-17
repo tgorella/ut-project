@@ -3,9 +3,9 @@ import webpack from "webpack";
 import { BuildOptions } from "./types/config";
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
-function buildPlugins({paths}:BuildOptions): webpack.WebpackPluginInstance[] {
-  return [new HtmlWebpackPlugin({
-    title: 'Page via template',
+export function buildPlugins({paths}:BuildOptions): webpack.WebpackPluginInstance[] {
+  return [
+    new HtmlWebpackPlugin({
     template: paths.html
   }),
   new webpack.ProgressPlugin(),
@@ -13,7 +13,5 @@ function buildPlugins({paths}:BuildOptions): webpack.WebpackPluginInstance[] {
     filename: 'css/[name].[contenthash:8].css',
     chunkFilename: 'css/[name].[contenthash:8].css'
   })
-];
+]
 }
- 
-export default buildPlugins;
