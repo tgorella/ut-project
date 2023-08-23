@@ -1,0 +1,56 @@
+.themeSwitcher {
+  position: relative;
+  border-radius: 30px;
+  width: 60px;
+  height: 25px;
+  padding: 2px;
+  cursor: pointer;
+  border: 2px solid var(--secondary-text);
+  color: var(--secondary-text);
+  display: flex;
+  transition: all 0.5s;
+  align-items: center;
+}
+
+.switcherWrapper {
+  display: flex;
+  padding: 0 30px;
+  height: 25px;
+}
+
+.themeSwitcher::before {
+  content: "☀";
+  width: 40px;
+  height: 25px;
+  position: absolute;
+  left: -28px;
+  top: 0;
+  font-size: 28px;
+  color: (--secondary-text);
+}
+
+.themeSwitcher::after {
+  content: "☾";
+  width: 40px;
+  height: 25px;
+  position: absolute;
+  right: -45px;
+  top: 0;
+  font-size: 28px;
+  color: (--secondary-text);
+}
+
+.button {
+  height: 19px;
+  width: 19px;
+  border-radius: 50%;
+  background-color: var(--secondary-text);
+}
+
+.dark {
+  justify-content: end;
+}
+
+.light {
+  justify-content: start;
+}

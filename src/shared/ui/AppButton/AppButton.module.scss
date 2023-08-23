@@ -1,0 +1,22 @@
+.AppButton {
+  outline: none;
+  color: var(--primary-text);
+  border: none;
+  cursor: pointer;
+  margin: 0;
+  padding: 5px 20px;
+  text-transform: uppercase;
+}
+
+.clear {
+  padding: 0;
+}
+
+.outlined {
+  border: 1px solid var(--accent)
+}
+
+.solid {
+  background-color: var(--accent)
+
+}

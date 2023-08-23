@@ -20,7 +20,7 @@ return {
 module: {
   rules: buildLoaders(options),
 },
-resolve: buildResolvers(),
+resolve: buildResolvers(options),
 devServer: isDev ? buildDevServer(options) : undefined
 };
 }

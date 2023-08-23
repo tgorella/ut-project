@@ -1,0 +1,56 @@
+.langSwitcher {
+  position: relative;
+  border-radius: 30px;
+  width: 60px;
+  height: 25px;
+  padding: 2px;
+  cursor: pointer;
+  border: 2px solid var(--secondary-text);
+  color: var(--secondary-text);
+  display: flex;
+  align-items: center;
+  transition: ease 0.3s;
+}
+
+.switcherWrapper {
+  display: flex;
+  padding: 0 20px;
+  height: 25px;
+}
+
+.langSwitcher::before {
+  content: "ru";
+  width: 40px;
+  height: 25px;
+  position: absolute;
+  left: -25px;
+  top: 0;
+  font-size: 18px;
+  color: var(--secondary-text);
+}
+
+.langSwitcher::after {
+  content: "en";
+  width: 40px;
+  height: 25px;
+  position: absolute;
+  right: -48px;
+  top: 0;
+  font-size: 18px;
+  color: var(--secondary-text);
+}
+
+.button {
+  height: 19px;
+  width: 19px;
+  border-radius: 50%;
+  background-color: var(--secondary-text);
+}
+
+.eng {
+  justify-content: end;
+}
+
+.rus {
+  justify-content: start;
+}
