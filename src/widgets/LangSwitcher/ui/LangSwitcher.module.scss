@@ -1,56 +1,56 @@
 .langSwitcher {
-  position: relative;
-  border-radius: 30px;
-  width: 60px;
-  height: 25px;
-  padding: 2px;
-  cursor: pointer;
-  border: 2px solid var(--secondary-text);
-  color: var(--secondary-text);
-  display: flex;
-  align-items: center;
-  transition: ease 0.3s;
+    align-items: center;
+    border: 2px solid var(--secondary-text);
+    border-radius: 30px;
+    color: var(--secondary-text);
+    cursor: pointer;
+    display: flex;
+    height: 25px;
+    padding: 2px;
+    position: relative;
+    transition: ease 0.3s;
+    width: 60px;
 }
 
 .switcherWrapper {
-  display: flex;
-  padding: 0 20px;
-  height: 25px;
+    display: flex;
+    height: 25px;
+    padding: 0 20px;
 }
 
 .langSwitcher::before {
-  content: "ru";
-  width: 40px;
-  height: 25px;
-  position: absolute;
-  left: -25px;
-  top: 0;
-  font-size: 18px;
-  color: var(--secondary-text);
+    color: var(--secondary-text);
+    content: "ru";
+    font-size: 18px;
+    height: 25px;
+    left: -25px;
+    position: absolute;
+    top: 0;
+    width: 40px;
 }
 
 .langSwitcher::after {
-  content: "en";
-  width: 40px;
-  height: 25px;
-  position: absolute;
-  right: -48px;
-  top: 0;
-  font-size: 18px;
-  color: var(--secondary-text);
+    color: var(--secondary-text);
+    content: "en";
+    font-size: 18px;
+    height: 25px;
+    position: absolute;
+    right: -48px;
+    top: 0;
+    width: 40px;
 }
 
 .button {
-  height: 19px;
-  width: 19px;
-  border-radius: 50%;
-  background-color: var(--secondary-text);
+    background-color: var(--secondary-text);
+    border-radius: 50%;
+    height: 19px;
+    width: 19px;
 }
 
 .eng {
-  justify-content: end;
+    justify-content: end;
 }
 
 .rus {
-  justify-content: start;
+    justify-content: start;
 }

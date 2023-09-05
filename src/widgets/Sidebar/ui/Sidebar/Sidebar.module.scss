@@ -1,26 +1,26 @@
 .Sidebar {
-  height: calc(100vh - var(--navbar-height));
-  width: var(--sidebar-width);
-  background-color: var(--inverted-bg-color);
-  color: var(--primary);
-  position: relative;
-  transition: width 0.5s ease;
+    background-color: var(--inverted-bg-color);
+    color: var(--primary);
+    height: calc(100vh - var(--navbar-height));
+    position: relative;
+    transition: width 0.5s ease;
+    width: var(--sidebar-width);
 }
 
 .collapsed {
-  width: var(--sidebar-width-collapsed);
+    width: var(--sidebar-width-collapsed);
 }
 
 .toggle_btn {
-  position: absolute;
-  bottom: 50px;
-  right: -5px;
-  height: 45px;
-  width: 35px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--nav-links-color);
-  color: var(--primary-text);
-  font-size: var(--font-size-l);
+    align-items: center;
+    background-color: var(--nav-links-color);
+    bottom: 50px;
+    color: var(--primary-text);
+    display: flex;
+    font-size: var(--font-size-l);
+    height: 45px;
+    justify-content: center;
+    position: absolute;
+    right: -5px;
+    width: 35px;
 }

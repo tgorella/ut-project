@@ -1,3 +1,4 @@
+/* eslint-disable i18next/no-literal-string */
 module.exports = {
     'settings': {
         'react': {
@@ -12,7 +13,8 @@ module.exports = {
     'extends': [
         'eslint:recommended',
         'plugin:@typescript-eslint/recommended',
-        'plugin:react/recommended'
+        'plugin:react/recommended',
+        'plugin:i18next/recommended'
     ],
     'overrides': [
         {
@@ -34,7 +36,8 @@ module.exports = {
     },
     'plugins': [
         '@typescript-eslint',
-        'react'
+        'react', 
+        'i18next'
     ],
     'rules': {
         'react/jsx-indent': [
@@ -63,6 +66,7 @@ module.exports = {
         'no-unused-vars': 'warn',
         'react/require-default-props': 'off',
         'react/react-in-jsx-scope': 'off',
-        '@typescript-eslint/ban-ts-comment': 'off'
+        '@typescript-eslint/ban-ts-comment': 'off',
+        'i18next/no-literal-string': ['error', { markupOnly: true}]
     }
 }

@@ -1,56 +1,56 @@
 .themeSwitcher {
-  position: relative;
-  border-radius: 30px;
-  width: 60px;
-  height: 25px;
-  padding: 2px;
-  cursor: pointer;
-  border: 2px solid var(--secondary-text);
-  color: var(--secondary-text);
-  display: flex;
-  transition: all 0.5s;
-  align-items: center;
+    align-items: center;
+    border: 2px solid var(--secondary-text);
+    border-radius: 30px;
+    color: var(--secondary-text);
+    cursor: pointer;
+    display: flex;
+    height: 25px;
+    padding: 2px;
+    position: relative;
+    transition: all 0.5s;
+    width: 60px;
 }
 
 .switcherWrapper {
-  display: flex;
-  padding: 0 30px;
-  height: 25px;
+    display: flex;
+    height: 25px;
+    padding: 0 30px;
 }
 
 .themeSwitcher::before {
-  content: "☀";
-  width: 40px;
-  height: 25px;
-  position: absolute;
-  left: -28px;
-  top: 0;
-  font-size: 28px;
-  color: (--secondary-text);
+    color: (--secondary-text);
+    content: "☀";
+    font-size: 28px;
+    height: 25px;
+    left: -28px;
+    position: absolute;
+    top: 0;
+    width: 40px;
 }
 
 .themeSwitcher::after {
-  content: "☾";
-  width: 40px;
-  height: 25px;
-  position: absolute;
-  right: -45px;
-  top: 0;
-  font-size: 28px;
-  color: (--secondary-text);
+    color: (--secondary-text);
+    content: "☾";
+    font-size: 28px;
+    height: 25px;
+    position: absolute;
+    right: -45px;
+    top: 0;
+    width: 40px;
 }
 
 .button {
-  height: 19px;
-  width: 19px;
-  border-radius: 50%;
-  background-color: var(--secondary-text);
+    background-color: var(--secondary-text);
+    border-radius: 50%;
+    height: 19px;
+    width: 19px;
 }
 
 .dark {
-  justify-content: end;
+    justify-content: end;
 }
 
 .light {
-  justify-content: start;
+    justify-content: start;
 }
