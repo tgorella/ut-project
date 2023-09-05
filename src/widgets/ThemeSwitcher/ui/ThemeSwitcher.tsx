@@ -6,12 +6,12 @@ interface ThemeSwitcherProps {
   className?: string
 }
 export const ThemeSwitcher = ({ className = '' }: ThemeSwitcherProps) => {
-  const { theme, toggleTheme } = useTheme()
-  return (
-    <div className={classNames(cls.switcherWrapper, {}, [className])}>
-    <div onClick={toggleTheme} className={classNames(cls.themeSwitcher, {}, [theme === Theme.LIGHT ? cls.light : cls.dark])}>
-      <div className={classNames(cls.button)}></div>
-    </div>
-    </div>
-  )
+    const { theme, toggleTheme } = useTheme()
+    return (
+        <div className={classNames(cls.switcherWrapper, {}, [className])}>
+            <div onClick={toggleTheme} className={classNames(cls.themeSwitcher, {}, [theme === Theme.LIGHT ? cls.light : cls.dark])}>
+                <div className={classNames(cls.button)}></div>
+            </div>
+        </div>
+    )
 }
