@@ -6,14 +6,19 @@
     outline: none;
     padding: 5px 20px;
     text-transform: uppercase;
+    width: auto;
 }
 
 .clear {
     padding: 0;
+    background-color: transparent;
+
 }
 
 .outlined {
     border: 1px solid var(--accent);
+    background-color: transparent;
+
 }
 
 .solid {

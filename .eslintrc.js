@@ -11,18 +11,17 @@ module.exports = {
         'es2021': true,
         'jest': true
     },
-    'extends': [
-        'eslint:recommended',
-        'plugin:@typescript-eslint/recommended',
-        'plugin:react/recommended',
-        'plugin:i18next/recommended'
-    ],
+    'extends': ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:react/recommended', 'plugin:i18next/recommended', 'plugin:storybook/recommended'],
     'overrides': [
         {
+            'rules': {
+                'i18next/no-literal-string': 'off'
+            },
             'env': {
                 'node': true
             },
             'files': [
+                '**/src/**/*.test.{ts,tsx}',
                 '.eslintrc.{js,cjs}'
             ],
             'parserOptions': {
@@ -68,14 +67,6 @@ module.exports = {
         'react/require-default-props': 'off',
         'react/react-in-jsx-scope': 'off',
         '@typescript-eslint/ban-ts-comment': 'off',
-        'i18next/no-literal-string': ['error', { markupOnly: true, ignoreAttribute: ['data-testid']}]
-    },
-    overrides: [
-        {
-            files: ['**/src/**/*.test.{ts,tsx}'],
-            rules: {
-                'i18next/no-literal-string': 'off'
-            }
-        }
-    ]
+        'i18next/no-literal-string': ['error', { markupOnly: true, ignoreAttribute: ['data-testid', 'to']}]
+    }
 }
