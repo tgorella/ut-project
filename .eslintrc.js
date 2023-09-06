@@ -68,6 +68,14 @@ module.exports = {
         'react/require-default-props': 'off',
         'react/react-in-jsx-scope': 'off',
         '@typescript-eslint/ban-ts-comment': 'off',
-        'i18next/no-literal-string': ['error', { markupOnly: true}]
-    }
+        'i18next/no-literal-string': ['error', { markupOnly: true, ignoreAttribute: ['data-testid']}]
+    },
+    overrides: [
+        {
+            files: ['**/src/**/*.test.{ts,tsx}'],
+            rules: {
+                'i18next/no-literal-string': 'off'
+            }
+        }
+    ]
 }
