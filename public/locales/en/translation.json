@@ -4,5 +4,8 @@
   "Первести": "translate",
   "Loading": "Loading",
   "Такой страницы не существует": "Page not found",
-  "Загрузка": "Loading"
+  "Загрузка": "Loading",
+  "Перезагрузить страницу": "Reload page",
+  "Мы уже над ней работаем": "we're allready working on it",
+  "Произошла непредвиденная ошибка": "Something went wrong"
 }

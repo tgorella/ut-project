@@ -8,7 +8,7 @@ export function buildPlugins({paths, isDev}:BuildOptions): webpack.WebpackPlugin
     const refreshPlugin = []
 
     if (isDev) {
-        refreshPlugin.push(new ReactRefreshWebpackPlugin())
+        refreshPlugin.push(new ReactRefreshWebpackPlugin({overlay: false}))
         refreshPlugin.push(new webpack.HotModuleReplacementPlugin())
     }
     return [
