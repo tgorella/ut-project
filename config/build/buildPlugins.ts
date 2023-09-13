@@ -9,24 +9,30 @@ export function buildPlugins({paths, isDev}:BuildOptions): webpack.WebpackPlugin
     const refreshPlugin = []
 
     if (isDev) {
-        refreshPlugin.push(new ReactRefreshWebpackPlugin({overlay: false}))
-        refreshPlugin.push(new webpack.HotModuleReplacementPlugin())
-    }
-    return [
-        new HtmlWebpackPlugin({
-            template: paths.html
-        }),
-        new webpack.ProgressPlugin(),
-        new MiniCssExtractPlugin({
-            filename: 'css/[name].[contenthash:8].css',
-            chunkFilename: 'css/[name].[contenthash:8].css'
-        }),
-        new webpack.DefinePlugin({
-            ISDEV: JSON.stringify(isDev),
-        }),
-        ...refreshPlugin,
-        new BundleAnalyzerPlugin({
-            openAnalyzer: false
-        })
-    ]
+      refreshPlugin.push(new ReactRefreshWebpackPlugin({overlay: false}))
+  }
+
+    const plugins = [
+      new HtmlWebpackPlugin({
+          template: paths.html
+      }),
+      new webpack.ProgressPlugin(),
+      new MiniCssExtractPlugin({
+          filename: 'css/[name].[contenthash:8].css',
+          chunkFilename: 'css/[name].[contenthash:8].css'
+      }),
+      new webpack.DefinePlugin({
+          ISDEV: JSON.stringify(isDev),
+      }),
+      ...refreshPlugin
+  ]
+
+if (isDev) {
+  plugins.push(new webpack.HotModuleReplacementPlugin())
+  plugins.push(new BundleAnalyzerPlugin({
+    openAnalyzer: false
+}))
+}
+    
+    return plugins
 }
