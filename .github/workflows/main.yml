@@ -1,5 +1,5 @@
 name: Linting, testing, building
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+run-name: ${{ github.actor }} is running GitHub Actions 🚀
 on:
   push:
     branches: [ master ]
@@ -27,3 +27,7 @@ jobs:
         run: npm run lint:scss
       - name: unit testing
         run: npm run test:unit
+      - name: Publish to Chromatic
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
