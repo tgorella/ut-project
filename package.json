@@ -12,10 +12,13 @@
     "lint:scss": "npx stylelint \"**/*.scss\"",
     "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
     "test:unit": "jest --config ./config/jest/jest.config.ts",
+    "test:ui": "npx chromatic --project-token=chpt_46613f3ee4ef428",
     "storybook": "storybook dev -p 6006 -c ./config/storybook",
     "build-storybook": "storybook build -c ./config/storybook"
+    },
+  "author": {
+    "name": "Tatiana Gorelova"
   },
-  "author": "Tatiana Gorelova",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.17.5",
@@ -46,6 +49,7 @@
     "@typescript-eslint/parser": "^6.5.0",
     "babel-loader": "^8.2.3",
     "babel-plugin-i18next-extract": "^0.8.3",
+    "chromatic": "^7.1.0",
     "css-loader": "^6.6.0",
     "eslint": "^8.48.0",
     "eslint-plugin-i18next": "^5.1.2",
@@ -81,5 +85,7 @@
     "react-dom": "^17.0.2",
     "react-i18next": "^11.15.5",
     "react-router-dom": "^6.2.1"
-  }
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "ut-project@1.0.0"
 }
