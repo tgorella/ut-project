@@ -5,17 +5,14 @@
     position: relative;
     transition: width 0.5s ease;
     width: var(--sidebar-width);
+    padding: 20px 20px;
 }
-
-.collapsed {
-    width: var(--sidebar-width-collapsed);
-}
-
+ 
 .toggle_btn {
     align-items: center;
     background-color: var(--nav-links-color);
     bottom: 50px;
-    color: var(--primary-text);
+    color: var(--btn-text);
     display: flex;
     font-size: var(--font-size-l);
     height: 45px;
@@ -23,4 +20,39 @@
     position: absolute;
     right: -5px;
     width: 35px;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.link {
+  display: flex;
+}
+.link div {
+  transition: opacity 0.2s;
+  opacity: 1;
+}
+.icon {
+  fill: var(--nav-links-color);
+  margin-right: 20px;
+}
+
+
+
+.collapsed {
+  width: var(--sidebar-width-collapsed);
+
+  .link div {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+.icon {
+  margin-right: 0;
+}
+  .list {
+    justify-content: center;
+    align-items: center;
+  }
 }

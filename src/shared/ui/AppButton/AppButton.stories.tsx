@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { AppButton, ThemeButton } from './AppButton'
+import { AppButton, ButtonSize, ButtonTheme } from './AppButton'
 import 'app/styles/index.scss'
-import { DarkDecorator } from 'shared/config/storybook/ThemeDecorator/DarkDecorator'
-import { LightDecorator } from 'shared/config/storybook/ThemeDecorator/LightDecorator'
+import { WithColorsTheme } from 'shared/config/storybook/ThemeDecorator/WithColorsTheme'
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof AppButton> = {
@@ -11,6 +10,7 @@ const meta: Meta<typeof AppButton> = {
     argTypes: {
     // backgroundColor: { control: 'color' },
     },
+    tags: ['autodocs']
 }
 
 
@@ -18,62 +18,107 @@ export default meta
 type Story = StoryObj<typeof AppButton>;
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
-export const SolidDark: Story = {
+
+export const Default: Story = {
     args: {
-        theme: ThemeButton.SOLID,
-        children: 'Button',
+        theme: ButtonTheme.SOLID,
+        children: 'Text',
     },
     decorators: [
-        DarkDecorator
+        WithColorsTheme
+    ],
+    parameters: {
+        docs: {
+            canvas: {sourceState: 'shown'}
+        },
+    }
+}
+
+export const LargeSize: Story = {
+    args: {
+        theme: ButtonTheme.SOLID,
+        children: 'Text',
+        size: ButtonSize.L
+    },
+    decorators: [
+        WithColorsTheme
     ]
 }
 
-export const SolidLight: Story = {
+export const XLargeSize: Story = {
     args: {
-        theme: ThemeButton.SOLID,
-        children: 'Button',
+        theme: ButtonTheme.SOLID,
+        children: 'Text',
+        size: ButtonSize.XL
     },
     decorators: [
-        LightDecorator
+        WithColorsTheme
     ]
 }
 
-export const ClearDark: Story = {
+export const SquareMedium: Story = {
     args: {
-        theme: ThemeButton.CLEAR,
-        children: 'Button',
+        theme: ButtonTheme.SOLID,
+        children: '+',
+        square: true,
     },
     decorators: [
-        DarkDecorator
+        WithColorsTheme
     ]
 }
 
-export const ClearLight: Story = {
+export const SquareLarge: Story = {
     args: {
-        theme: ThemeButton.CLEAR,
-        children: 'Button',
+        theme: ButtonTheme.SOLID,
+        children: '+',
+        square: true,
+        size: ButtonSize.L
     },
     decorators: [
-        LightDecorator
+        WithColorsTheme
     ]
 }
 
-export const OutlinedDark: Story = {
+export const SquareXLarge: Story = {
     args: {
-        theme: ThemeButton.OUTLINED,
-        children: 'Button',
+        theme: ButtonTheme.SOLID,
+        children: '+',
+        square: true,
+        size: ButtonSize.XL
     },
     decorators: [
-        DarkDecorator
+        WithColorsTheme
     ]
 }
 
-export const OutlinedLight: Story = {
+
+
+export const Solid: Story = {
     args: {
-        theme: ThemeButton.OUTLINED,
+        theme: ButtonTheme.SOLID,
         children: 'Button',
     },
     decorators: [
-        LightDecorator
+        WithColorsTheme
+    ]
+}
+
+export const Clear: Story = {
+    args: {
+        theme: ButtonTheme.CLEAR,
+        children: 'Button',
+    },
+    decorators: [
+        WithColorsTheme
+    ]
+}
+
+export const Outlined: Story = {
+    args: {
+        theme: ButtonTheme.OUTLINED,
+        children: 'Button',
+    },
+    decorators: [
+        WithColorsTheme
     ]
 }

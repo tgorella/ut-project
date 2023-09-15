@@ -1,3 +1,7 @@
 {
-  "i18next.i18nPaths": "c:/Users/mogil/OneDrive/Документы/codes/ut-project/public/locales,c:/Users/mogil/OneDrive/Документы/codes/ut-project/src/shared/config/i18n"
+  "i18next.i18nPaths": "c:/Users/mogil/OneDrive/Документы/codes/ut-project/public/locales,c:/Users/mogil/OneDrive/Документы/codes/ut-project/src/shared/config/i18n",
+  "i18n-ally.localesPaths": [
+    "public/locales",
+    "src/shared/config/i18n"
+  ]
 }

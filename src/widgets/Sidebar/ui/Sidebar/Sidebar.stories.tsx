@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Sidebar } from './Sidebar'
-import { DarkDecorator } from 'shared/config/storybook/ThemeDecorator/DarkDecorator'
-import { LightDecorator } from 'shared/config/storybook/ThemeDecorator/LightDecorator'
+import { WithColorsTheme } from 'shared/config/storybook/ThemeDecorator/WithColorsTheme'
 
 const meta: Meta<typeof Sidebar> = {
     title: 'widgets/Sidebar',
@@ -16,18 +15,10 @@ export default meta
 type Story = StoryObj<typeof Sidebar>;
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
-export const Dark: Story = {
+export const Default: Story = {
     args: {
     },
     decorators: [
-        DarkDecorator
-    ]
-}
-
-export const Light: Story = {
-    args: {
-    },
-    decorators: [
-        LightDecorator
+        WithColorsTheme
     ]
 }
