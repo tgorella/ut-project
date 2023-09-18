@@ -1,13 +1,13 @@
 .Sidebar {
-    background-color: var(--inverted-bg-color);
+    background-color: var(--darker-bg-color);
     color: var(--primary);
     height: calc(100vh - var(--navbar-height));
+    padding: 20px;
     position: relative;
     transition: width 0.5s ease;
     width: var(--sidebar-width);
-    padding: 20px 20px;
 }
- 
+
 .toggle_btn {
     align-items: center;
     background-color: var(--nav-links-color);
@@ -21,38 +21,42 @@
     right: -5px;
     width: 35px;
 }
+
 .list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
+
 .link {
-  display: flex;
+    display: flex;
 }
+
 .link div {
-  transition: opacity 0.2s;
-  opacity: 1;
+    opacity: 1;
+    transition: opacity 0.2s;
 }
+
 .icon {
-  fill: var(--nav-links-color);
-  margin-right: 20px;
+    fill: var(--nav-links-color);
+    margin-right: 20px;
 }
-
-
 
 .collapsed {
-  width: var(--sidebar-width-collapsed);
+    width: var(--sidebar-width-collapsed);
 
-  .link div {
-    width: 0;
-    height: 0;
-    opacity: 0;
-  }
-.icon {
-  margin-right: 0;
-}
-  .list {
-    justify-content: center;
-    align-items: center;
-  }
+    .link div {
+        height: 0;
+        opacity: 0;
+        width: 0;
+    }
+
+    .icon {
+        margin-right: 0;
+    }
+
+    .list {
+        align-items: center;
+        justify-content: center;
+    }
 }
