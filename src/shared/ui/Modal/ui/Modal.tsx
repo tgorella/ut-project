@@ -2,6 +2,7 @@ import classNames from 'shared/lib/classNames/ClassNames'
 import cls from './Modal.module.scss'
 import { useCallback, useEffect, useRef } from 'react'
 import { Portal } from 'shared/ui/Portal/Portal'
+import { useTheme } from 'app/providers/ThemeProvider'
 
 interface ModalProps {
   className?: string;
@@ -18,6 +19,9 @@ export const Modal = ({className, children, isOpen,autoOpen, delay, onClose, onO
         [cls.closed]: !isOpen
     }
 
+    const OPEN_DELAY = useRef(delay)
+    const { theme } = useTheme()
+
     const handleClose = useCallback(() => {
         if (onClose) {
             onClose()
@@ -31,8 +35,6 @@ export const Modal = ({className, children, isOpen,autoOpen, delay, onClose, onO
         }
     }, [onOpen])
 
-
-    const OPEN_DELAY = useRef(delay)
 
     const onContentClick = (e: React.MouseEvent) => {
         e.stopPropagation()
@@ -69,7 +71,7 @@ export const Modal = ({className, children, isOpen,autoOpen, delay, onClose, onO
 
     return ( 
         <Portal>
-            <div className={classNames(cls.Modal,Mods, [className])}>
+            <div className={classNames(cls.Modal,Mods, [className, theme])}>
                 <div className={cls.overlay} onClick={handleClose}>
                     <div className={cls.content} onClick={onContentClick}>
                         { /* eslint-disable-next-line i18next/no-literal-string */}

@@ -28,7 +28,7 @@ export const WithColorsTheme: Decorator = (Story, context) => {
     if (scheme === 'light' ) {
         return (
             <div >
-                <Flex className='app light'>
+                <Flex className='app_light_theme'>
                     {Story()}
                 </Flex>
             </div>
@@ -38,7 +38,7 @@ export const WithColorsTheme: Decorator = (Story, context) => {
     if (scheme === 'dark' ) {
         return (
             <div >
-                <Flex className='app dark'>
+                <Flex className='app app_dark_theme'>
                     {Story()}
                 </Flex>
             </div>
@@ -47,10 +47,10 @@ export const WithColorsTheme: Decorator = (Story, context) => {
 
     return (
         <div >
-            <Flex className='app light'>
+            <Flex className='app app_light_theme'>
                 {Story()}
             </Flex>
-            <Flex className='app dark'>
+            <Flex className='app app_dark_theme'>
                 {Story()}
             </Flex>
 

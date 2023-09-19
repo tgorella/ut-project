@@ -7,6 +7,7 @@
     right: 0;
     top: 0;
     z-index: var(--modal-z-index);
+    font: var(--font-m)
 }
 
 .overlay {
@@ -22,7 +23,7 @@
 }
 
 .content {
-    background-color: #fff;
+    background-color: var(--bg-color);
     border-radius: 20px;
     max-height: 90%;
     max-width: 90%;
@@ -34,6 +35,7 @@
     transition: transform 0.3s ease-in-out;
     width: 600px;
     z-index: 12;
+    color: var(--primary-text)
 }
 
 .close-btn {
