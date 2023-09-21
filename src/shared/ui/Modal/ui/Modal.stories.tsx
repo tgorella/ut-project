@@ -1,24 +1,37 @@
 import type {  Meta, StoryObj } from '@storybook/react'
-import { WithColorsTheme } from 'shared/config/storybook/ThemeDecorator/WithColorsTheme'
 import { Modal } from './Modal'
+import { DarkDecorator } from 'shared/config/storybook/ThemeDecorator/DarkDecorator'
+import { LightDecorator } from 'shared/config/storybook/ThemeDecorator/LightDecorator'
 
 const meta: Meta<typeof Modal> = {
     title: 'widgets/Modal',
     component: Modal,
     argTypes: {
-    // backgroundColor: { control: 'color' },
-    },
+    }
 }
 
 export default meta
 type Story = StoryObj<typeof Modal>;
 
-// More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
-export const Default: Story = {
+export const Dark: Story = {
     args: {
         isOpen: true,
     },
     decorators: [
-        WithColorsTheme
+        DarkDecorator
+    ],
+    parameters: {
+        docs: {
+            canvas: {sourceState: 'shown'}
+        },
+    }
+}
+
+export const Light: Story = {
+    args: {
+        isOpen: true,
+    },
+    decorators: [
+        LightDecorator
     ]
 }

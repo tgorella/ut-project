@@ -8,5 +8,7 @@
   "Перезагрузить страницу": "Reload page",
   "Мы уже над ней работаем": "we're allready working on it",
   "Произошла непредвиденная ошибка": "Something went wrong",
-  "Войти": "LogIn"
+  "Войти": "LogIn",
+  "Введите username": "Enter username",
+  "Введите пароль": "Enter password"
 }

@@ -19,16 +19,18 @@ interface AppButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string,
   theme?: ButtonTheme,
   square?: boolean,
+  rounded?: boolean,
   size?: ButtonSize
 }
 
 
 export const AppButton: FC<AppButtonProps> = (props) => {
-    const { className, children, theme, square, size = ButtonSize.M, ...otherProps } = props
+    const { className, children, theme, square, rounded, size = ButtonSize.M, ...otherProps } = props
     const mods:Record<string,boolean> = {
         [cls[theme]]: true,
         [cls.square]: square,
-        [cls[size]]: true
+        [cls[size]]: true,
+        [cls.rounded]: rounded
     }
     return (
         <button

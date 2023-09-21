@@ -9,13 +9,14 @@ export const WithColorsTheme: Decorator = (Story, context) => {
     }
 
     function Flex(props: HTMLAttributes<HTMLDivElement>) {
+
         return (
             <div
                 {...props}
                 style={{
                     display: 'flex',
                     justifyContent: 'center',
-                    padding: '20px',
+                    padding: '40px',
                     width: '100%',
                     minHeight: 'auto',
                     alignItems: 'center'
@@ -27,8 +28,8 @@ export const WithColorsTheme: Decorator = (Story, context) => {
   
     if (scheme === 'light' ) {
         return (
-            <div >
-                <Flex className='app_light_theme'>
+            <div>
+                <Flex className='app app_light_theme' id='storie_wrapper'>
                     {Story()}
                 </Flex>
             </div>
@@ -38,7 +39,7 @@ export const WithColorsTheme: Decorator = (Story, context) => {
     if (scheme === 'dark' ) {
         return (
             <div >
-                <Flex className='app app_dark_theme'>
+                <Flex className='app app_dark_theme' id='storie_wrapper'>
                     {Story()}
                 </Flex>
             </div>
@@ -47,10 +48,10 @@ export const WithColorsTheme: Decorator = (Story, context) => {
 
     return (
         <div >
-            <Flex className='app app_light_theme'>
+            <Flex className='app app_light_theme' id='storie_wrapper'>
                 {Story()}
             </Flex>
-            <Flex className='app app_dark_theme'>
+            <Flex className='app app_dark_theme' id='storie_wrapper'>
                 {Story()}
             </Flex>
 

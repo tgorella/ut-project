@@ -3,9 +3,9 @@ import cls from './Navbar.module.scss'
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher'
 import { LangSwitcher } from 'widgets/LangSwitcher'
 import { useState, useCallback } from 'react'
-import { Modal } from 'shared/ui/Modal'
 import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
 import { useTranslation } from 'react-i18next'
+import { LoginModal } from 'features/AuthByUsername/ui/LoginModal/LoginModal'
 
 interface NavbarProps {
   className?: string;
@@ -21,9 +21,7 @@ export const Navbar = ({className} : NavbarProps) => {
     return ( 
         <div className={classNames(cls.Navbar, {}, [className])}>
             <AppButton theme={ButtonTheme.SOLID} onClick={toggleModal}>{t('Войти')}</AppButton>
-            <Modal isOpen={isAuthModal} onClose={toggleModal} onOpen={toggleModal}>
-                <h1>{t('Войти')}</h1>
-            </Modal>
+            <LoginModal isOpen={isAuthModal} onClose={toggleModal} />
             <div className={classNames(cls.switcherWrapper)}>
                 <LangSwitcher />
                 <ThemeSwitcher />

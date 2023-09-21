@@ -34,6 +34,22 @@ export const Default: Story = {
     }
 }
 
+export const Rounded: Story = {
+    args: {
+        theme: ButtonTheme.SOLID,
+        children: 'Text',
+        rounded: true
+    },
+    decorators: [
+        WithColorsTheme
+    ],
+    parameters: {
+        docs: {
+            canvas: {sourceState: 'shown'}
+        },
+    }
+}
+
 export const LargeSize: Story = {
     args: {
         theme: ButtonTheme.SOLID,

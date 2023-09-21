@@ -1,5 +1,6 @@
 .Modal {
     bottom: 0;
+    font: var(--font-m);
     left: 0;
     opacity: 1;
     pointer-events: auto;
@@ -7,7 +8,6 @@
     right: 0;
     top: 0;
     z-index: var(--modal-z-index);
-    font: var(--font-m)
 }
 
 .overlay {
@@ -25,6 +25,7 @@
 .content {
     background-color: var(--bg-color);
     border-radius: 20px;
+    color: var(--primary-text);
     max-height: 90%;
     max-width: 90%;
     min-height: 300px;
@@ -35,7 +36,6 @@
     transition: transform 0.3s ease-in-out;
     width: 600px;
     z-index: 12;
-    color: var(--primary-text)
 }
 
 .close-btn {

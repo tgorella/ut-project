@@ -1,6 +1,6 @@
 import classNames from 'shared/lib/classNames/ClassNames'
 import cls from './Modal.module.scss'
-import { useCallback, useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { Portal } from 'shared/ui/Portal/Portal'
 import { useTheme } from 'app/providers/ThemeProvider'
 
@@ -10,18 +10,25 @@ interface ModalProps {
   isOpen: boolean;
   autoOpen?: boolean;
   delay?: number;
-  onClose: () => void
-  onOpen: () => void
+  lazy?: boolean;
+  onClose: () => void;
+  onOpen?: () => void
 }
-export const Modal = ({className, children, isOpen,autoOpen, delay, onClose, onOpen } : ModalProps) => {
+export const Modal = ({className, children, isOpen,autoOpen, delay, lazy, onClose, onOpen } : ModalProps) => {
 
     const Mods = {
         [cls.closed]: !isOpen
     }
 
+    const [isMounted, setIsMounted] = useState(false)
     const OPEN_DELAY = useRef(delay)
     const { theme } = useTheme()
 
+    useEffect(()=> {
+        if (isOpen) {
+            setIsMounted(true)
+        }
+    }, [isOpen])
     const handleClose = useCallback(() => {
         if (onClose) {
             onClose()
@@ -50,7 +57,7 @@ export const Modal = ({className, children, isOpen,autoOpen, delay, onClose, onO
 
     
     useEffect(() => {
-        if (autoOpen && delay) {
+        if (autoOpen && delay && onOpen) {
             timerRef.current = setTimeout(() => {handleOpen()}, OPEN_DELAY.current)
         }
 
@@ -58,7 +65,7 @@ export const Modal = ({className, children, isOpen,autoOpen, delay, onClose, onO
             clearTimeout(timerRef.current)
             window.removeEventListener('keydown', onKeyDown)
         }
-    }, [autoOpen, delay, handleOpen, onKeyDown])
+    }, [autoOpen, delay, handleOpen, onKeyDown, onOpen])
        
     
 
@@ -68,6 +75,10 @@ export const Modal = ({className, children, isOpen,autoOpen, delay, onClose, onO
         }
 
     }, [isOpen, onKeyDown])
+
+    if (lazy && !isMounted) {
+        return null
+    }
 
     return ( 
         <Portal>
