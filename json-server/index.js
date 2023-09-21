@@ -52,6 +52,6 @@ server.use((req, res, next) => {
 server.use(router)
 
 // запуск сервера
-server.listen(3000, () => {
-    console.log('server is running on 8000 port')
+server.listen(3333, () => {
+    console.log('server is running on 3333 port')
 })
