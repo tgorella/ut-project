@@ -1,3 +1,4 @@
+import { TranslationDecorator } from './../../src/shared/config/storybook/TranslationDecorator/TranslationDecorator'
 import { RouteDecorator } from './../../src/shared/config/storybook/RouteDecorator/RouteDecorator'
 import { styleDecorator } from './../../src/shared/config/storybook/StyleDecorator/StyleDecorator'
 import type { Preview } from '@storybook/react'
@@ -31,7 +32,9 @@ const preview: Preview = {
     },
     decorators: [
         styleDecorator,
-        RouteDecorator
+        TranslationDecorator,
+        RouteDecorator,
+        
     ],
 }
 

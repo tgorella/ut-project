@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import 'app/styles/index.scss'
 import { WithColorsTheme } from 'shared/config/storybook/ThemeDecorator/WithColorsTheme'
 import { LoginForm } from './LoginForm'
+import { LoginFormStoreDecorator, LoginFormStoreDecoratorLoading, LoginFormStoreDecoratorWithError } from 'shared/config/storybook/StoreDecorator/StoreDecorator'
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof LoginForm> = {
@@ -23,7 +24,38 @@ export const Default: Story = {
     args: {
     },
     decorators: [
-        WithColorsTheme
+        WithColorsTheme,
+        LoginFormStoreDecorator
+        
+    ],
+    parameters: {
+        docs: {
+            canvas: {sourceState: 'shown'}
+        },
+    }
+}
+
+export const WithError: Story = {
+    args: {
+    },
+    decorators: [
+        WithColorsTheme,
+        LoginFormStoreDecoratorWithError
+    ],
+    parameters: {
+        docs: {
+            canvas: {sourceState: 'shown'}
+        },
+    }
+}
+
+export const Loading: Story = {
+    args: {
+    },
+    decorators: [
+        WithColorsTheme,
+        LoginFormStoreDecoratorLoading
+        
     ],
     parameters: {
         docs: {

@@ -1,0 +1,17 @@
+.Text {
+    text-align: justify;
+}
+
+.title {
+    color: var(--primary-text);
+    font: var(--font-l);
+}
+
+.text {
+    color: var(--secondary-text);
+    font: var(--font-m);
+}
+
+.warning {
+    color: #f00;
+}

@@ -6,4 +6,15 @@
     --primary-text: #fff;
     --secondary-text: #878787;
     --btn-text: #fff;
+
+    // Alert colors
+
+    --info-bg: rgb(139 208 254 / 30%);
+    --info-icon: rgb(139 208 254);
+    --warning-bg: rgb(254 233 139 / 37.9%);
+    --warning-icon: rgb(251 230 115);
+    --error-bg: rgb(255 112 141 / 38.4%);
+    --error-icon: rgb(254 157 173);
+    --success-bg: rgb(133 255 112 / 38.4%);
+    --success-icon: rgb(128 255 149);
 }

@@ -138,3 +138,14 @@ export const Outlined: Story = {
         WithColorsTheme
     ]
 }
+
+export const Disabled: Story = {
+    args: {
+        theme: ButtonTheme.SOLID,
+        children: 'Button',
+        disabled: true
+    },
+    decorators: [
+        WithColorsTheme
+    ]
+}

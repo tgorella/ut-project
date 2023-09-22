@@ -10,5 +10,10 @@
   "Произошла непредвиденная ошибка": "Something went wrong",
   "Войти": "LogIn",
   "Введите username": "Enter username",
-  "Введите пароль": "Enter password"
+  "Введите пароль": "Enter password",
+  "Произошла ошибка": "Something went wrong",
+  "Форма авторизации": "Login form",
+  "Неправильные логин или пароль": "Wrong email or password",
+  "Входим": "Ok. Logging in...",
+  "Выйти": "Logout"
 }
