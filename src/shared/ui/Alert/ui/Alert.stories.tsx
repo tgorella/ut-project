@@ -10,15 +10,7 @@ const meta: Meta<typeof Alert> = {
     argTypes: {
     // backgroundColor: { control: 'color' },
     },
-    tags: ['autodocs'],
-    parameters: {
-        variant: {
-            values: [
-                AlertVariant.OUTLINED,
-                AlertVariant.SOLID,
-            ],
-        },
-    }
+    tags: ['autodocs']
 }
 
 
