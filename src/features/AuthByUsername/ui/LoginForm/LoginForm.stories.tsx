@@ -27,7 +27,7 @@ export const Default: Story = {
     ],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: {sourceState: 'hide'}
         },
     }
 }
@@ -41,7 +41,7 @@ export const WithError: Story = {
     ],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: {sourceState: 'hide'}
         },
     }
 }
@@ -56,7 +56,7 @@ export const Loading: Story = {
     ],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: {sourceState: 'hide'}
         },
     }
 }
