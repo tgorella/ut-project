@@ -1,16 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import 'app/styles/index.scss'
 import { WithColorsTheme } from 'shared/config/storybook/ThemeDecorator/WithColorsTheme'
-import { LoginForm } from './LoginForm'
 import { LoginFormStoreDecorator, LoginFormStoreDecoratorLoading, LoginFormStoreDecoratorWithError } from 'shared/config/storybook/StoreDecorator/StoreDecorator'
+import LoginForm from './LoginForm'
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof LoginForm> = {
     title: 'features/LoginForm',
     component: LoginForm,
-    argTypes: {
-    // backgroundColor: { control: 'color' },
-    },
     tags: ['autodocs']
 }
 

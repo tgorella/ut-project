@@ -23,9 +23,10 @@ export const Navbar = ({className} : NavbarProps) => {
 
     const handleLogout = () => {
         dispatch(userAction.logout())
+        setIsAuthModal(false)
     }
 
-    if (authData.username === '') {
+    if (!authData || authData.username === '' ) {
         return ( 
             <div className={classNames(cls.Navbar, {}, [className])}>
                 <div className={classNames(cls.switcherWrapper)}>
