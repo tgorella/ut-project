@@ -1,7 +1,7 @@
 import classNames from 'shared/lib/classNames/ClassNames'
 import cls from './LangSwitcher.module.scss'
 import { useTranslation } from 'react-i18next'
-import { useState } from 'react'
+import { memo, useState } from 'react'
 
 export enum Lang {
   RU = 'ru',
@@ -11,7 +11,7 @@ export enum Lang {
 interface LangSwitcherProps {
   className?: string
 }
-export const LangSwitcher = ({ className }: LangSwitcherProps) => {
+export const LangSwitcher = memo(({ className }: LangSwitcherProps) => {
     const { i18n } = useTranslation()
 
     const [lang, setLang] = useState(i18n.language || Lang.RU)
@@ -33,4 +33,4 @@ export const LangSwitcher = ({ className }: LangSwitcherProps) => {
             </div>
         </div>
     )
-}
+})

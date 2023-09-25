@@ -28,32 +28,8 @@
     gap: 20px;
 }
 
-.link {
-    display: flex;
-}
-
-.link div {
-    opacity: 1;
-    transition: opacity 0.2s;
-}
-
-.icon {
-    fill: var(--nav-links-color);
-    margin-right: 20px;
-}
-
 .collapsed {
     width: var(--sidebar-width-collapsed);
-
-    .link div {
-        height: 0;
-        opacity: 0;
-        width: 0;
-    }
-
-    .icon {
-        margin-right: 0;
-    }
 
     .list {
         align-items: center;

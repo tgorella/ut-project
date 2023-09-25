@@ -15,5 +15,6 @@
   "Форма авторизации": "Login form",
   "Неправильные логин или пароль": "Wrong email or password",
   "Входим": "Ok. Logging in...",
-  "Выйти": "Logout"
+  "Выйти": "Logout",
+  "Profile page": "Profile page"
 }

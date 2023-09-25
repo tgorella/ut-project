@@ -8,5 +8,15 @@
       "username":"tratata",
       "password":"test1234"
     }
-  ]
+  ],
+  "profile": {
+    "firstname": "Tatiana",
+    "lastname": "Gorelova",
+    "age": 38,
+    "currency": "RUB",
+    "country": "Russia",
+    "city": "Zvenigorod",
+    "username": "tratata",
+    "avatar": "https://avatars.githubusercontent.com/u/107557323?v=4"
+  }
 }

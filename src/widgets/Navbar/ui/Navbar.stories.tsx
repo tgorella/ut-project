@@ -7,7 +7,6 @@ const meta: Meta<typeof Navbar> = {
     title: 'widgets/Navbar',
     component: Navbar,
     argTypes: {
-    // backgroundColor: { control: 'color' },
     },
 }
 
@@ -15,7 +14,6 @@ const meta: Meta<typeof Navbar> = {
 export default meta
 type Story = StoryObj<typeof Navbar>;
 
-// More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Login: Story = {
     args: {
     },

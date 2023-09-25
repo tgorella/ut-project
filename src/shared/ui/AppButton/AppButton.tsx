@@ -1,6 +1,6 @@
 import classNames from 'shared/lib/classNames/ClassNames'
 import cls from './AppButton.module.scss'
-import { ButtonHTMLAttributes, FC } from 'react'
+import { ButtonHTMLAttributes, ReactNode, memo } from 'react'
 
 
 export enum ButtonTheme {
@@ -21,11 +21,12 @@ interface AppButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   square?: boolean,
   rounded?: boolean,
   size?: ButtonSize,
-  disabled?: boolean
+  disabled?: boolean,
+  children: ReactNode
 }
 
 
-export const AppButton: FC<AppButtonProps> = (props) => {
+export const AppButton= memo((props: AppButtonProps) => {
     const { className, children, theme, square, rounded, size = ButtonSize.M, disabled, ...otherProps } = props
     const mods:Record<string,boolean> = {
         [cls[theme]]: true,
@@ -43,4 +44,4 @@ export const AppButton: FC<AppButtonProps> = (props) => {
             {children}
         </button>
     )
-}
+})

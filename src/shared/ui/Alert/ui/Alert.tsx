@@ -4,6 +4,7 @@ import ErrorIcon from 'shared/assets/img/error.svg'
 import WarningIcon from 'shared/assets/img/warning.svg'
 import InfoIcon from 'shared/assets/img/info.svg'
 import SuccessIcon from 'shared/assets/img/success.svg'
+import { memo } from 'react'
 
 
 export enum AlertTheme {
@@ -25,7 +26,7 @@ interface AlertProps {
   theme: AlertTheme,
   variant?: AlertVariant
 }
-export const Alert = ({className, text, description, theme = AlertTheme.INFO, variant=AlertVariant.SOLID} : AlertProps) => {
+export const Alert = memo(({className, text, description, theme = AlertTheme.INFO, variant=AlertVariant.SOLID} : AlertProps) => {
     const Mods = {
         [cls[theme]]: true,
         [cls[variant]]: true
@@ -59,4 +60,4 @@ export const Alert = ({className, text, description, theme = AlertTheme.INFO, va
             
         </div>
     )
-}
+})

@@ -2,7 +2,7 @@ import classNames from 'shared/lib/classNames/ClassNames'
 import cls from './Navbar.module.scss'
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher'
 import { LangSwitcher } from 'widgets/LangSwitcher'
-import { useState, useCallback } from 'react'
+import { useState, useCallback, memo } from 'react'
 import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
 import { useTranslation } from 'react-i18next'
 import { LoginModal } from 'features/AuthByUsername'
@@ -12,7 +12,7 @@ import { getUserAuthData, userAction } from 'entities/User'
 interface NavbarProps {
   className?: string;
 }
-export const Navbar = ({className} : NavbarProps) => {
+export const Navbar = memo(({className} : NavbarProps) => {
     const {t} = useTranslation()
     const dispatch = useDispatch()
     const [isAuthModal, setIsAuthModal] = useState(false)
@@ -23,7 +23,6 @@ export const Navbar = ({className} : NavbarProps) => {
 
     const handleLogout = () => {
         dispatch(userAction.logout())
-        setIsAuthModal(false)
     }
 
     if (!authData || authData.username === '' ) {
@@ -47,4 +46,4 @@ export const Navbar = ({className} : NavbarProps) => {
             {authData.username !== '' && <AppButton theme={ButtonTheme.SOLID} onClick={handleLogout}>{t('Выйти')}</AppButton> }
         </div>
     )
-}
+})

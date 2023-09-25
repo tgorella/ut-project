@@ -2,12 +2,23 @@
 import { DeepPartial, ReducersMapObject } from '@reduxjs/toolkit'
 import { Decorator } from '@storybook/react'
 import { StateSchema, StoreProvider } from 'app/providers/StoreProvider'
+import { profileReducer } from 'entities/Profile'
 import { userReducer } from 'entities/User'
 import { loginReducer } from 'features/AuthByUsername/model/slice/loginSlice'
 
 const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
     loginForm: loginReducer,
-    user: userReducer
+    user: userReducer,
+    profile: profileReducer
+}
+
+const profileState: DeepPartial<StateSchema> = {
+    profile: {
+        readonly: true,
+        isLoading: false,
+        error: undefined,
+        data: undefined
+    }
 }
 const stateUser: DeepPartial<StateSchema> = {
     user: {authData: {id: '1', username: 'user'}},
@@ -53,6 +64,12 @@ export const LoginFormStoreDecoratorLoading: Decorator = (Story) => (
 
 export const LoginFormStoreDecoratorWithError: Decorator = (Story) => (
     <StoreProvider initialState={stateLoginFormError} asyncReducers={defaultAsyncReducers}>
+        {Story()}
+    </StoreProvider>
+)
+
+export const ProfileStoreDecorator: Decorator = (Story) => (
+    <StoreProvider initialState={profileState} asyncReducers={defaultAsyncReducers}>
         {Story()}
     </StoreProvider>
 )
