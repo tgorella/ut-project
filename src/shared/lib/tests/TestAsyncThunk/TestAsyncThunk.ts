@@ -14,6 +14,7 @@ export class TestAsyncThunk<Return, Arg, RejectedValue> {
     getState: () => StateSchema
     actionCreator:  ActionCreatorType<Return, Arg, RejectedValue>
     api: jest.MockedFunctionDeep<AxiosStatic>
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     navigate: jest.MockedFn<any>
 
     constructor(actionCreator: ActionCreatorType<Return, Arg, RejectedValue> ) {
