@@ -12,6 +12,10 @@ module.exports = {
         'jest': true
     },
     'extends': ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:react/recommended', 'plugin:i18next/recommended', 'plugin:storybook/recommended'],
+    'globals': {
+        __API__: true
+
+    },
     'overrides': [
         {
             'rules': {

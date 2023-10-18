@@ -24,7 +24,7 @@ export const Input = memo((props:InputProps) => {
         ...otherProps} = props
 
     const Mods = {
-        [cls.rounded]: rounded
+        [cls.rounded]: rounded || false
     }
 
     const [showPass, setShowPass] = useState(false)

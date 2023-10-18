@@ -1,5 +1,5 @@
 /* eslint-disable react/display-name */
-import { DeepPartial, ReducersMapObject } from '@reduxjs/toolkit'
+import { ReducersMapObject } from '@reduxjs/toolkit'
 import { Decorator } from '@storybook/react'
 import { StateSchema, StoreProvider } from 'app/providers/StoreProvider'
 import { profileReducer } from 'entities/Profile'

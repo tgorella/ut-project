@@ -1,6 +1,6 @@
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames, { Mods } from 'shared/lib/classNames/ClassNames'
 import cls from './Modal.module.scss'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { MutableRefObject, useCallback, useEffect, useRef, useState } from 'react'
 import { Portal } from 'shared/ui/Portal/Portal'
 import { useTheme } from 'app/providers/ThemeProvider'
 
@@ -16,7 +16,7 @@ interface ModalProps {
 }
 export const Modal = ({className, children, isOpen,autoOpen, delay, lazy, onClose, onOpen } : ModalProps) => {
 
-    const Mods = {
+    const Mods: Mods = {
         [cls.closed]: !isOpen
     }
 
@@ -47,7 +47,7 @@ export const Modal = ({className, children, isOpen,autoOpen, delay, lazy, onClos
         e.stopPropagation()
     }
 
-    const timerRef = useRef<ReturnType<typeof setTimeout>>()
+    const timerRef = useRef() as MutableRefObject<ReturnType<typeof setTimeout>>
     const onKeyDown = useCallback((e: KeyboardEvent) => {
         if (e.key === 'Escape') {
             onClose()

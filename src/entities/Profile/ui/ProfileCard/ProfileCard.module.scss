@@ -1,0 +1,27 @@
+.ProfileCard {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+}
+
+.item {
+    display: flex;
+    gap: 10px;
+}
+
+.avatar {
+    border-radius: 150px;
+    width: 300px;
+}
+
+.wrapper {
+    display: flex;
+    gap: 20px;
+}
+
+.info_container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
