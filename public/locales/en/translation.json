@@ -17,12 +17,12 @@
   "Входим": "Ok. Logging in...",
   "Выйти": "Logout",
   "Profile page": "Profile page",
-  "Имя": "Firstname",
+  "Имя": "Name",
   "Фамилия": "Lastname",
   "Возраст": "Age",
   "Клиенты": "Clients",
   "Попробуйте обновить страницу": "Refresh page",
   "Произошла ошибка при загрузке профиля": "Something went wrong",
-  "Всего страниц":"Total pages",
-  "Всего записей":"Total items"
+  "Всего страниц": "Total pages",
+  "Всего записей": "Total items"
 }

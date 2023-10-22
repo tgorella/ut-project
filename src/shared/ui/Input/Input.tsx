@@ -12,6 +12,7 @@ interface InputProps extends HTMLInputProps {
   className?: string,
   rounded?: boolean,
   value?: string,
+  label?: string,
   onChange?: (el: string) => void
 }
 export const Input = memo((props:InputProps) => {
@@ -19,12 +20,14 @@ export const Input = memo((props:InputProps) => {
         className, 
         rounded, 
         value, 
+        label,
         onChange,
         type = 'text',
         ...otherProps} = props
 
     const Mods = {
-        [cls.rounded]: rounded || false
+        [cls.nolabel]: label ? false: true,
+        [cls.rounded]: rounded || false,
     }
 
     const [showPass, setShowPass] = useState(false)
@@ -38,21 +41,27 @@ export const Input = memo((props:InputProps) => {
 
     if (type === 'password') {
         return ( 
-            <div className={cls.Input}>
-                <input value={value} type={showPass ? 'text' : type} onChange={changeHandler}
-                    className={classNames(className, Mods, [])}
-                    {...otherProps}
-                />
-                <div className={cls.eye_btn} onClick={showPassHandle}>{showPass ? <HideIcon />: <ShowIcon/>}</div>
-            </div>
+            <fieldset className={classNames(className, Mods, [cls.group])}>
+                {label  && <legend className={cls.legend}>{label}</legend>}
+                <div className={cls.Input}>
+                    <input value={value} type={showPass ? 'text' : type} onChange={changeHandler}
+                        className={classNames(className, Mods, [])}
+                        {...otherProps}
+                    />
+                    <div className={cls.eye_btn} onClick={showPassHandle}>{showPass ? <HideIcon />: <ShowIcon/>}</div>
+                </div>
+            </fieldset>
+            
         )
     }
     return ( 
-        <div className={cls.Input}>
-            <input value={value} type={type} onChange={changeHandler}
-                className={classNames(className, Mods, [])}
-                {...otherProps}
-            />
-        </div>
+        <fieldset className={classNames(className, Mods, [cls.group])}>
+            {label  && <legend className={cls.legend}>{label}</legend>}
+            <div className={cls.Input}>
+                <input value={value} type={type} onChange={changeHandler} 
+                    {...otherProps}
+                />
+            </div>
+        </fieldset>
     )
 })

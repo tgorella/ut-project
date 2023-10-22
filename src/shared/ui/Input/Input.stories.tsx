@@ -33,6 +33,21 @@ export const Default: Story = {
     }
 }
 
+export const WithLabel: Story = {
+    args: {
+        placeholder: 'Enter username',
+        label: 'Username'
+    },
+    decorators: [
+        WithColorsTheme
+    ],
+    parameters: {
+        docs: {
+            canvas: {sourceState: 'shown'}
+        },
+    }
+}
+
 export const Rounded: Story = {
     args: {
         placeholder: 'Enter username',
