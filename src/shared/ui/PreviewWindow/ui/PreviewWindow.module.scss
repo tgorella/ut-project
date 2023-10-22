@@ -1,47 +1,47 @@
 .PreviewWindow {
- display: none;
+    display: none;
 }
 
 .overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(0,0,0,0.5);
-} 
+    background-color: rgb(0 0 0 / 50%);
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
 
 .show {
-  display: block;
+    display: block;
 }
 
 .window_container {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 400px;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  background-color: var(--bg-color);
-  padding: 40px;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  overflow-y: auto;
+    background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    overflow-y: auto;
+    padding: 40px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 400px;
 }
 
 .close_btn {
-  position: absolute;
-  width: 35px;
-  height: 35px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: 20px;
-  right: 20px;
-  font-size: 20px;
-  color: var(--primary-text);
-  border-radius: 50%;
-  border: 2px solid var(--secondary-text);
-  cursor: pointer;
+    align-items: center;
+    border: 2px solid var(--secondary-text);
+    border-radius: 50%;
+    color: var(--primary-text);
+    cursor: pointer;
+    display: flex;
+    font-size: 20px;
+    height: 35px;
+    justify-content: center;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 35px;
 }

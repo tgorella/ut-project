@@ -1,26 +1,27 @@
 .Table {
-  width: 100%;
-  text-align: center;
-  border-collapse: collapse;
+    border-collapse: collapse;
+    text-align: center;
+    width: 100%;
 }
 
 .header {
- tr {
-  height: 50px;
-  border-bottom: 1px solid var(--secondary-text);
- }
- th {
-  padding: 5px 10px;
-  min-width: 40px;
- }
+    tr {
+        border-bottom: 1px solid var(--secondary-text);
+        height: 50px;
+    }
+
+    th {
+        min-width: 40px;
+        padding: 5px 10px;
+    }
 }
 
 .row {
-background-color: var(--darker-bg-color);
-cursor: pointer;
+    background-color: var(--darker-bg-color);
+    cursor: pointer;
 }
 
-// .row:hover { 
+// .row:hover {
 //   background-color: var(--accent);
 //   color: #fff;
 
