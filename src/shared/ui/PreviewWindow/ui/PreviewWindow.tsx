@@ -2,6 +2,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import cls from './PreviewWindow.module.scss'
 import classNames from 'shared/lib/classNames/ClassNames'
+import { CloseBtn } from 'shared/ui/CloseBtn/ui/CloseBtn'
 
 interface PreviewWindowProps {
   className?: string;
@@ -25,9 +26,7 @@ export const PreviewWindow = ({className, children, isOpen} : PreviewWindowProps
         <div className={classNames(cls.PreviewWindow, {[cls.show]: visible}, [className])}>
             <div className={cls.overlay} onClick={handleClose}></div>
             <div className={cls.window_container}>
-                <div className={cls.close_btn} onClick={handleClose}>
-                    ✕
-                </div>
+                <CloseBtn  onClose={handleClose}/>
                 <div>
                     {children}
                 </div>
