@@ -19,5 +19,8 @@
   "Profile page": "Profile page",
   "Имя": "Firstname",
   "Фамилия": "Lastname",
-  "Возраст": "Age"
+  "Возраст": "Age",
+  "Клиенты": "Clients",
+  "Попробуйте обновить страницу": "Refresh page",
+  "Произошла ошибка при загрузке профиля": "Something went wrong"
 }

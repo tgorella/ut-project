@@ -1,5 +1,7 @@
 {
   "Имя": "Firstname",
   "Фамилия": "Lastname",
-  "Возраст": "Age"
+  "Возраст": "Age",
+  "Profile page": "Profile page"
+
 }

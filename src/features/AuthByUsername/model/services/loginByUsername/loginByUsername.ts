@@ -20,7 +20,6 @@ export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps,Thunk
             }
             localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(response.data))
             dispatch(userAction.setAuthData(response.data))
-            extra.navigate?.('/about')
             return response.data
         } catch (error) {
             return rejectWithValue(i18n.t('Неправильные логин или пароль'))

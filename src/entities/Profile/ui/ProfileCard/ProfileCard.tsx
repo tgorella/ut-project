@@ -1,29 +1,33 @@
-import { getProfileData } from 'entities/Profile/model/selectors/getProfileData/getProfileData'
-import { getProfileLoadingError } from 'entities/Profile/model/selectors/getProfileLoadingError/getProfileLoadingError'
-import { getProfileLoadingStatus } from 'entities/Profile/model/selectors/getProfileLoadingStatus/getProfileLoadingStatus'
-import { useSelector } from 'react-redux'
-import { PageLoader } from 'widgets/PageLoader/ui/PageLoader'
 import cls from './ProfileCard.module.scss'
 import classNames from 'shared/lib/classNames/ClassNames'
 import { useTranslation } from 'react-i18next'
+import { Profile } from '../../model/types/profileSchema'
+import { PageLoader } from 'widgets/PageLoader/ui/PageLoader'
+import { Text } from 'shared/ui/Text'
+import { TextTheme } from 'shared/ui/Text/ui/Text'
+import { Avatar, AvatarSize } from 'shared/ui/Avatar/Avatar'
 
 interface ProfileCardProps {
   className?: string;
+  data?: Profile;
+  isLoading?: boolean;
+  error?: string
 }
-export const ProfileCard = ({className} : ProfileCardProps) => {
+export const ProfileCard = ({className, data, isLoading, error} : ProfileCardProps) => {
     const {t} = useTranslation('profile')
-    const data = useSelector(getProfileData)
-    const isLoading = useSelector(getProfileLoadingStatus)
-    const error = useSelector(getProfileLoadingError)
+
 
     if (isLoading) {
-        return <PageLoader />
+        return (
+            <div>
+                <PageLoader />
+            </div>
+        )
     }
-
     if (error) {
         return (
-            <div className={classNames(cls.ProfileCard, {}, [className])}>
-                {error}
+            <div>
+                <Text text={t('Попробуйте обновить страницу')} title={t('Произошла ошибка при загрузке профиля')} theme={TextTheme.WARNING}/>
             </div>
         )
     }
@@ -31,7 +35,7 @@ export const ProfileCard = ({className} : ProfileCardProps) => {
         <div className={classNames(cls.ProfileCard, {}, [className])}>
             <h1>{t('Profile page')}</h1>
             <div className={cls.wrapper} >
-                <img src={data?.avatar} className={cls.avatar}/>
+                <Avatar src={data?.avatar} size={AvatarSize.XL} alt={data?.firstname + ' '+data?.lastname}/>
                 <div className={cls.info_container}>
                     <div className={cls.item}>
                         <p>{t('Имя')}: {data?.firstname}</p>

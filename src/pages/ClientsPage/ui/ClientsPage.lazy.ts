@@ -1,9 +1,9 @@
 import { lazy } from 'react'
 
-export const ProfilePageLazy = lazy(
+export const ClientsPageLazy = lazy(
     () =>
         new Promise((resolve) => {
             // @ts-ignore
-            resolve(import('./ProfilePage'))
+            resolve(import('./ClientsPage'))
         })
 )

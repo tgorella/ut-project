@@ -1,0 +1,47 @@
+.PreviewWindow {
+ display: none;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.5);
+} 
+
+.show {
+  display: block;
+}
+
+.window_container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: var(--bg-color);
+  padding: 40px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  overflow-y: auto;
+}
+
+.close_btn {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 20px;
+  right: 20px;
+  font-size: 20px;
+  color: var(--primary-text);
+  border-radius: 50%;
+  border: 2px solid var(--secondary-text);
+  cursor: pointer;
+}

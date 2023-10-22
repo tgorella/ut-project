@@ -9,9 +9,8 @@ export const fetchProfileData = createAsyncThunk<Profile, void,ThunkConfig<strin
     async (_, thunkAPI) => {
         const {rejectWithValue, extra} = thunkAPI
         try {
-            const response = await extra.api.get<Profile>('/profile')
-            
-            return response.data
+            const {data} = await extra.api.get<Profile>('/profile')
+            return data
         } catch (error) {
             return rejectWithValue(i18n.t('Неправильные логин или пароль'))
         }

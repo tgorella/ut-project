@@ -4,6 +4,10 @@ import { AppButton, ButtonSize } from 'shared/ui/AppButton/AppButton'
 import classNames from 'shared/lib/classNames/ClassNames'
 import { SidebarItemsList } from 'widgets/Sidebar/model/items'
 import { SidebarItem } from '../SidebarItem/SidebarItem'
+import { useSelector } from 'react-redux'
+import { getUserAuthData } from 'entities/User'
+import LOGO from 'shared/assets/img/logo.png'
+
 
 interface SidebarProps {
   className?: string
@@ -11,12 +15,19 @@ interface SidebarProps {
 export const Sidebar = memo(({ className = ''}: SidebarProps) => {
     const [collapsed, setCollapsed] = useState(false)
 
+    const authData = useSelector(getUserAuthData)
     const toggleSidebar = () => {
         setCollapsed((prevState) => !prevState)
     }
 
     const itemsList = useMemo( () => SidebarItemsList.map((item) => {
-        return <SidebarItem item={item} collapsed={collapsed} key={item.path}/>}), [collapsed])
+        if (authData?.username && item.isAuth) {
+            return <SidebarItem item={item} collapsed={collapsed} key={item.path}/>}
+        if (!authData?.username && !item.isAuth) {
+            return <SidebarItem item={item} collapsed={collapsed} key={item.path}/>}
+    } 
+    
+    ), [authData?.username, collapsed])
 
     return (
         <div
@@ -25,6 +36,7 @@ export const Sidebar = memo(({ className = ''}: SidebarProps) => {
                 className
             ])}
         >
+            <img src={LOGO} style={{width: '200px'}}/>
             <div className={cls.list}>
                 {itemsList}
             </div>

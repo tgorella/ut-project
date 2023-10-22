@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next'
 import { LoginModal } from 'features/AuthByUsername'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserAuthData, userAction } from 'entities/User'
+import { useNavigate } from 'react-router-dom'
 
 interface NavbarProps {
   className?: string;
@@ -15,6 +16,7 @@ interface NavbarProps {
 export const Navbar = memo(({className} : NavbarProps) => {
     const {t} = useTranslation()
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const [isAuthModal, setIsAuthModal] = useState(false)
     const authData = useSelector(getUserAuthData)
     const toggleModal = useCallback(() => {
@@ -22,7 +24,8 @@ export const Navbar = memo(({className} : NavbarProps) => {
     }, [])
 
     const handleLogout = () => {
-        dispatch(userAction.logout())
+        dispatch(userAction.logout()) 
+        navigate?.('/')
     }
 
     if (!authData || authData.username === '' ) {

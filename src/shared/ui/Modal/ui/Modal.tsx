@@ -87,7 +87,9 @@ export const Modal = ({className, children, isOpen,autoOpen, delay, lazy, onClos
                     <div className={cls.content} onClick={onContentClick}>
                         { /* eslint-disable-next-line i18next/no-literal-string */}
                         <div className={cls['close-btn']} onClick={handleClose}>✕</div>
-                        {children ? children : 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, dolor debitis! Dolor ut consectetur optio, nisi repellat sint quasi inventore amet dignissimos quidem voluptate, quisquam voluptatum rem, officiis et animi!'}
+                        {children 
+                            ? children 
+                            : 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, dolor debitis! Dolor ut consectetur optio, nisi repellat sint quasi inventore amet dignissimos quidem voluptate, quisquam voluptatum rem, officiis et animi!'}
                     </div>
                 </div>
             </div>
