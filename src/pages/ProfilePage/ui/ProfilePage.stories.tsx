@@ -6,8 +6,6 @@ import { ProfileStoreDecorator } from 'shared/config/storybook/StoreDecorator/St
 const meta: Meta<typeof ProfilePage> = {
     title: 'pages/ProfilePage',
     component: ProfilePage,
-    argTypes: {
-    }
 }
 
 
@@ -20,6 +18,5 @@ export const Default: Story = {
     decorators: [
         WithColorsTheme,
         ProfileStoreDecorator
-        
     ]
 }

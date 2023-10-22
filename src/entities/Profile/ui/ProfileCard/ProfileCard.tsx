@@ -15,7 +15,8 @@ interface ProfileCardProps {
 }
 export const ProfileCard = ({className, data, isLoading, error} : ProfileCardProps) => {
     const {t} = useTranslation('profile')
-
+    
+    console.log(data, error)
 
     if (isLoading) {
         return (
@@ -24,7 +25,7 @@ export const ProfileCard = ({className, data, isLoading, error} : ProfileCardPro
             </div>
         )
     }
-    if (error) {
+    if (!data) {
         return (
             <div>
                 <Text text={t('Попробуйте обновить страницу')} title={t('Произошла ошибка при загрузке профиля')} theme={TextTheme.WARNING}/>

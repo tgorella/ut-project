@@ -5,6 +5,7 @@ import { StateSchema, StoreProvider } from 'app/providers/StoreProvider'
 import { profileReducer } from 'entities/Profile'
 import { userReducer } from 'entities/User'
 import { loginReducer } from 'features/AuthByUsername/model/slice/loginSlice'
+import { Country, Currency } from 'shared/const/common'
 
 const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
     loginForm: loginReducer,
@@ -17,7 +18,16 @@ const profileState: DeepPartial<StateSchema> = {
         readonly: true,
         isLoading: false,
         error: undefined,
-        data: undefined
+        data: {
+            firstname:'Tatiana',
+            lastname:'Gorelova',
+            age:'38',
+            currency:Currency.RUB,
+            country:Country.Russia,
+            city:'Zvenigorod',
+            username:'tratata',
+            avatar:'https://avatars.githubusercontent.com/u/107557323?v=4'
+        }
     }
 }
 const stateUser: DeepPartial<StateSchema> = {

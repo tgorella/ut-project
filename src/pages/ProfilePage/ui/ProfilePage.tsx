@@ -26,7 +26,6 @@ const ProfilePage = ({className} : ProfilePageProps) => {
     const isLoading = useSelector(getProfileLoadingStatus)
     const error = useSelector(getProfileLoadingError)
     
-  
     return ( 
         <DynamicModuleLoader reducers={reducers} >
             <div className={classNames(cls.ProfilePage, {}, [className])}>
