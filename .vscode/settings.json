@@ -4,5 +4,9 @@
     "public/locales",
     "src/shared/config/i18n"
   ],
-  "i18n-ally.keystyle": "nested"
+  "i18n-ally.keystyle": "nested",
+  "cSpell.words": [
+    "Всего",
+    "записей"
+  ]
 }
