@@ -21,9 +21,9 @@ export const Sidebar = memo(({ className = ''}: SidebarProps) => {
     }
 
     const itemsList = useMemo( () => SidebarItemsList.map((item) => {
-        if (authData?.username && item.isAuth) {
+        if (authData?.username !== '' && item.isAuth) {
             return <SidebarItem item={item} collapsed={collapsed} key={item.path}/>}
-        if (!authData?.username && !item.isAuth) {
+        if ((!authData?.username || authData.username === '') && !item.isAuth) {
             return <SidebarItem item={item} collapsed={collapsed} key={item.path}/>}
     } 
     
