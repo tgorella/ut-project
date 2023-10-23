@@ -3,11 +3,16 @@
     flex-direction: column;
     gap: 10px;
     justify-content: center;
+    position: relative;
 }
 
+.edit_icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
 .item {
     display: flex;
-    gap: 10px;
 }
 
 .avatar {
@@ -23,5 +28,12 @@
 .info_container {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+}
+.name {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 20px;
 }

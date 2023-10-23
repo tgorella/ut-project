@@ -6,6 +6,10 @@ import { PageLoader } from 'widgets/PageLoader/ui/PageLoader'
 import { Text } from 'shared/ui/Text'
 import { TextTheme } from 'shared/ui/Text/ui/Text'
 import { Avatar, AvatarSize } from 'shared/ui/Avatar/Avatar'
+import { Box } from 'shared/ui/Box'
+import { EditSwitcher } from 'widgets/EditeSwitcher/ui/EditSwitcher'
+import { useState } from 'react'
+import { Input } from 'shared/ui/Input/Input'
 
 interface ProfileCardProps {
   className?: string;
@@ -16,7 +20,10 @@ interface ProfileCardProps {
 export const ProfileCard = ({className, data, isLoading, error} : ProfileCardProps) => {
     const {t} = useTranslation('profile')
     
-    console.log(data, error)
+    const [edit, setIsEdit] = useState(false)
+    const toggleEdit = () => {
+        setIsEdit(prev => !prev)
+    }
 
     if (isLoading) {
         return (
@@ -35,21 +42,48 @@ export const ProfileCard = ({className, data, isLoading, error} : ProfileCardPro
     return ( 
         <div className={classNames(cls.ProfileCard, {}, [className])}>
             <h1>{t('Profile page')}</h1>
-            <div className={cls.wrapper} >
-                <Avatar src={data?.avatar} size={AvatarSize.XL} alt={data?.firstname + ' '+data?.lastname}/>
-                <div className={cls.info_container}>
-                    <div className={cls.item}>
-                        <p>{t('Имя')}: {data?.firstname}</p>
-                    </div>
-                    <div className={cls.item}>
-                        <p>{t('Фамилия')}: {data?.lastname}</p>
-                    </div>
-                    <div className={cls.item}>
-                        <p>{t('Возраст')}: {data?.age}</p>
-                    </div>
+            <Box>
+                <div className={cls.edit_icon}>
+                    <EditSwitcher editMode={edit} toggleEditMode={toggleEdit}/>
                 </div>
-            </div>
+                <Avatar src={data?.avatar} size={AvatarSize.XL} alt={data?.firstname + ' '+data?.lastname}/>
+                {!edit && (
+                    <div className={cls.info_container}>
+                        <div className={cls.item}>
+                            <p className={cls.name}>
+                                {data?.firstname+' '+ data?.lastname }
+                            </p>
+                        </div>
+                        <div className={cls.item}>
+                            {t('Имя пользователя')}: {data?.username}
+                        </div>
+                        <div className={cls.item}>
+                            {t('Возраст')}: {data?.age}
+                        </div>
+                        <div className={cls.item}>
+                            <p>{t('Страна')}: {data?.country}</p>
+                        </div>
+                        <div className={cls.item}>
+                            <p>{t('Город')}: {data?.city}</p>
+                        </div>
+                        <div className={cls.item}>
+                            <p>{t('Валюта')}: {data?.currency}</p>
+                        </div>
+                    </div>
+                )}
+                {edit && (
+                    <div className={cls.info_container}>
+                        <Input label={t('Имя')} value={data.firstname} />
+                        <Input label={t('Фамилия')} value={data.lastname} />
+                        <Input label={t('Логин')} value={data.username} />
+                        <Input label={t('Возраст')} value={data.age}  type='number'/>
 
+
+
+                    </div>
+                )}
+                
+            </Box>
         </div>
     )
 }

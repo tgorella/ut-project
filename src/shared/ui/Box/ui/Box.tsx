@@ -5,17 +5,17 @@ import { BoxFooter } from './BoxFooter'
 
 interface BoxProps {
   className?: string;
-  content: React.ReactNode;
+  children: React.ReactNode;
   header?: string | React.ReactNode;
   footer?: React.ReactNode
 }
-export const Box = ({className, content, header, footer} : BoxProps) => {
+export const Box = ({className, children, header, footer} : BoxProps) => {
 
     return ( 
         <div className={classNames(cls.Box, {}, [className])}>
             {header && <BoxHead title={header}/>}
             <div className={cls.content}>
-                {content}
+                {children}
             </div>
             {footer && <BoxFooter content={footer} />}
         </div>

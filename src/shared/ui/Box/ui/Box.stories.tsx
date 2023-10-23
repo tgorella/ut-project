@@ -24,7 +24,7 @@ type Story = StoryObj<typeof Box>;
 
 export const Default: Story = {
     args: {
-        content: content
+        children: content
     },
     decorators: [
         WithColorsTheme
@@ -39,7 +39,7 @@ export const Default: Story = {
 export const WithHeader: Story = {
     args: {
         header: 'Clients',
-        content: content
+        children: content
     },
     decorators: [
         WithColorsTheme
@@ -55,7 +55,7 @@ export const WithFooter: Story = {
     args: {
         header: 'Clients',
         footer: pagination,
-        content: content
+        children: content
     },
     decorators: [
         WithColorsTheme
