@@ -66,3 +66,41 @@ export const LastPage: Story = {
         },
     }
 }
+
+export const WithoutTotalPages: Story = {
+    args: {
+        currentPage: 2,
+        itemsLength: 64,
+        itemsPerPage: 30,
+        pages: false,
+        onPageDown: () => {},
+        onPageUp: () => {}
+    },
+    decorators: [
+        WithColorsTheme
+    ],
+    parameters: {
+        docs: {
+            canvas: {sourceState: 'shown'}
+        },
+    }
+}
+
+export const WithoutTotalItems: Story = {
+    args: {
+        currentPage: 2,
+        itemsLength: 64,
+        itemsPerPage: 30,
+        totalItems: false,
+        onPageDown: () => {},
+        onPageUp: () => {}
+    },
+    decorators: [
+        WithColorsTheme
+    ],
+    parameters: {
+        docs: {
+            canvas: {sourceState: 'shown'}
+        },
+    }
+}

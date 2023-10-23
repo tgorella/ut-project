@@ -7,10 +7,12 @@ interface PaginationProps {
   itemsLength: number;
   itemsPerPage: number;
   currentPage: number;
+  pages?: boolean;
+  totalItems?: boolean;
   onPageUp: (page: number) => void;
   onPageDown: (page: number) => void;
 }
-export const Pagination = ({className, itemsLength, itemsPerPage, currentPage, onPageDown, onPageUp} : PaginationProps) => {
+export const Pagination = ({className, itemsLength, itemsPerPage, currentPage, totalItems = true, pages = true, onPageDown, onPageUp} : PaginationProps) => {
     const {t} = useTranslation()
     const totalPages = Math.ceil(itemsLength / itemsPerPage)
     return ( 
@@ -41,8 +43,8 @@ export const Pagination = ({className, itemsLength, itemsPerPage, currentPage, o
                 )}
 
             </div>
-            <div className={cls.info}>{t('Всего страниц')}: {totalPages} </div>
-            <div className={cls.info}>{t('Всего записей')}: {itemsLength}</div>
+            {pages && <div className={cls.info}>{t('Всего страниц')}: {totalPages} </div>}
+            {totalItems && <div className={cls.info}>{t('Всего записей')}: {itemsLength}</div> }
         </div>
     )
 }
