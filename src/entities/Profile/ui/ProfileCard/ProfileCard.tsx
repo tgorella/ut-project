@@ -17,7 +17,7 @@ interface ProfileCardProps {
   isLoading?: boolean;
   error?: string
 }
-export const ProfileCard = ({className, data, isLoading, error} : ProfileCardProps) => {
+export const ProfileCard = ({className, data, isLoading} : ProfileCardProps) => {
     const {t} = useTranslation('profile')
     
     const [edit, setIsEdit] = useState(false)
