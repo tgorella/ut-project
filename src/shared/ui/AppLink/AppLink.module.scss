@@ -1,9 +1,5 @@
 .AppLink {
-    color: var(--nav-links-color);
+    color: var(--primary-text);
     text-decoration: none;
     transition: ease 0.5s;
-}
-
-.AppLink:hover {
-    border-bottom: 1px solid var(--nav-links-color);
 }

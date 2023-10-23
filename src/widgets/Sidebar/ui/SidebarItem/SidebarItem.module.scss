@@ -4,22 +4,46 @@
 
 .link div {
     opacity: 1;
-    transition: opacity 0.2s;
+    overflow: hidden;
+    transition: width ease 0.4s;
 }
 
 .icon {
-    fill: var(--nav-links-color);
+    fill: var(--primary-text);
     margin-right: 20px;
+}
+
+.menu-item {
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    font-weight: 500;
+    justify-content: flex-start;
+    padding: 10px 27px;
+    width: 100%;
+}
+
+.menu-item:hover,
+.active {
+    background: #fff7;
 }
 
 .collapsed {
     &.link div {
         height: 0;
-        opacity: 0;
         width: 0;
     }
 
     .icon {
         margin-right: 0;
     }
+}
+
+.menu-item.collapsed {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
 }

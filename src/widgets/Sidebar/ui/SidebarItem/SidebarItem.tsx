@@ -13,7 +13,7 @@ interface SidebarItemProps {
 export const SidebarItem = memo(({item, collapsed} : SidebarItemProps) => {
     const {t} = useTranslation()
     return ( 
-        <AppLink to={item.path} className={classNames(cls.link, {[cls.collapsed]: collapsed}, [])}>
+        <AppLink to={item.path} className={classNames(cls['menu-item'], {[cls.collapsed]: collapsed}, [cls.link])}>
             <item.icon className={cls.icon}/>
             <div>{t(item.text)}</div>
         </AppLink>

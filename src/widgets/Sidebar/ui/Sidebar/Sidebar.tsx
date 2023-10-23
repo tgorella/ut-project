@@ -36,7 +36,7 @@ export const Sidebar = memo(({ className = ''}: SidebarProps) => {
                 className
             ])}
         >
-            <img src={LOGO} style={{width: '200px'}}/>
+            <img src={LOGO} className={cls.logo} />
             <div className={cls.list}>
                 {itemsList}
             </div>
