@@ -1,7 +1,17 @@
 .ProfilePage {
+    display: flex;
     height: auto;
+    width: 100%;
 }
 
-.ProfilePage h1 {
+.title {
     margin-bottom: 20px;
+}
+
+.small_column {
+    width: 40%;
+
+    @media screen and (max-width: 500px) {
+        width: 100%;
+    }
 }

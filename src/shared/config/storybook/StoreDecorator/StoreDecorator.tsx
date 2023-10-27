@@ -27,6 +27,16 @@ const profileState: DeepPartial<StateSchema> = {
             city:'Zvenigorod',
             username:'tratata',
             avatar:'https://avatars.githubusercontent.com/u/107557323?v=4'
+        },
+        form: {
+            firstname:'Tatiana',
+            lastname:'Gorelova',
+            age:38,
+            currency:Currency.RUB,
+            country:Country.Russia,
+            city:'Zvenigorod',
+            username:'tratata',
+            avatar:'https://avatars.githubusercontent.com/u/107557323?v=4'
         }
     }
 }

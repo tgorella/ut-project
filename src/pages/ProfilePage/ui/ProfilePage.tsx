@@ -57,21 +57,24 @@ const ProfilePage = ({className} : ProfilePageProps) => {
     }, [dispatch])
     return ( 
         <DynamicModuleLoader reducers={reducers} >
-            <h1>{t('Profile page')}</h1>
+            <h1 className={cls.title}>{t('Profile page')}</h1>
             <div className={classNames(cls.ProfilePage, {}, [className])}>
-                <ProfileCard 
-                    data={data} 
-                    isLoading={isLoading} 
-                    error={error} 
-                    readonly={readonly}
-                    onChangeProfileCity={onChangeProfileCity}
-                    onChangeProfileLastName={onChangeProfileLastName}
-                    onChangeProfileName={onChangeProfileName}
-                    onChangeProfileUsername={onChangeProfileUsername}
-                    onChangeProfileAge={onChangeProfileAge}
-                    onChangeAvatar={onChangeProfileAvatar}
-                    saveProfile={saveProfile}
-                />
+                <div className={cls.small_column} >
+                    <ProfileCard 
+                        data={data} 
+                        isLoading={isLoading} 
+                        error={error} 
+                        readonly={readonly}
+                        onChangeProfileCity={onChangeProfileCity}
+                        onChangeProfileLastName={onChangeProfileLastName}
+                        onChangeProfileName={onChangeProfileName}
+                        onChangeProfileUsername={onChangeProfileUsername}
+                        onChangeProfileAge={onChangeProfileAge}
+                        onChangeAvatar={onChangeProfileAvatar}
+                        saveProfile={saveProfile}
+                    />
+                </div>
+                
             </div>
         </DynamicModuleLoader>
         
