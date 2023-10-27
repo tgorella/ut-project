@@ -6,5 +6,7 @@
   "Имя пользователя": "Username",
   "Страна": "Country",
   "Город": "City",
-  "Валюта": "Currency"
+  "Валюта": "Currency",
+  "Ссылка на аватар": "Link to avatar"
+
 }

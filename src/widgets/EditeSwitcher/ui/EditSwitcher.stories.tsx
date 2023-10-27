@@ -14,22 +14,24 @@ const meta: Meta<typeof EditSwitcher> = {
 
 let mode = false
 
-const toggleMode = () => {
-    if (mode === false) {
-        mode = true
-    }
-    if (mode === true) {
-        mode = false
-    }
+const onEdit = () => {
+    mode = true
 }
-
+const onChancelEdit = () => {
+    mode = false
+}
 export default meta
 type Story = StoryObj<typeof EditSwitcher>;
 
 export const Edit: Story = {
     args: {
         editMode: mode,
-        toggleEditMode: toggleMode
+        onEdit: () => {
+            mode = true
+        },
+        onChancelEdit: () => {
+            mode = false
+        }
     },
     decorators: [
         WithColorsTheme
@@ -43,8 +45,9 @@ export const Edit: Story = {
 
 export const Close: Story = {
     args: {
-        editMode: mode,
-        toggleEditMode: toggleMode
+        editMode: true,
+        onEdit,
+        onChancelEdit
     },
     decorators: [
         WithColorsTheme

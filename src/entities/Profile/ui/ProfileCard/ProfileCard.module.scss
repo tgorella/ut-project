@@ -4,6 +4,7 @@
     gap: 10px;
     justify-content: center;
     position: relative;
+    width: 48%;
 }
 
 .edit_icon {
@@ -14,10 +15,13 @@
 
 .item {
     display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 .avatar {
     border-radius: 150px;
+    margin-bottom: 20px;
     width: 300px;
 }
 
@@ -29,6 +33,7 @@
 .info_container {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .name {
@@ -38,4 +43,10 @@
     justify-content: center;
     margin-bottom: 20px;
     width: 100%;
+}
+
+.box {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 }

@@ -24,9 +24,14 @@
 }
 
 .content {
+    align-items: center;
     color: var(--primary-text);
+    display: flex;
+    flex-direction: column;
     flex-grow: 1;
+    justify-content: center;
     padding: 20px 40px;
+    width: 100%;
 }
 
 .footer {

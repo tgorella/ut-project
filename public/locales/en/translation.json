@@ -28,5 +28,7 @@
   "Имя пользователя": "Username",
   "Страна": "Country",
   "Город": "City",
-  "Валюта": "Currency"
+  "Валюта": "Currency",
+  "Сохранить": "Save changes",
+  "Ссылка на аватар": "Link to avatar"
 }

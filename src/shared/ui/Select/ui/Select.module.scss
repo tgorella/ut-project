@@ -1,19 +1,29 @@
 .Selector {
     background-color: var(--bg-color);
-    border: 0;
+    border: 1px solid var(--secondary-text);
+    border-radius: 5px;
+    box-sizing: content-box;
     color: var(--primary-text);
     outline: none;
-    padding: 5px 10px;
+    padding: 12px 15px;
     width: 100%;
 }
 
 .group {
+    border: 0;
     padding: 5px;
+    position: relative;
     width: 100%;
 }
 
 .legend {
-    font-size: 12px;
+    background-color: var(--bg-color);
+    color: var(--secondary-text);
+    font-size: 13px;
+    left: 20px;
     line-height: 10px;
     padding: 0 5px;
+    position: absolute;
+    top: 0;
+    z-index: 2;
 }

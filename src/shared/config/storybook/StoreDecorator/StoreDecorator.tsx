@@ -21,7 +21,7 @@ const profileState: DeepPartial<StateSchema> = {
         data: {
             firstname:'Tatiana',
             lastname:'Gorelova',
-            age:'38',
+            age:38,
             currency:Currency.RUB,
             country:Country.Russia,
             city:'Zvenigorod',

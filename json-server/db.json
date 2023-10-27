@@ -1,12 +1,15 @@
 {
   "posts": [
-    {"id": 1, "title": ""}
+    {
+      "id": 1,
+      "title": ""
+    }
   ],
   "users": [
     {
-      "id":"1",
-      "username":"tratata",
-      "password":"test1234"
+      "id": "1",
+      "username": "tratata",
+      "password": "test1234"
     }
   ],
   "profile": {
