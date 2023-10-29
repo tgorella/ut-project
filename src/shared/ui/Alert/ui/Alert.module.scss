@@ -1,13 +1,14 @@
 .Alert {
+    align-items: center;
     border-radius: 9px;
     display: flex;
-    padding: 15px 20px;
+    padding: 10px 20px;
     width: 100%;
 }
 
 .icon {
     display: flex;
-    width: 45px;
+    width: 35px;
 }
 
 .text_wrapper {
@@ -16,6 +17,7 @@
 
 .text {
     font: var(--font-m);
+    line-height: 1.1;
 }
 
 .description {
@@ -72,4 +74,10 @@
     .icon {
         fill: var(--success-icon);
     }
+}
+
+.only_text {
+    background-color: none;
+    border: none;
+    padding: 5px;
 }

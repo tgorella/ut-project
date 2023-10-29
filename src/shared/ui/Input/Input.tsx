@@ -4,6 +4,7 @@ import cls from './Input.module.scss'
 import classNames from 'shared/lib/classNames/ClassNames'
 import ShowIcon from 'shared/assets/img/show.svg'
 import HideIcon from 'shared/assets/img/hide.svg'
+import { Alert, AlertTheme, AlertVariant } from '../Alert'
 
 
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>
@@ -13,6 +14,7 @@ interface InputProps extends HTMLInputProps {
   rounded?: boolean,
   value?: string,
   label?: string,
+  error?: string,
   onChange?: (el: string) => void
 }
 export const Input = memo((props:InputProps) => {
@@ -21,6 +23,7 @@ export const Input = memo((props:InputProps) => {
         rounded, 
         value, 
         label,
+        error,
         onChange,
         type = 'text',
         ...otherProps} = props
@@ -50,6 +53,11 @@ export const Input = memo((props:InputProps) => {
                     />
                     <div className={cls.eye_btn} onClick={showPassHandle}>{showPass ? <HideIcon />: <ShowIcon/>}</div>
                 </div>
+                {error && <Alert 
+                    text={error} 
+                    theme={AlertTheme.ERROR} 
+                    variant={AlertVariant.ONLY_TEXT}
+                />}
             </fieldset>
             
         )
@@ -58,9 +66,17 @@ export const Input = memo((props:InputProps) => {
         <fieldset className={classNames(className, Mods, [cls.group])}>
             {label  && <legend className={cls.legend}>{label}</legend>}
             <div className={cls.Input}>
-                <input value={value} type={type} onChange={changeHandler} 
+                <input 
+                    value={value} 
+                    type={type} 
+                    onChange={changeHandler} 
                     {...otherProps}
                 />
+                {error && <Alert 
+                    text={error} 
+                    theme={AlertTheme.ERROR} 
+                    variant={AlertVariant.ONLY_TEXT}
+                />}
             </div>
         </fieldset>
     )

@@ -14,6 +14,8 @@ import { profileAction } from 'entities/Profile/model/slice/profileSlice'
 import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
 import { Currency, CurrencySelect } from 'entities/Currency'
 import { Country, CountrySelect } from 'entities/Country'
+import profileFormValidation from 'entities/Profile/lib/profileFormValidation/profileFormValidation'
+import { useEffect, useState } from 'react'
 
 interface ProfileCardProps {
   className?: string;
@@ -50,6 +52,15 @@ export const ProfileCard = (props : ProfileCardProps) => {
     } = props
     const {t} = useTranslation('profile')
     
+    
+    const [errors, setErrors] = useState({
+        age: '',
+        firstname: '',
+        lastname: '',
+        avatar: '',
+        city: ''
+    })
+
     const edit = !readonly || false
     const dispatch = useAppDispatch()
     const onEdit = () => {
@@ -59,6 +70,13 @@ export const ProfileCard = (props : ProfileCardProps) => {
     const onChancelEdit = () => {
         dispatch(profileAction.chancelEdit())
     }
+
+    useEffect(() => {
+        if (data) {
+            setErrors(profileFormValidation(data))
+        }
+    }, [data])
+
 
     if (isLoading) {
         return (
@@ -107,16 +125,57 @@ export const ProfileCard = (props : ProfileCardProps) => {
                 )}
                 {edit && (
                     <div className={cls.info_container}>
-                        <Input label={t('Имя')} value={data.firstname}  onChange={onChangeProfileName}/>
-                        <Input label={t('Фамилия')} value={data.lastname} onChange={onChangeProfileLastName}/>
-                        <Input label={t('Логин')} value={data.username} onChange={onChangeProfileUsername}/>
-                        <CountrySelect value={data.country} onChange={onChangeCountry} />
-                        <Input label={t('Город')} value={data.city}  onChange={onChangeProfileCity}/>
-                        <Input label={t('Возраст')} value={data?.age?.toString()}  type='number' onChange={onChangeProfileAge}/>
-                        <CurrencySelect value={data.currency} onChange={onChangeCurrency} />
-                        <Input label={t('Ссылка на аватар')} value={data.avatar}  onChange={onChangeAvatar}/>
+                        <Input 
+                            label={t('Имя')} 
+                            value={data.firstname}  
+                            onChange={onChangeProfileName} 
+                            name='name' 
+                            error={errors.firstname}
+                        />
+                        <Input 
+                            label={t('Фамилия')} 
+                            value={data.lastname} 
+                            onChange={onChangeProfileLastName} 
+                            name='lastname'
+                            error={errors.lastname}
+                        />
+                        <Input 
+                            label={t('Логин')} 
+                            value={data.username} 
+                            onChange={onChangeProfileUsername} 
+                            name='login'
+                        />
+                        <CountrySelect 
+                            value={data.country} 
+                            onChange={onChangeCountry} 
+                        />
+                        <Input 
+                            label={t('Город')} 
+                            value={data.city}  
+                            onChange={onChangeProfileCity} 
+                            name='city'
+                            error={errors.city}
+                        />
+                        <Input 
+                            label={t('Возраст')} 
+                            value={data?.age?.toString()}  
+                            type='number' onChange={onChangeProfileAge} 
+                            name='age'
+                            error={errors.age}
+                        />
+                        <CurrencySelect 
+                            value={data.currency} 
+                            onChange={onChangeCurrency} 
+                        />
+                        <Input 
+                            label={t('Ссылка на аватар')} 
+                            value={data.avatar}  
+                            onChange={onChangeAvatar} 
+                            name='avatar'
+                            error={errors.avatar}
+                        />
 
-                        <AppButton theme={ButtonTheme.OUTLINED} onClick={saveProfile}>{t('Сохранить')}</AppButton>
+                        <AppButton theme={ButtonTheme.OUTLINED} onClick={saveProfile} disabled={Object.values(errors).filter((item) => item !== '').length > 0 ? true : false}>{t('Сохранить')}</AppButton>
 
 
                     </div>

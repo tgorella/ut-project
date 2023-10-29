@@ -16,6 +16,7 @@ export const Sidebar = memo(({ className = ''}: SidebarProps) => {
     const [collapsed, setCollapsed] = useState(false)
 
     const authData = useSelector(getUserAuthData)
+    
     const toggleSidebar = () => {
         setCollapsed((prevState) => !prevState)
     }

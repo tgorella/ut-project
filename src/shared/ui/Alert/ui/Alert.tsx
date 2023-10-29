@@ -16,7 +16,8 @@ SUCCESS = 'success'
 
 export enum AlertVariant {
   SOLID = 'solid',
-  OUTLINED = 'outlined'
+  OUTLINED = 'outlined',
+  ONLY_TEXT = 'only_text'
 }
 
 interface AlertProps {
@@ -32,26 +33,17 @@ export const Alert = memo(({className, text, description, theme = AlertTheme.INF
         [cls[variant]]: true
     }
 
-    let icon
-
-    switch (theme) {
-    case AlertTheme.ERROR:
-        icon = <ErrorIcon />
-        break
-    case AlertTheme.SUCCESS:
-        icon = <SuccessIcon />
-        break
-    case AlertTheme.WARNING:
-        icon = <WarningIcon />
-        break
-    default:
-        icon = <InfoIcon />
+    const icon = {
+        error:  <ErrorIcon />,
+        success: <SuccessIcon />,
+        warning: <WarningIcon />,
+        info: <InfoIcon />
     }
     
     return ( 
         <div className={classNames(cls.Alert, Mods, [className])}>
             <div className={cls.icon}>
-                {icon}
+                {icon[theme]}
             </div>
             <div className={cls.text_wrapper}>
                 {text && <p className={cls.text}>{text}</p>}

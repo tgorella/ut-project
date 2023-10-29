@@ -32,5 +32,15 @@
   "Сохранить": "Save changes",
   "Ссылка на аватар": "Link to avatar",
   "Укажите валюту": "Currency",
-  "Укажите страну": "Country"
+  "Укажите страну": "Country",
+  "Поле не может быть пустым": "Field can't be empty",
+  "Имя не должно превышать 20 символдов": "Name should be max 20 symbols length",
+  "Фамилия не должно превышать 30 символдов": "Lastname should be max 30 symbols length",
+  "Фамилия должна содержать только буквы": "Last name must contain only letters",
+  "Имя должно содержать только буквы": "Name must contain only letters",
+  "Возраст не может быть орицательным": "Age can't be negative",
+  "Возраст должен быть в пределах от 13 до 100": "Age must be between 13 and 100",
+  "Ссылка должна быть вида http://": "Link must starts with http://",
+  "Город может содержать только буквы, цифры и -": "City can contain only letters, numbers and -",
+  "Город не должно превышать 30 символдов": "City should be max 30 symbols length"
 }
