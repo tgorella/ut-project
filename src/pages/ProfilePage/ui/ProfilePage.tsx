@@ -6,6 +6,8 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { useCallback, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
+import { Currency } from 'entities/Currency'
+import { Country } from 'entities/Country'
 
 const reducers: ReducersList = {
     profile: profileReducer
@@ -51,31 +53,45 @@ const ProfilePage = ({className} : ProfilePageProps) => {
         dispatch(profileAction.updateProfile({avatar: value}))
     }, [dispatch])
 
+    const onChangeCurrency = useCallback((value: Currency) => {
+        dispatch(profileAction.updateProfile({currency: value}))
+    }, [dispatch])
+
+    const onChangeCountry = useCallback((value: Country) => {
+        dispatch(profileAction.updateProfile({country: value}))
+    }, [dispatch])
+
     const saveProfile = useCallback(() => {
         dispatch(updateProfileData())
         dispatch(profileAction.setReadOnly(true))
     }, [dispatch])
+
     return ( 
         <DynamicModuleLoader reducers={reducers} >
-            <h1 className={cls.title}>{t('Profile page')}</h1>
-            <div className={classNames(cls.ProfilePage, {}, [className])}>
-                <div className={cls.small_column} >
-                    <ProfileCard 
-                        data={data} 
-                        isLoading={isLoading} 
-                        error={error} 
-                        readonly={readonly}
-                        onChangeProfileCity={onChangeProfileCity}
-                        onChangeProfileLastName={onChangeProfileLastName}
-                        onChangeProfileName={onChangeProfileName}
-                        onChangeProfileUsername={onChangeProfileUsername}
-                        onChangeProfileAge={onChangeProfileAge}
-                        onChangeAvatar={onChangeProfileAvatar}
-                        saveProfile={saveProfile}
-                    />
+            <div className={cls.page_wrapper}>
+                <h1 className={cls.title}>{t('Profile page')}</h1>
+                <div className={classNames(cls.ProfilePage, {}, [className])}>
+                    <div className={cls.small_column} >
+                        <ProfileCard 
+                            data={data} 
+                            isLoading={isLoading} 
+                            error={error} 
+                            readonly={readonly}
+                            onChangeProfileCity={onChangeProfileCity}
+                            onChangeProfileLastName={onChangeProfileLastName}
+                            onChangeProfileName={onChangeProfileName}
+                            onChangeProfileUsername={onChangeProfileUsername}
+                            onChangeProfileAge={onChangeProfileAge}
+                            onChangeAvatar={onChangeProfileAvatar}
+                            onChangeCurrency={onChangeCurrency}
+                            onChangeCountry={onChangeCountry}
+                            saveProfile={saveProfile}
+                        />
+                    </div>
+                    <div className={cls.big_column}></div>
                 </div>
-                
             </div>
+            
         </DynamicModuleLoader>
         
     )

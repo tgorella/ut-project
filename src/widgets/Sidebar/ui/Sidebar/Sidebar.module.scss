@@ -6,6 +6,17 @@
     position: relative;
     transition: width 0.5s ease;
     width: var(--sidebar-width);
+
+    @media screen and (max-width: 400px) {
+        bottom: 0;
+        left: 0;
+        min-height: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
+        z-index: 10000;
+    }
 }
 
 .toggle_btn {
@@ -20,6 +31,10 @@
     position: absolute;
     right: -5px;
     width: 35px;
+
+    @media screen and (max-width: 400px) {
+        display: none;
+    }
 }
 
 .list {

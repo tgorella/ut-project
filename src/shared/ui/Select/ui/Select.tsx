@@ -1,3 +1,4 @@
+import { ChangeEvent } from 'react'
 import { Option } from '../model/types/option'
 import cls from './Select.module.scss'
 import classNames from 'shared/lib/classNames/ClassNames'
@@ -7,14 +8,18 @@ interface SelectorProps {
   options: Option[];
   value: string;
   label?: string;
-  onChange: () => void;
+  onChange?: (value: string) => void;
 }
+
 export const Select = ({className, options, value, label, onChange} : SelectorProps) => {
+    const changeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
+        onChange?.(e.target.value)
+    }
 
     return ( 
         <fieldset className={cls.group}>
             {label  && <legend className={cls.legend}>{label}</legend>}
-            <select className={classNames(cls.Selector, {}, [className])} onChange={onChange} value={value}>
+            <select className={classNames(cls.Selector, {}, [className])} onChange={changeHandler} value={value}>
                 {options.map((item) => {
                     return (
                         <option value={item.value} key={item.value}>{item.name}</option>

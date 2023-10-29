@@ -7,6 +7,14 @@
   "Страна": "Country",
   "Город": "City",
   "Валюта": "Currency",
-  "Ссылка на аватар": "Link to avatar"
-
+  "Ссылка на аватар": "Link to avatar",
+  "Логин": "Username",
+  "Страна": "Country",
+  "Город": "City",
+  "Валюта": "Currency",
+  "Сохранить": "Save changes",
+  "Ссылка на аватар": "Link to avatar",
+  "Укажите валюту": "Currency",
+  "Попробуйте обновить страницу": "Refresh page",
+  "Произошла ошибка при загрузке профиля": "Something went wrong"
 }

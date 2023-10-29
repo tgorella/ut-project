@@ -2,10 +2,11 @@
 import { ReducersMapObject } from '@reduxjs/toolkit'
 import { Decorator } from '@storybook/react'
 import { StateSchema, StoreProvider } from 'app/providers/StoreProvider'
+import { Country } from 'entities/Country'
+import { Currency } from 'entities/Currency'
 import { profileReducer } from 'entities/Profile'
 import { userReducer } from 'entities/User'
 import { loginReducer } from 'features/AuthByUsername/model/slice/loginSlice'
-import { Country, Currency } from 'shared/const/common'
 
 const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
     loginForm: loginReducer,

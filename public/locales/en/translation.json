@@ -16,7 +16,7 @@
   "Неправильные логин или пароль": "Wrong email or password",
   "Входим": "Ok. Logging in...",
   "Выйти": "Logout",
-  "Profile page": "Profile page",
+  "Профиль": "Profile page",
   "Имя": "Name",
   "Фамилия": "Lastname",
   "Возраст": "Age",
@@ -30,5 +30,7 @@
   "Город": "City",
   "Валюта": "Currency",
   "Сохранить": "Save changes",
-  "Ссылка на аватар": "Link to avatar"
+  "Ссылка на аватар": "Link to avatar",
+  "Укажите валюту": "Currency",
+  "Укажите страну": "Country"
 }

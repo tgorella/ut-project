@@ -1,7 +1,21 @@
+.page_wrapper {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
 .ProfilePage {
     display: flex;
     height: auto;
+    margin: auto;
+    max-width: 1200px;
     width: 100%;
+
+    @media screen and (max-width: 1200px) {
+        flex-direction: column;
+    }
 }
 
 .title {
@@ -9,9 +23,23 @@
 }
 
 .small_column {
-    width: 40%;
+    margin: 0 20px;
+    max-width: 100%;
+    width: 350px;
 
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 1200px) {
+        margin: 0 5px;
+        width: 100%;
+    }
+}
+
+.big_column {
+    margin: 0 20px;
+    max-width: 800px;
+    width: 100%;
+
+    @media screen and (max-width: 1200px) {
+        margin: 0 5px;
         width: 100%;
     }
 }

@@ -23,6 +23,10 @@ a {
 
 .content-page {
     display: flex;
+
+    @media screen and (max-width: 400px) {
+        flex-direction: column;
+    }
 }
 
 .page-wrapper {

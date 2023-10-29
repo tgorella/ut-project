@@ -1,5 +1,9 @@
-import { Country, Currency } from 'shared/const/common'
+import { Country } from 'entities/Country'
+import { Currency } from 'entities/Currency'
 
+export type Modules = {
+  clients: boolean,
+}
 export interface Profile {
   firstname?: string,
   lastname?: string,
@@ -14,7 +18,9 @@ export interface Profile {
 export interface ProfileSchema {
   data?: Profile,
   form?: Profile,
+  modules?: Modules,
   isLoading: boolean,
   error?: string,
-  readonly: boolean
+  readonly: boolean,
+
 }

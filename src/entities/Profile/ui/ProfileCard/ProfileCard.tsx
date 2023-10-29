@@ -12,6 +12,8 @@ import { Input } from 'shared/ui/Input/Input'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { profileAction } from 'entities/Profile/model/slice/profileSlice'
 import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
+import { Currency, CurrencySelect } from 'entities/Currency'
+import { Country, CountrySelect } from 'entities/Country'
 
 interface ProfileCardProps {
   className?: string;
@@ -25,6 +27,8 @@ interface ProfileCardProps {
   onChangeProfileCity?: (value: string) => void;
   onChangeProfileAge?: (value: string) => void;
   onChangeAvatar?: (value: string) => void;
+  onChangeCurrency: (value: Currency) => void;
+  onChangeCountry: (value: Country) => void;
   saveProfile?: () => void
 }
 export const ProfileCard = (props : ProfileCardProps) => {
@@ -40,6 +44,8 @@ export const ProfileCard = (props : ProfileCardProps) => {
         onChangeProfileUsername,
         onChangeProfileAge,
         onChangeAvatar,
+        onChangeCurrency,
+        onChangeCountry,
         saveProfile
     } = props
     const {t} = useTranslation('profile')
@@ -104,8 +110,10 @@ export const ProfileCard = (props : ProfileCardProps) => {
                         <Input label={t('Имя')} value={data.firstname}  onChange={onChangeProfileName}/>
                         <Input label={t('Фамилия')} value={data.lastname} onChange={onChangeProfileLastName}/>
                         <Input label={t('Логин')} value={data.username} onChange={onChangeProfileUsername}/>
+                        <CountrySelect value={data.country} onChange={onChangeCountry} />
                         <Input label={t('Город')} value={data.city}  onChange={onChangeProfileCity}/>
                         <Input label={t('Возраст')} value={data?.age?.toString()}  type='number' onChange={onChangeProfileAge}/>
+                        <CurrencySelect value={data.currency} onChange={onChangeCurrency} />
                         <Input label={t('Ссылка на аватар')} value={data.avatar}  onChange={onChangeAvatar}/>
 
                         <AppButton theme={ButtonTheme.OUTLINED} onClick={saveProfile}>{t('Сохранить')}</AppButton>
