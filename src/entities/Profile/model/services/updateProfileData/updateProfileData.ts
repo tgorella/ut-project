@@ -13,6 +13,10 @@ export const updateProfileData = createAsyncThunk<Profile, void,ThunkConfig<stri
         try {
           
             const {data} = await extra.api.put<Profile>('/profile', formData)
+
+            if (!data) {
+                throw new Error('err')
+            }
             return data
         } catch (error) {
             return rejectWithValue(i18n.t('Неправильные логин или пароль'))

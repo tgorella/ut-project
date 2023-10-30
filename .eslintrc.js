@@ -13,7 +13,8 @@ module.exports = {
     },
     'extends': ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:react/recommended', 'plugin:i18next/recommended', 'plugin:storybook/recommended'],
     'globals': {
-        __API__: true
+        __API__: true,
+        __PROJECT__: true
 
     },
     'overrides': [

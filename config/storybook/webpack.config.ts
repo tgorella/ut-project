@@ -14,6 +14,7 @@ export default ({ config }: { config: webpack.Configuration }) => {
     config.resolve?.extensions?.push('.ts', '.tsx', '.js')
 
     if (config.module?.rules != undefined) {
+        // @ts-ignore
         config.module.rules = config.module.rules.map((rule: RuleSetRule) => {
             if (/svg/.test(rule.test as string)) {
                 return { ...rule, exclude: /\.svg$/i }
@@ -31,7 +32,8 @@ export default ({ config }: { config: webpack.Configuration }) => {
     config.module?.rules?.push(buildCssLoader(true))
     config.plugins?.push(new webpack.DefinePlugin({
         ISDEV: JSON.stringify(false),
-        __API__: JSON.stringify('')
+        __API__: JSON.stringify(''),
+        __PROJECT__: JSON.stringify('storybook')
     }))
     return config
 }
