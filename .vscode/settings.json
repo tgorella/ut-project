@@ -8,5 +8,8 @@
   "cSpell.words": [
     "Всего",
     "записей"
-  ]
+  ],
+  "files.associations": {
+    "**/.fttemplates/**": "plaintext"
+  }
 }

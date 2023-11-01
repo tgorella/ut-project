@@ -8,6 +8,7 @@ interface ThemeSwitcherProps {
 }
 export const ThemeSwitcher = memo(({ className = '' }: ThemeSwitcherProps) => {
     const { theme, toggleTheme } = useTheme()
+
     return (
         <div className={classNames(cls.switcherWrapper, {}, [className])}>
             <div onClick={toggleTheme} className={classNames(cls.themeSwitcher, {}, [theme === Theme.LIGHT ? cls.light : cls.dark])}>

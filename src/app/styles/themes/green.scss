@@ -1,0 +1,20 @@
+.app_green_theme {
+    --bg-color: #e3eae7;
+    --darker-bg-color: #346956;
+    --nav-links-color: #ea0071;
+    --accent: #345565;
+    --primary-text: #1f2120;
+    --secondary-text: #4f5150;
+    --btn-text: #fff;
+
+    // Alert colors
+
+    --info-bg: rgb(139 208 254 / 30%);
+    --info-icon: rgb(139 208 254);
+    --warning-bg: rgb(254 233 139 / 37.9%);
+    --warning-icon: rgb(251 230 115);
+    --error-bg: rgb(255 112 141 / 38.4%);
+    --error-icon: rgb(254 157 173);
+    --success-bg: rgb(133 255 112 / 38.4%);
+    --success-icon: rgb(128 255 149);
+}

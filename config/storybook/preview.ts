@@ -14,7 +14,8 @@ export const globalTypes = {
             icon: 'mirror',
             items: [
                 {value:'light', title: 'light', left:'☀️'}, 
-                {value:'dark', title: 'dark', left:'🌚'}, 
+                {value:'dark', title: 'dark', left:'🌚'},
+                {value:'green', title: 'green', left:'🟢'}, 
                 'all'],
             dynamicTitle: true
         }

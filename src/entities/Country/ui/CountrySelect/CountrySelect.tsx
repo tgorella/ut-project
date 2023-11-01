@@ -4,6 +4,7 @@ import { memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Country } from '../../model/types/country'
 
+
 interface CountrySelectProps {
   className?: string;
   value?: Country
@@ -16,6 +17,7 @@ const options = Object.keys(Country).map((key) =>{
 } )
 
 export const CountrySelect = memo(({className, value, onChange} : CountrySelectProps) => {
+
     const {t} = useTranslation()
     const changeHandler = useCallback((value: string) => {
         onChange?.(value as Country)

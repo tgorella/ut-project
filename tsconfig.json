@@ -4,7 +4,7 @@
     "sourceMap": true,
     "noImplicitAny": true,
     "module": "ESNext",
-    "target": "es5",
+    "target": "es2017",
     "jsx": "react-jsx",
     "allowJs": true,
     "moduleResolution": "node",
@@ -26,5 +26,8 @@
     "./src/**/*.ts",
     "./src/**/*.tsx", "src/shared/config/storybook/StyleDecorator",
 
+  ],
+  "exclude": [
+    ".fttemplates/*"
   ]
 }

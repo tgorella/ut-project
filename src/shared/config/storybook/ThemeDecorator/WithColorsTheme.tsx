@@ -46,12 +46,25 @@ export const WithColorsTheme: Decorator = (Story, context) => {
         )
     }
 
+    if (scheme === 'green' ) {
+        return (
+            <div >
+                <Flex className='app app_green_theme' id='storie_wrapper'>
+                    {Story()}
+                </Flex>
+            </div>
+        )
+    }
+
     return (
         <div >
             <Flex className='app app_light_theme' id='storie_wrapper'>
                 {Story()}
             </Flex>
             <Flex className='app app_dark_theme' id='storie_wrapper'>
+                {Story()}
+            </Flex>
+            <Flex className='app app_green_theme' id='storie_wrapper'>
                 {Story()}
             </Flex>
 
