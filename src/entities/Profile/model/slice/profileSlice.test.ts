@@ -36,5 +36,5 @@ describe('profileSlice.test', () => {
             }
         })
     })
-   
+
 })
