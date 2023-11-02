@@ -1,4 +1,5 @@
 import { AboutPageLazy } from 'pages/AboutPage'
+import { ClientDetailPageLazy } from 'pages/ClientDetailPage/ui/ClientDetailPage/ClientDetailPage.lazy'
 import { ClientsPageLazy } from 'pages/ClientsPage'
 import { MainPageLazy } from 'pages/MainPage'
 import { NotFoundPage } from 'pages/NotFoundPage'
@@ -14,6 +15,7 @@ export enum AppRoutes {
   ABOUT = 'about',
   PROFILE = 'profile',
   CLIENTS = 'clients',
+  CLIENT_DETAILS = 'client_details',
   NOTFOUND = 'not_found'
 }
 export const RoutePath: Record<AppRoutes, string> = {
@@ -21,6 +23,7 @@ export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.ABOUT]: '/about',
     [AppRoutes.PROFILE]: '/profile',
     [AppRoutes.CLIENTS]: '/clients',
+    [AppRoutes.CLIENT_DETAILS]: '/clients/',
     [AppRoutes.NOTFOUND]: '*'
 }
 
@@ -39,6 +42,11 @@ export const routeConfig: Record<AppRoutes, AppRoutesProp> = {
     [AppRoutes.CLIENTS]: {
         path: RoutePath.clients,
         element: <ClientsPageLazy />,
+        authOnly: true
+    },
+    [AppRoutes.CLIENT_DETAILS]: {
+        path: RoutePath.client_details+':id',
+        element: <ClientDetailPageLazy />,
         authOnly: true
     },
     [AppRoutes.PROFILE]: {

@@ -1,1 +1,1 @@
-export { ClientsPageLazy } from './ui/ClientsPage.lazy'
+export { ClientsPageLazy } from './ui/ClientsPage/ClientsPage.lazy'

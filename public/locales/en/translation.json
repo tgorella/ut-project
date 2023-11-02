@@ -42,5 +42,6 @@
   "Возраст должен быть в пределах от 13 до 100": "Age must be between 13 and 100",
   "Ссылка должна быть вида http://": "Link must starts with http://",
   "Город может содержать только буквы, цифры и -": "City can contain only letters, numbers and -",
-  "Город не должно превышать 30 символдов": "City should be max 30 symbols length"
+  "Город не должно превышать 30 символдов": "City should be max 30 symbols length",
+  "Client id": "Client ID"
 }
