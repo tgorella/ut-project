@@ -86,6 +86,18 @@ const clientDetails: DeepPartial<StateSchema> = {
         }
     }
 }
+const clientDetailsError: DeepPartial<StateSchema> = {
+    clientDetails: {
+        isLoading: false,
+        error: 'error'
+    }
+}
+const clientDetailsisLoading: DeepPartial<StateSchema> = {
+    clientDetails: {
+        isLoading: true
+    }
+}
+
 export const UserStoreDecorator: Decorator = (Story) => (
     <StoreProvider initialState={stateUser} asyncReducers={defaultAsyncReducers}>
         {Story()}
@@ -124,6 +136,16 @@ export const ProfileStoreDecorator: Decorator = (Story) => (
 
 export const clientDetailsStoreDecorator: Decorator = (Story) => (
     <StoreProvider initialState={clientDetails} asyncReducers={defaultAsyncReducers}>
+        {Story()}
+    </StoreProvider>
+)
+export const clientDetailsErrorStoreDecorator: Decorator = (Story) => (
+    <StoreProvider initialState={clientDetailsError} asyncReducers={defaultAsyncReducers}>
+        {Story()}
+    </StoreProvider>
+)
+export const clientDetailsIsLoadingStoreDecorator: Decorator = (Story) => (
+    <StoreProvider initialState={clientDetailsisLoading} asyncReducers={defaultAsyncReducers}>
         {Story()}
     </StoreProvider>
 )

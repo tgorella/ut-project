@@ -13,18 +13,20 @@ import { useSelector } from 'react-redux'
 import { getClientDetailsIsLoading } from '../../model/selectors/getClientDetailsIsLoading/getClientDetailsIsLoading'
 import { getClientDetailsError } from '../../model/selectors/getClientDetailsError/getClientDetailsError'
 import { PageLoader } from 'widgets/PageLoader'
-import { TextAlign, TextTheme, Text } from 'shared/ui/Text/ui/Text'
 import { NoteBlock } from 'widgets/NoteBlock'
 import { getClientDetailsForm } from '../../model/selectors/getClientDetailsForm/getClientDetailsForm'
 import { updateClientData } from '../../model/services/updateClientData/updateClientData'
 import { clientDetailsAction } from '../../model/slice/clientDetailsSlice'
+import { Text } from 'shared/ui/Text'
+import { TextAlign } from 'shared/ui/Text/ui/Text'
 
 interface ClientCardProps {
   className?: string;
-  id: string
+  id: string,
+  withNotes?: boolean
 }
 export const ClientCard = memo((props : ClientCardProps) => {
-    const {className, id} = props
+    const {className, id, withNotes = true} = props
     const {t} = useTranslation('clients')
     const dispatch = useAppDispatch()
     const isLoading = useSelector(getClientDetailsIsLoading)
@@ -120,13 +122,20 @@ export const ClientCard = memo((props : ClientCardProps) => {
 
     if (!data && error) {
         return (
-            <div>
-                <Text 
-                    align={TextAlign.CENTER} 
-                    text={t('Попробуйте обновить страницу')} 
-                    title={t('Произошла ошибка при загрузке профиля')} 
-                    theme={TextTheme.WARNING}/>
-            </div>
+            <Box className={cls.box}>
+                <Avatar className={cls.avatar} size={AvatarSize.XL} alt={t('Клиент не найден')}/>
+                <div className={cls.info_container}>
+                    <div className={cls.item}>
+                        <p className={cls.name}>
+                            {t('Клиент не найден')}
+                        </p>
+                    </div>
+                    <div className={cls.item}>
+                        <Text align={TextAlign.CENTER} text={t('Возможно, клиент был удален')} />
+                    </div>
+                        
+                </div>
+            </Box>
         )
     }
   
@@ -233,11 +242,11 @@ export const ClientCard = memo((props : ClientCardProps) => {
                     </div>
                 )}
             </Box>
-            <NoteBlock 
+            { withNotes && <NoteBlock 
                 value={data?.notes || ''} 
                 onChancelEdit={handleNotesChancelEdit} 
                 onChange={handleChangeClientNotes} 
-                onSave={saveNotes}/>
+                onSave={saveNotes}/>}
         </div>
     )
 })

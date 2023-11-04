@@ -6,6 +6,7 @@
 
 .header {
     tr {
+        background-color: var(--darker-bg-color);
         border-bottom: 1px solid var(--secondary-text);
         height: 50px;
     }
@@ -17,12 +18,5 @@
 }
 
 .row {
-    background-color: var(--darker-bg-color);
     cursor: pointer;
 }
-
-// .row:hover {
-//   background-color: var(--accent);
-//   color: #fff;
-
-// }
