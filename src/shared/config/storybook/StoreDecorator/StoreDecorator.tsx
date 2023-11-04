@@ -2,6 +2,7 @@
 import { ReducersMapObject } from '@reduxjs/toolkit'
 import { Decorator } from '@storybook/react'
 import { StateSchema, StoreProvider } from 'app/providers/StoreProvider'
+import { clientDetailsReducer } from 'entities/Clients/model/slice/clientDetailsSlice'
 import { Country } from 'entities/Country'
 import { Currency } from 'entities/Currency'
 import { profileReducer } from 'entities/Profile'
@@ -11,7 +12,8 @@ import { loginReducer } from 'features/AuthByUsername/model/slice/loginSlice'
 const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
     loginForm: loginReducer,
     user: userReducer,
-    profile: profileReducer
+    profile: profileReducer,
+    clientDetails: clientDetailsReducer
 }
 
 const profileState: DeepPartial<StateSchema> = {
@@ -41,6 +43,8 @@ const profileState: DeepPartial<StateSchema> = {
         }
     }
 }
+
+
 const stateUser: DeepPartial<StateSchema> = {
     user: {authData: {id: '1', username: 'user'}},
 } 
@@ -58,7 +62,30 @@ const stateLoginFormLoading: DeepPartial<StateSchema> = {
 } 
 const stateLoginFormError: DeepPartial<StateSchema> = {
     loginForm: {username: 'user', password:'pass123', isLoading: false, error: 'error'}
-} 
+}
+const clientDetails: DeepPartial<StateSchema> = {
+    clientDetails: {
+        isLoading: false,
+        data: {
+            id:'643c5fe7013e22868a6eb63c',
+            avatarUrls: 'https://amur.info/wp-content/uploads/2023/07/3-16-768x518.jpg',
+            name: 'Джонни Депп',
+            profession: 'актер',
+            email: 'name@mydomain.com',
+            phone: '89001234567',
+            notes: 'американский актёр, кинорежиссёр, музыкант, сценарист и продюсер.'
+        },
+        form: {
+            id:'643c5fe7013e22868a6eb63c',
+            avatarUrls: 'https://amur.info/wp-content/uploads/2023/07/3-16-768x518.jpg',
+            name: 'Джонни Депп',
+            profession: 'актер',
+            email: 'name@mydomain.com',
+            phone: '89001234567',
+            notes: 'американский актёр, кинорежиссёр, музыкант, сценарист и продюсер.'
+        }
+    }
+}
 export const UserStoreDecorator: Decorator = (Story) => (
     <StoreProvider initialState={stateUser} asyncReducers={defaultAsyncReducers}>
         {Story()}
@@ -91,6 +118,12 @@ export const LoginFormStoreDecoratorWithError: Decorator = (Story) => (
 
 export const ProfileStoreDecorator: Decorator = (Story) => (
     <StoreProvider initialState={profileState} asyncReducers={defaultAsyncReducers}>
+        {Story()}
+    </StoreProvider>
+)
+
+export const clientDetailsStoreDecorator: Decorator = (Story) => (
+    <StoreProvider initialState={clientDetails} asyncReducers={defaultAsyncReducers}>
         {Story()}
     </StoreProvider>
 )

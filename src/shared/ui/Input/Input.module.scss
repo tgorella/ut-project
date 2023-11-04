@@ -7,7 +7,7 @@
 
 .Input input {
     background: none;
-    background-color: var(--bg-color);
+    background-color: var(--box-bg-color);
     border: 1px solid var(--secondary-text);
     border-radius: 5px;
     box-sizing: content-box;
@@ -35,7 +35,7 @@
 }
 
 .legend {
-    background-color: var(--bg-color);
+    background-color: var(--box-bg-color);
     color: var(--secondary-text);
     font-size: 13px;
     left: 20px;

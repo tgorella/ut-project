@@ -1,6 +1,6 @@
 .app_light_theme {
-    --bg-color: #f9f9f9;
-    --darker-bg-color: #ebebeb;
+    --bg-color: #f2f4f7;
+    --darker-bg-color: #e5e4e3;
     --nav-links-color: #ea006d;
     --accent: #ea9400;
     --primary-text: #333;
@@ -17,4 +17,7 @@
     --error-icon: rgb(228 40 72);
     --success-bg: rgb(133 255 112 / 22.8%);
     --success-icon: rgb(23 132 41);
+
+    // Box
+    --box-bg-color: #fff;
 }

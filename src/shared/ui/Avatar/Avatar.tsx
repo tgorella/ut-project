@@ -17,6 +17,7 @@ interface AvatarProps {
 }
 export const Avatar = ({className, size = AvatarSize.M, alt='avatar', src = AVATAR} : AvatarProps) => {
     return (
-        <img className={classNames(cls.Avatar, {}, [className, cls[size]])} alt={alt} src={src} />
+        <div className={classNames(cls.Avatar, {}, [className, cls[size]])} title={alt} style={{backgroundImage: `url(${src})`}}>
+        </div>
     )
 }

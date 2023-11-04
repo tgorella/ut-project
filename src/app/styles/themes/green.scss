@@ -1,7 +1,7 @@
 .app_green_theme {
-    --bg-color: #e3eae7;
-    --darker-bg-color: #346956;
-    --nav-links-color: #ea0071;
+    --bg-color: #a2bdb3;
+    --darker-bg-color: #6e8f83;
+    --nav-links-color: #afb450;
     --accent: #345565;
     --primary-text: #1f2120;
     --secondary-text: #4f5150;
@@ -17,4 +17,7 @@
     --error-icon: rgb(228 40 72);
     --success-bg: rgb(133 255 112 / 22.8%);
     --success-icon: rgb(23 132 41);
+
+    // Box
+    --box-bg-color: #fff;
 }
