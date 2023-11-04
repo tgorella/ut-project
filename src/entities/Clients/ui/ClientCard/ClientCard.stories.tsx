@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import 'app/styles/index.scss'
 import { WithColorsTheme } from 'shared/config/storybook/ThemeDecorator/WithColorsTheme'
 import { ClientCard } from './ClientCard'
-import { clientDetailsErrorStoreDecorator, clientDetailsIsLoadingStoreDecorator, clientDetailsStoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator'
+import { clientDetailsErrorStoreDecorator, clientDetailsIsLoadingStoreDecorator, clientDetailsStoreDecorator } from 'shared/config/storybook/StoreDecorator/clientDetailsStoreDecorator'
 
 const meta: Meta<typeof ClientCard> = {
     title: 'entities/ClientCard',
