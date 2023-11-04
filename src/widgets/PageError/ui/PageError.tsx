@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import cls from './PageError.module.scss'
 import { useTranslation } from 'react-i18next'
 import classNames from 'shared/lib/classNames/ClassNames'
@@ -6,7 +7,7 @@ import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
 interface PageErrorProps {
   className?: string
 }
-export const PageError = ({ className }: PageErrorProps) => {
+export const PageError = memo(({ className }: PageErrorProps) => {
     const { t } = useTranslation()
     const reloadPage = () => {
         location.reload()
@@ -19,4 +20,4 @@ export const PageError = ({ className }: PageErrorProps) => {
             <AppButton onClick={reloadPage} theme={ButtonTheme.SOLID}>{t('Перезагрузить страницу')}</AppButton>
         </div>
     )
-}
+})

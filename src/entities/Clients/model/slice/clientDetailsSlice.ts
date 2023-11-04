@@ -1,10 +1,10 @@
-import { clientDetailsSchema } from './../types/clientDetailsSchema'
+import { ClientDetailsSchema } from './../types/clientDetailsSchema'
 import {PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { getClientById } from '../services/getClientById/getClientById'
 import { Client } from '../types/clientsSchema'
 import { updateClientData } from '../services/updateClientData/updateClientData'
 
-const initialState: clientDetailsSchema = {
+const initialState: ClientDetailsSchema = {
     isLoading: false,
     data: undefined,
     form: undefined,

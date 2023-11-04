@@ -1,6 +1,6 @@
 import classNames, { Mods } from 'shared/lib/classNames/ClassNames'
 import cls from './Modal.module.scss'
-import { MutableRefObject, useCallback, useEffect, useRef, useState } from 'react'
+import { MutableRefObject, memo, useCallback, useEffect, useRef, useState } from 'react'
 import { Portal } from 'shared/ui/Portal/Portal'
 import { useTheme } from 'app/providers/ThemeProvider'
 
@@ -14,7 +14,7 @@ interface ModalProps {
   onClose: () => void;
   onOpen?: () => void
 }
-export const Modal = ({className, children, isOpen,autoOpen, delay, lazy, onClose, onOpen } : ModalProps) => {
+export const Modal = memo(({className, children, isOpen,autoOpen, delay, lazy, onClose, onOpen } : ModalProps) => {
 
     const Mods: Mods = {
         [cls.closed]: !isOpen
@@ -96,4 +96,4 @@ export const Modal = ({className, children, isOpen,autoOpen, delay, lazy, onClos
         </Portal>
        
     )
-}
+})

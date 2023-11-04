@@ -1,10 +1,10 @@
 import classNames from 'shared/lib/classNames/ClassNames'
 import { AppRouter } from './providers/router'
-import { Navbar } from 'widgets/Navbar/ui/Navbar'
 import { Sidebar } from 'widgets/Sidebar'
 import { Suspense, useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getIsMounted, userAction } from 'entities/User'
+import { Navbar } from 'widgets/Navbar'
 
 const App = () => {
     const dispatch = useDispatch()

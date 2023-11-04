@@ -2,7 +2,7 @@ import cls from './ProfileCard.module.scss'
 import classNames from 'shared/lib/classNames/ClassNames'
 import { useTranslation } from 'react-i18next'
 import { Profile } from '../../model/types/profileSchema'
-import { PageLoader } from 'widgets/PageLoader/ui/PageLoader'
+import { PageLoader } from 'widgets/PageLoader'
 import { Text } from 'shared/ui/Text'
 import { TextAlign, TextTheme } from 'shared/ui/Text/ui/Text'
 import { Avatar, AvatarSize } from 'shared/ui/Avatar/Avatar'
@@ -15,7 +15,7 @@ import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
 import { Currency, CurrencySelect } from 'entities/Currency'
 import { Country, CountrySelect } from 'entities/Country'
 import profileFormValidation from 'entities/Profile/lib/profileFormValidation/profileFormValidation'
-import { useEffect, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 
 interface ProfileCardProps {
   className?: string;
@@ -33,7 +33,7 @@ interface ProfileCardProps {
   onChangeCountry: (value: Country) => void;
   saveProfile?: () => void
 }
-export const ProfileCard = (props : ProfileCardProps) => {
+export const ProfileCard = memo((props : ProfileCardProps) => {
 
     const {
         className, 
@@ -184,4 +184,4 @@ export const ProfileCard = (props : ProfileCardProps) => {
             </Box>
         </div>
     )
-}
+})

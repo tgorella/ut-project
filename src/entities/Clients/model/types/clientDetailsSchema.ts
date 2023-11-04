@@ -1,6 +1,6 @@
 import { Client } from './clientsSchema'
 
-export interface clientDetailsSchema {
+export interface ClientDetailsSchema {
   isLoading: boolean,
   error?: string,
   data?: Client

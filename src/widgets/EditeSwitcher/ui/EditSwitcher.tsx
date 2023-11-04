@@ -2,6 +2,7 @@ import cls from './EditSwitcher.module.scss'
 import classNames from 'shared/lib/classNames/ClassNames'
 import EditIcon from 'shared/assets/img/pencil.svg'
 import CloseIcon from 'shared/assets/img/close.svg'
+import { memo } from 'react'
 
 interface EditSwitcherProps {
   className?: string;
@@ -9,7 +10,7 @@ interface EditSwitcherProps {
   onEdit: () => void;
   onChancelEdit: () => void
 }
-export const EditSwitcher = ({className, editMode, onEdit, onChancelEdit} : EditSwitcherProps) => {
+export const EditSwitcher = memo(({className, editMode, onEdit, onChancelEdit} : EditSwitcherProps) => {
   
     return ( 
         <div className={classNames(cls.EditSwitcher, {}, [className])} >
@@ -19,4 +20,4 @@ export const EditSwitcher = ({className, editMode, onEdit, onChancelEdit} : Edit
             }
         </div>
     )
-}
+})

@@ -1,8 +1,8 @@
 /* eslint-disable i18next/no-literal-string */
-import { useCallback, useEffect, useState } from 'react'
+import { memo, useCallback, useEffect, useState } from 'react'
 import cls from './PreviewWindow.module.scss'
 import classNames from 'shared/lib/classNames/ClassNames'
-import { CloseBtn } from 'shared/ui/CloseBtn/ui/CloseBtn'
+import { CloseBtn } from 'shared/ui/CloseBtn'
 
 interface PreviewWindowProps {
   className?: string;
@@ -10,7 +10,7 @@ interface PreviewWindowProps {
   isOpen: boolean,
 
 }
-export const PreviewWindow = ({className, children, isOpen} : PreviewWindowProps) => {
+export const PreviewWindow = memo(({className, children, isOpen} : PreviewWindowProps) => {
     const [visible, setIsVisible] = useState(false)
 
     useEffect(() => {
@@ -33,4 +33,4 @@ export const PreviewWindow = ({className, children, isOpen} : PreviewWindowProps
             </div>
         </div>
     )
-}
+})

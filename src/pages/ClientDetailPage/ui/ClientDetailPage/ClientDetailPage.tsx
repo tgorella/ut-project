@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 import { clientDetailsReducer } from 'entities/Clients/model/slice/clientDetailsSlice'
 import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { ClientCard } from 'entities/Clients'
+import { memo } from 'react'
 
 const reducers = {
     clientDetails: clientDetailsReducer
@@ -12,7 +13,7 @@ const reducers = {
 interface ClientDetailPageProps {
   className?: string;
 }
-const ClientDetailPage = ({className} : ClientDetailPageProps) => {
+const ClientDetailPage = memo(({className} : ClientDetailPageProps) => {
     const {t} = useTranslation()
     
     const {id} = useParams()
@@ -35,6 +36,6 @@ const ClientDetailPage = ({className} : ClientDetailPageProps) => {
     }
 
     return  <div>{t('Something went wrong')}</div>
-}
+})
 
 export default ClientDetailPage

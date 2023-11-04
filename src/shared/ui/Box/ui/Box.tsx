@@ -2,6 +2,7 @@ import cls from './Box.module.scss'
 import classNames from 'shared/lib/classNames/ClassNames'
 import { BoxHead } from './BoxHead'
 import { BoxFooter } from './BoxFooter'
+import { memo } from 'react'
 
 interface BoxProps {
   className?: string;
@@ -9,7 +10,7 @@ interface BoxProps {
   header?: string | React.ReactNode;
   footer?: React.ReactNode
 }
-export const Box = ({className, children, header, footer} : BoxProps) => {
+export const Box = memo(({className, children, header, footer} : BoxProps) => {
 
     return ( 
         <div className={classNames(cls.Box, {}, [className])}>
@@ -20,4 +21,4 @@ export const Box = ({className, children, header, footer} : BoxProps) => {
             {footer && <BoxFooter content={footer} />}
         </div>
     )
-}
+})

@@ -1,9 +1,9 @@
-import { AboutPageLazy } from 'pages/AboutPage'
+import { AboutPage } from 'pages/AboutPage'
 import { ClientDetailPageLazy } from 'pages/ClientDetailPage/ui/ClientDetailPage/ClientDetailPage.lazy'
-import { ClientsPageLazy } from 'pages/ClientsPage'
-import { MainPageLazy } from 'pages/MainPage'
+import { ClientsPage } from 'pages/ClientsPage'
+import { MainPage } from 'pages/MainPage'
 import { NotFoundPage } from 'pages/NotFoundPage'
-import { ProfilePageLazy } from 'pages/ProfilePage'
+import { ProfilePage } from 'pages/ProfilePage'
 import { RouteProps } from 'react-router-dom'
 
 export type AppRoutesProp = RouteProps & {
@@ -30,18 +30,18 @@ export const RoutePath: Record<AppRoutes, string> = {
 export const routeConfig: Record<AppRoutes, AppRoutesProp> = {
     [AppRoutes.MAIN]: {
         path: RoutePath.main,
-        element: <MainPageLazy />,
+        element: <MainPage />,
         authOnly: false
     },
     [AppRoutes.ABOUT]: {
         path: RoutePath.about,
-        element: <AboutPageLazy />,
+        element: <AboutPage />,
         authOnly: false
 
     },
     [AppRoutes.CLIENTS]: {
         path: RoutePath.clients,
-        element: <ClientsPageLazy />,
+        element: <ClientsPage />,
         authOnly: true
     },
     [AppRoutes.CLIENT_DETAILS]: {
@@ -51,7 +51,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesProp> = {
     },
     [AppRoutes.PROFILE]: {
         path: RoutePath.profile,
-        element: <ProfilePageLazy />,
+        element: <ProfilePage />,
         authOnly: true
     },
     [AppRoutes.NOTFOUND]: {

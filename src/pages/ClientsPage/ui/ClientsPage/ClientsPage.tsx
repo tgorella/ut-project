@@ -1,10 +1,9 @@
-import { Clients } from 'entities/Clients'
 import { fetchClients } from 'entities/Clients/model/services/fetchAll/fetchClients'
-import { FC, useEffect } from 'react'
+import { memo, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 
-const ClientsPage: FC = () => {
+const ClientsPage = memo(() => {
     const {t} = useTranslation('clients')
     const dispatch = useAppDispatch()
     useEffect(() => {
@@ -15,10 +14,9 @@ const ClientsPage: FC = () => {
             <h1>
                 {t('Клиенты')}
             </h1>
-            <Clients />
         </div>
         
     )
-}
+})
  
 export default ClientsPage

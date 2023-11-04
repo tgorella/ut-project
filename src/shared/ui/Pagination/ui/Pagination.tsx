@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import cls from './Pagination.module.scss'
 import classNames from 'shared/lib/classNames/ClassNames'
+import { memo } from 'react'
 
 interface PaginationProps {
   className?: string;
@@ -12,7 +13,7 @@ interface PaginationProps {
   onPageUp: (page: number) => void;
   onPageDown: (page: number) => void;
 }
-export const Pagination = ({className, itemsLength, itemsPerPage, currentPage, totalItems = true, pages = true, onPageDown, onPageUp} : PaginationProps) => {
+export const Pagination = memo(({className, itemsLength, itemsPerPage, currentPage, totalItems = true, pages = true, onPageDown, onPageUp} : PaginationProps) => {
     const {t} = useTranslation()
     const totalPages = Math.ceil(itemsLength / itemsPerPage)
     return ( 
@@ -47,4 +48,4 @@ export const Pagination = ({className, itemsLength, itemsPerPage, currentPage, t
             {totalItems && <div className={cls.info}>{t('Всего записей')}: {itemsLength}</div> }
         </div>
     )
-}
+})

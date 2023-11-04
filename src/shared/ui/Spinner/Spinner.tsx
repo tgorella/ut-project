@@ -1,10 +1,11 @@
 import classNames from 'shared/lib/classNames/ClassNames'
 import './Spinner.scss'
+import { memo } from 'react'
 
 interface SpinnerProps {
   className?: string
 }
-export const Spinner = ({ className = '' }: SpinnerProps) => {
+export const Spinner = memo(({ className = '' }: SpinnerProps) => {
     return (
         <div className={classNames('lds-roller', {}, [className])}>
             <div></div>
@@ -17,4 +18,4 @@ export const Spinner = ({ className = '' }: SpinnerProps) => {
             <div></div>
         </div>
     )
-}
+})

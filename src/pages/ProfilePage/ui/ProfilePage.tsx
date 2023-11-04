@@ -3,7 +3,7 @@ import classNames from 'shared/lib/classNames/ClassNames'
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { ProfileCard, fetchProfileData, getProfileForm, getProfileLoadingError, getProfileLoadingStatus, getProfileReadOnly, profileAction, profileReducer, updateProfileData } from 'entities/Profile'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
-import { useCallback, useEffect } from 'react'
+import { memo, useCallback, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import { Currency } from 'entities/Currency'
@@ -15,7 +15,7 @@ const reducers: ReducersList = {
 interface ProfilePageProps {
   className?: string;
 }
-const ProfilePage = ({className} : ProfilePageProps) => {
+const ProfilePage = memo(({className} : ProfilePageProps) => {
     const dispatch = useAppDispatch()
     
     useEffect(() => {
@@ -98,6 +98,6 @@ const ProfilePage = ({className} : ProfilePageProps) => {
         
     )
   
-}
+})
 
 export default ProfilePage

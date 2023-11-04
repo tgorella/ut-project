@@ -1,10 +1,11 @@
+import { memo } from 'react'
 import cls from './CloseBtn.module.scss'
 
 interface CloseBtnProps {
   className?: string;
   onClose: () =>void
 }
-export const CloseBtn = ({onClose} : CloseBtnProps) => {
+export const CloseBtn = memo(({onClose} : CloseBtnProps) => {
 
     return ( 
         // eslint-disable-next-line i18next/no-literal-string
@@ -12,4 +13,4 @@ export const CloseBtn = ({onClose} : CloseBtnProps) => {
             ✕
         </div>
     )
-}
+})

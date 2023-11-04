@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react'
+import { ChangeEvent, memo } from 'react'
 import { Option } from '../model/types/option'
 import cls from './Select.module.scss'
 import classNames from 'shared/lib/classNames/ClassNames'
@@ -11,7 +11,7 @@ interface SelectorProps {
   onChange?: (value: string) => void;
 }
 
-export const Select = ({className, options, value, label, onChange} : SelectorProps) => {
+export const Select = memo(({className, options, value, label, onChange} : SelectorProps) => {
     const changeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
         onChange?.(e.target.value)
     }
@@ -29,4 +29,4 @@ export const Select = ({className, options, value, label, onChange} : SelectorPr
         </fieldset>
         
     )
-}
+})
