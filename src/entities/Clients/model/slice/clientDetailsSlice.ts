@@ -36,7 +36,6 @@ export const clientDetailsSlice = createSlice({
                 state.error = undefined
                 state.data = action.payload
                 state.form = action.payload
-
             })
             .addCase(getClientById.rejected, (state, action) => {
                 state.isLoading= false

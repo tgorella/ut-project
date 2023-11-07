@@ -15,7 +15,6 @@ interface ClientDetailPageProps {
 }
 const ClientDetailPage = memo(({className} : ClientDetailPageProps) => {
     const {t} = useTranslation()
-    
     const {id} = useParams()
     
     if (id) {

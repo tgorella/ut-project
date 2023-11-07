@@ -27,13 +27,14 @@
       "id": "643c5faa013e22868a6eb632",
       "name": "Hugh Jackman",
       "email": "wolverine@xmen.com",
-      "notes": "[b]Австралийский актёр, певец и продюсер.[/b] \n\nСтал известен широкой публике по роли супергероя-мутанта Росомахи в серии фильмов «Люди Икс». \n\nВершиной его актёрского мастерства подавляющим большинством критиков признана работа в детективном триллере «Пленницы».",
+      "notes": "[b]Австралийский актёр, певец и продюсер.[/b] \nСтал известен широкой публике по роли супергероя-мутанта Росомахи в серии фильмов «Люди Икс». \nВершиной его актёрского мастерства подавляющим большинством критиков признана работа в детективном триллере «Пленницы».",
       "phone": "7916123456734",
-      "avatarUrls": "https://avatars.dicebear.com/api/avataaars/jr4b8.svg",
+      "avatarUrls": "https://i.discogs.com/caZ89uEHzQwoFhJenE-1ECExpinZtqwxhcMYJWpZdo4/rs:fit/g:sm/q:40/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTg0Mzcw/Ny0xNTg4NDY3Njgx/LTc0MTIucG5n.jpeg",
       "profession": "",
       "createdAt": "1681678250003",
       "updatedAt": "1683910607632",
-      "userId": "643c36ad8545463c883af7a8"
+      "userId": "643c36ad8545463c883af7a8",
+      "address": ""
     },
     {
       "id": "643c5fc2013e22868a6eb636",
@@ -41,7 +42,7 @@
       "email": "thor@avengers.com",
       "notes": "Австралийский актёр, номинант на премию BAFTA. Наиболее известен по роли Тора в кинематографической вселенной Marve, а также в фильмах «Гонка», «Хижина в лесу», «Ничего хорошего в отеле „Эль Рояль“», «В сердце моря» и «Люди в чёрном: Интернэшнл».",
       "phone": "79051234567",
-      "avatarUrls": "https://avatars.dicebear.com/api/avataaars/uzl56.svg",
+      "avatarUrls": "https://ca-times.brightspotcdn.com/dims4/default/93e2715/2147483647/strip/false/crop/4559x3419+0+0/resize/1486x1114!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F36%2F20%2Fefef416b439cbceaeeeada0fd29b%2Fny-premiere-of-limitless-with-chris-hemsworth-35697.jpg",
       "profession": "",
       "createdAt": "1681678274275",
       "updatedAt": "1681678274275",
@@ -53,7 +54,7 @@
       "email": "barton@avengers.com",
       "notes": "Американский актёр, двукратный номинант на премию «Оскар», номинант на премии BAFTA и «Золотой глобус». Наиболее известные фильмы с участием Реннера: «Повелитель бури», «Город воров», «Миссия невыполнима: Протокол Фантом», «Эволюция Борна», «Охотники на ведьм», «Ветреная река»",
       "phone": "1234567887",
-      "avatarUrls": "https://avatars.dicebear.com/api/avataaars/xw9mth.svg",
+      "avatarUrls": "https://64.media.tumblr.com/83b06d28e4ed4e95a094263714a6f528/afe58a58c30ec218-b7/s500x750/f778773290ae9a5c1ad64bfffc4ea1c8e767ea20.jpg",
       "profession": "",
       "createdAt": "1681678286961",
       "updatedAt": "1681678286961",
@@ -70,7 +71,7 @@
       "createdAt": "1681678311130",
       "updatedAt": "1681678311130",
       "userId": "643c36ad8545463c883af7a8",
-      "address": ""
+      "address": "арапроо"
     },
     {
       "id": "643c5ffd013e22868a6eb640",
@@ -78,11 +79,12 @@
       "email": "hulk@avengers.com",
       "notes": "Наибольшую известность Руффало принесли роли в фильмах «Можешь рассчитывать на меня» (2000), «Из 13 в 30» (2004), «Между небом и землёй» (2005), «Зодиак» (2007), «Детки в порядке» (2010), «Остров проклятых» (2010) «Охотник на лис» (2014), «Обычное сердце» (2014), «Бесконечно белый медведь» (2014), «В центре внимания» (2015) и «Тёмные воды» (2019), а также роль Брюса Бэннера / Халка в супергеройских фильмах «Мстители» (2012), «Мстители: Эра Альтрона» (2015), «Тор: Рагнарёк» (2017), «Мстители: Война бесконечности» (2018) и «Мстители: Финал» (2019).",
       "phone": "034985893457",
-      "avatarUrls": "https://avatars.dicebear.com/api/avataaars/wxx4k.svg",
+      "avatarUrls": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfJUHkjlr0uWysh_OnFq4UltrlftwXtX95Bg&usqp=CAU",
       "profession": "",
       "createdAt": "1681678333986",
       "updatedAt": "1681678333986",
-      "userId": "643c36ad8545463c883af7a8"
+      "userId": "643c36ad8545463c883af7a8",
+      "address": ""
     }
   ]
 }

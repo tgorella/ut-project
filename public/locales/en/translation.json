@@ -48,5 +48,6 @@
   "Используйте [b]текст[/b], чтобы сделать текст жирным": "Use [b]text[/b] to make text bold",
   "Информация о клиенте": "Client details",
   "Клиент не найден": "Client not found",
-  "Возможно, клиент был удален": "Possibly client was deleted"
+  "Возможно, клиент был удален": "Possibly client was deleted",
+  "Сохранено": "Client data saved"
 }

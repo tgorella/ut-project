@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import { Currency } from 'entities/Currency'
 import { Country } from 'entities/Country'
+import { getUserAuthData } from 'entities/User'
 
 const reducers: ReducersList = {
     profile: profileReducer
@@ -17,12 +18,16 @@ interface ProfilePageProps {
 }
 const ProfilePage = memo(({className} : ProfilePageProps) => {
     const dispatch = useAppDispatch()
+    const userData = useSelector(getUserAuthData)
     
     useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchProfileData())
+        if (userData) {
+            if (__PROJECT__ !== 'storybook') {
+                dispatch(fetchProfileData(userData?.username))
+            }
         }
-    }, [dispatch])
+        
+    }, [dispatch, userData])
   
     const data = useSelector(getProfileForm)
     const isLoading = useSelector(getProfileLoadingStatus)

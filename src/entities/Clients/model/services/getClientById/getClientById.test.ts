@@ -11,14 +11,15 @@ describe('getClientById.test', () => {
             profession: 'актер',
             email: 'name@mydomain.com',
             phone: '89001234567',
-            notes: 'американский актёр, кинорежиссёр, музыкант, сценарист и продюсер.'
+            notes: 'американский актёр, кинорежиссёр, музыкант, сценарист и продюсер.',
+            userId: '23'
         }
 
 
         const thunk = new TestAsyncThunk(getClientById)
         thunk.api.get.mockReturnValue(Promise.resolve({data}))
 
-        const result = await thunk.callThunk('643c5fe7013e22868a6eb63c')
+        const result = await thunk.callThunk({clientId:'643c5fe7013e22868a6eb63c', currentUserId: '23'})
 
         expect(thunk.api.get).toHaveBeenCalled()
         expect(result.meta.requestStatus).toBe('fulfilled')
@@ -29,7 +30,7 @@ describe('getClientById.test', () => {
         
         const thunk = new TestAsyncThunk(getClientById)
         thunk.api.get.mockReturnValue(Promise.resolve({status: 403}))
-        const result = await thunk.callThunk('000')
+        const result = await thunk.callThunk({clientId:'643c5fe7013e22868a6eb63c', currentUserId: ''})
         
         expect(result.meta.requestStatus).toBe('rejected')
     })

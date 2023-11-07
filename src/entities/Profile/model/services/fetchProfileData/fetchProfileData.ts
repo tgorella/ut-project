@@ -4,12 +4,12 @@ import i18n from 'shared/config/i18n/i18n'
 import { Profile } from '../../types/profileSchema'
 
 
-export const fetchProfileData = createAsyncThunk<Profile, void,ThunkConfig<string>>(
+export const fetchProfileData = createAsyncThunk<Profile, string,ThunkConfig<string>>(
     'profile/fetchProfileData',
-    async (_, thunkAPI) => {
+    async (userName, thunkAPI) => {
         const {rejectWithValue, extra} = thunkAPI
         try {
-            const {data} = await extra.api.get<Profile>('/profile')
+            const {data} = await extra.api.get<Profile>(`/profile?username=${userName}`)
             if (!data) {
                 throw new Error('err')
             }

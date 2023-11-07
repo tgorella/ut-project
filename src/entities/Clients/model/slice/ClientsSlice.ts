@@ -5,7 +5,7 @@ import { fetchClients } from '../services/fetchAll/fetchClients'
 const initialState: ClientsSchema = {
     isLoading: false,
     data: undefined,
-    error: ''
+    error: undefined
 }
 
 export const clientsSlice = createSlice({

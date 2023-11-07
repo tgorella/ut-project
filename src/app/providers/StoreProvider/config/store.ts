@@ -12,7 +12,7 @@ export function createReduxStore(
 
     const rootReducer: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
-        user: userReducer
+        user: userReducer,
     }
 
     const reducerManager = createReducerManager  (rootReducer)

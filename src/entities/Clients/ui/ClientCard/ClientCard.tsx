@@ -19,6 +19,8 @@ import { updateClientData } from '../../model/services/updateClientData/updateCl
 import { clientDetailsAction } from '../../model/slice/clientDetailsSlice'
 import { Text } from 'shared/ui/Text'
 import { TextAlign } from 'shared/ui/Text/ui/Text'
+import { getUserAuthData } from 'entities/User'
+import { Alert, AlertTheme } from 'shared/ui/Alert'
 
 interface ClientCardProps {
   className?: string;
@@ -29,11 +31,14 @@ export const ClientCard = memo((props : ClientCardProps) => {
     const {className, id, withNotes = true} = props
     const {t} = useTranslation('clients')
     const dispatch = useAppDispatch()
+    const authData = useSelector(getUserAuthData)
     const isLoading = useSelector(getClientDetailsIsLoading)
     const data = useSelector(getClientDetailsForm)
     const error = useSelector(getClientDetailsError)
     const [edit, setEdit] = useState(false)
     const [noteEditMode, setNoteEditMode] = useState(false)
+    const success = AlertTheme.SUCCESS
+    const [saved, setSaved] = useState(false)
     const [errors] = useState({
         name: '',
         avatarUrls: '',
@@ -47,10 +52,13 @@ export const ClientCard = memo((props : ClientCardProps) => {
     })
     
     useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(getClientById(id))
+        if (authData) {
+            if (__PROJECT__ !== 'storybook') {
+                dispatch(getClientById({clientId: id, currentUserId: authData?.id}))
+            }
         }
-    }, [dispatch, id])
+        
+    }, [authData, dispatch, id])
 
 
     const toggleEditMode = useCallback(() => setEdit(!edit), [edit])
@@ -93,9 +101,22 @@ export const ClientCard = memo((props : ClientCardProps) => {
         dispatch(clientDetailsAction.updateClient({notes: value || ''}))
     }, [dispatch])
 
-    const saveUser = useCallback((): void => {
-        dispatch(updateClientData(id))
-        toggleEditMode()
+    const saveUser = useCallback(async () => {
+        try {
+            await dispatch(updateClientData(id)).then(() => {
+                setSaved(true)
+                setTimeout(() => {
+                    setSaved(false)
+                }, 2000)
+            }).then(() => {
+                toggleEditMode()
+            })
+        } catch (error) {
+            setSaved(true)
+            setTimeout(() => {
+                setSaved(false)
+            }, 2000)
+        }
     }, [dispatch, id, toggleEditMode])
 
     const saveNotes = useCallback((): void => {
@@ -145,6 +166,10 @@ export const ClientCard = memo((props : ClientCardProps) => {
                 <div className={cls.edit_icon}>
                     <EditSwitcher editMode={edit} onChancelEdit={handleChancelEdit} onEdit={toggleEditMode} />
                 </div>
+                {saved && <div className={cls.status}>
+                    <Alert theme={success} text={success === AlertTheme.SUCCESS ? (t('Сохранено')) : (t('Ошибка сохранения'))}/>
+                </div>}
+                
                 <Avatar className={cls.avatar} src={data?.avatarUrls} size={AvatarSize.XL} alt={data?.name}/>
                 {!edit && (
                     <div className={cls.info_container}>
