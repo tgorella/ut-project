@@ -49,5 +49,7 @@
   "Информация о клиенте": "Client details",
   "Клиент не найден": "Client not found",
   "Возможно, клиент был удален": "Possibly client was deleted",
-  "Сохранено": "Client data saved"
+  "Сохранено": "Client data saved",
+  "Клиенты не найдены": "Clients not found",
+  "Del": "Delete"
 }

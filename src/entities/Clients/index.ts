@@ -9,6 +9,10 @@ import { getClientDetailsForm } from './model/selectors/getClientDetailsForm/get
 import { getClientDetailsIsLoading } from './model/selectors/getClientDetailsIsLoading/getClientDetailsIsLoading'
 import { updateClientData } from './model/services/updateClientData/updateClientData'
 import { clientDetailsAction, clientDetailsReducer } from './model/slice/clientDetailsSlice'
+import { getClientsIsLoading } from './model/selectors/getClientsIsLoading/getClientsIsLoading'
+import { getClientsData } from './model/selectors/getClientsData/getClientsData'
+import { getClientsError } from './model/selectors/getClientsError/getClientsError'
+import { ClientsList } from './ui/ClientsList/ClientsList'
 
 
 export {
@@ -19,9 +23,13 @@ export {
     updateClientData,
     ClientCard,
     clientDetailsAction,
+    ClientsList,
     getClientDetailsData,
     getClientDetailsError,
     getClientDetailsForm,
     getClientDetailsIsLoading,
+    getClientsIsLoading, 
+    getClientsData, 
+    getClientsError,
     clientDetailsReducer
 }

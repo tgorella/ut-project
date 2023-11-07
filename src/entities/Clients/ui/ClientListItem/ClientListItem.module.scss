@@ -1,0 +1,29 @@
+.ClientListItem {
+    color: var(--primary-text);
+    display: grid;
+    grid-template-columns: repeat(3, calc((100% - 50px) / 3)) 50px;
+    padding: 10px;
+    text-decoration: none;
+    width: 100%;
+}
+
+.ClientListItem:not(:last-child) {
+    border-bottom: 1px solid rgb(0 0 0 / 10%);
+}
+
+.ClientListItem:last-child {
+    text-align: right;
+}
+
+.nameCol {
+    align-items: center;
+    display: flex;
+    gap: 10px;
+}
+
+.icon {
+    align-items: center;
+    display: flex;
+    fill: var(--primary-text);
+    justify-content: center;
+}

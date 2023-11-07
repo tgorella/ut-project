@@ -11,7 +11,8 @@ updatedAt?: string;
 userId?: string;
 telegram?: string
 instagram?: string;
-address?: string
+address?: string,
+isFav?: boolean
 }
 
 export interface ClientsSchema {
