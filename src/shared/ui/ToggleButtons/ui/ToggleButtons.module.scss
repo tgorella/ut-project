@@ -1,0 +1,41 @@
+.ToggleButtons {
+    border: 1px solid var(--darker-bg-color);
+    border-radius: 5px;
+    display: flex;
+    overflow: hidden;
+}
+
+.item {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+}
+
+.item:not(:last-child) {
+    border-right: 1px solid var(--darker-bg-color);
+}
+
+.item:hover {
+    background-color: var(--darker-bg-color);
+    filter: opacity(0.8);
+}
+
+.small {
+    height: 40px;
+    min-width: 40px;
+}
+
+.medium {
+    height: 50px;
+    min-width: 50px;
+}
+
+.large {
+    height: 60px;
+    min-width: 60px;
+}
+
+.selected {
+    background-color: var(--darker-bg-color);
+}
