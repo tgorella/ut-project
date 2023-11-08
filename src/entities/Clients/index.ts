@@ -13,6 +13,7 @@ import { getClientsIsLoading } from './model/selectors/getClientsIsLoading/getCl
 import { getClientsData } from './model/selectors/getClientsData/getClientsData'
 import { getClientsError } from './model/selectors/getClientsError/getClientsError'
 import { ClientsList } from './ui/ClientsList/ClientsList'
+import { getClientsTotal } from './model/selectors/getClientsTotal/getClientsTotal'
 
 
 export {
@@ -24,6 +25,7 @@ export {
     ClientCard,
     clientDetailsAction,
     ClientsList,
+    getClientsTotal,
     getClientDetailsData,
     getClientDetailsError,
     getClientDetailsForm,
@@ -31,5 +33,5 @@ export {
     getClientsIsLoading, 
     getClientsData, 
     getClientsError,
-    clientDetailsReducer
+    clientDetailsReducer,
 }

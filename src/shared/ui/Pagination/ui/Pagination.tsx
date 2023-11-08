@@ -21,12 +21,12 @@ export const Pagination = memo(({className, itemsLength, itemsPerPage, currentPa
             <div className={cls.wrapper}>
                 {currentPage !== 1 && (
                     <>
-                        <div className={cls.page} onClick={() => onPageDown(2)}>
+                        <div className={cls.page} onClick={() => onPageDown(1)}>
                             {t('«')}
                         </div>
                         <div
                             className={cls.page}
-                            onClick={() => onPageDown(currentPage)}>
+                            onClick={() => onPageDown(currentPage-1)}>
                             {t('←')}
                         </div>
                     </>
@@ -34,10 +34,10 @@ export const Pagination = memo(({className, itemsLength, itemsPerPage, currentPa
                 <div className={cls.page} >{currentPage}</div>
                 {currentPage !== totalPages && (
                     <>
-                        <div className={cls.page} onClick={() => onPageUp(currentPage)}>
+                        <div className={cls.page} onClick={() => onPageUp(currentPage+1)}>
                             {t('→')}
                         </div>
-                        <div className={cls.page} onClick={() => onPageUp(totalPages - 1)}>
+                        <div className={cls.page} onClick={() => onPageUp(totalPages)}>
                             {t('»')}
                         </div>
                     </>

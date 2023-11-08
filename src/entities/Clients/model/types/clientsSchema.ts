@@ -1,3 +1,8 @@
+export interface DataWithHeader {
+  data: Client[],
+  total: string
+}
+
 export interface Client {
 id?: string;
 name?: string;
@@ -19,4 +24,5 @@ export interface ClientsSchema {
 isLoading: boolean;
 data?: Client[];
 error?: string;
+total?: string
 }

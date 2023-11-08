@@ -1,6 +1,6 @@
 import {PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { Client, ClientsSchema } from '../types/clientsSchema'
-import { fetchClients } from '../services/fetchAll/fetchClients'
+import { ClientsSchema, DataWithHeader } from '../types/clientsSchema'
+import {fetchClients } from '../services/fetchAll/fetchClients'
 
 const initialState: ClientsSchema = {
     isLoading: false,
@@ -20,10 +20,12 @@ export const clientsSlice = createSlice({
                 state.error = undefined
                 state.isLoading = true
             })
-            .addCase(fetchClients.fulfilled, (state, action: PayloadAction<Client[]>) => {
+            .addCase(fetchClients.fulfilled, (state, action: PayloadAction<DataWithHeader>) => {
                 state.isLoading = false
                 state.error = undefined
-                state.data = action.payload
+                state.data = action.payload.data
+                state.total = action.payload.total
+
 
             })
             .addCase(fetchClients.rejected, (state, action) => {
