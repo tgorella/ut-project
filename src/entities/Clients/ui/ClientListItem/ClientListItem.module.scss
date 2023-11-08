@@ -17,9 +17,12 @@
     gap: 10px;
 }
 
-.icon {
+.icon_block {
     align-items: center;
     display: flex;
-    fill: var(--primary-text);
     justify-content: center;
+}
+
+.icon {
+    fill: var(--primary-text);
 }

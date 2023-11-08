@@ -30,6 +30,11 @@
     padding: 0;
 }
 
+.square.size_s {
+    height: 40px;
+    width: 40px;
+}
+
 .square.size_m {
     height: var(--font-line-m);
     width: var(--font-line-m);
@@ -43,6 +48,10 @@
 .square.size_xl {
     height: var(--font-line-xl);
     width: var(--font-line-xl);
+}
+
+.size_s {
+    height: 40px;
 }
 
 .size_m {

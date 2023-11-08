@@ -19,7 +19,7 @@ export const ClientListItem = memo(({className,client} : ClientListItemProps) =>
                 {client.name}</div>
             <div>{client.email}</div>
             <div>{client.profession}</div>
-            <div className={cls.icon}> {client.isFav &&  <FavIcon />}</div>
+            <div className={cls.icon_block}> {client.isFav &&  <FavIcon  className={cls.icon}/>}</div>
         </Link>
     )
 })

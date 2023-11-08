@@ -3,7 +3,7 @@ import { ClientsList, getClientsData, getClientsError, getClientsIsLoading, getC
 import { fetchClients } from 'entities/Clients/model/services/fetchAll/fetchClients'
 import { clientsReducer } from 'entities/Clients/model/slice/ClientsSlice'
 import { getUserAuthData } from 'entities/User'
-import { memo, useEffect, useState } from 'react'
+import { memo, useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
@@ -14,6 +14,9 @@ import { Text } from 'shared/ui/Text'
 import { TextAlign } from 'shared/ui/Text/ui/Text'
 import { PageLoader } from 'widgets/PageLoader'
 import cls from './ClientsPage.module.scss'
+import { ToggleButtonValue, ToggleButtons } from 'shared/ui/ToggleButtons'
+import { Searchbar } from 'widgets/Searchbar'
+import { AppButton, ButtonSize } from 'shared/ui/AppButton/AppButton'
 
 const reducers = {
     clients: clientsReducer
@@ -27,12 +30,23 @@ const ClientsPage = memo(() => {
     const isLoading = useSelector(getClientsIsLoading)
     const error = useSelector(getClientsError)
     const [page, setPage] = useState(1)
-    const [limit] = useState(25)
+    const [limit, setLimit] = useState(25)
     const totalClients = useSelector(getClientsTotal)
 
-    const handlePageUp = (num: number) => setPage(num)
-    const handlePageDown = (num: number) => setPage(num)
+    const handlePageUp = useCallback((num: number) => setPage(num), [])
+    const handlePageDown = useCallback((num: number) => setPage(num), [])
+    const handleChangeLimit = useCallback((num: number | string) => {
+        setLimit(Number(num))
+        setPage(1)
+    }, [])
 
+    const limitsValue: ToggleButtonValue[]  = [
+        {title: '15', value: 15},
+        {title: '25', value: 25},
+        {title: '50', value: 50},
+        {title: '100', value: 100},
+
+    ]
     
     useEffect(() => {
         if(__PROJECT__ !== 'storybook') {
@@ -52,6 +66,14 @@ const ClientsPage = memo(() => {
             <h1 className={cls.header}>
                 {t('Клиенты')}
             </h1>
+            <div className={cls.top_menu}>
+                <AppButton size={ButtonSize.S}>{t('Добавить клиента')}</AppButton>
+                <div className={cls.searchBlock}><Searchbar onChange={() => {}} placeholder='' /></div>
+                <div className={cls.toggle_item}>
+                    {t('Записей на странице:')} <ToggleButtons onChange={handleChangeLimit} currentValue={limit} values={limitsValue} />
+                </div>
+                
+            </div>
             <Box className={cls.client_list}>
                 {!isLoading ?
                     (<ClientsList clients={clients} />)

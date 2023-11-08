@@ -1,7 +1,6 @@
 import classNames, { Mods } from 'shared/lib/classNames/ClassNames'
 import cls from './AppButton.module.scss'
 import { ButtonHTMLAttributes, ReactNode, memo } from 'react'
-import { Theme } from 'app/providers/ThemeProvider'
 
 
 export enum ButtonTheme {
@@ -11,6 +10,7 @@ export enum ButtonTheme {
 }
 
 export enum ButtonSize {
+  S = 'size_s',
   M = 'size_m',
   L = 'size_l',
   XL = 'size_xl'
@@ -28,7 +28,7 @@ interface AppButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 
 export const AppButton= memo((props: AppButtonProps) => {
-    const { className, children, theme = Theme.LIGHT, square, rounded, size = ButtonSize.M, disabled, ...otherProps } = props
+    const { className, children, theme = ButtonTheme.OUTLINED, square, rounded, size = ButtonSize.M, disabled, ...otherProps } = props
     const mods:Mods = {
         [cls[theme]]: true,
         [cls.square]: square,

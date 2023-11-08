@@ -10,3 +10,20 @@
 .client_list {
     margin-bottom: 20px;
 }
+
+.top_menu {
+    align-items: center;
+    display: flex;
+    gap: 20px;
+    height: 60px;
+    justify-content: space-between;
+}
+
+.toggle_item {
+    align-items: center;
+    display: flex;
+}
+
+.searchBlock {
+    flex-grow: 1;
+}
