@@ -14,6 +14,7 @@ import { getClientsData } from './model/selectors/getClientsData/getClientsData'
 import { getClientsError } from './model/selectors/getClientsError/getClientsError'
 import { ClientsList } from './ui/ClientsList/ClientsList'
 import { getClientsTotal } from './model/selectors/getClientsTotal/getClientsTotal'
+import { getClientsBySearch } from './model/services/getClientsBySearch/getClientsBySearch'
 
 
 export {
@@ -25,6 +26,7 @@ export {
     ClientCard,
     clientDetailsAction,
     ClientsList,
+    getClientsBySearch,
     getClientsTotal,
     getClientDetailsData,
     getClientDetailsError,

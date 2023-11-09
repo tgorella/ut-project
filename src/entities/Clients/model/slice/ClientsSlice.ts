@@ -1,6 +1,7 @@
 import {PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { ClientsSchema, DataWithHeader } from '../types/clientsSchema'
+import { Client, ClientsSchema, DataWithHeader } from '../types/clientsSchema'
 import {fetchClients } from '../services/fetchAll/fetchClients'
+import { getClientsBySearch } from '../services/getClientsBySearch/getClientsBySearch'
 
 const initialState: ClientsSchema = {
     isLoading: false,
@@ -29,6 +30,19 @@ export const clientsSlice = createSlice({
 
             })
             .addCase(fetchClients.rejected, (state, action) => {
+                state.isLoading= false
+                state.error = action.payload
+            })
+            .addCase(getClientsBySearch.pending, (state) => {
+                state.error = undefined
+                state.isLoading = true
+            })
+            .addCase(getClientsBySearch.fulfilled, (state, action: PayloadAction<Client[]>) => {
+                state.isLoading = false
+                state.error = undefined
+                state.data = action.payload
+            })
+            .addCase(getClientsBySearch.rejected, (state, action) => {
                 state.isLoading= false
                 state.error = action.payload
             })

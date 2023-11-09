@@ -9,11 +9,12 @@ import { NavigateOptions, To } from 'react-router-dom'
 
 export interface StateSchema {
   user: UserSchema,
+  clients: ClientsSchema,
+
 
   // Async reducers
   loginForm?: LoginSchema,
   profile?: ProfileSchema,
-  clients?: ClientsSchema,
   clientDetails?: ClientDetailsSchema,
 }
 

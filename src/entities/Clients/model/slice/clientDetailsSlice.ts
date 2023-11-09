@@ -5,7 +5,7 @@ import { Client } from '../types/clientsSchema'
 import { updateClientData } from '../services/updateClientData/updateClientData'
 
 const initialState: ClientDetailsSchema = {
-    isLoading: false,
+    isLoading: true,
     data: undefined,
     form: undefined,
     error: undefined

@@ -1,5 +1,5 @@
 
-import { ClientsList, getClientsData, getClientsError, getClientsIsLoading, getClientsTotal } from 'entities/Clients'
+import { ClientsList, getClientsBySearch, getClientsData, getClientsError, getClientsIsLoading, getClientsTotal } from 'entities/Clients'
 import { fetchClients } from 'entities/Clients/model/services/fetchAll/fetchClients'
 import { clientsReducer } from 'entities/Clients/model/slice/ClientsSlice'
 import { getUserAuthData } from 'entities/User'
@@ -16,7 +16,8 @@ import { PageLoader } from 'widgets/PageLoader'
 import cls from './ClientsPage.module.scss'
 import { ToggleButtonValue, ToggleButtons } from 'shared/ui/ToggleButtons'
 import { Searchbar } from 'widgets/Searchbar'
-import { AppButton, ButtonSize } from 'shared/ui/AppButton/AppButton'
+import { AppButton, ButtonSize, ButtonTheme } from 'shared/ui/AppButton/AppButton'
+import ADD_CLIENT from 'shared/assets/img/add-client.svg'
 
 const reducers = {
     clients: clientsReducer
@@ -40,6 +41,10 @@ const ClientsPage = memo(() => {
         setPage(1)
     }, [])
 
+    const handleSearch = (val: string) => {
+        dispatch(getClientsBySearch(val))
+    }
+
     const limitsValue: ToggleButtonValue[]  = [
         {title: '15', value: 15},
         {title: '25', value: 25},
@@ -62,13 +67,13 @@ const ClientsPage = memo(() => {
     }
     
     return (
-        <DynamicModuleLoader reducers={reducers}>
+        <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
             <h1 className={cls.header}>
                 {t('Клиенты')}
             </h1>
             <div className={cls.top_menu}>
-                <AppButton size={ButtonSize.S}>{t('Добавить клиента')}</AppButton>
-                <div className={cls.searchBlock}><Searchbar onChange={() => {}} placeholder='' /></div>
+                <AppButton size={ButtonSize.S} theme={ButtonTheme.OUTLINED_GRAY}><ADD_CLIENT  className={cls.icon}/>{t('Добавить клиента')}</AppButton>
+                <div className={cls.searchBlock}><Searchbar onChange={handleSearch} placeholder='' /></div>
                 <div className={cls.toggle_item}>
                     {t('Записей на странице:')} <ToggleButtons onChange={handleChangeLimit} currentValue={limit} values={limitsValue} />
                 </div>

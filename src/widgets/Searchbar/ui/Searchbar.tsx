@@ -6,7 +6,7 @@ import { memo } from 'react'
 
 interface SearchbarProps {
   className?: string;
-  onChange: () => void;
+  onChange: (text: string) => void;
   placeholder: string
 }
 export const Searchbar = memo(({className, placeholder, onChange} : SearchbarProps) => {

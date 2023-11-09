@@ -1,6 +1,6 @@
 import { memo, useMemo, useState } from 'react'
 import cls from './Sidebar.module.scss'
-import { AppButton, ButtonSize } from 'shared/ui/AppButton/AppButton'
+import { AppButton, ButtonSize, ButtonTheme } from 'shared/ui/AppButton/AppButton'
 import classNames from 'shared/lib/classNames/ClassNames'
 import { SidebarItemsList } from 'widgets/Sidebar/model/items'
 import { SidebarItem } from '../SidebarItem/SidebarItem'
@@ -41,7 +41,15 @@ export const Sidebar = memo(({ className = ''}: SidebarProps) => {
             <div className={cls.list}>
                 {itemsList}
             </div>
-            <AppButton square size={ButtonSize.XL} data-testid="sidebar-toggle" className={cls.toggle_btn} onClick={toggleSidebar}>{!collapsed ? '«': '»'}</AppButton>
+            <AppButton 
+                square 
+                theme={ButtonTheme.SOLID}
+                size={ButtonSize.XL} 
+                data-testid="sidebar-toggle" 
+                className={cls.toggle_btn} 
+                onClick={toggleSidebar} >
+                {!collapsed ? '«': '»'}
+            </AppButton>
         </div>
     )
 })

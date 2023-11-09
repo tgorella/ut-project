@@ -1,11 +1,16 @@
 .AppButton {
+    align-items: center;
     border: none;
+    border-radius: 6px;
     color: var(--primary-text);
     cursor: pointer;
+    display: flex;
+    font-size: 14px;
+    font-weight: 600;
+    justify-content: center;
     margin: 0;
     outline: none;
     padding: 5px 20px;
-    text-transform: uppercase;
     width: auto;
 }
 
@@ -21,6 +26,15 @@
 
 .solid {
     background-color: var(--accent);
+}
+
+.gray {
+    background-color: var(--darker-bg-color);
+}
+
+.outlined_gray {
+    background-color: transparent;
+    border: 1px solid var(--darker-bg-color);
 }
 
 .square {

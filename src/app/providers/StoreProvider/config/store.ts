@@ -4,6 +4,7 @@ import { userReducer } from 'entities/User'
 import { createReducerManager } from './reducerManager'
 import { $api } from 'shared/api/api'
 import { NavigateOptions, To } from 'react-router-dom'
+import { clientsReducer } from 'entities/Clients/model/slice/ClientsSlice'
 
 export function createReduxStore(
     initialState?: StateSchema,
@@ -13,6 +14,7 @@ export function createReduxStore(
     const rootReducer: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
         user: userReducer,
+        clients: clientsReducer
     }
 
     const reducerManager = createReducerManager  (rootReducer)

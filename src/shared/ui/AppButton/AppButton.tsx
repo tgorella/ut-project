@@ -6,7 +6,9 @@ import { ButtonHTMLAttributes, ReactNode, memo } from 'react'
 export enum ButtonTheme {
   CLEAR = 'clear',
   SOLID = 'solid',
-  OUTLINED = 'outlined'
+  OUTLINED = 'outlined',
+  GRAY = 'gray',
+  OUTLINED_GRAY = 'outlined_gray'
 }
 
 export enum ButtonSize {
