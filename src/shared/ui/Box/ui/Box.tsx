@@ -2,9 +2,9 @@ import cls from './Box.module.scss'
 import classNames from 'shared/lib/classNames/ClassNames'
 import { BoxHead } from './BoxHead'
 import { BoxFooter } from './BoxFooter'
-import { memo } from 'react'
+import { HTMLAttributes, memo } from 'react'
 
-interface BoxProps {
+interface BoxProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
   children: React.ReactNode;
   header?: string | React.ReactNode;

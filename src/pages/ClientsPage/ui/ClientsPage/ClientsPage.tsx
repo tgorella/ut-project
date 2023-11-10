@@ -1,5 +1,5 @@
 
-import { ClientsList, getClientsBySearch, getClientsData, getClientsError, getClientsIsLoading, getClientsTotal } from 'entities/Clients'
+import { ClientsList, getClientsBySearch, getClientsData, getClientsError, getClientsIsLoading } from 'entities/Clients'
 import { fetchClients } from 'entities/Clients/model/services/fetchAll/fetchClients'
 import { clientsReducer } from 'entities/Clients/model/slice/ClientsSlice'
 import { getUserAuthData } from 'entities/User'
@@ -31,19 +31,19 @@ const ClientsPage = memo(() => {
     const isLoading = useSelector(getClientsIsLoading)
     const error = useSelector(getClientsError)
     const [page, setPage] = useState(1)
-    const [limit, setLimit] = useState(25)
-    const totalClients = useSelector(getClientsTotal)
+    const [limit, setLimit] = useState(Number(localStorage.getItem('clients_limits')) || 25)
 
     const handlePageUp = useCallback((num: number) => setPage(num), [])
     const handlePageDown = useCallback((num: number) => setPage(num), [])
     const handleChangeLimit = useCallback((num: number | string) => {
         setLimit(Number(num))
+        localStorage.setItem('clients_limits', String(num))
         setPage(1)
     }, [])
 
-    const handleSearch = (val: string) => {
+    const handleSearch = useCallback((val: string) => {
         dispatch(getClientsBySearch(val))
-    }
+    }, [dispatch])
 
     const limitsValue: ToggleButtonValue[]  = [
         {title: '15', value: 15},
@@ -56,11 +56,12 @@ const ClientsPage = memo(() => {
     useEffect(() => {
         if(__PROJECT__ !== 'storybook') {
             if (userData) {
-                dispatch(fetchClients({userId: userData?.id, page: String(page), limit: String(limit)}))
+                dispatch(fetchClients(userData?.id))
             }
         }
     }, [dispatch, limit, page, userData, userData?.id])
 
+    const filterClients = clients?.slice((page-1)*limit, page*limit)
    
     if (error) {
         return <Text text={t('Что-то пошло не так')} align={TextAlign.CENTER} />
@@ -72,8 +73,8 @@ const ClientsPage = memo(() => {
                 {t('Клиенты')}
             </h1>
             <div className={cls.top_menu}>
-                <AppButton size={ButtonSize.S} theme={ButtonTheme.OUTLINED_GRAY}><ADD_CLIENT  className={cls.icon}/>{t('Добавить клиента')}</AppButton>
-                <div className={cls.searchBlock}><Searchbar onChange={handleSearch} placeholder='' /></div>
+                <AppButton size={ButtonSize.S} theme={ButtonTheme.SOLID}><ADD_CLIENT  className={cls.icon}/>{t('Добавить клиента')}</AppButton>
+                <div className={cls.searchBlock}><Searchbar onChange={handleSearch} placeholder={t('Введите имя, фамилию или email')} /></div>
                 <div className={cls.toggle_item}>
                     {t('Записей на странице:')} <ToggleButtons onChange={handleChangeLimit} currentValue={limit} values={limitsValue} />
                 </div>
@@ -81,7 +82,7 @@ const ClientsPage = memo(() => {
             </div>
             <Box className={cls.client_list}>
                 {!isLoading ?
-                    (<ClientsList clients={clients} />)
+                    (<ClientsList clients={filterClients} />)
                     : ( <PageLoader />)}
             </Box>
             <Pagination 
@@ -89,7 +90,7 @@ const ClientsPage = memo(() => {
                 onPageUp={handlePageUp} 
                 currentPage={page} 
                 itemsPerPage={limit} 
-                itemsLength={Number(totalClients)} 
+                itemsLength={clients?.length || 0} 
                 totalItems={!isLoading} 
                 pages={!isLoading}
             />

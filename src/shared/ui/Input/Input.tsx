@@ -5,6 +5,7 @@ import classNames from 'shared/lib/classNames/ClassNames'
 import ShowIcon from 'shared/assets/img/show.svg'
 import HideIcon from 'shared/assets/img/hide.svg'
 import { Alert, AlertTheme, AlertVariant } from '../Alert'
+import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce'
 
 
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>
@@ -37,9 +38,11 @@ export const Input = memo((props:InputProps) => {
     const showPassHandle = () => {
         setShowPass((prev) => !prev)
     }
-
+    // @ts-ignore
+    const debouncedChanger = useDebounce(onChange, 1000)
+    
     function changeHandler(e: React.ChangeEvent<HTMLInputElement>) {
-        onChange?.(e.target.value)
+        debouncedChanger(e.target.value)
     }
 
     if (type === 'password') {

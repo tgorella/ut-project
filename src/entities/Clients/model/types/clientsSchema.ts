@@ -1,4 +1,4 @@
-export interface DataWithHeader {
+export interface DataWithCount {
   data: Client[],
   total: string
 }

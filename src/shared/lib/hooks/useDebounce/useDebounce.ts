@@ -11,7 +11,7 @@ export function useDebounce<T extends (...args: any[]) => any>(callback: T, dela
         }
 
         timer.current = setTimeout(() => {
-            callback(args)
+            callback(...args)
         }, delay)
     }, [callback, delay])
 
