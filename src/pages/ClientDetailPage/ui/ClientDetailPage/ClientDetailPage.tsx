@@ -5,12 +5,15 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { clientDetailsReducer } from 'entities/Clients/model/slice/clientDetailsSlice'
 import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { ClientCard } from 'entities/Clients'
-import { memo } from 'react'
+import { memo, useState } from 'react'
 import { Box } from 'shared/ui/Box'
 import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
 import ADD_ORDER from 'shared/assets/img/add_order.svg'
 import DEL_CLIENT from 'shared/assets/img/delete.svg'
 import BACK_ICON from 'shared/assets/img/undo.svg'
+import { PreviewWindow } from 'shared/ui/PreviewWindow'
+import { Modal } from 'shared/ui/Modal'
+import { Text, TextAlign } from 'shared/ui/Text'
 
 
 
@@ -24,8 +27,13 @@ const ClientDetailPage = memo(({className} : ClientDetailPageProps) => {
     const {t} = useTranslation()
     const {id} = useParams()
     const history = useNavigate()
+    const [openPreview, setOpenPreview] = useState(false)
+    const [openModal, setOpenModal] = useState(false)
 
     const backHandel = () => history(-1)
+    const togglePreview= () => setOpenPreview(!openPreview)
+    const toggleModal= () => setOpenModal(!openModal)
+
     
     if (id) {
         return ( 
@@ -36,12 +44,22 @@ const ClientDetailPage = memo(({className} : ClientDetailPageProps) => {
                         <div className={cls.small_column} >
                             <Box className={cls.button_wrapper}>
                                 <AppButton theme={ButtonTheme.SOLID} onClick={backHandel}><BACK_ICON className={cls.icon}/> {t('Назад')}</AppButton>
-                                <AppButton theme={ButtonTheme.OUTLINED_GRAY} onClick={backHandel}><ADD_ORDER className={cls.icon}/> {t('Добавить заказ')}</AppButton>
-                                <AppButton theme={ButtonTheme.OUTLINED_GRAY} onClick={backHandel}><DEL_CLIENT className={cls.icon}/> {t('Удалить клиента')}</AppButton>
+                                <AppButton theme={ButtonTheme.OUTLINED_GRAY} onClick={togglePreview}><ADD_ORDER className={cls.icon}/> {t('Добавить заказ')}</AppButton>
+                                <AppButton theme={ButtonTheme.OUTLINED_GRAY} onClick={toggleModal}><DEL_CLIENT className={cls.icon}/> {t('Удалить клиента')}</AppButton>
                             </Box>
                             <ClientCard id={id} />
                         </div>
                         <div className={cls.big_column}></div>
+                        <PreviewWindow isOpen={openPreview} onClose={togglePreview}>
+                            <p>{t('Место для формы добавления заказа')}</p>
+                        </PreviewWindow>
+                        <Modal onClose={toggleModal} isOpen={openModal}>
+                            <Text align={TextAlign.CENTER} title={t('Внимание! Это действие нельзя будет отменить! Вы точно хотите удалить этого клиента?')} />
+                            <div className={cls.modal_btns_wrapper}>
+                                <AppButton theme={ButtonTheme.OUTLINED}>{t('Удалить')}</AppButton>
+                                <AppButton theme={ButtonTheme.SOLID}>{t('Отмена')}</AppButton>
+                            </div>
+                        </Modal>
                     </div>
                 </div>
             </DynamicModuleLoader>

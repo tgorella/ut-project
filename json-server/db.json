@@ -39,7 +39,7 @@
       "createdAt": "1681678250003",
       "updatedAt": "1683910607632",
       "userId": "643c36ad8545463c883af7a8",
-      "address": ""
+      "address": "123"
     },
     {
       "id": "643c5fc2013e22868a6eb636",
@@ -64,7 +64,8 @@
       "profession": "",
       "createdAt": "1681678286961",
       "updatedAt": "1681678286961",
-      "userId": "643c36ad8545463c883af7a8"
+      "userId": "643c36ad8545463c883af7a8",
+      "isFav": false
     },
     {
       "id": "643c5fe7013e22868a6eb63c",
@@ -73,11 +74,11 @@
       "notes": "[b]Английский актёр и продюсер.[/b] Лауреат премий Лоренса Оливье и «Золотой глобус», номинант на премии BAFTA, «Эмми» и «Тони». Наиболее известен по фильмам «Полночь в Париже», «Выживут только любовники», «Багровый пик» и ролью Локи в кинематографической вселенной Marvel.\nТут еще один параграф",
       "phone": "79211234567",
       "avatarUrls": "https://phantom-marca.unidadeditorial.es/d52979e8211e4682397cd5fb82cd013c/resize/828/f/webp/assets/multimedia/imagenes/2022/06/12/16550354133357.jpg",
-      "profession": "актер",
+      "profession": "Актер",
       "createdAt": "1681678311130",
       "updatedAt": "1681678311130",
       "userId": "643c36ad8545463c883af7a8",
-      "address": "арапроо",
+      "address": "",
       "isFav": true
     },
     {

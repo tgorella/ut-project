@@ -74,7 +74,7 @@ const ClientsPage = memo(() => {
             </h1>
             <div className={cls.top_menu}>
                 <AppButton size={ButtonSize.S} theme={ButtonTheme.SOLID}><ADD_CLIENT  className={cls.icon}/>{t('Добавить клиента')}</AppButton>
-                <div className={cls.searchBlock}><Searchbar onChange={handleSearch} placeholder={t('Введите имя, фамилию или email')} /></div>
+                <div className={cls.searchBlock}><Searchbar onChange={handleSearch} placeholder={t('Введите имя, фамилию, email или номер телефона')} /></div>
                 <div className={cls.toggle_item}>
                     {t('Записей на странице:')} <ToggleButtons onChange={handleChangeLimit} currentValue={limit} values={limitsValue} />
                 </div>

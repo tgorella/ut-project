@@ -58,3 +58,18 @@
     position: fixed;
     right: 20px;
 }
+
+.fav_icon {
+    cursor: pointer;
+    left: 20px;
+    position: absolute;
+    top: 20px;
+}
+
+.active {
+    fill: #000;
+}
+
+.fade {
+    fill: #9c9c9c;
+}

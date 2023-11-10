@@ -16,5 +16,9 @@
   "Клиенты не найдены": "Clients not found",
   "Del": "Delete",
   "Записей на странице:": "Items per page",
-  "Добавить клиента": "Add client"
+  "Добавить клиента": "Add client",
+  "Назад": "Back",
+  "Введите имя, фамилию, email или номер телефона": "Type name, email or phone number to search",
+  "Добавить заказ": "Add order",
+  "Удалить клиента": "Delete client"
 }

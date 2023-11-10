@@ -21,6 +21,7 @@ import { Text } from 'shared/ui/Text'
 import { TextAlign } from 'shared/ui/Text/ui/Text'
 import { getUserAuthData } from 'entities/User'
 import { Alert, AlertTheme } from 'shared/ui/Alert'
+import FAV_ICON from 'shared/assets/img/fav.svg'
 
 interface ClientCardProps {
   className?: string;
@@ -101,6 +102,11 @@ export const ClientCard = memo((props : ClientCardProps) => {
         dispatch(clientDetailsAction.updateClient({notes: value || ''}))
     }, [dispatch])
 
+    const handleChangeFavStatus = useCallback(() => {
+        dispatch(clientDetailsAction.updateClient({isFav: !data?.isFav}))
+        dispatch(updateClientData(id))
+    }, [data?.isFav, dispatch, id])
+
     const saveUser = useCallback(async () => {
         try {
             await dispatch(updateClientData(id)).then(() => {
@@ -163,6 +169,9 @@ export const ClientCard = memo((props : ClientCardProps) => {
     return ( 
         <div className={classNames(cls.ClientCard, {}, [className])}>
             <Box className={cls.box}>
+                <div className={cls.fav_icon} onClick={handleChangeFavStatus} title={'Добавить в избранное'}>
+                    <FAV_ICON className={data?.isFav ? cls.active : cls.fade}/>
+                </div>
                 <div className={cls.edit_icon}>
                     <EditSwitcher editMode={edit} onChancelEdit={handleChancelEdit} onEdit={toggleEditMode} />
                 </div>

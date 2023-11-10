@@ -54,5 +54,11 @@
   "Del": "Delete",
   "Записей на странице:": "Items per page",
   "Добавить клиента": "Add client",
-  "Назад": "Back"
+  "Назад": "Back",
+  "Введите имя, фамилию, email или номер телефона": "Type name, email or phone number to search",
+  "Добавить заказ": "Add order",
+  "Удалить клиента": "Delete client",
+  "Удалить": "Delete",
+  "Отмена": "Chancel",
+  "Внимание! Это действие нельзя будет отменить! Вы точно хотите удалить этого клиента?": "Warning! This action cannot be undone. Still want to delete this client?"
 }
