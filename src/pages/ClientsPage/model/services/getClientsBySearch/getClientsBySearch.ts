@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ThunkConfig } from 'app/providers/StoreProvider'
-import { Client } from '../../types/clientsSchema'
+import { Client } from '../../../../../entities/Clients/model/types/clientSchema'
 import i18n from 'shared/config/i18n/i18n'
 import { getUserAuthData } from 'entities/User'
 

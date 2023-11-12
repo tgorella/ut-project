@@ -1,7 +1,7 @@
 import { ClientDetailsSchema } from './../types/clientDetailsSchema'
 import {PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { getClientById } from '../services/getClientById/getClientById'
-import { Client } from '../types/clientsSchema'
+import { Client } from '../types/clientSchema'
 import { updateClientData } from '../services/updateClientData/updateClientData'
 
 const initialState: ClientDetailsSchema = {

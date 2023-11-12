@@ -1,7 +1,7 @@
 import cls from './ClientsList.module.scss'
 import classNames from 'shared/lib/classNames/ClassNames'
 import {memo} from 'react'
-import { Client } from '../../model/types/clientsSchema'
+import { Client } from '../../../../entities/Clients/model/types/clientSchema'
 import { ClientListItem } from '../ClientListItem/ClientListItem'
 import {Text} from 'shared/ui/Text'
 import { TextAlign } from 'shared/ui/Text/ui/Text'

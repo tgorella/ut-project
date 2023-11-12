@@ -1,4 +1,4 @@
-import { Client } from './clientsSchema'
+import { Client } from './clientSchema'
 
 export interface ClientDetailsSchema {
   isLoading: boolean,

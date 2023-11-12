@@ -5,7 +5,7 @@ describe('getClientsError.test', () => {
     test('should return value', () => {
        
         const state : DeepPartial<StateSchema> = {
-            clients: {
+            clientsPage: {
                 error: 'error'
             }
         }

@@ -1,10 +1,12 @@
+import { EntityId } from '@reduxjs/toolkit/dist/entities/models'
+
 export interface DataWithCount {
   data: Client[],
   total: string
 }
 
 export interface Client {
-id?: string;
+id?: EntityId;
 name?: string;
 email?: string;
 notes?: string;
@@ -18,11 +20,4 @@ telegram?: string
 instagram?: string;
 address?: string,
 isFav?: boolean
-}
-
-export interface ClientsSchema {
-isLoading: boolean;
-data?: Client[];
-error?: string;
-total?: string
 }

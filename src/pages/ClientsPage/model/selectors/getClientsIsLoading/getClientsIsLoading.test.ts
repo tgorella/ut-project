@@ -5,7 +5,7 @@ describe('getClientsIsLoading.test', () => {
     test('should return value', () => {
        
         const state : DeepPartial<StateSchema> = {
-            clients: {
+            clientsPage: {
                 isLoading: true
             }
         }

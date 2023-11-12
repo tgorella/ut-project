@@ -1,7 +1,7 @@
 import cls from './ClientListItem.module.scss'
 import classNames from 'shared/lib/classNames/ClassNames'
 import {memo} from 'react'
-import { Client } from 'entities/Clients/model/types/clientsSchema'
+import { Client } from 'entities/Clients/model/types/clientSchema'
 import { Avatar, AvatarSize } from 'shared/ui/Avatar/Avatar'
 import { Link } from 'react-router-dom'
 import FavIcon from 'shared/assets/img/fav.svg'

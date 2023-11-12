@@ -1,12 +1,10 @@
 
-import { ClientsList, getClientsBySearch, getClientsData, getClientsError, getClientsIsLoading } from 'entities/Clients'
-import { fetchClients } from 'entities/Clients/model/services/fetchAll/fetchClients'
-import { clientsReducer } from 'entities/Clients/model/slice/ClientsSlice'
+import { fetchClients } from '../../model/services/fetchAll/fetchClients'
 import { getUserAuthData } from 'entities/User'
 import { memo, useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
-import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
+import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { Box } from 'shared/ui/Box'
 import { Pagination } from 'shared/ui/Pagination'
@@ -18,28 +16,32 @@ import { ToggleButtonValue, ToggleButtons } from 'shared/ui/ToggleButtons'
 import { Searchbar } from 'widgets/Searchbar'
 import { AppButton, ButtonSize, ButtonTheme } from 'shared/ui/AppButton/AppButton'
 import ADD_CLIENT from 'shared/assets/img/add-client.svg'
+import { ClientsPageActions, ClientsPageReducer, getClients } from '../../model/slice/clientsPageSlice'
+import { getClientPageLimit } from '../../model/selectors/getClientPageLimit/getClientPageLimit'
+import { getClientsError } from '../../model/selectors/getClientsError/getClientsError'
+import { getClientsIsLoading } from '../../model/selectors/getClientsIsLoading/getClientsIsLoading'
+import { getClientsBySearch } from '../../model/services/getClientsBySearch/getClientsBySearch'
+import { ClientsList } from '../ClientsList/ClientsList'
 
-const reducers = {
-    clients: clientsReducer
+const reducers: ReducersList = {
+    clientsPage: ClientsPageReducer
 }
 
 const ClientsPage = memo(() => {
     const {t} = useTranslation('clients')
     const dispatch = useAppDispatch()
     const userData = useSelector(getUserAuthData)
-    const clients = useSelector(getClientsData)
+    const clients = useSelector(getClients.selectAll)
     const isLoading = useSelector(getClientsIsLoading)
     const error = useSelector(getClientsError)
     const [page, setPage] = useState(1)
-    const [limit, setLimit] = useState(Number(localStorage.getItem('clients_limits')) || 25)
+    const limit = useSelector(getClientPageLimit) || 25
 
     const handlePageUp = useCallback((num: number) => setPage(num), [])
     const handlePageDown = useCallback((num: number) => setPage(num), [])
     const handleChangeLimit = useCallback((num: number | string) => {
-        setLimit(Number(num))
-        localStorage.setItem('clients_limits', String(num))
-        setPage(1)
-    }, [])
+        dispatch(ClientsPageActions.setLimit(Number(num)))
+    }, [dispatch])
 
     const handleSearch = useCallback((val: string) => {
         dispatch(getClientsBySearch(val))
@@ -73,8 +75,15 @@ const ClientsPage = memo(() => {
                 {t('Клиенты')}
             </h1>
             <div className={cls.top_menu}>
-                <AppButton size={ButtonSize.S} theme={ButtonTheme.SOLID}><ADD_CLIENT  className={cls.icon}/>{t('Добавить клиента')}</AppButton>
-                <div className={cls.searchBlock}><Searchbar onChange={handleSearch} placeholder={t('Введите имя, фамилию, email или номер телефона')} /></div>
+                <AppButton 
+                    size={ButtonSize.S} 
+                    theme={ButtonTheme.SOLID}
+                >
+                    <ADD_CLIENT className={cls.icon}/>{t('Добавить клиента')}
+                </AppButton>
+                <div className={cls.searchBlock}>
+                    <Searchbar onChange={handleSearch} placeholder={t('Введите имя, фамилию, email или номер телефона')} />
+                </div>
                 <div className={cls.toggle_item}>
                     {t('Записей на странице:')} <ToggleButtons onChange={handleChangeLimit} currentValue={limit} values={limitsValue} />
                 </div>
