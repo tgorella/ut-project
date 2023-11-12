@@ -5,7 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { clientDetailsReducer } from 'entities/Clients/model/slice/clientDetailsSlice'
 import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { ClientCard } from 'entities/Clients'
-import { memo, useState } from 'react'
+import { memo, useCallback, useState } from 'react'
 import { Box } from 'shared/ui/Box'
 import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
 import ADD_ORDER from 'shared/assets/img/add_order.svg'
@@ -14,6 +14,8 @@ import BACK_ICON from 'shared/assets/img/undo.svg'
 import { PreviewWindow } from 'shared/ui/PreviewWindow'
 import { Modal } from 'shared/ui/Modal'
 import { Text, TextAlign } from 'shared/ui/Text'
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
+import { deleteClient } from 'entities/Clients/model/services/deleteClient/deleteClient'
 
 
 
@@ -25,9 +27,10 @@ interface ClientDetailPageProps {
 }
 const ClientDetailPage = memo(({className} : ClientDetailPageProps) => {
     const {t} = useTranslation()
-    let id 
+    let id: string | undefined
     const params = useParams()
-    
+    const dispatch = useAppDispatch()
+
     if (__PROJECT__ !== 'storybook') {
         id = params.id
     } else {
@@ -41,7 +44,12 @@ const ClientDetailPage = memo(({className} : ClientDetailPageProps) => {
     const backHandel = () => history(-1)
     const togglePreview= () => setOpenPreview(!openPreview)
     const toggleModal= () => setOpenModal(!openModal)
-
+    const handleDeleteClient = useCallback(() => {
+        if (id) {
+            dispatch(deleteClient(id))
+            history('/clients/')
+        }
+    }, [dispatch, history, id])
     
     if (id) {
         return ( 
@@ -64,8 +72,8 @@ const ClientDetailPage = memo(({className} : ClientDetailPageProps) => {
                         <Modal onClose={toggleModal} isOpen={openModal}>
                             <Text align={TextAlign.CENTER} title={t('Внимание! Это действие нельзя будет отменить! Вы точно хотите удалить этого клиента?')} />
                             <div className={cls.modal_btns_wrapper}>
-                                <AppButton theme={ButtonTheme.OUTLINED}>{t('Удалить')}</AppButton>
-                                <AppButton theme={ButtonTheme.SOLID}>{t('Отмена')}</AppButton>
+                                <AppButton theme={ButtonTheme.OUTLINED} onClick={handleDeleteClient}>{t('Удалить')}</AppButton>
+                                <AppButton theme={ButtonTheme.SOLID} onClick={toggleModal}>{t('Отмена')}</AppButton>
                             </div>
                         </Modal>
                     </div>

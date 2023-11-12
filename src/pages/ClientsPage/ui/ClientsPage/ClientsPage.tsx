@@ -74,7 +74,7 @@ const ClientsPage = memo(() => {
             if (userData) {
                 if(!inited) {
                     dispatch(ClientsPageActions.initState())
-                    dispatch(fetchClients(userData?.id))
+                    dispatch(fetchClients())
                 }
             }
         }

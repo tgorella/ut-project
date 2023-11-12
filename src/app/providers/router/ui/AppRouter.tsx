@@ -24,17 +24,6 @@ const AppRouter = () => {
 
         )
     },[])
-    
-    // const isAuth = useSelector(getUserAuthData)
-
-    // const routes = useMemo(()=> {
-    //     return Object.values(routeConfig).filter((item) => {
-    //         if (item.authOnly && !isAuth?.username) {
-    //             return false
-    //         }
-    //         return true
-    //     })
-    // }, [isAuth])
 
     return (
         <Routes>

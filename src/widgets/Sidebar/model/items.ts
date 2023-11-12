@@ -34,6 +34,12 @@ export const SidebarItemsList: SidebarItemType[] = [
         icon: ClientsIcon,
         text: 'Клиенты',
         isAuth: true,
-        
+
+    },
+    {
+        path: RoutePath.orders,
+        icon: ClientsIcon,
+        text: 'Заказы',
+        isAuth: true,
     }
 ]

@@ -41,6 +41,9 @@ const clientsPageSlice = createSlice({
         },
         resetAdded: (state) => {
             state.clientAdded = false
+        },
+        clientDeleted: (state, action: PayloadAction<string>) => {
+            clientsPageAdapter.removeOne(state, action.payload)
         }
     },
     extraReducers(builder) {
@@ -92,5 +95,3 @@ const clientsPageSlice = createSlice({
 export const {
     reducer: ClientsPageReducer,
     actions: ClientsPageActions} = clientsPageSlice
-
-// clientsPageAdapter.addOne(state,action.payload)

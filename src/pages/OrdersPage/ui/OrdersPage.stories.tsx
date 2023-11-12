@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import 'app/styles/index.scss'
 import { WithColorsTheme } from 'shared/config/storybook/ThemeDecorator/WithColorsTheme'
-import OrderDetailsPage from './OrderDetailsPage'
+import OrdersPage from './OrdersPage'
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-const meta: Meta<typeof OrderDetailsPage> = {
-    title: 'pages/OrderDetailsPage',
-    component: OrderDetailsPage,
+const meta: Meta<typeof OrdersPage> = {
+    title: 'shared/OrdersPage',
+    component: OrdersPage,
     argTypes: {
     // backgroundColor: { control: 'color' },
     },
@@ -15,7 +15,7 @@ const meta: Meta<typeof OrderDetailsPage> = {
 
 
 export default meta
-type Story = StoryObj<typeof OrderDetailsPage>;
+type Story = StoryObj<typeof OrdersPage>;
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 
