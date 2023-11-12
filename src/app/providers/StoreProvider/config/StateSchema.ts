@@ -3,9 +3,9 @@ import { AxiosInstance } from 'axios'
 import { ClientDetailsSchema } from 'entities/Clients'
 import { ProfileSchema } from 'entities/Profile'
 import { UserSchema } from 'entities/User'
+import { AddClientSchema } from 'features/AddClient'
 import { LoginSchema } from 'features/AuthByUsername'
 import { ClientsPageSchema } from 'pages/ClientsPage'
-import { NavigateOptions, To } from 'react-router-dom'
 
 export interface StateSchema {
   user: UserSchema,
@@ -15,16 +15,19 @@ export interface StateSchema {
   loginForm?: LoginSchema,
   profile?: ProfileSchema,
   clientDetails?: ClientDetailsSchema,
-  clientsPage?: ClientsPageSchema
+  clientsPage?: ClientsPageSchema,
+  addClient?: AddClientSchema
 }
 
 export type StateSchemaKey = keyof StateSchema
+export type MountedReducers = OptionalRecord<StateSchemaKey, boolean>
 
 export interface ReducerManager {
   getReducerMap: () => ReducersMapObject<StateSchema>;
   reduce: (state: StateSchema, action: AnyAction) => CombinedState<StateSchema>;
   add: (key: StateSchemaKey, reducer: Reducer) => void
   remove: (key: StateSchemaKey) =>  void
+  getMountedReducers: () => MountedReducers
 }
 
 export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> {
@@ -33,7 +36,6 @@ export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> {
 
 export interface ThunkExtraArg {
   api: AxiosInstance,
-  navigate?: (to: To, options?: NavigateOptions) => void
 }
 
 export interface ThunkConfig<T> {

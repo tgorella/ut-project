@@ -25,7 +25,15 @@ interface ClientDetailPageProps {
 }
 const ClientDetailPage = memo(({className} : ClientDetailPageProps) => {
     const {t} = useTranslation()
-    const {id} = useParams()
+    let id 
+    const params = useParams()
+    
+    if (__PROJECT__ !== 'storybook') {
+        id = params.id
+    } else {
+        id = '643c5fe7013e22868a6eb63c'
+    }
+    
     const history = useNavigate()
     const [openPreview, setOpenPreview] = useState(false)
     const [openModal, setOpenModal] = useState(false)

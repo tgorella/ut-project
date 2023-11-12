@@ -11,6 +11,19 @@ const initialState: ClientDetailsSchema = {
     error: undefined
 }
 
+const formInitialState: Client = {
+    id: Date.now(),
+    name: '',
+    email: '',
+    notes: '',
+    phone: '',
+    avatarUrls: '',
+    profession: '',
+    userId: '',
+    telegram: '',
+    instagram: '',
+    address: ''
+}
 export const clientDetailsSlice = createSlice({
     name: 'clientDetails',
     initialState,
@@ -23,6 +36,9 @@ export const clientDetailsSlice = createSlice({
         },
         chancelEdit: (state) => {
             state.form = state.data
+        },
+        newClient: (state) => {
+            state.form = formInitialState
         }
     },
     extraReducers(builder) {

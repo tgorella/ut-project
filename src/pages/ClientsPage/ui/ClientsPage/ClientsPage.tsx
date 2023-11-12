@@ -22,6 +22,11 @@ import { getClientsError } from '../../model/selectors/getClientsError/getClient
 import { getClientsIsLoading } from '../../model/selectors/getClientsIsLoading/getClientsIsLoading'
 import { getClientsBySearch } from '../../model/services/getClientsBySearch/getClientsBySearch'
 import { ClientsList } from '../ClientsList/ClientsList'
+import { getClientPageInited } from '../../model/selectors/getClientsPageInited/getClientsPageInited'
+import { PreviewWindow } from 'shared/ui/PreviewWindow'
+import { AddClientForm } from 'features/AddClient'
+import { addClient } from '../../model/services/AddClient/addClient'
+import { getAddClientAddedStatus, getAddClientError } from '../../model/selectors/addClient/addClient'
 
 const reducers: ReducersList = {
     clientsPage: ClientsPageReducer
@@ -35,8 +40,13 @@ const ClientsPage = memo(() => {
     const isLoading = useSelector(getClientsIsLoading)
     const error = useSelector(getClientsError)
     const [page, setPage] = useState(1)
+    const [openPreview, setOpenPreview] = useState(false)
     const limit = useSelector(getClientPageLimit) || 25
+    const inited = useSelector(getClientPageInited)
+    const added = useSelector(getAddClientAddedStatus)
+    const newClientError = useSelector(getAddClientError)
 
+    const togglePreview= () => setOpenPreview(!openPreview)
     const handlePageUp = useCallback((num: number) => setPage(num), [])
     const handlePageDown = useCallback((num: number) => setPage(num), [])
     const handleChangeLimit = useCallback((num: number | string) => {
@@ -55,13 +65,20 @@ const ClientsPage = memo(() => {
 
     ]
     
+    const handleAddComment = useCallback((newClient) => {
+        dispatch(addClient(newClient))
+    }, [dispatch])
+
     useEffect(() => {
         if(__PROJECT__ !== 'storybook') {
             if (userData) {
-                dispatch(fetchClients(userData?.id))
+                if(!inited) {
+                    dispatch(ClientsPageActions.initState())
+                    dispatch(fetchClients(userData?.id))
+                }
             }
         }
-    }, [dispatch, limit, page, userData, userData?.id])
+    }, [dispatch, inited, limit, page, userData, userData?.id])
 
     const filterClients = clients?.slice((page-1)*limit, page*limit)
    
@@ -78,6 +95,7 @@ const ClientsPage = memo(() => {
                 <AppButton 
                     size={ButtonSize.S} 
                     theme={ButtonTheme.SOLID}
+                    onClick={togglePreview}
                 >
                     <ADD_CLIENT className={cls.icon}/>{t('Добавить клиента')}
                 </AppButton>
@@ -103,6 +121,10 @@ const ClientsPage = memo(() => {
                 totalItems={!isLoading} 
                 pages={!isLoading}
             />
+            <PreviewWindow onClose={togglePreview} isOpen={openPreview} >
+                <Text title={t('Добавить нового клиента')} />
+                <AddClientForm  onAddClient={handleAddComment} added={added} error={newClientError}/>
+            </PreviewWindow>
             
         </DynamicModuleLoader>
         

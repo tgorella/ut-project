@@ -1,0 +1,1 @@
+export { OrderDetailsPageLazy as OrderDetailsPage } from './ui/OrderDetailsPage.lazy'

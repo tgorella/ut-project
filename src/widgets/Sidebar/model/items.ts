@@ -33,6 +33,7 @@ export const SidebarItemsList: SidebarItemType[] = [
         path: RoutePath.clients,
         icon: ClientsIcon,
         text: 'Клиенты',
-        isAuth: true
+        isAuth: true,
+        
     }
 ]

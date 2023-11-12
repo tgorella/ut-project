@@ -8,6 +8,7 @@ import { Client } from 'entities/Clients'
 import { ClientsPageSchema } from '../types/clientsPageSchema'
 import { fetchClients } from 'pages/ClientsPage/model/services/fetchAll/fetchClients'
 import { getClientsBySearch } from '../services/getClientsBySearch/getClientsBySearch'
+import { addClient } from '../services/AddClient/addClient'
 
 
 const clientsPageAdapter = createEntityAdapter<Client>({
@@ -24,12 +25,22 @@ const clientsPageSlice = createSlice({
         isLoading: false,
         ids: [],
         entities: {},
-        limit: Number(localStorage.getItem('clients_limits')) || 25
+        limit: 25,
+        _inited: false,
+        clientAdded: false,
+        clientAddError: undefined
     }),
     reducers: {
         setLimit: (state, action: PayloadAction<number>) => {
             state.limit = action.payload
             localStorage.setItem('clients_limits', action.payload.toString())
+        },
+        initState: (state) => {
+            state.limit = Number(localStorage.getItem('clients_limits')) || 25
+            state._inited = true
+        },
+        resetAdded: (state) => {
+            state.clientAdded = false
         }
     },
     extraReducers(builder) {
@@ -41,6 +52,7 @@ const clientsPageSlice = createSlice({
             .addCase(fetchClients.fulfilled, (state, action: PayloadAction<Client[]>) => {
                 state.isLoading = false
                 state.error = undefined
+                state._inited = true
                 clientsPageAdapter.setAll(state, action.payload)
 
 
@@ -62,6 +74,17 @@ const clientsPageSlice = createSlice({
                 state.isLoading= false
                 state.error = action.payload
             })
+            .addCase(addClient.pending, (state) => {
+                state.clientAdded = false
+                state.clientAddError = undefined
+            })
+            .addCase(addClient.fulfilled, (state, action) => {
+                state.clientAdded = true
+                clientsPageAdapter.addOne(state,action.payload)
+            })
+            .addCase(addClient.rejected, (state, action) => {
+                state.clientAddError = action.payload
+            })
           
     }
 })
@@ -69,3 +92,5 @@ const clientsPageSlice = createSlice({
 export const {
     reducer: ClientsPageReducer,
     actions: ClientsPageActions} = clientsPageSlice
+
+// clientsPageAdapter.addOne(state,action.payload)
