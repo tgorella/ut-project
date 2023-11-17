@@ -16,20 +16,27 @@ import { PageLoader } from 'widgets/PageLoader'
 import { NoteBlock } from 'widgets/NoteBlock'
 import { getClientDetailsForm } from '../../model/selectors/getClientDetailsForm/getClientDetailsForm'
 import { updateClientData } from '../../model/services/updateClientData/updateClientData'
-import { clientDetailsAction } from '../../model/slice/clientDetailsSlice'
+import { clientDetailsAction, clientDetailsReducer } from '../../model/slice/clientDetailsSlice'
 import { Text } from 'shared/ui/Text'
 import { TextAlign } from 'shared/ui/Text/ui/Text'
 import { getUserAuthData } from 'entities/User'
 import { Alert, AlertTheme } from 'shared/ui/Alert'
 import FAV_ICON from 'shared/assets/img/fav.svg'
+import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 
 interface ClientCardProps {
   className?: string;
   id: string,
   withNotes?: boolean
+  onlyRead?: boolean
 }
+
+const reducers = {
+    clientDetails: clientDetailsReducer
+}
+
 export const ClientCard = memo((props : ClientCardProps) => {
-    const {className, id, withNotes = true} = props
+    const {className, id, withNotes = true, onlyRead = false} = props
     const {t} = useTranslation('clients')
     const dispatch = useAppDispatch()
     const authData = useSelector(getUserAuthData)
@@ -139,46 +146,46 @@ export const ClientCard = memo((props : ClientCardProps) => {
         toggleNoteEditMode()
     }, [dispatch, toggleNoteEditMode])
 
+
+    let content 
+
     if (isLoading) {
-        return (
-            <div>
-                <PageLoader />
-            </div>
-        )
+        content = <PageLoader />
     }
 
-    if (!data && error) {
-        return (
-            <Box className={cls.box}>
-                <Avatar className={cls.avatar} size={AvatarSize.XL} alt={t('Клиент не найден')}/>
-                <div className={cls.info_container}>
-                    <div className={cls.item}>
-                        <p className={cls.name}>
-                            {t('Клиент не найден')}
-                        </p>
-                    </div>
-                    <div className={cls.item}>
-                        <Text align={TextAlign.CENTER} text={t('Возможно, клиент был удален')} />
-                    </div>
-                        
+    else if (!data || error) {
+        content = <Box className={cls.box}>
+            <Avatar className={cls.avatar} size={AvatarSize.XL} alt={t('Клиент не найден')}/>
+            <div className={cls.info_container}>
+                <div className={cls.item}>
+                    <p className={cls.name}>
+                        {t('Клиент не найден')}
+                    </p>
                 </div>
-            </Box>
-        )
+                <div className={cls.item}>
+                    <Text align={TextAlign.CENTER} text={t('Возможно, клиент был удален')} />
+                </div>
+            </div>
+        </Box>
     }
-  
-    return ( 
-        <div className={classNames(cls.ClientCard, {}, [className])}>
+    else {
+        content = <div className={classNames(cls.ClientCard, {}, [className])}>
             <Box className={cls.box}>
-                <div className={cls.fav_icon} onClick={handleChangeFavStatus} title={'Добавить в избранное'}>
-                    <FAV_ICON className={data?.isFav ? cls.active : cls.fade}/>
-                </div>
-                <div className={cls.edit_icon}>
-                    <EditSwitcher editMode={edit} onChancelEdit={handleChancelEdit} onEdit={toggleEditMode} />
-                </div>
+                {!onlyRead &&
+                <>
+                    <div className={cls.fav_icon} onClick={handleChangeFavStatus} title={'Добавить в избранное'}>
+                        <FAV_ICON className={data?.isFav ? cls.active : cls.fade}/>
+                    </div>
+   
+                    <div className={cls.edit_icon}>
+                        <EditSwitcher editMode={edit} onChancelEdit={handleChancelEdit} onEdit={toggleEditMode} />
+                    </div>
+                </>
+                }
                 {saved && <div className={cls.status}>
                     <Alert theme={success} text={success === AlertTheme.SUCCESS ? (t('Сохранено')) : (t('Ошибка сохранения'))}/>
                 </div>}
-                
+    
                 <Avatar className={cls.avatar} src={data?.avatarUrls} size={AvatarSize.XL} alt={data?.name}/>
                 {!edit && (
                     <div className={cls.info_container}>
@@ -205,7 +212,7 @@ export const ClientCard = memo((props : ClientCardProps) => {
                         {data?.instagram && <div className={cls.item}>
                             {t('Инстаграм')}: {data?.instagram}
                         </div>}
-                        
+            
                     </div>
                 )}
                 {edit && (
@@ -277,10 +284,19 @@ export const ClientCard = memo((props : ClientCardProps) => {
                 )}
             </Box>
             { withNotes && <NoteBlock 
+                onlyRead={onlyRead}
                 value={data?.notes || ''} 
                 onChancelEdit={handleNotesChancelEdit} 
                 onChange={handleChangeClientNotes} 
                 onSave={saveNotes}/>}
         </div>
+    }
+    
+
+    return ( 
+        <DynamicModuleLoader reducers={reducers} removeAfterUnmount={true} >
+            {content}
+        </DynamicModuleLoader>
+        
     )
 })

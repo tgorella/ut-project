@@ -8,6 +8,7 @@ import { getClientDetailsForm } from './model/selectors/getClientDetailsForm/get
 import { getClientDetailsIsLoading } from './model/selectors/getClientDetailsIsLoading/getClientDetailsIsLoading'
 import { updateClientData } from './model/services/updateClientData/updateClientData'
 import { clientDetailsAction, clientDetailsReducer } from './model/slice/clientDetailsSlice'
+import { ClientsList } from './ui/ClientsList/ClientsList'
 
 
 export {
@@ -17,6 +18,7 @@ export {
     updateClientData,
     ClientCard,
     clientDetailsAction,
+    ClientsList,
     getClientDetailsData,
     getClientDetailsError,
     getClientDetailsForm,

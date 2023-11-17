@@ -21,7 +21,7 @@ import { getClientPageLimit } from '../../model/selectors/getClientPageLimit/get
 import { getClientsError } from '../../model/selectors/getClientsError/getClientsError'
 import { getClientsIsLoading } from '../../model/selectors/getClientsIsLoading/getClientsIsLoading'
 import { getClientsBySearch } from '../../model/services/getClientsBySearch/getClientsBySearch'
-import { ClientsList } from '../ClientsList/ClientsList'
+import { ClientsList } from '../../../../entities/Clients/ui/ClientsList/ClientsList'
 import { getClientPageInited } from '../../model/selectors/getClientsPageInited/getClientsPageInited'
 import { PreviewWindow } from 'shared/ui/PreviewWindow'
 import { AddClientForm } from 'features/AddClient'
@@ -46,7 +46,7 @@ const ClientsPage = memo(() => {
     const added = useSelector(getAddClientAddedStatus)
     const newClientError = useSelector(getAddClientError)
 
-    const togglePreview= () => setOpenPreview(!openPreview)
+    const togglePreview = () => setOpenPreview(!openPreview)
     const handlePageUp = useCallback((num: number) => setPage(num), [])
     const handlePageDown = useCallback((num: number) => setPage(num), [])
     const handleChangeLimit = useCallback((num: number | string) => {
@@ -65,7 +65,7 @@ const ClientsPage = memo(() => {
 
     ]
     
-    const handleAddComment = useCallback((newClient) => {
+    const handleAddClient = useCallback((newClient) => {
         dispatch(addClient(newClient))
     }, [dispatch])
 
@@ -123,7 +123,7 @@ const ClientsPage = memo(() => {
             />
             <PreviewWindow onClose={togglePreview} isOpen={openPreview} >
                 <Text title={t('Добавить нового клиента')} />
-                <AddClientForm  onAddClient={handleAddComment} added={added} error={newClientError}/>
+                <AddClientForm  onAddClient={handleAddClient} added={added} error={newClientError}/>
             </PreviewWindow>
             
         </DynamicModuleLoader>

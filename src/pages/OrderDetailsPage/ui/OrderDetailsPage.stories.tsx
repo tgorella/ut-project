@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react'
 import 'app/styles/index.scss'
 import { WithColorsTheme } from 'shared/config/storybook/ThemeDecorator/WithColorsTheme'
 import OrderDetailsPage from './OrderDetailsPage'
+import { orderDetailsStoreDecorator } from 'shared/config/storybook/StoreDecorator/OrderDetailsStoreDecorator'
+import { clientDetailsStoreDecorator } from 'shared/config/storybook/StoreDecorator/clientDetailsStoreDecorator'
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof OrderDetailsPage> = {
@@ -24,7 +26,9 @@ export const Default: Story = {
                                                                                                                                                           
     },
     decorators: [
-        WithColorsTheme
+        WithColorsTheme,
+        orderDetailsStoreDecorator,
+        clientDetailsStoreDecorator
     ],
     parameters: {
         docs: {

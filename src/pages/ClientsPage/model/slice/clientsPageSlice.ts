@@ -57,8 +57,6 @@ const clientsPageSlice = createSlice({
                 state.error = undefined
                 state._inited = true
                 clientsPageAdapter.setAll(state, action.payload)
-
-
             })
             .addCase(fetchClients.rejected, (state, action) => {
                 state.isLoading= false

@@ -93,8 +93,85 @@
       "createdAt": "1681678333986",
       "updatedAt": "1681678333986",
       "userId": "643c36ad8545463c883af7a8",
-      "address": ""
+      "address": "",
+      "isFav": false
+    },
+    {
+      "id": "1700056150401",
+      "name": "Johnny Depp",
+      "email": "best@ofall.com",
+      "notes": "[b]Аамериканский актёр, кинорежиссёр, музыкант, сценарист и продюсер.[/b]\n\nНаибольшую известность Джонни принесли роли в фильмах Тима Бёртона, в таких известных картинах, как «Эдвард Руки-ножницы», «Сонная Лощина», «Чарли и шоколадная фабрика», «Эд Вуд», «Суини Тодд, демон-парикмахер с Флит-стрит» и «Алиса в Стране чудес», мультфильм «Труп невесты», а также образ капитана Джека Воробья в серии фильмов «Пираты Карибского моря»",
+      "phone": "",
+      "avatarUrls": "https://amur.info/wp-content/uploads/2023/07/3-16-768x518.jpg",
+      "profession": "Пират",
+      "createdAt": "1700056150401",
+      "updatedAt": "",
+      "userId": "643c36ad8545463c883af7a8",
+      "telegram": "",
+      "instagram": "",
+      "address": "",
+      "isFav": true
+    },
+    {
+      "id": "1700172423843",
+      "name": "Татьяна",
+      "email": "gorella2008@gmail.com",
+      "notes": "",
+      "phone": "",
+      "avatarUrls": "https://avatars.githubusercontent.com/u/107557323?v=4",
+      "profession": "",
+      "createdAt": "1700172423843",
+      "updatedAt": "",
+      "userId": "643c36ad8545463c883af7a8",
+      "telegram": "",
+      "instagram": "",
+      "address": "",
+      "isFav": false
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "id": "64469ad32e53c6aa4c0746b6",
+      "clientId": "643c5fc2013e22868a6eb636",
+      "total": "35000",
+      "notes": "текст какой-то",
+      "eventDate": "2023-12-12",
+      "eventType": "crm-work",
+      "orderNumber": "31",
+      "place": "Лондон",
+      "status": "in-progress",
+      "startTime": "10",
+      "endTime": "17",
+      "title": "Первый заказ Дориана",
+      "userId": "643c36ad8545463c883af7a8",
+      "createdAt": "1682348755138",
+      "updatedAt": "1684658867525",
+      "projectType": "6469da05312bc36f4e9ecedc",
+      "steps": [
+        "done",
+        "done",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none"
+      ],
+      "client": {
+        "id": "643c5fc2013e22868a6eb636",
+        "name": "Chris Hemsworth",
+        "email": "thor@avengers.com",
+        "notes": "Австралийский актёр, номинант на премию BAFTA. Наиболее известен по роли Тора в кинематографической вселенной Marve, а также в фильмах «Гонка», «Хижина в лесу», «Ничего хорошего в отеле „Эль Рояль“», «В сердце моря» и «Люди в чёрном: Интернэшнл».",
+        "phone": "79051234567",
+        "avatarUrls": "https://ca-times.brightspotcdn.com/dims4/default/93e2715/2147483647/strip/false/crop/4559x3419+0+0/resize/1486x1114!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F36%2F20%2Fefef416b439cbceaeeeada0fd29b%2Fny-premiere-of-limitless-with-chris-hemsworth-35697.jpg",
+        "profession": "",
+        "createdAt": "1681678274275",
+        "updatedAt": "1681678274275",
+        "userId": "643c36ad8545463c883af7a8",
+        "isFav": true
+      }
+    }
+  ]
 }

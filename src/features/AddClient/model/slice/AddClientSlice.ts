@@ -19,7 +19,6 @@ const initialState: AddClientSchema = {
         address: '',
         isFav: false
     },
-    added: false,
     error: undefined
     
 }
@@ -35,15 +34,11 @@ export const addClientSlice = createSlice({
             }
         },
         resetState: (state) => {
-            state.added = true
             state.error = undefined
             state.data = initialState.data
-        },
-        resetAdded: (state) => {
-            state.added = false
         }
     }
 })
 
 export const {actions: addClientAction} = addClientSlice
-export const {reducer: addClientReducer} =addClientSlice
+export const {reducer: addClientReducer} = addClientSlice

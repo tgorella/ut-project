@@ -12,9 +12,10 @@ interface NoteBlockProps {
   onChange: (el: string) => void;
   onSave: () => void;
   onChancelEdit: () => void;
+  onlyRead?: boolean;
 
 }
-export const NoteBlock = memo(({className, value = '', onChancelEdit, onChange, onSave} : NoteBlockProps) => {
+export const NoteBlock = memo(({className, value = '', onChancelEdit, onChange, onSave, onlyRead = false} : NoteBlockProps) => {
     const {t} = useTranslation()
     const [noteEdit, setEdit] = useState(false)
 
@@ -31,9 +32,12 @@ export const NoteBlock = memo(({className, value = '', onChancelEdit, onChange, 
 
     return ( 
         <Box header={t('Заметки')} className={classNames(cls.NoteBlock, {}, [className])}>
+            {!onlyRead && 
             <div className={cls.edit_icon}>
                 <EditSwitcher editMode={noteEdit} onChancelEdit={handleChancelEdit} onEdit={toggleEditMode} />
             </div>
+            }
+            
             {!noteEdit && <p
                 className={cls.notes}
                 dangerouslySetInnerHTML={{

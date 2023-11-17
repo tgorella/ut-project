@@ -60,5 +60,12 @@
   "Удалить клиента": "Delete client",
   "Удалить": "Delete",
   "Отмена": "Chancel",
-  "Внимание! Это действие нельзя будет отменить! Вы точно хотите удалить этого клиента?": "Warning! This action cannot be undone. Still want to delete this client?"
+  "Внимание! Это действие нельзя будет отменить! Вы точно хотите удалить этого клиента?": "Warning! This action cannot be undone. Still want to delete this client?",
+  "Продукт:": "Project",
+  "Not found": "Not found",
+  "Информация о заказе": "Details of order ",
+  "Дата": "Date",
+  "Время": "Time",
+  "Адрес": "Address",
+  "Продукт": "Products"
 }

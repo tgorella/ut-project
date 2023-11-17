@@ -32,6 +32,22 @@ export const Default: Story = {
     }
 }
 
+export const OnlyRead: Story = {
+    args: {
+        id: '643c5fe7013e22868a6eb63c',
+        onlyRead: true                                                                                                                                           
+    },
+    decorators: [
+        WithColorsTheme,
+        clientDetailsStoreDecorator
+    ],
+    parameters: {
+        docs: {
+            canvas: {sourceState: 'shown'}
+        },
+    }
+}
+
 export const WithoutNotes: Story = {
     args: {
         id: '643c5fe7013e22868a6eb63c',

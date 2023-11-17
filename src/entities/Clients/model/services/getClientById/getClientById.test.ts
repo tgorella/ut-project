@@ -12,14 +12,14 @@ describe('getClientById.test', () => {
             email: 'name@mydomain.com',
             phone: '89001234567',
             notes: 'американский актёр, кинорежиссёр, музыкант, сценарист и продюсер.',
-            userId: '23'
+            userId: '32'
         }
 
 
         const thunk = new TestAsyncThunk(getClientById)
         thunk.api.get.mockReturnValue(Promise.resolve({data}))
 
-        const result = await thunk.callThunk({clientId:'643c5fe7013e22868a6eb63c', currentUserId: '23'})
+        const result = await thunk.callThunk({clientId:'643c5fe7013e22868a6eb63c', currentUserId: ''})
 
         expect(thunk.api.get).toHaveBeenCalled()
         expect(result.meta.requestStatus).toBe('fulfilled')

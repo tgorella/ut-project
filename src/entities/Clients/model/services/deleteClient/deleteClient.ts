@@ -3,7 +3,7 @@ import { ThunkConfig } from 'app/providers/StoreProvider'
 import { Client } from '../../types/clientSchema'
 import i18n from 'shared/config/i18n/i18n'
 import { getUserAuthData } from 'entities/User'
-import { ClientsPageActions } from 'pages/ClientsPage/model/slice/clientsPageSlice'
+import { ClientsPageActions } from 'pages/ClientsPage'
 
 export type FilterProps = {
   clientId: string,
