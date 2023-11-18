@@ -1,11 +1,11 @@
 export interface Order {
   id: string,
   clientId:string,
-  total:number,
+  total:string,
   notes:string,
   eventDate: string,
   eventType:string,
-  orderNumber:number,
+  orderNumber:string,
   place:string,
   status:string,
   startTime: string,

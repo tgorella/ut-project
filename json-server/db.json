@@ -66,7 +66,8 @@
       "createdAt": "1681678286961",
       "updatedAt": "1681678286961",
       "userId": "643c36ad8545463c883af7a8",
-      "isFav": false
+      "isFav": false,
+      "address": "New York"
     },
     {
       "id": "643c5fe7013e22868a6eb63c",
@@ -134,11 +135,11 @@
       "id": "64469ad32e53c6aa4c0746b6",
       "clientId": "643c5fc2013e22868a6eb636",
       "total": "35000",
-      "notes": "текст какой-то",
+      "notes": "Информация о заказе, какие-то тонкости, договоренности, заметки\n...",
       "eventDate": "2023-12-12",
       "eventType": "crm-work",
       "orderNumber": "31",
-      "place": "Лондон",
+      "place": "Лондон, Великобритания",
       "status": "in-progress",
       "startTime": "10",
       "endTime": "17",
@@ -158,20 +159,7 @@
         "none",
         "none",
         "none"
-      ],
-      "client": {
-        "id": "643c5fc2013e22868a6eb636",
-        "name": "Chris Hemsworth",
-        "email": "thor@avengers.com",
-        "notes": "Австралийский актёр, номинант на премию BAFTA. Наиболее известен по роли Тора в кинематографической вселенной Marve, а также в фильмах «Гонка», «Хижина в лесу», «Ничего хорошего в отеле „Эль Рояль“», «В сердце моря» и «Люди в чёрном: Интернэшнл».",
-        "phone": "79051234567",
-        "avatarUrls": "https://ca-times.brightspotcdn.com/dims4/default/93e2715/2147483647/strip/false/crop/4559x3419+0+0/resize/1486x1114!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F36%2F20%2Fefef416b439cbceaeeeada0fd29b%2Fny-premiere-of-limitless-with-chris-hemsworth-35697.jpg",
-        "profession": "",
-        "createdAt": "1681678274275",
-        "updatedAt": "1681678274275",
-        "userId": "643c36ad8545463c883af7a8",
-        "isFav": true
-      }
+      ]
     }
   ]
 }

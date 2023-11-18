@@ -1,10 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useTranslation } from 'react-i18next'
 import cls from './ClientCard.module.scss'
 import classNames from 'shared/lib/classNames/ClassNames'
-import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
 import { Avatar, AvatarSize } from 'shared/ui/Avatar/Avatar'
 import { Box } from 'shared/ui/Box'
-import { Input } from 'shared/ui/Input/Input'
 import { EditSwitcher } from 'widgets/EditeSwitcher'
 import { memo, useCallback, useEffect, useState } from 'react'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
@@ -23,6 +22,8 @@ import { getUserAuthData } from 'entities/User'
 import { Alert, AlertTheme } from 'shared/ui/Alert'
 import FAV_ICON from 'shared/assets/img/fav.svg'
 import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
+import { ClientForm } from '../ClientForm/ClientForm'
+import { ClientInfo } from '../ClientInfo/ClientInfo'
 
 interface ClientCardProps {
   className?: string;
@@ -45,7 +46,7 @@ export const ClientCard = memo((props : ClientCardProps) => {
     const error = useSelector(getClientDetailsError)
     const [edit, setEdit] = useState(false)
     const [noteEditMode, setNoteEditMode] = useState(false)
-    const success = AlertTheme.SUCCESS
+    let success = AlertTheme.SUCCESS
     const [saved, setSaved] = useState(false)
     const [errors] = useState({
         name: '',
@@ -117,6 +118,7 @@ export const ClientCard = memo((props : ClientCardProps) => {
     const saveUser = useCallback(async () => {
         try {
             await dispatch(updateClientData(id)).then(() => {
+                success = AlertTheme.SUCCESS
                 setSaved(true)
                 setTimeout(() => {
                     setSaved(false)
@@ -125,11 +127,13 @@ export const ClientCard = memo((props : ClientCardProps) => {
                 toggleEditMode()
             })
         } catch (error) {
+            success = AlertTheme.ERROR
             setSaved(true)
             setTimeout(() => {
                 setSaved(false)
             }, 2000)
         }
+        
     }, [dispatch, id, toggleEditMode])
 
     const saveNotes = useCallback((): void => {
@@ -141,6 +145,7 @@ export const ClientCard = memo((props : ClientCardProps) => {
         dispatch(clientDetailsAction.chancelEdit())
         toggleEditMode()
     }, [dispatch, toggleEditMode])
+
     const handleNotesChancelEdit = useCallback(() => {
         dispatch(clientDetailsAction.chancelEdit())
         toggleNoteEditMode()
@@ -187,101 +192,20 @@ export const ClientCard = memo((props : ClientCardProps) => {
                 </div>}
     
                 <Avatar className={cls.avatar} src={data?.avatarUrls} size={AvatarSize.XL} alt={data?.name}/>
-                {!edit && (
-                    <div className={cls.info_container}>
-                        <div className={cls.item}>
-                            <p className={cls.name}>
-                                {data?.name}
-                            </p>
-                        </div>
-                        {data?.email && <div className={cls.item}>
-                            {t('Почта')}: {data?.email}
-                        </div>}
-                        {data?.phone && <div className={cls.item}>
-                            {t('Телефон')}: {data?.phone}
-                        </div>}
-                        {data?.address && <div className={cls.item}>
-                            {t('Адрес')}: {data?.address}
-                        </div>}
-                        {data?.profession && <div className={cls.item}>
-                            {t('Профессия')}: {data?.profession}
-                        </div>}
-                        {data?.telegram && <div className={cls.item}>
-                            {t('Телеграм')}: {data?.telegram}
-                        </div>}
-                        {data?.instagram && <div className={cls.item}>
-                            {t('Инстаграм')}: {data?.instagram}
-                        </div>}
-            
-                    </div>
-                )}
-                {edit && (
-                    <div className={cls.info_container}>
-                        <Input 
-                            label={t('Ссылка на аватар')} 
-                            value={data?.avatarUrls}  
-                            onChange={handleChangeClientAvatar} 
-                            name='avatar'
-                            error={errors?.avatarUrls}
-                        />
-                        <Input 
-                            label={t('Имя')} 
-                            value={data?.name}  
-                            onChange={handleChangeClientName} 
-                            name='name' 
-                            error={errors.name}
-                        />
-                        <Input 
-                            label={t('Почта')} 
-                            value={data?.email}  
-                            onChange={handleChangeClientEmail} 
-                            name='email' 
-                            error={errors.email}
-                        />
-                        <Input 
-                            label={t('Телефон')} 
-                            value={data?.phone}  
-                            onChange={handleChangeClientPhone} 
-                            name='phone' 
-                            error={errors.phone}
-                        />
-                        <Input 
-                            label={t('Адрес')} 
-                            value={data?.address}  
-                            onChange={handleChangeClientAddress} 
-                            name='address' 
-                            error={errors.address}
-                        />
-                        <Input 
-                            label={t('Профессия')} 
-                            value={data?.profession}  
-                            onChange={handleChangeClientProfession} 
-                            name='profession' 
-                            error={errors.profession}
-                        />
-                        <Input 
-                            label={t('Инстаграм')} 
-                            value={data?.instagram}  
-                            onChange={handleChangeClientInstagram} 
-                            name='instagram' 
-                            error={errors.instagram}
-                        />
-                        <Input 
-                            label={t('Телеграм')} 
-                            value={data?.telegram}  
-                            onChange={handleChangeClientTelegram} 
-                            name='telegram' 
-                            error={errors.telegram}
-                        />
-                        <AppButton 
-                            theme={ButtonTheme.OUTLINED} 
-                            onClick={saveUser} 
-                            disabled={Object.values(errors).filter((item) => item !== '').length > 0 ? true : false}
-                        >
-                            {t('Сохранить')}
-                        </AppButton>
-                    </div>
-                )}
+                {!edit && <ClientInfo data={data} />}
+                {edit && <ClientForm 
+                    data={data}
+                    errors={errors}
+                    onChangeAvatar={handleChangeClientAvatar}
+                    onChangeClientAddress={handleChangeClientAddress}
+                    onChangeClientEmail={handleChangeClientEmail}
+                    onChangeClientInstagram={handleChangeClientInstagram}
+                    onChangeClientName={handleChangeClientName}
+                    onChangeClientPhone={handleChangeClientPhone}
+                    onChangeClientProfession={handleChangeClientProfession}
+                    onChangeClientTelegram={handleChangeClientTelegram}
+                    onSaveUser={saveUser}
+                />}
             </Box>
             { withNotes && <NoteBlock 
                 onlyRead={onlyRead}

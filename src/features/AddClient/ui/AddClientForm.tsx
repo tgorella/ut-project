@@ -1,8 +1,6 @@
 import cls from './AddClientForm.module.scss'
 import {memo, useCallback, useState} from 'react'
 import { t } from 'i18next'
-import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
-import { Input } from 'shared/ui/Input/Input'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { useSelector } from 'react-redux'
@@ -10,7 +8,7 @@ import { getNewClientData } from '../model/selectors/getNewClientData/getNewClie
 import { addClientAction, addClientReducer } from '../model/slice/AddClientSlice'
 import { Alert, AlertTheme } from 'shared/ui/Alert'
 import { PageLoader } from 'widgets/PageLoader'
-import { Client } from 'entities/Clients'
+import { Client, ClientForm } from 'entities/Clients'
 
 const reducers: ReducersList = {
     addClient: addClientReducer
@@ -83,67 +81,19 @@ const AddClientForm = memo(({onAddClient, added, error} : AddClientProps) => {
                 {data === undefined 
                     ? <PageLoader />
                     :(<>
-                        <Input  label={t('Ссылка на аватар')} 
-                            value={data?.avatarUrls}  
-                            onChange={handleChangeClientAvatar} 
-                            name='avatar'
-                            error={errors?.avatarUrls} />
-                        <Input 
-                            label={t('Имя')} 
-                            value={data?.name}  
-                            onChange={handleChangeClientName} 
-                            name='name' 
-                            error={errors.name}
+                        <ClientForm 
+                            data={data}
+                            errors={errors}
+                            onChangeAvatar={handleChangeClientAvatar}
+                            onChangeClientAddress={handleChangeClientAddress}
+                            onChangeClientEmail={handleChangeClientEmail}
+                            onChangeClientInstagram={handleChangeClientInstagram}
+                            onChangeClientName={handleChangeClientName}
+                            onChangeClientPhone={handleChangeClientPhone}
+                            onChangeClientProfession={handleChangeClientProfession}
+                            onChangeClientTelegram={handleChangeClientTelegram}
+                            onSaveUser={handleAddClient}
                         />
-                        <Input 
-                            label={t('Почта')} 
-                            value={data?.email}  
-                            onChange={handleChangeClientEmail} 
-                            name='email' 
-                            error={errors.email}
-                        />
-                        <Input 
-                            label={t('Телефон')} 
-                            value={data?.phone}  
-                            onChange={handleChangeClientPhone} 
-                            name='phone' 
-                            error={errors.phone}
-                        />
-                        <Input 
-                            label={t('Адрес')} 
-                            value={data?.address}  
-                            onChange={handleChangeClientAddress} 
-                            name='address' 
-                            error={errors.address}
-                        />
-                        <Input 
-                            label={t('Профессия')} 
-                            value={data?.profession}  
-                            onChange={handleChangeClientProfession} 
-                            name='profession' 
-                            error={errors.profession}
-                        />
-                        <Input 
-                            label={t('Инстаграм')} 
-                            value={data?.instagram}  
-                            onChange={handleChangeClientInstagram} 
-                            name='instagram' 
-                            error={errors.instagram}
-                        />
-                        <Input 
-                            label={t('Телеграм')} 
-                            value={data?.telegram}  
-                            onChange={handleChangeClientTelegram} 
-                            name='telegram' 
-                            error={errors.telegram}
-                        />
-                        <AppButton 
-                            theme={ButtonTheme.OUTLINED} 
-                            onClick={handleAddClient} 
-                            disabled={Object.values(errors).filter((item) => item !== '').length > 0 ? true : false}
-                        >
-                            {t('Добавить клиента')}
-                        </AppButton>
                     </>)}
             </div>
         </DynamicModuleLoader>

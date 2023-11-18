@@ -9,6 +9,7 @@ import { getClientDetailsIsLoading } from './model/selectors/getClientDetailsIsL
 import { updateClientData } from './model/services/updateClientData/updateClientData'
 import { clientDetailsAction, clientDetailsReducer } from './model/slice/clientDetailsSlice'
 import { ClientsList } from './ui/ClientsList/ClientsList'
+import { ClientForm } from './ui/ClientForm/ClientForm'
 
 
 export {
@@ -19,6 +20,7 @@ export {
     ClientCard,
     clientDetailsAction,
     ClientsList,
+    ClientForm,
     getClientDetailsData,
     getClientDetailsError,
     getClientDetailsForm,

@@ -1,0 +1,103 @@
+import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
+import { Input } from 'shared/ui/Input/Input'
+import cls from './OrderForm.module.scss'
+import { Order} from 'entities/Order'
+import { useTranslation } from 'react-i18next'
+
+interface OrderFormProps {
+  data: Order
+  errors: Partial<Order>,
+  onChangeTitle: (value: string) => void,
+  onChangeEventDate: (value: string) => void,
+  onChangePlace: (value: string) => void,
+  onChangeStartTime: (value: string) => void,
+  onChangeEndTime: (value: string) => void,
+  onChangeProjectType: (value: string) => void,
+  onChangeTotal: (value: string) => void,
+  OnSaveOrder: () => void
+
+}
+export const OrderForm = ({
+    data, 
+    errors, 
+    onChangeEndTime, 
+    onChangeEventDate, 
+    onChangePlace, 
+    onChangeProjectType,
+    onChangeTitle,
+    onChangeStartTime,
+    onChangeTotal,
+    OnSaveOrder
+
+} : OrderFormProps) => {
+    const {t} = useTranslation('orders')
+
+    return ( 
+        <div className={cls.info_container}>
+            <Input 
+                label={t('Заголовок')} 
+                value={data.title}  
+                onChange={onChangeTitle} 
+                name='title'
+                error={errors?.title}
+            />
+            <Input 
+                label={t('Проект')} 
+                value={data?.projectType}  
+                onChange={onChangeProjectType} 
+                name='projectType' 
+                error={errors.projectType}
+            />
+            <Input 
+                label={t('Дата')} 
+                value={data?.eventDate}  
+                onChange={onChangeEventDate} 
+                name='eventData' 
+                error={errors.eventDate}
+                type='date'
+            />
+            <Input 
+                label={t('Время начала')} 
+                value={data?.startTime}  
+                onChange={onChangeStartTime} 
+                name='startTime' 
+                error={errors.startTime}
+                type='number'
+                min="0"
+                max="24"
+            />
+            <Input 
+                label={t('Время окончания')} 
+                value={data?.endTime}  
+                onChange={onChangeEndTime} 
+                name='endTime' 
+                error={errors.endTime}
+                type='number'
+                min="0"
+                max="24"
+            />
+            <Input 
+                label={t('Адресс')} 
+                value={data?.place}  
+                onChange={onChangePlace} 
+                name='place' 
+                error={errors.place}
+            />
+            <Input 
+                label={t('Стоимость')} 
+                value={data?.total}  
+                onChange={onChangeTotal} 
+                name='telegram' 
+                error={errors.total}
+                type='number'
+            />
+            <AppButton 
+                theme={ButtonTheme.OUTLINED} 
+                onClick={OnSaveOrder} 
+                disabled={Object.values(errors).filter((item) => item !== '').length > 0 ? true : false}
+            >
+                {t('Сохранить')}
+            </AppButton>
+        </div>
+    )
+}

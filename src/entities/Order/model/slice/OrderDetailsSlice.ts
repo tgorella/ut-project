@@ -15,11 +15,11 @@ const initialState: OrderDetailsSchema = {
 const formInitialState: Order = {
     id: '',
     clientId: '',
-    total: 0,
+    total: '',
     notes: '',
     eventDate: '',
     eventType: '',
-    orderNumber: 0,
+    orderNumber: '',
     place: '',
     status: '',
     startTime: '',

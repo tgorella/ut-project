@@ -20,6 +20,7 @@ import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/Dynamic
 import { ClientCard } from 'entities/Clients'
 import { NoteBlock } from 'widgets/NoteBlock'
 import { updateOrderData } from '../../model/services/updateOrderData/updateOrderData'
+import { OrderForm } from '../OrderForm/OrderForm'
 
 interface OrderProps {
   className?: string;
@@ -38,6 +39,15 @@ export const OrderCard = memo(({className, id} : OrderProps) => {
     const error = useSelector(getOrderDetailsError)
     const [edit, setEdit] = useState(false)
     const [editNotes, setEditNotes] = useState(false)
+    const [errors] = useState({
+        title:'',
+        place: '',
+        total: '',
+        startTime: '',
+        endTime: '',
+        projectType: '',
+
+    })
 
     useEffect(() => {
         if (__PROJECT__ !== 'storybook') {
@@ -66,6 +76,39 @@ export const OrderCard = memo(({className, id} : OrderProps) => {
     const handleNoteEdit = useCallback((value: string) => {
         dispatch(orderDetailsAction.updateOrder({notes: value}))
     }, [dispatch])
+
+    const handleChangeEndTime = useCallback((value: string) => {
+        dispatch(orderDetailsAction.updateOrder({endTime: value}))
+    }, [dispatch])
+
+    const handleChangeStartTime = useCallback((value: string) => {
+        dispatch(orderDetailsAction.updateOrder({startTime: value}))
+    }, [dispatch])
+
+    const handleChangeEventDate = useCallback((value: string) => {
+        dispatch(orderDetailsAction.updateOrder({eventDay: value}))
+    }, [dispatch])
+
+    const handleChangePlace = useCallback((value: string) => {
+        dispatch(orderDetailsAction.updateOrder({place: value}))
+    }, [dispatch])
+
+    const handleChangeProjectType = useCallback((value: string) => {
+        dispatch(orderDetailsAction.updateOrder({projectType: value}))
+    }, [dispatch])
+
+    const handleChangeTotal = useCallback((value: string) => {
+        dispatch(orderDetailsAction.updateOrder({total: value}))
+    }, [dispatch])
+
+    const handleChangeTitle = useCallback((value: string) => {
+        dispatch(orderDetailsAction.updateOrder({title: value}))
+    }, [dispatch])
+
+    const handleSaveOrder = useCallback(() => {
+        dispatch(updateOrderData(id)).then(() => toggleEditMode())
+    }, [dispatch, id, toggleEditMode])
+
     let content 
     if (isLoading || !data) {
         content = <PageLoader />
@@ -86,18 +129,34 @@ export const OrderCard = memo(({className, id} : OrderProps) => {
                     footer={<Text title={'Стоимость: '+data?.total} />}
                 >
                     <EditSwitcher  editMode={edit} onEdit={toggleEditMode} onChancelEdit={handleChancelEdit}  className={cls.edit_btn}/>
-                    <div className={cls.item}>
-                        <b>{t('Дата')}: </b>{data?.eventDate}
-                    </div>
-                    <div className={cls.item}>
-                        <b>{t('Время')}: </b>{data?.startTime} - {data?.endTime}
-                    </div>
-                    <div className={cls.item}>
-                        <b>{t('Адрес')}: </b>{data?.place}
-                    </div>
-                    <div className={cls.item}>
-                        <b>{t('Продукт')}: </b>{data?.projectType}
-                    </div>
+                    {!edit && <>
+                        <div className={cls.item}>
+                            <b>{t('Дата')}: </b>{data?.eventDate}
+                        </div>
+                        <div className={cls.item}>
+                            <b>{t('Время')}: </b>{data?.startTime} - {data?.endTime}
+                        </div>
+                        <div className={cls.item}>
+                            <b>{t('Адрес')}: </b>{data?.place}
+                        </div>
+                        <div className={cls.item}>
+                            <b>{t('Продукт')}: </b>{data?.projectType}
+                        </div>
+                    </>}
+                    {edit && <OrderForm  
+                        data={data}
+                        errors={errors}
+                        onChangeEndTime={handleChangeEndTime}
+                        onChangeEventDate={handleChangeEventDate}
+                        onChangePlace={handleChangePlace}
+                        onChangeProjectType={handleChangeProjectType}
+                        onChangeStartTime={handleChangeStartTime}
+                        onChangeTitle={handleChangeTitle}
+                        onChangeTotal={handleChangeTotal}
+                        OnSaveOrder={handleSaveOrder}
+                    
+                    />}
+                    
                 </Box>
                 <NoteBlock value={data?.notes} onChancelEdit={handleChancelNoteEdit} onChange={handleNoteEdit} onSave={handleSaveNotes} />
             </div>

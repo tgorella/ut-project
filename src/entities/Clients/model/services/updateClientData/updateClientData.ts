@@ -11,9 +11,8 @@ export const updateClientData = createAsyncThunk<Client, string,ThunkConfig<stri
         const {rejectWithValue, extra, getState} = thunkAPI
         const formData = getClientDetailsForm(getState())
         try {
-          
             const {data} = await extra.api.put<Client>(`/clients/${id}`, formData)
-
+            
             if (!data) {
                 throw new Error('err')
             }

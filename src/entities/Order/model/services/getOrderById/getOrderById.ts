@@ -13,7 +13,7 @@ export const getOrderById = createAsyncThunk<Order, FilterProps ,ThunkConfig<str
         const {rejectWithValue, extra} = thunkAPI
         const {orderId, currentUserId} = filter
         try {
-            const {data} = await extra.api.get<Order>(`/orders/${orderId}?_expand=client`)
+            const {data} = await extra.api.get<Order>(`/orders/${orderId}`)
             if (data.userId !== currentUserId) {
                 return rejectWithValue(i18n.t('Клиент не найден'))
             }
