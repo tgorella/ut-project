@@ -19,7 +19,7 @@ describe('getClientById.test', () => {
         const thunk = new TestAsyncThunk(getClientById)
         thunk.api.get.mockReturnValue(Promise.resolve({data}))
 
-        const result = await thunk.callThunk({clientId:'643c5fe7013e22868a6eb63c', currentUserId: ''})
+        const result = await thunk.callThunk({clientId:'643c5fe7013e22868a6eb63c', currentUserId: '32'})
 
         expect(thunk.api.get).toHaveBeenCalled()
         expect(result.meta.requestStatus).toBe('fulfilled')
