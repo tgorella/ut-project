@@ -2,7 +2,6 @@
 import cls from './OrderCard.module.scss'
 import classNames from 'shared/lib/classNames/ClassNames'
 import {memo, useCallback, useEffect, useState} from 'react'
-import { useTranslation } from 'react-i18next'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { getOrderById } from '../../model/services/getOrderById/getOrderById'
 import { getUserAuthData } from 'entities/User'
@@ -21,6 +20,10 @@ import { ClientCard } from 'entities/Clients'
 import { NoteBlock } from 'widgets/NoteBlock'
 import { updateOrderData } from '../../model/services/updateOrderData/updateOrderData'
 import { OrderForm } from '../OrderForm/OrderForm'
+import { OrderStatusBlock, OrderStatusSelect, orderStatusReducer } from 'entities/OrderStatus'
+import { fetchOrderStatuses } from 'entities/OrderStatus/model/services/fetchOrderStatuses/fetchOrderStatuses'
+import { OrderInfo } from '../OrderInfo/OrderInfo'
+import { useTranslation } from 'react-i18next'
 
 interface OrderProps {
   className?: string;
@@ -28,7 +31,8 @@ interface OrderProps {
 }
 
 const reducers: ReducersList = {
-    orderDetails: orderDetailsReducer
+    orderDetails: orderDetailsReducer,
+    orderStatuses: orderStatusReducer
 }
 export const OrderCard = memo(({className, id} : OrderProps) => {
     const {t} = useTranslation('orders')
@@ -37,8 +41,8 @@ export const OrderCard = memo(({className, id} : OrderProps) => {
     const data = useSelector(getOrderDetailsForm)
     const isLoading = useSelector(getOrderDetailsIsLoading)
     const error = useSelector(getOrderDetailsError)
+    const [statusEdit, setStatusEdit] = useState(false)
     const [edit, setEdit] = useState(false)
-    const [editNotes, setEditNotes] = useState(false)
     const [errors] = useState({
         title:'',
         place: '',
@@ -53,25 +57,20 @@ export const OrderCard = memo(({className, id} : OrderProps) => {
         if (__PROJECT__ !== 'storybook') {
             if (authData) {
                 dispatch(getOrderById({orderId: id, currentUserId: authData.id}))
+                dispatch(fetchOrderStatuses())
             }
         }
     }, [authData, dispatch, id])
 
+    const toggleStatusEditMode = useCallback(() => setStatusEdit(!statusEdit) , [statusEdit])
     const toggleEditMode = useCallback(() =>setEdit(!edit), [edit])
     const handleChancelEdit = () => {
         dispatch(orderDetailsAction.chancelEdit())
         toggleEditMode()
     }
-    const toggleNoteEditMode = useCallback(() => setEditNotes(!editNotes), [editNotes])
     const handleChancelNoteEdit = useCallback(() => {
         dispatch(orderDetailsAction.chancelEdit())
-        toggleNoteEditMode()
-    }, [dispatch, toggleNoteEditMode])
-
-    const handleSaveNotes = useCallback(() => {
-        dispatch(updateOrderData(id)).then(() => toggleNoteEditMode())
-
-    }, [dispatch, id, toggleNoteEditMode])
+    }, [dispatch])
 
     const handleNoteEdit = useCallback((value: string) => {
         dispatch(orderDetailsAction.updateOrder({notes: value}))
@@ -86,7 +85,7 @@ export const OrderCard = memo(({className, id} : OrderProps) => {
     }, [dispatch])
 
     const handleChangeEventDate = useCallback((value: string) => {
-        dispatch(orderDetailsAction.updateOrder({eventDay: value}))
+        dispatch(orderDetailsAction.updateOrder({eventDate: value}))
     }, [dispatch])
 
     const handleChangePlace = useCallback((value: string) => {
@@ -105,9 +104,19 @@ export const OrderCard = memo(({className, id} : OrderProps) => {
         dispatch(orderDetailsAction.updateOrder({title: value}))
     }, [dispatch])
 
+    const handleChangeStatus = useCallback((value: string) => {
+        dispatch(orderDetailsAction.updateOrder({status: value}))
+        dispatch(updateOrderData(id))
+        toggleStatusEditMode()
+    }, [dispatch, id, toggleStatusEditMode])
+
     const handleSaveOrder = useCallback(() => {
         dispatch(updateOrderData(id)).then(() => toggleEditMode())
     }, [dispatch, id, toggleEditMode])
+
+    const handleSaveNotes = useCallback(() => {
+        dispatch(updateOrderData(id))
+    }, [dispatch, id])
 
     let content 
     if (isLoading || !data) {
@@ -118,49 +127,41 @@ export const OrderCard = memo(({className, id} : OrderProps) => {
         content = <NotFound />
     }
     else {
-        content = <div className={classNames(cls.OrderDetailsPage, {}, [className])}>
-            <div className={cls.small_column} >
-                <ClientCard id={data?.clientId} onlyRead={true} withNotes={false} />
+        content = <>
+            <div className={cls.status}>
+                {!statusEdit && <>{t('Статус')}: <OrderStatusBlock id={data?.status}/></>}
+                {statusEdit && <OrderStatusSelect onChange={handleChangeStatus} value={data.status}/>}
+                <EditSwitcher  editMode={statusEdit} onEdit={toggleStatusEditMode} onChancelEdit={toggleStatusEditMode} className={cls.status_edit_btn}/>
             </div>
-            <div className={cls.big_column}>
-                <Box 
-                    className={classNames(cls.Order, {}, [className])}
-                    header={data?.title}
-                    footer={<Text title={'Стоимость: '+data?.total} />}
-                >
-                    <EditSwitcher  editMode={edit} onEdit={toggleEditMode} onChancelEdit={handleChancelEdit}  className={cls.edit_btn}/>
-                    {!edit && <>
-                        <div className={cls.item}>
-                            <b>{t('Дата')}: </b>{data?.eventDate}
-                        </div>
-                        <div className={cls.item}>
-                            <b>{t('Время')}: </b>{data?.startTime} - {data?.endTime}
-                        </div>
-                        <div className={cls.item}>
-                            <b>{t('Адрес')}: </b>{data?.place}
-                        </div>
-                        <div className={cls.item}>
-                            <b>{t('Продукт')}: </b>{data?.projectType}
-                        </div>
-                    </>}
-                    {edit && <OrderForm  
-                        data={data}
-                        errors={errors}
-                        onChangeEndTime={handleChangeEndTime}
-                        onChangeEventDate={handleChangeEventDate}
-                        onChangePlace={handleChangePlace}
-                        onChangeProjectType={handleChangeProjectType}
-                        onChangeStartTime={handleChangeStartTime}
-                        onChangeTitle={handleChangeTitle}
-                        onChangeTotal={handleChangeTotal}
-                        OnSaveOrder={handleSaveOrder}
-                    
-                    />}
-                    
-                </Box>
-                <NoteBlock value={data?.notes} onChancelEdit={handleChancelNoteEdit} onChange={handleNoteEdit} onSave={handleSaveNotes} />
+            <div className={classNames(cls.OrderDetailsPage, {}, [className])}>
+                <div className={cls.small_column} >
+                    <ClientCard id={data?.clientId} onlyRead={true} withNotes={false} />
+                </div>
+                <div className={cls.big_column}>
+                    <Box 
+                        className={classNames(cls.Order, {}, [className])}
+                        header={data?.title}
+                        footer={<Text title={'Стоимость: '+data?.total} />}>
+                        <EditSwitcher  editMode={edit} onEdit={toggleEditMode} onChancelEdit={handleChancelEdit}  className={cls.edit_btn}/>
+                        {!edit && <OrderInfo orderInfo={data} />}
+                        {edit && <OrderForm  
+                            data={data}
+                            errors={errors}
+                            onChangeEndTime={handleChangeEndTime}
+                            onChangeEventDate={handleChangeEventDate}
+                            onChangePlace={handleChangePlace}
+                            onChangeProjectType={handleChangeProjectType}
+                            onChangeStartTime={handleChangeStartTime}
+                            onChangeTitle={handleChangeTitle}
+                            onChangeTotal={handleChangeTotal}
+                            OnSaveOrder={handleSaveOrder}
+                        />}
+                    </Box>
+                    <NoteBlock value={data?.notes} onChancelEdit={handleChancelNoteEdit} onChange={handleNoteEdit} onSave={handleSaveNotes} />
+                </div>
             </div>
-        </div>
+        </>
+        
     }
     return ( 
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={true}>

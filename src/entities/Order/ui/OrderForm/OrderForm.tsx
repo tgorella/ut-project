@@ -62,9 +62,7 @@ export const OrderForm = ({
                 onChange={onChangeStartTime} 
                 name='startTime' 
                 error={errors.startTime}
-                type='number'
-                min="0"
-                max="24"
+                type='time'
             />
             <Input 
                 label={t('Время окончания')} 
@@ -72,9 +70,7 @@ export const OrderForm = ({
                 onChange={onChangeEndTime} 
                 name='endTime' 
                 error={errors.endTime}
-                type='number'
-                min="0"
-                max="24"
+                type='time'
             />
             <Input 
                 label={t('Адресс')} 

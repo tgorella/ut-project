@@ -1,13 +1,73 @@
 import { ReducersMapObject } from '@reduxjs/toolkit'
 import { Decorator } from '@storybook/react'
 import { StateSchema, StoreProvider } from 'app/providers/StoreProvider'
+import { clientDetailsReducer } from 'entities/Clients'
 import { orderDetailsReducer } from 'entities/Order'
+import { orderStatusReducer } from 'entities/OrderStatus'
 
 export const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
-    orderDetails: orderDetailsReducer
+    orderDetails: orderDetailsReducer,
+    orderStatuses: orderStatusReducer,
+    clientDetails: clientDetailsReducer
 }
 
 export const orderDetails: DeepPartial<StateSchema> = {
+    clientDetails: {
+        isLoading: false,
+        data: {
+            id:'643c5fe7013e22868a6eb63c',
+            avatarUrls: 'https://amur.info/wp-content/uploads/2023/07/3-16-768x518.jpg',
+            name: 'Джонни Депп',
+            profession: 'актер',
+            email: 'name@mydomain.com',
+            phone: '89001234567',
+            notes: 'американский актёр, кинорежиссёр, музыкант, сценарист и продюсер.'
+        },
+        form: {
+            id:'643c5fe7013e22868a6eb63c',
+            avatarUrls: 'https://amur.info/wp-content/uploads/2023/07/3-16-768x518.jpg',
+            name: 'Джонни Депп',
+            profession: 'актер',
+            email: 'name@mydomain.com',
+            phone: '89001234567',
+            notes: 'американский актёр, кинорежиссёр, музыкант, сценарист и продюсер.'
+        }
+    },
+    orderStatuses: {
+        isLoading: false,
+        data: [{
+            id: '643e58deaba80539138865d0',
+            name: 'Завершен',
+            color: '#bde2a8',
+            isDefault: true
+        },
+        {
+            id: '643e58efaba80539138865d2',
+            name: 'Отменен',
+            color: '#ff759f',
+            isDefault: true
+        },
+        {
+            id: '643e5900aba80539138865d4',
+            name: 'Архив',
+            color: 'gray',
+            isDefault: true
+        },
+        {
+            id: '6467834500aba6813881d4',
+            name: 'Новый',
+            color: 'blue',
+            isDefault: true
+        },
+        {
+            id: '64492fd3d206f2a8b5f4298e',
+            name: 'В процессе',
+            color: '#d9cafe',
+            userId: '643c36ad8545463c883af7a8',
+            isDefault: false
+        }
+        ]
+    },
     orderDetails: {
         isLoading: false,
         data: {
@@ -19,10 +79,10 @@ export const orderDetails: DeepPartial<StateSchema> = {
             eventType: 'crm-work',
             orderNumber: '31',
             place: 'Лондон',
-            status: 'in-progress',
+            status: '643e58efaba80539138865d2',
             startTime: '10',
             endTime: '17',
-            title: 'Первый заказ Дориана',
+            title: 'Первый заказ Джонни',
             userId: '643c36ad8545463c883af7a8',
             createdAt: 1682348755138,
             updatedAt: 1684658867525,
@@ -49,7 +109,7 @@ export const orderDetails: DeepPartial<StateSchema> = {
             eventType: 'crm-work',
             orderNumber: '31',
             place: 'Лондон',
-            status: 'in-progress',
+            status: '643e58efaba80539138865d2',
             startTime: '10',
             endTime: '17',
             title: 'Первый заказ Дориана',

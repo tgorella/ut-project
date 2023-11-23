@@ -9,6 +9,7 @@
     position: absolute;
     right: 0;
     top: 0;
+    z-index: 999;
 }
 
 .show {
@@ -28,6 +29,7 @@
     right: 0;
     top: 0;
     width: 400px;
+    z-index: 1000;
 }
 
 .close_btn {

@@ -8,7 +8,7 @@ import { Client } from 'entities/Clients'
 import { ClientsPageSchema } from '../types/clientsPageSchema'
 import { fetchClients } from 'pages/ClientsPage/model/services/fetchAll/fetchClients'
 import { getClientsBySearch } from '../services/getClientsBySearch/getClientsBySearch'
-import { addClient } from '../services/AddClient/addClient'
+import { addClient } from '../../../../widgets/AddClientButton/module/services/AddClient/addClient'
 
 
 const clientsPageAdapter = createEntityAdapter<Client>({
@@ -26,9 +26,7 @@ const clientsPageSlice = createSlice({
         ids: [],
         entities: {},
         limit: 25,
-        _inited: false,
-        clientAdded: false,
-        clientAddError: undefined
+        _inited: false
     }),
     reducers: {
         setLimit: (state, action: PayloadAction<number>) => {
@@ -38,9 +36,6 @@ const clientsPageSlice = createSlice({
         initState: (state) => {
             state.limit = Number(localStorage.getItem('clients_limits')) || 25
             state._inited = true
-        },
-        resetAdded: (state) => {
-            state.clientAdded = false
         },
         clientDeleted: (state, action: PayloadAction<string>) => {
             clientsPageAdapter.removeOne(state, action.payload)
@@ -75,18 +70,9 @@ const clientsPageSlice = createSlice({
                 state.isLoading= false
                 state.error = action.payload
             })
-            .addCase(addClient.pending, (state) => {
-                state.clientAdded = false
-                state.clientAddError = undefined
-            })
             .addCase(addClient.fulfilled, (state, action) => {
-                state.clientAdded = true
                 clientsPageAdapter.addOne(state,action.payload)
             })
-            .addCase(addClient.rejected, (state, action) => {
-                state.clientAddError = action.payload
-            })
-          
     }
 })
 

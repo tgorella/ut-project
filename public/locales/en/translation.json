@@ -2,9 +2,14 @@
   "О сайте": "About us",
   "Главная страница": "Main page",
   "Первести": "translate",
-  "Loading": "Loading",
+  "Loading": {
+    "": {
+      "": {
+        "": "Loading..."
+      }
+    }
+  },
   "Такой страницы не существует": "Page not found",
-  "Загрузка": "Loading",
   "Перезагрузить страницу": "Reload page",
   "Мы уже над ней работаем": "we're allready working on it",
   "Произошла непредвиденная ошибка": "Something went wrong",
@@ -67,5 +72,6 @@
   "Дата": "Date",
   "Время": "Time",
   "Адрес": "Address",
-  "Продукт": "Products"
+  "Продукт": "Products",
+  "Статус": "Order status"
 }

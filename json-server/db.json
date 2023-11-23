@@ -143,7 +143,7 @@
       "status": "in-progress",
       "startTime": "10",
       "endTime": "17",
-      "title": "Первый заказ Дориана",
+      "title": "Первый заказ Chris Hemsworth",
       "userId": "643c36ad8545463c883af7a8",
       "createdAt": "1682348755138",
       "updatedAt": "1684658867525",
@@ -159,7 +159,103 @@
         "none",
         "none",
         "none"
-      ]
+      ],
+      "eventDay": "2023-12-09"
+    },
+    {
+      "id": "64469ad32e53c6a3456356b6",
+      "clientId": "643c5fc2013e22868a6eb636",
+      "total": "35000",
+      "notes": "Информация о заказе, какие-то тонкости, договоренности, заметки",
+      "eventDate": "2024-01-03",
+      "eventType": "crm-work",
+      "orderNumber": "32",
+      "place": "Лондон, Великобритания",
+      "status": "643e58efaba80539138865d2",
+      "startTime": "04:04",
+      "endTime": "09:08",
+      "title": "Первый заказ Chris Hemsworth",
+      "userId": "643c36ad8545463c883af7a8",
+      "createdAt": "1682348755138",
+      "updatedAt": "1684658867525",
+      "projectType": "6469da05312bc36f4e9ecedc",
+      "steps": [
+        "done",
+        "done",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none"
+      ],
+      "eventDay": "2023-12-09"
+    },
+    {
+      "id": "64469a2342423aa4c0746b6",
+      "clientId": "643c5fc2013e22868a6eb636",
+      "total": "35000",
+      "notes": "Информация о заказе, какие-то тонкости, договоренности, заметки\n...",
+      "eventDate": "2023-12-23",
+      "eventType": "crm-work",
+      "orderNumber": "76",
+      "place": "Лондон, Великобритания",
+      "status": "643e58deaba80539138865d0",
+      "startTime": "10:47",
+      "endTime": "18:03",
+      "title": "Первый заказ Chris Hemsworth",
+      "userId": "643c36ad8545463c883af7a8",
+      "createdAt": "1682348755138",
+      "updatedAt": "1684658867525",
+      "projectType": "6469da05312bc36f4e9ecedc",
+      "steps": [
+        "done",
+        "done",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none"
+      ],
+      "eventDay": "2023-12-09"
+    }
+  ],
+  "orderStatuses": [
+    {
+      "id": "643e58deaba80539138865d0",
+      "name": "Завершен",
+      "color": "#bde2a8",
+      "isDefault": true
+    },
+    {
+      "id": "643e58efaba80539138865d2",
+      "name": "Отменен",
+      "color": "#ff759f",
+      "isDefault": true
+    },
+    {
+      "id": "643e5900aba80539138865d4",
+      "name": "Архив",
+      "color": "gray",
+      "isDefault": true
+    },
+    {
+      "id": "6467834500aba6813881d4",
+      "name": "Новый",
+      "color": "blue",
+      "isDefault": true
+    },
+    {
+      "id": "64492fd3d206f2a8b5f4298e",
+      "name": "в процессе",
+      "color": "#d9cafe",
+      "userId": "643c36ad8545463c883af7a8",
+      "isDefault": false
     }
   ]
 }

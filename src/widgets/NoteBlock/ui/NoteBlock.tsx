@@ -30,6 +30,11 @@ export const NoteBlock = memo(({className, value = '', onChancelEdit, onChange, 
         toggleEditMode()
     }
 
+    const handleSave = () => {
+        onSave()
+        toggleEditMode()
+    }
+
     return ( 
         <Box header={t('Заметки')} className={classNames(cls.NoteBlock, {}, [className])}>
             {!onlyRead && 
@@ -61,7 +66,7 @@ export const NoteBlock = memo(({className, value = '', onChancelEdit, onChange, 
                     className={cls.text_area}
                 />
                 <AppButton
-                    onClick={onSave}
+                    onClick={handleSave}
                     theme={ButtonTheme.OUTLINED}
                     className={cls.btn}
                 >{t('Сохранить')}</AppButton>

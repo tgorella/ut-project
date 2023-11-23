@@ -66,17 +66,13 @@ export const OrderDetailsSlice = createSlice({
             })
             .addCase(updateOrderData.pending, (state) => {
                 state.error = undefined
-                state.isLoading = true
             })
             .addCase(updateOrderData.fulfilled, (state, action: PayloadAction<Order>) => {
-                state.isLoading = false
-                state.error = undefined
                 state.data = action.payload
                 state.form = action.payload
 
             })
             .addCase(updateOrderData.rejected, (state, action) => {
-                state.isLoading= false
                 state.error = action.payload
             })
     }

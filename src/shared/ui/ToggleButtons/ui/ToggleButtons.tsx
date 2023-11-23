@@ -14,7 +14,7 @@ export enum ToggleSize {
 }
 interface ToggleButtonsProps {
   className?: string;
-  onChange:(val: number | string) => void,
+  onChange:(val: string | number) => void,
   values: ToggleButtonValue[],
   size?: ToggleSize
 currentValue: string | number

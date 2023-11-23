@@ -1,9 +1,38 @@
 .OrderListItem {
+    align-items: center;
+    border-bottom: 1px solid  rgb(0 0 0 / 10%);
     display: flex;
-    justify-content: space-between;
+    padding: 5px 0;
+    width: 100%;
 }
 
 .item {
     cursor: pointer;
     width: 100%;
+}
+
+.number,
+.del {
+    cursor: pointer;
+    min-width: 100px;
+    padding: 0 10px;
+}
+
+.icon {
+    cursor: pointer;
+    fill: var(--primary-text);
+}
+
+.date {
+    cursor: pointer;
+    min-width: 150px;
+    text-align: center;
+}
+
+.status {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    min-width: 350px;
+    padding: 0 10px;
 }

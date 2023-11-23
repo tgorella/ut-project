@@ -14,8 +14,6 @@ import { PageLoader } from 'widgets/PageLoader'
 import cls from './ClientsPage.module.scss'
 import { ToggleButtonValue, ToggleButtons } from 'shared/ui/ToggleButtons'
 import { Searchbar } from 'widgets/Searchbar'
-import { AppButton, ButtonSize, ButtonTheme } from 'shared/ui/AppButton/AppButton'
-import ADD_CLIENT from 'shared/assets/img/add-client.svg'
 import { ClientsPageActions, ClientsPageReducer, getClients } from '../../model/slice/clientsPageSlice'
 import { getClientPageLimit } from '../../model/selectors/getClientPageLimit/getClientPageLimit'
 import { getClientsError } from '../../model/selectors/getClientsError/getClientsError'
@@ -23,10 +21,8 @@ import { getClientsIsLoading } from '../../model/selectors/getClientsIsLoading/g
 import { getClientsBySearch } from '../../model/services/getClientsBySearch/getClientsBySearch'
 import { ClientsList } from '../../../../entities/Clients/ui/ClientsList/ClientsList'
 import { getClientPageInited } from '../../model/selectors/getClientsPageInited/getClientsPageInited'
-import { PreviewWindow } from 'shared/ui/PreviewWindow'
-import { AddClientForm } from 'features/AddClient'
-import { addClient } from '../../model/services/AddClient/addClient'
-import { getAddClientAddedStatus, getAddClientError } from '../../model/selectors/addClient/addClient'
+import { HStack } from 'shared/ui/HStack/HStack'
+import { AddClientButton } from 'widgets/AddClientButton/ui/AddClientButton'
 
 const reducers: ReducersList = {
     clientsPage: ClientsPageReducer
@@ -40,13 +36,9 @@ const ClientsPage = memo(() => {
     const isLoading = useSelector(getClientsIsLoading)
     const error = useSelector(getClientsError)
     const [page, setPage] = useState(1)
-    const [openPreview, setOpenPreview] = useState(false)
     const limit = useSelector(getClientPageLimit) || 25
     const inited = useSelector(getClientPageInited)
-    const added = useSelector(getAddClientAddedStatus)
-    const newClientError = useSelector(getAddClientError)
 
-    const togglePreview = () => setOpenPreview(!openPreview)
     const handlePageUp = useCallback((num: number) => setPage(num), [])
     const handlePageDown = useCallback((num: number) => setPage(num), [])
     const handleChangeLimit = useCallback((num: number | string) => {
@@ -61,13 +53,8 @@ const ClientsPage = memo(() => {
         {title: '15', value: 15},
         {title: '25', value: 25},
         {title: '50', value: 50},
-        {title: '100', value: 100},
-
+        {title: '100', value: 100}
     ]
-    
-    const handleAddClient = useCallback((newClient) => {
-        dispatch(addClient(newClient))
-    }, [dispatch])
 
     useEffect(() => {
         if(__PROJECT__ !== 'storybook') {
@@ -91,22 +78,15 @@ const ClientsPage = memo(() => {
             <h1 className={cls.header}>
                 {t('Клиенты')}
             </h1>
-            <div className={cls.top_menu}>
-                <AppButton 
-                    size={ButtonSize.S} 
-                    theme={ButtonTheme.SOLID}
-                    onClick={togglePreview}
-                >
-                    <ADD_CLIENT className={cls.icon}/>{t('Добавить клиента')}
-                </AppButton>
+            <HStack className={cls.top_menu}>
+                <AddClientButton />
                 <div className={cls.searchBlock}>
                     <Searchbar onChange={handleSearch} placeholder={t('Введите имя, фамилию, email или номер телефона')} />
                 </div>
                 <div className={cls.toggle_item}>
                     {t('Записей на странице:')} <ToggleButtons onChange={handleChangeLimit} currentValue={limit} values={limitsValue} />
                 </div>
-                
-            </div>
+            </HStack>
             <Box className={cls.client_list}>
                 {!isLoading ?
                     (<ClientsList clients={filterClients} />)
@@ -121,11 +101,6 @@ const ClientsPage = memo(() => {
                 totalItems={!isLoading} 
                 pages={!isLoading}
             />
-            <PreviewWindow onClose={togglePreview} isOpen={openPreview} >
-                <Text title={t('Добавить нового клиента')} />
-                <AddClientForm  onAddClient={handleAddClient} added={added} error={newClientError}/>
-            </PreviewWindow>
-            
         </DynamicModuleLoader>
         
     )

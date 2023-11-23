@@ -2,25 +2,24 @@ import cls from './AddClientForm.module.scss'
 import {memo, useCallback, useState} from 'react'
 import { t } from 'i18next'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
-import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { useSelector } from 'react-redux'
 import { getNewClientData } from '../model/selectors/getNewClientData/getNewClientData'
-import { addClientAction, addClientReducer } from '../model/slice/AddClientSlice'
+import { addClientAction } from '../model/slice/AddClientSlice'
 import { Alert, AlertTheme } from 'shared/ui/Alert'
 import { PageLoader } from 'widgets/PageLoader'
 import { Client, ClientForm } from 'entities/Clients'
-
-const reducers: ReducersList = {
-    addClient: addClientReducer
-}
+import { PreviewWindow } from 'shared/ui/PreviewWindow'
+import { Text } from 'shared/ui/Text'
 
 export interface AddClientProps {
   onAddClient: (newClient: Client) => void;
   added?: boolean,
-  error?: string
+  error?: string,
+  isOpen: boolean,
+  onClose: () => void
 }
 
-const AddClientForm = memo(({onAddClient, added, error} : AddClientProps) => {
+const AddClientForm = memo(({onAddClient, added, error, isOpen, onClose} : AddClientProps) => {
     const dispatch = useAppDispatch()
     const [errors] = useState({
         name: '',
@@ -74,7 +73,8 @@ const AddClientForm = memo(({onAddClient, added, error} : AddClientProps) => {
         
     }
     return ( 
-        <DynamicModuleLoader reducers={reducers} removeAfterUnmount={true}>
+        <PreviewWindow onClose={onClose} isOpen={isOpen}>
+            <Text title={t('Добавить нового клиента')} />
             <div className={cls.info_container}>
                 {added && <Alert theme={AlertTheme.SUCCESS} text={t('Клиент успешно добавлен')} />}
                 {error && <Alert theme={AlertTheme.ERROR} text={t('Что-то пошло не так... Клиент не добавлен')} />}
@@ -96,8 +96,7 @@ const AddClientForm = memo(({onAddClient, added, error} : AddClientProps) => {
                         />
                     </>)}
             </div>
-        </DynamicModuleLoader>
-        
+        </PreviewWindow>
     )
 })
 

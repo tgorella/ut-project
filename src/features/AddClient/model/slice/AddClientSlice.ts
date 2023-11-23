@@ -18,8 +18,7 @@ const initialState: AddClientSchema = {
         instagram: '',
         address: '',
         isFav: false
-    },
-    error: undefined
+    }
     
 }
 
@@ -34,7 +33,6 @@ export const addClientSlice = createSlice({
             }
         },
         resetState: (state) => {
-            state.error = undefined
             state.data = initialState.data
         }
     }

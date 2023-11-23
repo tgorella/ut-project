@@ -3,11 +3,11 @@ import { ThunkConfig } from 'app/providers/StoreProvider'
 import i18n from 'shared/config/i18n/i18n'
 import { Client } from 'entities/Clients'
 import { getUserAuthData } from 'entities/User'
-import { ClientsPageActions } from '../../slice/clientsPageSlice'
+import { addClientButtonAction } from '../../slice/AddClientButtonSlice'
 
 
 export const addClient = createAsyncThunk<Client, Client,ThunkConfig<string>>(
-    'clientsPage/addClient',
+    'clientAddButton/addClient',
     async (newClient, thunkAPI) => {
         const {rejectWithValue, extra, dispatch, getState} = thunkAPI
         const authData = getUserAuthData(getState())
@@ -28,7 +28,7 @@ export const addClient = createAsyncThunk<Client, Client,ThunkConfig<string>>(
                 throw new Error('err')
             }
             setTimeout(() => {
-                dispatch(ClientsPageActions.resetAdded())
+                dispatch(addClientButtonAction.reset())
             }, 3000)
             return data
         } catch (error) {

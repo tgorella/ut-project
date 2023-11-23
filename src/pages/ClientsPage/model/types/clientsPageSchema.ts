@@ -5,8 +5,6 @@ export interface ClientsPageSchema extends EntityState<Client> {
 isLoading?: boolean,
 error?: string,
 limit: number,
-_inited: boolean,
-clientAdded?: boolean,
-clientAddError?: string
+_inited: boolean
 
 }

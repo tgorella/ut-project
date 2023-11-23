@@ -6,13 +6,27 @@ import { Order } from 'entities/Order'
 const initialState: OrdersPageSchema = {
     isLoading: false,
     data: undefined,
-    error: undefined
+    error: undefined,
+    limit: 25,
+    search: ''
+    
 }
 
 export const ordersPageSlice = createSlice({
     name: 'ordersPage',
     initialState,
-    reducers: {},
+    reducers: {
+        setLimit: (state, action: PayloadAction<number>) => {
+            state.limit = action.payload
+            localStorage.setItem('orders_limit', action.payload.toString())
+        },
+        initState: (state) => {
+            state.limit = Number(localStorage.getItem('orders_limit')) || 25
+        },
+        setSearch: (state, action: PayloadAction<string>) => {
+            state.search = action.payload
+        }
+    },
     extraReducers(builder) {
         builder
             .addCase(fetchAllOrders.pending, (state) => {

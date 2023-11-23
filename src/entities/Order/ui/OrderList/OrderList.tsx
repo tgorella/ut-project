@@ -1,6 +1,6 @@
 import cls from './OrderList.module.scss'
 import classNames from 'shared/lib/classNames/ClassNames'
-import {memo} from 'react'
+import {memo, useCallback} from 'react'
 import { Order } from 'entities/Order/model/types/OrderSchema'
 import { Text, TextAlign } from 'shared/ui/Text'
 import { useTranslation } from 'react-i18next'
@@ -33,6 +33,10 @@ export const OrderList = memo(({className, orders = [], isLoading} : OrderListPr
         ]
     }
 
+    const handleDelete = useCallback((id: string) => {
+        console.log(id)
+    }, [])
+
     if (isLoading) {
         return <PageLoader />
     }
@@ -45,7 +49,7 @@ export const OrderList = memo(({className, orders = [], isLoading} : OrderListPr
         <div className={classNames(cls.OrderList, {}, [className])} style={{gridTemplateColumns: `repeat(${columns.length}, calc((100% - 50px) / ${columns.length})) 50px`}}>
             {
                 orders.map((order) => {
-                    return <OrderListItem order={order} columns={columns} key={order.id}/>
+                    return <OrderListItem order={order} columns={columns} key={order.id} onDelete={handleDelete}/>
                 })
             }
         </div>
