@@ -58,15 +58,3 @@
     fill: var(--primary-text);
     margin-right: 10px;
 }
-
-.modal_btns_wrapper {
-    display: flex;
-    gap: 10px;
-    justify-content: space-between;
-    margin-top: 20px;
-    width: 100%;
-
-    button {
-        width: 100%;
-    }
-}

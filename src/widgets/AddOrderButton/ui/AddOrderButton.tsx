@@ -16,13 +16,14 @@ import { getAddOrderAddedStatus, getAddOrderError } from '../model/selectors/add
 
 const reducers: ReducersList = {
     addOrderButton: addOrderButtonReducer,
-    addOrder: addOrderReducer
+    addOrder: addOrderReducer,
 }
 interface AddOrderButtonProps {
   className?: string;
-  withClient: boolean
+  withClient: boolean;
+  buttonTheme: ButtonTheme
 }
-export const AddOrderButton = memo(({className, withClient = false} : AddOrderButtonProps) => {
+export const AddOrderButton = memo(({className, withClient = false, buttonTheme} : AddOrderButtonProps) => {
     const {t} = useTranslation('orders')
     const [openPreview, setOpenPreview] = useState(false)
     const togglePreview = () => setOpenPreview(!openPreview)
@@ -47,10 +48,10 @@ export const AddOrderButton = memo(({className, withClient = false} : AddOrderBu
     }, [client, dispatch, withClient])
     return ( 
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={true}>
-            <div className={classNames(cls.AddClientButton, {}, [className])}>
+            <div className={classNames(cls.AddOrderButton, {}, [className])}>
                 <AppButton 
                     size={ButtonSize.S} 
-                    theme={ButtonTheme.SOLID}
+                    theme={buttonTheme}
                     onClick={togglePreview}
                 >
                     <ADD_ORDER_ICON className={cls.icon}/>{t('Добавить заказ')}

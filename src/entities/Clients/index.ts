@@ -10,13 +10,14 @@ import { updateClientData } from './model/services/updateClientData/updateClient
 import { clientDetailsAction, clientDetailsReducer } from './model/slice/clientDetailsSlice'
 import { ClientsList } from './ui/ClientsList/ClientsList'
 import { ClientForm } from './ui/ClientForm/ClientForm'
-
+import { deleteClient } from './model/services/deleteClient/deleteClient'
 
 export {
     Client,
     ClientDetailsSchema,
     getClientById,
     updateClientData,
+    deleteClient,
     ClientCard,
     clientDetailsAction,
     ClientsList,

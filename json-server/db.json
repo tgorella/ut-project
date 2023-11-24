@@ -283,25 +283,6 @@
       "updatedAt": 0
     },
     {
-      "id": "1700785131427",
-      "clientId": "",
-      "total": "13000",
-      "notes": "",
-      "eventDate": "2023-09-29",
-      "eventType": "work",
-      "orderNumber": "101",
-      "place": "лондон",
-      "status": "6467834500aba6813881d4",
-      "startTime": "17:00",
-      "endTime": "21:00",
-      "title": "равырыывр",
-      "userId": "643c36ad8545463c883af7a8",
-      "projectType": "83475397",
-      "steps": [],
-      "createdAt": "1700785131427",
-      "updatedAt": 0
-    },
-    {
       "id": "1700786281984",
       "clientId": "643c5fce013e22868a6eb638",
       "total": "10000",
