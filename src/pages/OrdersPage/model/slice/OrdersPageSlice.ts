@@ -25,6 +25,9 @@ export const ordersPageSlice = createSlice({
         },
         setSearch: (state, action: PayloadAction<string>) => {
             state.search = action.payload
+        },
+        orderDeleted: (state, action) => {
+            state.data = state.data?.filter((item) => item.id !== action.payload)
         }
     },
     extraReducers(builder) {

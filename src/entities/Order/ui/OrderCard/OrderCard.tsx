@@ -1,7 +1,7 @@
 /* eslint-disable i18next/no-literal-string */
 import cls from './OrderCard.module.scss'
 import classNames from 'shared/lib/classNames/ClassNames'
-import {memo, useCallback, useEffect, useState} from 'react'
+import {ReactNode, memo, useCallback, useEffect, useState} from 'react'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { getOrderById } from '../../model/services/getOrderById/getOrderById'
 import { getUserAuthData } from 'entities/User'
@@ -27,14 +27,15 @@ import { useTranslation } from 'react-i18next'
 
 interface OrderProps {
   className?: string;
-  id: string
+  id: string;
+  children?: ReactNode
 }
 
 const reducers: ReducersList = {
     orderDetails: orderDetailsReducer,
     orderStatuses: orderStatusReducer
 }
-export const OrderCard = memo(({className, id} : OrderProps) => {
+export const OrderCard = memo(({className, id, children} : OrderProps) => {
     const {t} = useTranslation('orders')
     const dispatch = useAppDispatch()
     const authData = useSelector(getUserAuthData)
@@ -135,6 +136,7 @@ export const OrderCard = memo(({className, id} : OrderProps) => {
             </div>
             <div className={classNames(cls.OrderDetailsPage, {}, [className])}>
                 <div className={cls.small_column} >
+                    {children}
                     <ClientCard id={data?.clientId} onlyRead={true} withNotes={false} />
                 </div>
                 <div className={cls.big_column}>

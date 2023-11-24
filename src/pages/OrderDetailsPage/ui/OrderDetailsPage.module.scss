@@ -43,3 +43,18 @@
         width: 100%;
     }
 }
+
+.button_wrapper {
+    margin-bottom: 20px;
+
+    button {
+        display: flex;
+        margin-bottom: 5px;
+        width: 100%;
+    }
+}
+
+.icon {
+    fill: var(--primary-text);
+    margin-right: 10px;
+}
