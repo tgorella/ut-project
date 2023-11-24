@@ -46,12 +46,15 @@ export const OrderList = memo(({className, orders = [], isLoading} : OrderListPr
         </div>
     }
     return ( 
-        <div className={classNames(cls.OrderList, {}, [className])} style={{gridTemplateColumns: `repeat(${columns.length}, calc((100% - 50px) / ${columns.length})) 50px`}}>
-            {
-                orders.map((order) => {
-                    return <OrderListItem order={order} columns={columns} key={order.id} onDelete={handleDelete}/>
-                })
-            }
-        </div>
+        <table className={classNames(cls.OrderList, {}, [className])} style={{gridTemplateColumns: `repeat(${columns.length}, calc((100% - 50px) / ${columns.length})) 50px`}}>
+            <tbody>
+                {
+                    orders.map((order) => {
+                        return <OrderListItem order={order} columns={columns} key={order.id} onDelete={handleDelete}/>
+                    })
+                }
+            </tbody>
+            
+        </table>
     )
 })

@@ -73,5 +73,13 @@
   "Время": "Time",
   "Адрес": "Address",
   "Продукт": "Products",
-  "Статус": "Order status"
+  "Статус": "Order status",
+  "Заказ успешно добавлен": "Success! Order has been added.",
+  "Что-то пошло не так": {
+    "": {
+      "": {
+        " Заказ не добавлен": "Something went wrong. Order hasn't been added."
+      }
+    }
+  }
 }

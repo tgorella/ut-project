@@ -1,5 +1,6 @@
 import { getProfileData } from './model/selectors/getProfileData/getProfileData'
 import { getProfileForm } from './model/selectors/getProfileForm/getProfileForm'
+import { getProfileLastOrderNumber } from './model/selectors/getProfileLastOrderNumber/getProfileLastOrderNumber'
 import { getProfileLoadingError } from './model/selectors/getProfileLoadingError/getProfileLoadingError'
 import { getProfileLoadingStatus } from './model/selectors/getProfileLoadingStatus/getProfileLoadingStatus'
 import { getProfileReadOnly } from './model/selectors/getProfileReadOnly/getProfileReadOnly'
@@ -16,6 +17,7 @@ export {
     profileReducer, 
     fetchProfileData, 
     ProfileCard, 
+    getProfileLastOrderNumber,
     getProfileData, 
     getProfileLoadingError, 
     getProfileLoadingStatus,

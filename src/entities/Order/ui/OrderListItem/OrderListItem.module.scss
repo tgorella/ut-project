@@ -8,13 +8,23 @@
 
 .item {
     cursor: pointer;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
     width: 100%;
 }
 
-.number,
-.del {
+.number {
     cursor: pointer;
     min-width: 100px;
+    padding: 0 10px;
+}
+
+.del {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    min-width: 60px;
     padding: 0 10px;
 }
 
@@ -33,6 +43,6 @@
     cursor: pointer;
     display: flex;
     justify-content: center;
-    min-width: 350px;
+    min-width: 270px;
     padding: 0 10px;
 }

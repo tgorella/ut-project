@@ -6,25 +6,27 @@ import { OrderStatusesSchema } from 'entities/OrderStatus'
 import { ProfileSchema } from 'entities/Profile'
 import { UserSchema } from 'entities/User'
 import { AddClientSchema } from 'features/AddClient'
+import { AddOrderSchema } from 'features/AddOrder/model/types/addOrderSchema'
 import { LoginSchema } from 'features/AuthByUsername'
 import { ClientsPageSchema } from 'pages/ClientsPage'
 import { OrdersPageSchema } from 'pages/OrdersPage/model/types/OrdersPageSchema'
 import { AddClientButtonSchema } from 'widgets/AddClientButton/module/types/AddClientButtonSchema'
+import { AddOrderButtonSchema } from 'widgets/AddOrderButton/model/types/AddOrderButton'
 
 export interface StateSchema {
   user: UserSchema,
-
+  profile: ProfileSchema,
 
   // Async reducers
   loginForm?: LoginSchema,
-  profile?: ProfileSchema,
   clientDetails?: ClientDetailsSchema,
   clientsPage?: ClientsPageSchema,
   addClient?: AddClientSchema,
   addClientButton?: AddClientButtonSchema
   orderDetails?: OrderDetailsSchema,
   ordersPage?: OrdersPageSchema,
-  addOrderButton?: AddClientButtonSchema,
+  addOrder?: AddOrderSchema,
+  addOrderButton?: AddOrderButtonSchema,
   orderStatuses?: OrderStatusesSchema
 }
 

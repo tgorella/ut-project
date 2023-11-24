@@ -1,4 +1,4 @@
-import { EntityId } from '@reduxjs/toolkit/dist/entities/models'
+// import { EntityId } from '@reduxjs/toolkit/dist/entities/models'
 
 export interface DataWithCount {
   data: Client[],
@@ -6,7 +6,7 @@ export interface DataWithCount {
 }
 
 export interface Client {
-id?: EntityId;
+id?: string;
 name?: string;
 email?: string;
 notes?: string;

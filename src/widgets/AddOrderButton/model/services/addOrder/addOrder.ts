@@ -4,25 +4,46 @@ import i18n from 'shared/config/i18n/i18n'
 import { getUserAuthData } from 'entities/User'
 import { Order } from 'entities/Order'
 import { addOrderButtonAction } from '../../slice/AddOrderButtonSlice'
+import { getProfileLastOrderNumber, profileAction, updateProfileData } from 'entities/Profile'
+import { getClientDetailsData } from 'entities/Clients'
 
-
-export const addOrder = createAsyncThunk<Order, Order,ThunkConfig<string>>(
+interface addOrderProps {
+  newOrder: Order,
+ isClientPage: boolean,
+ client?: string
+}
+export const addOrder = createAsyncThunk<Order, addOrderProps,ThunkConfig<string>>(
     'orderAddButton/addOrder',
-    async (newOrder, thunkAPI) => {
+    async (props, thunkAPI) => {
+        const {newOrder, isClientPage, client} = props
         const {rejectWithValue, extra, dispatch, getState} = thunkAPI
         const authData = getUserAuthData(getState())
+        const clientData = getClientDetailsData(getState())
+        const lastOrder = getProfileLastOrderNumber(getState())
         
         if (!authData || !newOrder) {
             return rejectWithValue(i18n.t('no data'))
         }
+        const updatedOrder = {
+            ...newOrder,
+            userId: authData.id ,
+            id: Date.now().toString(),
+            createdAt: Date.now().toString(),
+            status: '6467834500aba6813881d4',
+            orderNumber: lastOrder,
+            clientId: clientData?.id
+        }
 
+        if (!isClientPage) {
+            updatedOrder.clientId = client
+        }
         try {
             const {data} = await extra.api.post<Order>('/orders', {
-                ...newOrder,
-                userId: authData.id ,
-                id: Date.now().toString(),
-                createdAt: Date.now().toString()
+                ...updatedOrder
             })
+            dispatch(profileAction.increaseOrderNumber())
+            dispatch(updateProfileData())
+
 
             if (!data) {
                 throw new Error('err')

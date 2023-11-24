@@ -15,6 +15,7 @@ import { Text, TextAlign } from 'shared/ui/Text'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { deleteClient } from 'entities/Clients/model/services/deleteClient/deleteClient'
 import { useSelector } from 'react-redux'
+import { AddOrderButton } from 'widgets/AddOrderButton'
 
 interface ClientDetailPageProps {
   className?: string;
@@ -57,6 +58,7 @@ const ClientDetailPage = memo(({className} : ClientDetailPageProps) => {
                     <div className={cls.small_column} >
                         {!isLoading && <Box className={cls.button_wrapper}>
                             <AppButton theme={ButtonTheme.SOLID} onClick={backHandel}><BACK_ICON className={cls.icon}/> {t('Назад')}</AppButton>
+                            <AddOrderButton withClient={false }/>
                             {!error && <AppButton theme={ButtonTheme.OUTLINED_GRAY} onClick={togglePreview}><ADD_ORDER className={cls.icon}/> {t('Добавить заказ')}</AppButton>}
                             {!error && <AppButton theme={ButtonTheme.OUTLINED_GRAY} onClick={toggleModal}><DEL_CLIENT className={cls.icon}/> {t('Удалить клиента')}</AppButton>}
                         </Box>}

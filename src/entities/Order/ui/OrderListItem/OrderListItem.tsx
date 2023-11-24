@@ -55,14 +55,14 @@ export const OrderListItem = ({className, order, columns, onDelete} : OrderListI
             break
         }
 
-        return <div className={itemClass} key={order.id+'_'+column.path} onClick={onClick}>{itemContent}</div>
+        return <td className={itemClass} key={order.id+'_'+column.path} onClick={onClick}>{itemContent}</td>
     }
     
     return ( 
-        <div className={classNames(cls.OrderListItem, {}, [className])}>
+        <tr className={classNames(cls.OrderListItem, {}, [className])}>
             {columns.map((column) => {
                 return generateItemCode(column)
             })}
-        </div>
+        </tr>
     )
 }

@@ -12,7 +12,7 @@ const initialState: ClientDetailsSchema = {
 }
 
 const formInitialState: Client = {
-    id: Date.now(),
+    id: Date.now().toString(),
     name: '',
     email: '',
     notes: '',
