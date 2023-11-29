@@ -1,5 +1,5 @@
 import {PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { Profile, ProfileSchema } from '../types/profileSchema'
+import { Modules, Profile, ProfileSchema } from '../types/profileSchema'
 import { fetchProfileData } from '../services/fetchProfileData/fetchProfileData'
 import { updateProfileData } from '../services/updateProfileData/updateProfileData'
 
@@ -7,7 +7,8 @@ const initialState: ProfileSchema = {
     readonly: true,
     isLoading: false,
     error: undefined,
-    data: undefined
+    data: undefined,
+    modules: undefined
 }
 
 export const profileSlice = createSlice({
@@ -30,6 +31,18 @@ export const profileSlice = createSlice({
         increaseOrderNumber: (state) => {
             state.data!.lastOrderNumber = (Number(state.data?.lastOrderNumber) + 1).toString()
             state.form!.lastOrderNumber = (Number(state.form?.lastOrderNumber) + 1).toString()
+        },
+        updateModulesVisibility: (state, action: PayloadAction<Partial<Modules>>) => {
+            state.modules = {
+                ...state.modules,
+                ...action.payload
+            }
+        },
+        initModules: (state) => {
+            state.data!.modules = {
+                clients: true,
+                orders: true
+            }
         }
     },
     extraReducers(builder) {
@@ -41,8 +54,11 @@ export const profileSlice = createSlice({
             .addCase(fetchProfileData.fulfilled, (state, action: PayloadAction<Profile>) => {
                 state.isLoading = false
                 state.error = undefined
-                state.data = action.payload
-                state.form = action.payload
+                state.modules = action.payload.modules
+                const profileData = action.payload
+                delete profileData.modules
+                state.data = profileData
+                state.form = profileData
 
             })
             .addCase(fetchProfileData.rejected, (state, action) => {

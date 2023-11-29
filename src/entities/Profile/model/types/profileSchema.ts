@@ -2,7 +2,8 @@ import { Country } from 'entities/Country'
 import { Currency } from 'entities/Currency'
 
 export type Modules = {
-  clients: boolean,
+  clients?: boolean,
+  orders?: boolean,
 }
 export interface Profile {
   firstname?: string,
@@ -13,15 +14,15 @@ export interface Profile {
   city?: string,
   username?: string,
   avatar?: string,
-  lastOrderNumber?: string 
+  lastOrderNumber?: string,
+  modules?: Modules,
 }
 
 export interface ProfileSchema {
   data?: Profile,
   form?: Profile,
-  modules?: Modules,
   isLoading: boolean,
   error?: string,
   readonly: boolean,
-
+  modules?: Modules,
 }

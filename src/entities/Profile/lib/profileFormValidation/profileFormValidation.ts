@@ -20,7 +20,8 @@ const profileFormValidation = (data: Profile) => {
         currency: '',
         username: '',
         country: '',
-        lastOrderNumber: ''
+        lastOrderNumber: '',
+        modules: ''
     }
    
     const config : Record<string, Method>= {
