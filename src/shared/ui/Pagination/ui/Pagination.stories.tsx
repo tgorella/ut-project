@@ -18,8 +18,7 @@ export const Default: Story = {
         currentPage: 2,
         itemsLength: 64,
         itemsPerPage: 30,
-        onPageDown: () => {},
-        onPageUp: () => {}
+        onPageChange: () => {}
     },
     decorators: [
         WithColorsTheme
@@ -36,8 +35,7 @@ export const FirstPage: Story = {
         currentPage: 1,
         itemsLength: 64,
         itemsPerPage: 30,
-        onPageDown: () => {},
-        onPageUp: () => {}
+        onPageChange: () => {}
     },
     decorators: [
         WithColorsTheme
@@ -54,8 +52,7 @@ export const LastPage: Story = {
         currentPage: 3,
         itemsLength: 64,
         itemsPerPage: 30,
-        onPageDown: () => {},
-        onPageUp: () => {}
+        onPageChange: () => {}
     },
     decorators: [
         WithColorsTheme
@@ -73,8 +70,7 @@ export const WithoutTotalPages: Story = {
         itemsLength: 64,
         itemsPerPage: 30,
         pages: false,
-        onPageDown: () => {},
-        onPageUp: () => {}
+        onPageChange: () => {}
     },
     decorators: [
         WithColorsTheme
@@ -92,8 +88,7 @@ export const WithoutTotalItems: Story = {
         itemsLength: 64,
         itemsPerPage: 30,
         totalItems: false,
-        onPageDown: () => {},
-        onPageUp: () => {}
+        onPageChange: () => {}
     },
     decorators: [
         WithColorsTheme

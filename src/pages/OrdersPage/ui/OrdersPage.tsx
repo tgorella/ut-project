@@ -18,6 +18,7 @@ import { getOrdersPageLimit } from '../model/selectors/getOrdersLimit/getOrdersP
 import { getOrdersPageSearch } from '../model/selectors/getOrdersPageSearch/getOrdersPageSearch'
 import { orderStatusReducer } from 'entities/OrderStatus'
 import { fetchOrderStatuses } from 'entities/OrderStatus/model/services/fetchOrderStatuses/fetchOrderStatuses'
+import { Pagination } from 'shared/ui/Pagination'
 
 // interface OrdersPageProps {
 //   className?: string;
@@ -33,6 +34,7 @@ const OrdersPage = memo(() => {
     const isLoading = useSelector(getOrdersPageIsLoading)
     const dispatch = useAppDispatch()
     const limit = useSelector(getOrdersPageLimit) || 25
+    const [page, setPage] = useState(1)
     const [openPreview, setOpenPreview] = useState(false)
     const search = useSelector(getOrdersPageSearch) || ''
 
@@ -44,6 +46,8 @@ const OrdersPage = memo(() => {
         {title: '100', value: 100}
     ]
 
+    const handleChangePage = useCallback((num: number) => setPage(num), [])
+
     const handleSearch = useCallback((val: string) => {
         dispatch(ordersPageAction.setSearch(val))
     }, [dispatch])
@@ -51,6 +55,8 @@ const OrdersPage = memo(() => {
     const handleChangeLimit = useCallback((num: number | string) => {
         dispatch(ordersPageAction.setLimit(Number(num)))
     }, [dispatch])
+
+    const filteresOrders = orders?.slice((page-1)*limit, page*limit)
 
     useEffect(() => {
         if (__PROJECT__ !== 'storybook') {
@@ -78,9 +84,16 @@ const OrdersPage = memo(() => {
                     {t('Записей на странице:')} <ToggleButtons onChange={handleChangeLimit} currentValue={limit} values={limitsValue} />
                 </div>
             </HStack>
-            <Box>
-                <OrderList orders={orders} isLoading={isLoading} />
+            <Box className={cls.orders_list}>
+                <OrderList orders={filteresOrders} isLoading={isLoading} />
             </Box>
+            <Pagination 
+                itemsLength={orders?.length || 0} 
+                itemsPerPage={limit} 
+                currentPage={page} 
+                onPageChange={handleChangePage }
+                totalItems={!isLoading} 
+                pages={!isLoading} />
                 
         </DynamicModuleLoader>
         

@@ -39,8 +39,7 @@ const ClientsPage = memo(() => {
     const limit = useSelector(getClientPageLimit) || 25
     const inited = useSelector(getClientPageInited)
 
-    const handlePageUp = useCallback((num: number) => setPage(num), [])
-    const handlePageDown = useCallback((num: number) => setPage(num), [])
+    const handlePageChange = useCallback((num: number) => setPage(num), [])
     const handleChangeLimit = useCallback((num: number | string) => {
         dispatch(ClientsPageActions.setLimit(Number(num)))
     }, [dispatch])
@@ -93,8 +92,7 @@ const ClientsPage = memo(() => {
                     : ( <PageLoader />)}
             </Box>
             <Pagination 
-                onPageDown={handlePageDown} 
-                onPageUp={handlePageUp} 
+                onPageChange={handlePageChange} 
                 currentPage={page} 
                 itemsPerPage={limit} 
                 itemsLength={clients?.length || 0} 

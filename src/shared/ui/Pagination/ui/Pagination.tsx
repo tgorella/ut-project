@@ -10,10 +10,9 @@ interface PaginationProps {
   currentPage: number;
   pages?: boolean;
   totalItems?: boolean;
-  onPageUp: (page: number) => void;
-  onPageDown: (page: number) => void;
+  onPageChange: (page: number) => void;
 }
-export const Pagination = memo(({className, itemsLength, itemsPerPage, currentPage, totalItems = true, pages = true, onPageDown, onPageUp} : PaginationProps) => {
+export const Pagination = memo(({className, itemsLength, itemsPerPage, currentPage, totalItems = true, pages = true, onPageChange} : PaginationProps) => {
     const {t} = useTranslation()
     const totalPages = Math.ceil(itemsLength / itemsPerPage)
     return ( 
@@ -21,12 +20,12 @@ export const Pagination = memo(({className, itemsLength, itemsPerPage, currentPa
             <div className={cls.wrapper}>
                 {currentPage !== 1 && (
                     <>
-                        <div className={cls.page} onClick={() => onPageDown(1)}>
+                        <div className={cls.page} onClick={() => onPageChange(1)}>
                             {t('«')}
                         </div>
                         <div
                             className={cls.page}
-                            onClick={() => onPageDown(currentPage-1)}>
+                            onClick={() => onPageChange(currentPage-1)}>
                             {t('←')}
                         </div>
                     </>
@@ -34,10 +33,10 @@ export const Pagination = memo(({className, itemsLength, itemsPerPage, currentPa
                 <div className={cls.page} >{currentPage}</div>
                 {currentPage !== totalPages && (
                     <>
-                        <div className={cls.page} onClick={() => onPageUp(currentPage+1)}>
+                        <div className={cls.page} onClick={() => onPageChange(currentPage+1)}>
                             {t('→')}
                         </div>
-                        <div className={cls.page} onClick={() => onPageUp(totalPages)}>
+                        <div className={cls.page} onClick={() => onPageChange(totalPages)}>
                             {t('»')}
                         </div>
                     </>

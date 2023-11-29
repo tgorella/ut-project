@@ -17,7 +17,7 @@ const meta: Meta<typeof Box> = {
 // eslint-disable-next-line i18next/no-literal-string
 const content = <Text text='Клиентов пока нет'/>
 
-const pagination = <Pagination currentPage={2} itemsLength={64} itemsPerPage={30} onPageDown={() => {}} onPageUp={()=> {}} />
+const pagination = <Pagination currentPage={2} itemsLength={64} itemsPerPage={30} onPageChange={() => {}} />
 
 export default meta
 type Story = StoryObj<typeof Box>;
