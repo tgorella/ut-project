@@ -81,5 +81,7 @@
         " Заказ не добавлен": "Something went wrong. Order hasn't been added."
       }
     }
-  }
+  },
+  "Заказы": "Orders",
+  "Заказов нет": "Orders not found"
 }

@@ -3,12 +3,16 @@ import {PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { getClientById } from '../services/getClientById/getClientById'
 import { Client } from '../types/clientSchema'
 import { updateClientData } from '../services/updateClientData/updateClientData'
+import { getClientOrders } from '../services/getClientOrders/getClientOrders'
+import { Order } from 'entities/Order'
 
 const initialState: ClientDetailsSchema = {
     isLoading: true,
     data: undefined,
     form: undefined,
-    error: undefined
+    error: undefined,
+    orders: [],
+    ordersLoading: false
 }
 
 const formInitialState: Client = {
@@ -39,7 +43,8 @@ export const clientDetailsSlice = createSlice({
         },
         newClient: (state) => {
             state.form = formInitialState
-        }
+        },
+
     },
     extraReducers(builder) {
         builder
@@ -70,6 +75,19 @@ export const clientDetailsSlice = createSlice({
             .addCase(updateClientData.rejected, (state, action) => {
                 state.isLoading= false
                 state.error = action.payload
+            })
+            .addCase(getClientOrders.pending, (state) => {
+                state.orders = []
+                state.ordersLoading = true
+            })
+            .addCase(getClientOrders.fulfilled, (state, action: PayloadAction<Order[]>) => {
+                state.orders = action.payload
+                state.ordersLoading = false
+            })
+            .addCase(getClientOrders.rejected, (state, action) => {
+                state.orders = []
+                state.error = action.payload
+                state.ordersLoading = false
             })
     }
 })

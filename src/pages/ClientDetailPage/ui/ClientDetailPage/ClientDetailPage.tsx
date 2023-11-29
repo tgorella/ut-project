@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next'
 import cls from './ClientDetailPage.module.scss'
 import classNames from 'shared/lib/classNames/ClassNames'
 import { useNavigate, useParams } from 'react-router-dom'
-import { ClientCard, getClientDetailsError, getClientDetailsIsLoading } from 'entities/Clients'
+import { ClientCard, ClientOrdersList, getClientDetailsError, getClientDetailsIsLoading } from 'entities/Clients'
 import { memo } from 'react'
 import { Box } from 'shared/ui/Box'
 import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
@@ -55,7 +55,9 @@ const ClientDetailPage = memo(({className} : ClientDetailPageProps) => {
                         </Box>}
                         <ClientCard id={id} />
                     </div>
-                    <div className={cls.big_column}></div>
+                    <div className={cls.big_column}>
+                        <ClientOrdersList clientId={id} />
+                    </div>
                   
                 </div>
             </div>

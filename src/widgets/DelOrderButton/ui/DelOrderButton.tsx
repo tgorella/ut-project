@@ -26,7 +26,7 @@ export const DelOrderButton = memo(({buttonTheme, orderId, warningText = 'Это
     const handleDelete = () => {
         if (orderId) {
             dispatch(deleteOrder(orderId)).then(() => {
-                history('/orders/')
+                history(-1)
             })
         }
     }

@@ -1,7 +1,8 @@
 .OrderListItem {
     align-items: center;
     border-bottom: 1px solid  rgb(0 0 0 / 10%);
-    display: flex;
+    font-size: 14px;
+    height: 50px;
     padding: 5px 0;
     width: 100%;
 }
@@ -9,23 +10,22 @@
 .item {
     cursor: pointer;
     overflow-x: hidden;
+    text-align: center;
     text-overflow: ellipsis;
     width: 100%;
 }
 
 .number {
     cursor: pointer;
-    min-width: 100px;
     padding: 0 10px;
 }
 
 .del {
     align-items: center;
     cursor: pointer;
-    display: flex;
     justify-content: center;
-    min-width: 60px;
     padding: 0 10px;
+    text-align: center;
 }
 
 .icon {
@@ -35,14 +35,14 @@
 
 .date {
     cursor: pointer;
-    min-width: 150px;
+    min-width: 120px;
+    padding: 0 10px;
     text-align: center;
 }
 
 .status {
     cursor: pointer;
-    display: flex;
-    justify-content: center;
-    min-width: 270px;
+    min-width: 150px;
     padding: 0 10px;
+    text-align: center;
 }

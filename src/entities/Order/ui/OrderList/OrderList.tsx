@@ -8,7 +8,6 @@ import { Column } from 'shared/ui/Table/model/types/tableSchema'
 import { OrderListItem } from '../OrderListItem/OrderListItem'
 import { PageLoader } from 'widgets/PageLoader'
 
-
 interface OrderListProps {
   className?: string;
   orders?: Order[],
@@ -18,11 +17,11 @@ export const OrderList = memo(({className, orders = [], isLoading} : OrderListPr
 
     const {t} = useTranslation('orders')
     let columns: Column[] = [
-        { name: 'Номер', path: 'orderNumber' },
-        { name: 'Дата создания', path: 'createdAt' },
+        { name: '№', path: 'orderNumber' },
+        { name: 'Дата', path: 'createdAt' },
         { name: 'Заголовок', path: 'title' },
-        { name: 'Цена', path: 'total' },
-        { name: 'Статус заказа', path: 'status' },
+        { name: 'Стоимость', path: 'total' },
+        { name: 'Статус', path: 'status' },
         { name: 'Удалить', path: 'del' },
     ]
     if (window.screen.width <= 740) {
@@ -47,6 +46,13 @@ export const OrderList = memo(({className, orders = [], isLoading} : OrderListPr
     }
     return ( 
         <table className={classNames(cls.OrderList, {}, [className])} style={{gridTemplateColumns: `repeat(${columns.length}, calc((100% - 50px) / ${columns.length})) 50px`}}>
+            <thead>
+                <tr>
+                    {columns.map((column) => {
+                        return <th key={column.path}>{column.name}</th>
+                    })}
+                </tr>
+            </thead>
             <tbody>
                 {
                     orders.map((order) => {
@@ -54,7 +60,7 @@ export const OrderList = memo(({className, orders = [], isLoading} : OrderListPr
                     })
                 }
             </tbody>
-            
         </table>
+        
     )
 })

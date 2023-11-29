@@ -11,6 +11,12 @@ import { clientDetailsAction, clientDetailsReducer } from './model/slice/clientD
 import { ClientsList } from './ui/ClientsList/ClientsList'
 import { ClientForm } from './ui/ClientForm/ClientForm'
 import { deleteClient } from './model/services/deleteClient/deleteClient'
+import { getClientOrders } from './model/services/getClientOrders/getClientOrders'
+import { getClientOrdersData } from './model/selectors/getClientOrdersData/getClientOrdersData'
+import { ClientOrdersList } from './ui/ClientOrdersList/ClientOrdersList'
+import { getClientOrdersLoading } from './model/selectors/getClientOrdersLoading/getClientOrdersLoading'
+
+
 
 export {
     Client,
@@ -21,10 +27,14 @@ export {
     ClientCard,
     clientDetailsAction,
     ClientsList,
+    getClientOrders,
     ClientForm,
+    getClientOrdersLoading,
+    getClientOrdersData,
     getClientDetailsData,
     getClientDetailsError,
     getClientDetailsForm,
     getClientDetailsIsLoading,
     clientDetailsReducer,
+    ClientOrdersList
 }
