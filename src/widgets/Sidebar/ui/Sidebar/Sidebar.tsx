@@ -7,8 +7,8 @@ import { SidebarItem } from '../SidebarItem/SidebarItem'
 import { useSelector } from 'react-redux'
 import { getUserAuthData } from 'entities/User'
 import LOGO from 'shared/assets/img/logo.png'
-import { getProfileModules } from 'entities/Profile'
-import { Modules } from 'entities/Profile/model/types/profileSchema'
+import { getUserModulesData } from 'entities/AppModules'
+import { AppModules } from 'entities/AppModules/model/types/AppModules'
 
 
 interface SidebarProps {
@@ -18,7 +18,7 @@ export const Sidebar = memo(({ className = ''}: SidebarProps) => {
     const [collapsed, setCollapsed] = useState(false)
 
     const authData = useSelector(getUserAuthData) ?? {username: ''}
-    const modules = useSelector(getProfileModules)
+    const modules = useSelector(getUserModulesData)
     
     const toggleSidebar = () => {
         setCollapsed((prevState) => !prevState)
@@ -27,7 +27,7 @@ export const Sidebar = memo(({ className = ''}: SidebarProps) => {
     const itemsList = useMemo( () => SidebarItemsList.map((item) => {
         if (authData?.username !== '' && item.isAuth) {
             if (modules) {
-                if (item.module && modules[item.moduleName as keyof Modules] ) {
+                if (item.module && modules[item.moduleName as keyof AppModules] ) {
                     return <SidebarItem item={item} collapsed={collapsed} key={item.path}/>}
             }
            

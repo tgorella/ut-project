@@ -9,6 +9,8 @@ import { useTranslation } from 'react-i18next'
 import { Currency } from 'entities/Currency'
 import { Country } from 'entities/Country'
 import { getUserAuthData } from 'entities/User'
+import { Box } from 'shared/ui/Box'
+import { AppModulesBlock } from 'entities/AppModules'
 
 const reducers: ReducersList = {
     profile: profileReducer
@@ -95,7 +97,11 @@ const ProfilePage = memo(({className} : ProfilePageProps) => {
                             saveProfile={saveProfile}
                         />
                     </div>
-                    <div className={cls.big_column}></div>
+                    <div className={cls.big_column}>
+                        <Box header={t('Настройка пунктов меню')}>
+                            <AppModulesBlock />
+                        </Box>
+                    </div>
                 </div>
             </div>
             

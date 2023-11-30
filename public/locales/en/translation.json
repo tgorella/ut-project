@@ -83,5 +83,6 @@
     }
   },
   "Заказы": "Orders",
-  "Заказов нет": "Orders not found"
+  "Заказов нет": "Orders not found",
+  "Настройка видимости блоков": "Modules visibility settings"
 }

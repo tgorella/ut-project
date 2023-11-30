@@ -1,0 +1,52 @@
+.AppModules {
+    padding: 0;
+    width: 100%;
+}
+
+.item {
+    align-items: center;
+    display: flex;
+    height: 40px;
+    justify-content: flex-start;
+}
+
+.item_name {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.themeSwitcher {
+    align-items: center;
+    border: 2px solid var(--primary-text);
+    border-radius: 30px;
+    color: var(--primary-text);
+    cursor: pointer;
+    display: flex;
+    height: 25px;
+    padding: 2px;
+    position: relative;
+    transition: all 0.5s;
+    width: 60px;
+}
+
+.switcherWrapper {
+    display: flex;
+    height: 25px;
+    padding: 0 30px;
+}
+
+.button {
+    background-color: var(--primary-text);
+    border-radius: 50%;
+    height: 19px;
+    width: 19px;
+}
+
+.on {
+    background-color: var(--accent);
+    justify-content: flex-end;
+}
+
+.off {
+    justify-content: flex-start;
+}

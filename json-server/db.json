@@ -27,10 +27,10 @@
     "username": "tratata",
     "avatar": "https://avatars.githubusercontent.com/u/107557323?v=4",
     "lastOrderNumber": "110",
-   "modules": {
-    "clients": "true",
-"orders": "false"
-   }
+    "modules": {
+      "clients": "true",
+      "orders": "false"
+    }
   },
   "clients": [
     {
@@ -313,6 +313,16 @@
       "color": "#d9cafe",
       "userId": "643c36ad8545463c883af7a8",
       "isDefault": false
+    }
+  ],
+  "appmodules": [
+    {
+      "id": "9878797535423",
+      "userId": "643c36ad8545463c883af7a8",
+      "clients": true,
+      "orders": true,
+      "calendsr": true,
+      "workflow": true
     }
   ]
 }

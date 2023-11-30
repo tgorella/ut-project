@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getIsMounted, getUserAuthData, userAction } from 'entities/User'
 import { Navbar } from 'widgets/Navbar'
 import { fetchProfileData } from 'entities/Profile'
+import { fetchUserModules } from 'entities/AppModules/model/services/fetchUserModules/fetchUserModules'
 
 const App = () => {
     const dispatch = useDispatch()
@@ -17,6 +18,7 @@ const App = () => {
         if (userData?.username) {
             dispatch(fetchProfileData(userData?.username))
         }
+        dispatch(fetchUserModules())
     } , [dispatch, userData?.username])
     
     return (

@@ -1,5 +1,6 @@
 import { AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit'
 import { AxiosInstance } from 'axios'
+import { AppModulesSchema } from 'entities/AppModules'
 import { ClientDetailsSchema } from 'entities/Clients'
 import { OrderDetailsSchema } from 'entities/Order'
 import { OrderStatusesSchema } from 'entities/OrderStatus'
@@ -16,6 +17,7 @@ import { AddOrderButtonSchema } from 'widgets/AddOrderButton/model/types/AddOrde
 export interface StateSchema {
   user: UserSchema,
   profile: ProfileSchema,
+  userModules: AppModulesSchema
 
   // Async reducers
   loginForm?: LoginSchema,
