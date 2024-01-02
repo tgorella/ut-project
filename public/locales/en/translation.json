@@ -84,5 +84,9 @@
   },
   "Заказы": "Orders",
   "Заказов нет": "Orders not found",
-  "Настройка видимости блоков": "Modules visibility settings"
+  "Настройка видимости блоков": "Modules visibility settings",
+  "Введите номер заказа или название": "Enter order number or order title",
+  "Заголовок": "Title",
+  "Стоимость": "Total",
+  "Дата создания": "Created date"
 }

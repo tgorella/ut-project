@@ -6,17 +6,19 @@ import { Order } from 'entities/Order'
 import { addOrderButtonAction } from '../../slice/AddOrderButtonSlice'
 import { getProfileLastOrderNumber, profileAction, updateProfileData } from 'entities/Profile'
 import { getClientDetailsData } from 'entities/Clients'
+import { getNewOrderData } from 'features/AddOrder/model/selectors/getNewOrderData/getNewOrderData'
 
 interface addOrderProps {
-  newOrder: Order,
  isClientPage: boolean,
- client?: string
+ clientId?: string
 }
+
 export const addOrder = createAsyncThunk<Order, addOrderProps,ThunkConfig<string>>(
     'orderAddButton/addOrder',
     async (props, thunkAPI) => {
-        const {newOrder, isClientPage, client} = props
+        const {isClientPage, clientId} = props
         const {rejectWithValue, extra, dispatch, getState} = thunkAPI
+        const newOrder = getNewOrderData(getState())
         const authData = getUserAuthData(getState())
         const clientData = getClientDetailsData(getState())
         const lastOrder = getProfileLastOrderNumber(getState())
@@ -35,7 +37,7 @@ export const addOrder = createAsyncThunk<Order, addOrderProps,ThunkConfig<string
         }
 
         if (!isClientPage) {
-            updatedOrder.clientId = client
+            updatedOrder.clientId = clientId
         }
         try {
             const {data} = await extra.api.post<Order>('/orders', {

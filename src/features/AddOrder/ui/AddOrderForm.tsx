@@ -1,5 +1,4 @@
 import { Alert, AlertTheme } from 'shared/ui/Alert'
-import { PreviewWindow } from 'shared/ui/PreviewWindow'
 import { PageLoader } from 'widgets/PageLoader'
 import cls from './AddOrderForm.module.scss'
 import { Order, OrderForm } from 'entities/Order'
@@ -15,11 +14,9 @@ interface AddOrderFormProps {
   onAddOrder: (newOrder: Order) => void;
   added?: boolean,
   error?: string,
-  isOpen: boolean,
-  onClose: () => void,
-withClient: boolean
+  withButton: boolean
 }
-export const AddOrderForm = ({onAddOrder, added, error, isOpen, onClose} : AddOrderFormProps) => {
+export const AddOrderForm = ({onAddOrder, added, error, withButton} : AddOrderFormProps) => {
     const dispatch = useAppDispatch()
     const {t} = useTranslation('orders')
     const [errors] = useState({
@@ -84,7 +81,7 @@ export const AddOrderForm = ({onAddOrder, added, error, isOpen, onClose} : AddOr
         }
     }
     return ( 
-        <PreviewWindow onClose={onClose} isOpen={isOpen}>
+        <div>
             <Text title={t('Добавить новый заказ')} />
             <div className={cls.info_container}>
                 {added && <Alert theme={AlertTheme.SUCCESS} text={t('Заказ успешно добавлен')} />}
@@ -95,6 +92,7 @@ export const AddOrderForm = ({onAddOrder, added, error, isOpen, onClose} : AddOr
                         <OrderForm 
                             data={data}
                             errors={errors} 
+                            withButton={withButton}
                             onChangeTitle={handleChangeTitle} 
                             onChangeEventDate={handleChangeEventDate} 
                             onChangePlace={handleChangePlace} 
@@ -106,6 +104,6 @@ export const AddOrderForm = ({onAddOrder, added, error, isOpen, onClose} : AddOr
                         />
                     </>)}
             </div>
-        </PreviewWindow>
+        </div>
     )
 }

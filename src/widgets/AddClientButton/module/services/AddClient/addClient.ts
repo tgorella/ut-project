@@ -4,13 +4,15 @@ import i18n from 'shared/config/i18n/i18n'
 import { Client } from 'entities/Clients'
 import { getUserAuthData } from 'entities/User'
 import { addClientButtonAction } from '../../slice/AddClientButtonSlice'
+import { getNewClientData } from 'features/AddClient/model/selectors/getNewClientData/getNewClientData'
 
 
-export const addClient = createAsyncThunk<Client, Client,ThunkConfig<string>>(
+export const addClient = createAsyncThunk<Client, void,ThunkConfig<string>>(
     'clientAddButton/addClient',
-    async (newClient, thunkAPI) => {
+    async (_, thunkAPI) => {
         const {rejectWithValue, extra, dispatch, getState} = thunkAPI
         const authData = getUserAuthData(getState())
+        const newClient = getNewClientData(getState())
         
         if (!authData || !newClient) {
             return rejectWithValue(i18n.t('no data'))

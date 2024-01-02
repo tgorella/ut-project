@@ -17,7 +17,7 @@ interface OrderDetailsPageProps {
 }
 
 const OrderDetailsPage = memo(({className} : OrderDetailsPageProps) => {
-    const {t} = useTranslation()
+    const {t} = useTranslation('orders')
     let {id} = useParams()
     const orderData = useSelector(getOrderDetailsForm)
 

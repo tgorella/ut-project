@@ -7,6 +7,7 @@ import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
 interface ClientFormProps {
   errors: Client,
   data: Client,
+  withButton?: boolean,
   onChangeAvatar: (value: string) => void,
   onChangeClientName: (value: string) => void,
   onChangeClientEmail: (value: string) => void,
@@ -21,6 +22,7 @@ interface ClientFormProps {
 export const ClientForm = ({
     data, 
     errors, 
+    withButton = true,
     onChangeAvatar, 
     onChangeClientName,
     onChangeClientEmail,
@@ -91,13 +93,13 @@ export const ClientForm = ({
                 name='telegram' 
                 error={errors.telegram}
             />
-            <AppButton 
+            {withButton && <AppButton 
                 theme={ButtonTheme.OUTLINED} 
                 onClick={onSaveUser} 
                 disabled={Object.values(errors).filter((item) => item !== '').length > 0 ? true : false}
             >
                 {t('Сохранить')}
-            </AppButton>
+            </AppButton>}
         </div>
     )
 }

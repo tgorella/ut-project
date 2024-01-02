@@ -12,6 +12,7 @@ import { addClient } from '../module/services/AddClient/addClient'
 import { addClientReducer } from 'features/AddClient/model/slice/AddClientSlice'
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { addClientButtonReducer } from '../module/slice/AddClientButtonSlice'
+import { PreviewWindow } from 'shared/ui/PreviewWindow'
 
 const reducers: ReducersList = {
     addClient: addClientReducer,
@@ -29,8 +30,8 @@ export const AddClientButton = ({className} : AddClientButtonProps) => {
     const added = useSelector(getAddClientAddedStatus)
     const newClientError = useSelector(getAddClientError)
     
-    const handleAddClient = useCallback((newClient) => {
-        dispatch(addClient(newClient))
+    const handleAddClient = useCallback(() => {
+        dispatch(addClient())
     }, [dispatch])
 
     return ( 
@@ -43,12 +44,12 @@ export const AddClientButton = ({className} : AddClientButtonProps) => {
                 >
                     <ADD_CLIENT className={cls.icon}/>{t('Добавить клиента')}
                 </AppButton>
-                <AddClientForm 
-                    onClose={togglePreview} 
-                    isOpen={openPreview} 
-                    onAddClient={handleAddClient} 
-                    added={added} 
-                    error={newClientError}/>
+                <PreviewWindow onClose={togglePreview} isOpen={openPreview}>
+                    <AddClientForm
+                        onAddClient={handleAddClient} 
+                        added={added} 
+                        error={newClientError}/>
+                </PreviewWindow>
             </div>
         </DynamicModuleLoader>
     )

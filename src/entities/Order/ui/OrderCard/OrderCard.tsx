@@ -143,7 +143,7 @@ export const OrderCard = memo(({className, id, children} : OrderProps) => {
                     <Box 
                         className={classNames(cls.Order, {}, [className])}
                         header={data?.title}
-                        footer={<Text title={'Стоимость: '+data?.total} />}>
+                        footer={<Text title={t('Стоимость')+': '+data?.total} />}>
                         <EditSwitcher  editMode={edit} onEdit={toggleEditMode} onChancelEdit={handleChancelEdit}  className={cls.edit_btn}/>
                         {!edit && <OrderInfo orderInfo={data} />}
                         {edit && <OrderForm  

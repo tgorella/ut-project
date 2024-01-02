@@ -28,6 +28,9 @@ export const ordersPageSlice = createSlice({
         },
         orderDeleted: (state, action) => {
             state.data = state.data?.filter((item) => item.id !== action.payload)
+        },
+        orderAdded: (state, action) => {
+            state.data?.push(action.payload)
         }
     },
     extraReducers(builder) {

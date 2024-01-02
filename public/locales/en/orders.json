@@ -3,5 +3,18 @@
   "Дата": "Date",
   "Время": "Time",
   "Адрес": "Address",
-  "Продукт": "Order items"
+  "Продукт": "Order items",
+  "Заказы": "Orders",
+  "Заказов нет": "Orders not found",
+  "Настройка видимости блоков": "Modules visibility settings",
+  "Введите номер заказа или название": "Enter order number or order title",
+  "Добавить заказ": "Add order",
+  "Записей на странице:": "Items per page",
+  "Заголовок": "Title",
+  "Стоимость": "Total",
+  "Дата создания": "Created date",
+  "Статус": "Order status",
+  "Удалить":"Delete",
+  "Удалить заказ":"Delete"
+
 }

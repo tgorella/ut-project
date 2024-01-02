@@ -11,7 +11,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { fetchAllOrders } from '../model/services/fetchAllOrders/fetchAllOrders'
 import { Box } from 'shared/ui/Box'
 import { HStack } from 'shared/ui/HStack/HStack'
-import { AppButton, ButtonSize, ButtonTheme } from 'shared/ui/AppButton/AppButton'
+import { ButtonTheme } from 'shared/ui/AppButton/AppButton'
 import { Searchbar } from 'widgets/Searchbar'
 import { ToggleButtonValue, ToggleButtons } from 'shared/ui/ToggleButtons'
 import { getOrdersPageLimit } from '../model/selectors/getOrdersLimit/getOrdersPageLimit'
@@ -19,6 +19,7 @@ import { getOrdersPageSearch } from '../model/selectors/getOrdersPageSearch/getO
 import { orderStatusReducer } from 'entities/OrderStatus'
 import { fetchOrderStatuses } from 'entities/OrderStatus/model/services/fetchOrderStatuses/fetchOrderStatuses'
 import { Pagination } from 'shared/ui/Pagination'
+import { AddOrderButton } from 'widgets/AddOrderButton'
 
 // interface OrdersPageProps {
 //   className?: string;
@@ -29,16 +30,14 @@ const reducers: ReducersList = {
     orderStatuses: orderStatusReducer
 }
 const OrdersPage = memo(() => {
-    const {t} = useTranslation('order-page')
+    const {t} = useTranslation('orders')
     const orders = useSelector(getOrdersPageData)
     const isLoading = useSelector(getOrdersPageIsLoading)
     const dispatch = useAppDispatch()
     const limit = useSelector(getOrdersPageLimit) || 25
     const [page, setPage] = useState(1)
-    const [openPreview, setOpenPreview] = useState(false)
     const search = useSelector(getOrdersPageSearch) || ''
 
-    const togglePreviewWindow = () => setOpenPreview(!openPreview)
     const limitsValue: ToggleButtonValue[]  = [
         {title: '15', value: 15},
         {title: '25', value: 25},
@@ -60,6 +59,7 @@ const OrdersPage = memo(() => {
 
     useEffect(() => {
         if (__PROJECT__ !== 'storybook') {
+            dispatch(ordersPageAction.initState())
             dispatch(fetchAllOrders(search))
             dispatch(fetchOrderStatuses())
         }
@@ -70,13 +70,9 @@ const OrdersPage = memo(() => {
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false} >
             <h1 className={cls.header}>{t('Заказы')}</h1>
             <HStack className={cls.top_menu}>
-                <AppButton 
-                    size={ButtonSize.S} 
-                    theme={ButtonTheme.SOLID}
-                    onClick={togglePreviewWindow}
-                >
-                    {t('Добавить заказ')}
-                </AppButton>
+                <div>
+                    <AddOrderButton withClient={true} buttonTheme={ButtonTheme.SOLID}/>
+                </div>
                 <div className={cls.searchBlock}>
                     <Searchbar onChange={handleSearch} placeholder={t('Введите номер заказа или название')} />
                 </div>

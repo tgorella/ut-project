@@ -7,19 +7,17 @@ import { getNewClientData } from '../model/selectors/getNewClientData/getNewClie
 import { addClientAction } from '../model/slice/AddClientSlice'
 import { Alert, AlertTheme } from 'shared/ui/Alert'
 import { PageLoader } from 'widgets/PageLoader'
-import { Client, ClientForm } from 'entities/Clients'
-import { PreviewWindow } from 'shared/ui/PreviewWindow'
+import { ClientForm } from 'entities/Clients'
 import { Text } from 'shared/ui/Text'
 
 export interface AddClientProps {
-  onAddClient: (newClient: Client) => void;
+  onAddClient: () => void;
   added?: boolean,
   error?: string,
-  isOpen: boolean,
-  onClose: () => void
+  withButton?: boolean
 }
 
-const AddClientForm = memo(({onAddClient, added, error, isOpen, onClose} : AddClientProps) => {
+const AddClientForm = memo(({onAddClient, added, error, withButton = true} : AddClientProps) => {
     const dispatch = useAppDispatch()
     const [errors] = useState({
         name: '',
@@ -66,14 +64,12 @@ const AddClientForm = memo(({onAddClient, added, error, isOpen, onClose} : AddCl
     }, [dispatch])
 
     const handleAddClient = () => {
-        if (data) {
-            onAddClient(data)
-            dispatch(addClientAction.resetState())
-        }
-        
+        onAddClient()
+        dispatch(addClientAction.resetState())
     }
+    
     return ( 
-        <PreviewWindow onClose={onClose} isOpen={isOpen}>
+        <div>
             <Text title={t('Добавить нового клиента')} />
             <div className={cls.info_container}>
                 {added && <Alert theme={AlertTheme.SUCCESS} text={t('Клиент успешно добавлен')} />}
@@ -84,6 +80,7 @@ const AddClientForm = memo(({onAddClient, added, error, isOpen, onClose} : AddCl
                         <ClientForm 
                             data={data}
                             errors={errors}
+                            withButton={withButton}
                             onChangeAvatar={handleChangeClientAvatar}
                             onChangeClientAddress={handleChangeClientAddress}
                             onChangeClientEmail={handleChangeClientEmail}
@@ -96,7 +93,7 @@ const AddClientForm = memo(({onAddClient, added, error, isOpen, onClose} : AddCl
                         />
                     </>)}
             </div>
-        </PreviewWindow>
+        </div>
     )
 })
 

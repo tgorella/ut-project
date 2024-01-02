@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next'
 interface OrderFormProps {
   data: Order
   errors: Partial<Order>,
+  withButton?: boolean,
   onChangeTitle: (value: string) => void,
   onChangeEventDate: (value: string) => void,
   onChangePlace: (value: string) => void,
@@ -20,6 +21,7 @@ interface OrderFormProps {
 export const OrderForm = ({
     data, 
     errors, 
+    withButton = true,
     onChangeEndTime, 
     onChangeEventDate, 
     onChangePlace, 
@@ -87,13 +89,13 @@ export const OrderForm = ({
                 error={errors.total}
                 type='number'
             />
-            <AppButton 
+            {withButton && <AppButton 
                 theme={ButtonTheme.OUTLINED} 
                 onClick={OnSaveOrder} 
                 disabled={Object.values(errors).filter((item) => item !== '').length > 0 ? true : false}
             >
                 {t('Сохранить')}
-            </AppButton>
+            </AppButton>}
         </div>
     )
 }
