@@ -22,18 +22,19 @@ jobs:
       - name: install modules
         run: cd client && npm install
       - name: build production project
-        run: npm run build:prod
+        run: cd client && npm run build:prod
       - name: linting typescript
-        run: npm run lint:ts
+        run: cd client && npm run lint:ts
         if: always()
       - name: linting css
-        run: npm run lint:scss
+        run: cd client && npm run lint:scss
         if: always()
       - name: unit testing
-        run: npm run test:unit
+        run: cd client && npm run test:unit
         if: always()
       - name: Publish to Chromatic
         if: always()
         uses: chromaui/action@v1
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          workingDir: client/
