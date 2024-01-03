@@ -1,0 +1,20 @@
+[
+  {
+    "id": "67337-1",
+    "name": "завершен",
+    "color": "green",
+    "isDefault": true
+  },
+  {
+    "id": "67337-2",
+    "name": "архив",
+    "color": "gray",
+    "isDefault": true
+  },
+  {
+		"id": "67337-3",
+		"name": "отменен",
+		"color": "red",
+    "isDefault": true
+	}
+]
