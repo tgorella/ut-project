@@ -27,7 +27,7 @@ export const ordersPageSlice = createSlice({
             state.search = action.payload
         },
         orderDeleted: (state, action) => {
-            state.data = state.data?.filter((item) => item.id !== action.payload)
+            state.data = state.data?.filter((item) => item._id !== action.payload)
         },
         orderAdded: (state, action) => {
             state.data?.push(action.payload)

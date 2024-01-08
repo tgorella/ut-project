@@ -64,7 +64,7 @@ const ClientsPage = memo(() => {
                 }
             }
         }
-    }, [dispatch, inited, limit, page, userData, userData?.id])
+    }, [dispatch, inited, limit, page, userData, userData?._id])
 
     const filterClients = clients?.slice((page-1)*limit, page*limit)
    

@@ -22,8 +22,10 @@ router.post("/signUp", [
           },
         });
       }
-      const { email, password, lastOrderNumber} = req.body;
+      
+      const { email, password} = req.body;
       const existingUser = await User.findOne({ email });
+     
       if (existingUser) {
         return res.status(400).json({
           error: {
@@ -35,12 +37,11 @@ router.post("/signUp", [
 
       const hashedPassword = await bcryptjs.hash(password, 12);
       const newUser = await User.create({
-				...req.body,
-        password: hashedPassword,
-        email: email,
-				lastOrderNumber: lastOrderNumber
+				lastOrderNumber: 1,
+        ...req.body,
+        password: hashedPassword
       });
-
+      
       const tokens = tokenService.generate({ _id: newUser._id });
       await tokenService.save(newUser._id, tokens.refreshToken);
 
@@ -69,7 +70,7 @@ router.post("/signInWithPassword", [
         });
       }
 
-      const { email, password, lastOrderNumber } = req.body;
+      const { email, password } = req.body;
       const existingUser = await User.findOne({ email });
       if (!existingUser) {
         return res.status(400).send({

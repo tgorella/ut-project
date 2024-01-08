@@ -1,6 +1,6 @@
 {
     "port": 8080,
-    "mongoUri": "mongodb+srv://goCreRllMaG20T08E:XbnxlwjSUn4iLXvQ@crm.qqcbzx5.mongodb.net/?retryWrites=true&w=majority",
+    "mongoUri": "mongodb+srv://goCreRllMaG20T08E:nv3liMfjhqwp4Q3X@crm.qqcbzx5.mongodb.net/crm_data?retryWrites=true&w=majority",
     "accessSecret": "ni4ego ne ponyatno n0 interesno",
     "refreshSecret": "ni4ego pr0rvemsya"
 }

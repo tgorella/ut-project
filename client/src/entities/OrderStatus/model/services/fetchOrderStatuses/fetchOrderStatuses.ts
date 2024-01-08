@@ -1,22 +1,22 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ThunkConfig } from 'app/providers/StoreProvider'
 import i18n from 'shared/config/i18n/i18n'
-import { getUserAuthData } from 'entities/User'
 import { OrderStatusDetails } from '../../types/OrderStatus'
+import httpService from 'shared/api/api'
 
 export const fetchOrderStatuses = createAsyncThunk<OrderStatusDetails[], void,ThunkConfig<string>>(
     'orderStatus/fetchAll',
     // @ts-ignore
     async (_, thunkAPI) => {
-        const {rejectWithValue, extra, getState} = thunkAPI
+        const {rejectWithValue} = thunkAPI
         try {
-            const authData = getUserAuthData(getState())
-            const defaultStatuses = await extra.api.get<OrderStatusDetails[]>('/orderStatuses?isDefault=true')
-            const userStatuses = await extra.api.get<OrderStatusDetails[]>(`/orderStatuses?userId=${authData?.id}`)
-            if (!defaultStatuses && !userStatuses) {
+            const list = await httpService.get<OrderStatusDetails[]>('/order-status/')
+            
+            if (!list) {
                 throw new Error('err')
             }
-            return [...defaultStatuses.data, ...userStatuses.data]
+            
+            return list.data
         } catch (error) {
             return rejectWithValue(i18n.t('Неправильные логин или пароль'))
         }

@@ -13,7 +13,7 @@ interface ClientListItemProps {
 }
 export const ClientListItem = memo(({className,client} : ClientListItemProps) => {
     return ( 
-        <Link to={'/clients/'+ client.id} className={classNames(cls.ClientListItem, {}, [className])}>
+        <Link to={'/clients/'+ client._id} className={classNames(cls.ClientListItem, {}, [className])}>
             <div className={cls.nameCol}>
                 <Avatar src={client.avatarUrls} size={AvatarSize.S} />
                 {client.name}</div>

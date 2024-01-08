@@ -7,6 +7,14 @@ router
   .route("/")
   .get(auth, async (req, res) => {
     try {
+      if (req.query.search) {
+        const list = await Client.find({userId: req.user._id})
+        const filteredList = list.filter((item) => {
+         return item.name.toLowerCase().includes(req.query.search.toLowerCase()) || item.email.toLowerCase().includes(req.query.search.toLowerCase()) || item.phone.toLowerCase().includes(req.query.search.toLowerCase())
+       })
+         return res.status(200).send(filteredList)
+       }
+
       const list = await Client.find({ userId: req.user._id });
       res.status(200).send(list);
     } catch (error) {
@@ -40,15 +48,17 @@ router
     try {
       const { clientId } = req.params;
       const client = await Client.findById(clientId);
+      
       if (client.userId.toString() === req.user._id) {
         return res.status(200).send(client);
       } else {
         res.status(401).json({ message: "Unauthorized" });
       }
+
     } catch (error) {
       res
-        .status(500)
-        .json({ message: "На сервере произошла ошибка. Попробуйте позже" });
+        .status(204)
+        .send(null)
     }
   })
   .delete(auth, async (req, res) => {
@@ -56,7 +66,7 @@ router
       const { clientId } = req.params;
       const removedClient = await Client.findById(clientId);
       if (removedClient.userId.toString() === req.user._id) {
-        await removedClient.remove();
+        await Client.deleteOne({_id: clientId});
         return res.send(null);
       } else {
         res.status(401).json({ message: "Unauthorized" });

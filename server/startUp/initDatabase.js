@@ -1,4 +1,4 @@
-const OrderStatus = require("../models/OrderStatus");
+const OrderStatus = require("../models/OrderStatus.js");
 const orderStatusMock = require("../mock/OrderStatusMock.json");
 
 module.exports = async () => {

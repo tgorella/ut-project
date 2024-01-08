@@ -8,12 +8,12 @@ const schema = new Schema(
     currency: {type: String},
     country: { type: String},
     city: {type: String},
-    username: { type: String, required: true, unique: true},
+    username: { type: String, unique: true},
     avatar: { type: String},
-    email: { type: String, required: true, unique: true },
+    email: { type: String, unique: true },
     password: { type: String },
     acceptTerms: { type: Boolean },
-		lastOrderNumber: { type: Number, required: true},
+		lastOrderNumber: { type: Number},
     modules: {clients: Boolean, orders: Boolean}
   },
   {

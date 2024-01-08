@@ -9,11 +9,11 @@ export const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> =
 }
 
 const stateUser: DeepPartial<StateSchema> = {
-    user: {authData: {id: '1', username: 'user'}},
+    user: {authData: {_id: '1', email: 'user'}},
 } 
 
 const logoutStateUser: DeepPartial<StateSchema> = {
-    user: {authData: {id: '', username: ''}},
+    user: {authData: {_id: '', email: ''}},
 } 
 
 export const UserStoreDecorator: Decorator = (Story) => (

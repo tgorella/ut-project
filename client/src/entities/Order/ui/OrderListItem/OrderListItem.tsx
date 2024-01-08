@@ -11,11 +11,15 @@ interface OrderListItemProps {
   className?: string;
   order: Order,
   columns: Column[],
-  onDelete: (id: string) => void
+  onDelete: (id: string | undefined) => void
 }
 export const OrderListItem = ({className, order, columns, onDelete} : OrderListItemProps) => {
     const navigate = useNavigate()
-    const data = transformDate(order.createdAt)
+    let data: string
+    
+    if (order.createdAt) {
+        data =  transformDate(order.createdAt)
+    }
 
     function generateItemCode (column: Column) {
         let itemClass
@@ -26,36 +30,36 @@ export const OrderListItem = ({className, order, columns, onDelete} : OrderListI
         case 'orderNumber':
             itemClass = cls.number
             itemContent = order[column.path as keyof Order]
-            onClick = () => navigate('/orders/' +order.id)
+            onClick = () => navigate('/orders/' +order._id)
             break
         case 'del':
             itemClass = cls.del
             itemContent = <DELETE_ICON className={cls.icon}/>
-            onClick = () => onDelete(order.id)
+            onClick = () => onDelete(order._id)
             break
         case 'createdAt':
             itemClass = cls.date
             itemContent = data
-            onClick = () => navigate('/orders/' +order.id)
+            onClick = () => navigate('/orders/' +order._id)
             break
         case 'total':
             itemClass = cls.date
             itemContent = order[column.path as keyof Order]
-            onClick = () => navigate('/orders/' +order.id)
+            onClick = () => navigate('/orders/' +order._id)
             break
         case 'status':
             itemClass = cls.status
             itemContent = <OrderStatusBlock id={order.status}/>
-            onClick = () => navigate('/orders/' +order.id)
+            onClick = () => navigate('/orders/' +order._id)
             break
         default:
             itemClass = cls.item
             itemContent = order[column.path as keyof Order]
-            onClick = () => navigate('/orders/' +order.id)
+            onClick = () => navigate('/orders/' +order._id)
             break
         }
 
-        return <td className={itemClass} key={order.id+'_'+column.path} onClick={onClick}>{itemContent}</td>
+        return <td className={itemClass} key={order._id+'_'+column.path} onClick={onClick}>{itemContent}</td>
     }
     
     return ( 

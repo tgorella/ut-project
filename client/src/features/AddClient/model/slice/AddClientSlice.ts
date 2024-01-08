@@ -4,7 +4,6 @@ import { Client } from 'entities/Clients'
 
 const initialState: AddClientSchema = {
     data: {
-        id: Date.now().toString(),
         name: '',
         email: '',
         notes: '',

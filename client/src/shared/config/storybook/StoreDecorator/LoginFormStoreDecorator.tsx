@@ -8,14 +8,14 @@ export const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> =
 }
 
 export const stateLoginForm: DeepPartial<StateSchema> = {
-    loginForm: {username: 'user', password:'pass123', isLoading: false}
+    loginForm: {email: 'user@mail.ru', password:'pass123', isLoading: false}
 } 
 
 export const stateLoginFormLoading: DeepPartial<StateSchema> = {
-    loginForm: {username: 'user', password:'pass123', isLoading: true}
+    loginForm: {email: 'user@mail.ru', password:'pass123', isLoading: true}
 } 
 export const stateLoginFormError: DeepPartial<StateSchema> = {
-    loginForm: {username: 'user', password:'pass123', isLoading: false, error: 'error'}
+    loginForm: {email: 'user@mail.ru', password:'pass123', isLoading: false, error: 'error'}
 }
 
 export const LoginFormStoreDecorator: Decorator = (Story) => (

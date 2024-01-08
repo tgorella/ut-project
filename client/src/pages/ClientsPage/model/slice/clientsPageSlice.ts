@@ -14,7 +14,7 @@ import { addClient } from '../../../../widgets/AddClientButton/module/services/A
 const clientsPageAdapter = createEntityAdapter<Client>({
     // Assume IDs are stored in a field other than `book.id`
     // @ts-ignore
-    selectId: (client) => client.id,
+    selectId: (client) => client._id,
 })
 
 export const getClients = clientsPageAdapter.getSelectors<StateSchema>((state) => state.clientsPage || clientsPageAdapter.getInitialState())

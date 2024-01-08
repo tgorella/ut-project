@@ -1,17 +1,16 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ThunkConfig } from 'app/providers/StoreProvider'
 import i18n from 'shared/config/i18n/i18n'
-import { getUserAuthData } from 'entities/User'
 import { Order } from 'entities/Order'
+import httpService from 'shared/api/api'
 
 export const getClientOrders = createAsyncThunk<Order[], string,ThunkConfig<string>>(
     'clientDetails/getClientOrders',
     // @ts-ignore
     async (clientId, thunkAPI) => {
-        const {rejectWithValue, extra, getState} = thunkAPI
+        const {rejectWithValue} = thunkAPI
         try {
-            const authData = getUserAuthData(getState())
-            const {data} = await extra.api.get<Order[]>(`/orders?userId=${authData?.id}`, {
+            const {data} = await httpService.get<Order[]>('/order/', {
                 params: {
                     clientId: clientId
                 }

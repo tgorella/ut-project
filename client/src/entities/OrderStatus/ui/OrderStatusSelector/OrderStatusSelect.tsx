@@ -13,7 +13,7 @@ export const OrderStatusSelect = memo(({onChange, value} : OrderStatusSelectProp
     const statuses = useSelector(getOrderStatusesData)
     const {t} = useTranslation()
     const options: Option[] = statuses!.map((status) => { 
-        return {name: status.name, value: status.id}
+        return {name: status.name, value: status._id}
     })
 
     if (!statuses) {

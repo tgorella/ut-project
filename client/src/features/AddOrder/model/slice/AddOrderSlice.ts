@@ -4,7 +4,6 @@ import { Order } from 'entities/Order'
 
 const initialState: AddOrderSchema = {
     data: {
-        id: Date.now().toString(),
         clientId: '',
         total: '',
         notes: '',
@@ -17,10 +16,7 @@ const initialState: AddOrderSchema = {
         endTime: '',
         title: '',
         userId: '',
-        projectType: '',
-        steps: [],
-        createdAt: 0,
-        updatedAt: 0
+        projectType: ''
     }
     
 }

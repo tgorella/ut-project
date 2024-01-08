@@ -4,6 +4,7 @@ import { Client } from '../../types/clientSchema'
 import i18n from 'shared/config/i18n/i18n'
 import { getUserAuthData } from 'entities/User'
 import { ClientsPageActions } from 'pages/ClientsPage'
+import httpService from 'shared/api/api'
 
 export type FilterProps = {
   clientId: string,
@@ -11,17 +12,17 @@ export type FilterProps = {
 export const deleteClient = createAsyncThunk<Client, string ,ThunkConfig<string>>(
     'clientDetails/getClientById',
     async (clientId, thunkAPI) => {
-        const {rejectWithValue, extra, getState, dispatch} = thunkAPI
+        const {rejectWithValue, getState, dispatch} = thunkAPI
         const userData = getUserAuthData(getState())
         try {
-            const {data} = await extra.api.get<Client>(`/clients/${clientId}`)
-            if (data.userId !== userData?.id) {
+            const {data} = await httpService.get<Client>(`/client/${clientId}`)
+            if (data.userId !== userData?._id) {
                 throw new Error('Нет доступа')
             }
             if (!data) {
                 throw new Error('err')
             }
-            const response = await extra.api.delete(`/clients/${clientId}`)
+            const response = await httpService.delete(`/client/${clientId}`)
             dispatch(ClientsPageActions.clientDeleted(clientId))
             return response.data
 

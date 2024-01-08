@@ -5,8 +5,8 @@ describe('getUserAuthData.test', () => {
     test('should return value', () => {
        
         const authData = {
-            id: '875373785',
-            username: 'test'
+            _id: '875373785',
+            email: 'test'
         }
         const state : DeepPartial<StateSchema> = {
             user: {

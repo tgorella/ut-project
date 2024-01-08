@@ -26,7 +26,7 @@ export function createReduxStore(
         middleware: curryGetDefaultMiddleware => curryGetDefaultMiddleware({
             thunk: {
                 extraArgument: {
-                    api: $api,
+                    api: $api
                 }
             }
         })

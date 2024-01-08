@@ -63,7 +63,7 @@ export const ClientCard = memo((props : ClientCardProps) => {
     useEffect(() => {
         if (authData) {
             if (__PROJECT__ !== 'storybook') {
-                dispatch(getClientById({clientId: id, currentUserId: authData?.id}))
+                dispatch(getClientById({clientId: id, currentUserId: authData?._id}))
             }
         }
         

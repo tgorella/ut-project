@@ -57,7 +57,7 @@ export const OrderCard = memo(({className, id, children} : OrderProps) => {
     useEffect(() => {
         if (__PROJECT__ !== 'storybook') {
             if (authData) {
-                dispatch(getOrderById({orderId: id, currentUserId: authData.id}))
+                dispatch(getOrderById({orderId: id, currentUserId: authData._id}))
                 dispatch(fetchOrderStatuses())
             }
         }

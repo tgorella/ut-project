@@ -5,12 +5,13 @@ import { Client } from 'entities/Clients'
 import { getUserAuthData } from 'entities/User'
 import { addClientButtonAction } from '../../slice/AddClientButtonSlice'
 import { getNewClientData } from 'features/AddClient/model/selectors/getNewClientData/getNewClientData'
+import httpService from 'shared/api/api'
 
 
 export const addClient = createAsyncThunk<Client, void,ThunkConfig<string>>(
     'clientAddButton/addClient',
     async (_, thunkAPI) => {
-        const {rejectWithValue, extra, dispatch, getState} = thunkAPI
+        const {rejectWithValue, dispatch, getState} = thunkAPI
         const authData = getUserAuthData(getState())
         const newClient = getNewClientData(getState())
         
@@ -19,11 +20,8 @@ export const addClient = createAsyncThunk<Client, void,ThunkConfig<string>>(
         }
 
         try {
-            const {data} = await extra.api.post<Client>('/clients', {
-                ...newClient,
-                userId: authData.id ,
-                id: Date.now().toString(),
-                createdAt: Date.now().toString()
+            const {data} = await httpService.post<Client>('/client', {
+                ...newClient
             })
 
             if (!data) {

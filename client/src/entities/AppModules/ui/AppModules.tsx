@@ -26,7 +26,7 @@ export const AppModulesBlock = memo(({className} : AppModulesProps) => {
     const toggleStatus = useCallback((value: Partial<AppModules>) => {
         dispatch(appModulesAction.updateModulesVisibility(value))
         if (modules) {
-            dispatch(updateModules(modules.id))
+            dispatch(updateModules(modules._id))
         }
     }, [dispatch, modules])
 

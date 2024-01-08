@@ -52,7 +52,7 @@ export const AddOrderButton = memo(({className, withClient = false, buttonTheme}
                     dispatch(addOrder({
                         isClientPage: !withClient,
                         //@ts-ignore
-                        clientId: payload?.id
+                        clientId: payload?._id
                     }))
                         .then((data) => {
                             if (data.meta.requestStatus === 'fulfilled' && data.payload !== undefined) {
@@ -85,7 +85,7 @@ export const AddOrderButton = memo(({className, withClient = false, buttonTheme}
     useEffect(() => {
         if (!withClient && client ) {
             dispatch(addOrderAction.updateNewOrderData({
-                clientId: client.id
+                clientId: client._id
             }))
         }
     }, [client, dispatch, withClient])

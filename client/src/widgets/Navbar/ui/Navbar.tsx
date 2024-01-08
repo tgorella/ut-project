@@ -28,7 +28,7 @@ export const Navbar = memo(({className} : NavbarProps) => {
         navigate?.('/')
     }
 
-    if (!authData || authData.username === '' ) {
+    if (!authData || authData._id === '' ) {
         return ( 
             <div className={classNames(cls.Navbar, {}, [className])}>
                 <div className={classNames(cls.switcherWrapper)}>
@@ -46,7 +46,7 @@ export const Navbar = memo(({className} : NavbarProps) => {
                 <LangSwitcher />
                 <ThemeSwitcher />
             </div> 
-            {authData.username !== '' && <AppButton theme={ButtonTheme.SOLID} onClick={handleLogout}>{t('Выйти')}</AppButton> }
+            {authData._id !== '' && <AppButton theme={ButtonTheme.SOLID} onClick={handleLogout}>{t('Выйти')}</AppButton> }
         </div>
     )
 })

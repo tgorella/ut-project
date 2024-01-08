@@ -17,7 +17,7 @@ interface SidebarProps {
 export const Sidebar = memo(({ className = ''}: SidebarProps) => {
     const [collapsed, setCollapsed] = useState(false)
 
-    const authData = useSelector(getUserAuthData) ?? {username: ''}
+    const authData = useSelector(getUserAuthData) ?? {_id: ''}
     const modules = useSelector(getUserModulesData)
     
     const toggleSidebar = () => {
@@ -25,8 +25,9 @@ export const Sidebar = memo(({ className = ''}: SidebarProps) => {
     }
 
     const itemsList = useMemo( () => SidebarItemsList.map((item) => {
-        if (authData?.username !== '' && item.isAuth) {
+        if (authData._id !== '' && item.isAuth) {
             if (modules) {
+              
                 if (item.module && modules[item.moduleName as keyof AppModules] ) {
                     return <SidebarItem item={item} collapsed={collapsed} key={item.path}/>}
             }
@@ -35,10 +36,10 @@ export const Sidebar = memo(({ className = ''}: SidebarProps) => {
                 return <SidebarItem item={item} collapsed={collapsed} key={item.path}/>}
         }
         
-        if ((!authData?.username || authData.username === '') && !item.isAuth) {
+        if ((!authData?._id || authData._id === '') && !item.isAuth) {
             return <SidebarItem item={item} collapsed={collapsed} key={item.path}/>}
     } 
-    ), [authData.username, collapsed, modules])
+    ), [authData._id, collapsed, modules])
 
 
     return (

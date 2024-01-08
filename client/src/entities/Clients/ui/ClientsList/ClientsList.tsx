@@ -26,7 +26,7 @@ export const ClientsList = memo(({className, clients = []} : ClientsListProps) =
         <div className={classNames(cls.ClientsList, {}, [className])}>
             {
                 clients.map((client) => {
-                    return <ClientListItem  client={client} key={client.id} />
+                    return <ClientListItem  client={client} key={client._id} />
                 
                 })
             }

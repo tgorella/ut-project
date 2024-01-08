@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ThunkConfig } from 'app/providers/StoreProvider'
 import { Client } from '../../../../../entities/Clients/model/types/clientSchema'
 import i18n from 'shared/config/i18n/i18n'
-import { getUserAuthData } from 'entities/User'
+import httpService from 'shared/api/api'
 
 export type FilterProps = {
   text: string | number
@@ -10,10 +10,9 @@ export type FilterProps = {
 export const getClientsBySearch = createAsyncThunk<Client[], string ,ThunkConfig<string>>(
     'clients/getClientsBySearch',
     async (text, thunkAPI) => {
-        const {rejectWithValue, extra, getState} = thunkAPI
-        const userData = getUserAuthData(getState())
+        const {rejectWithValue} = thunkAPI
         try {
-            const {data} = await extra.api.get<Client[]>(`/clients?userId=${userData?.id}`, {
+            const {data} = await httpService.get<Client[]>('/client/', {
                 params: {
                     q: text
                 }

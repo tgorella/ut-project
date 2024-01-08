@@ -37,10 +37,9 @@ export const OrderList = memo(({className, orders = [], isLoading} : OrderListPr
             { name: t('Заголовок'), path: 'title' },
         ]
     }
-    console.log(orderId)
     const [openModal, setOpenModal] = useState(false)
     const toggleModal = () => setOpenModal((prev:boolean) => !prev)
-    const onDelete = (id: string) => {
+    const onDelete = (id: string | undefined) => {
         if (id) {
             setOrderId(id)
         }
@@ -80,7 +79,7 @@ export const OrderList = memo(({className, orders = [], isLoading} : OrderListPr
                 <tbody>
                     {
                         orders.map((order) => {
-                            return <OrderListItem order={order} columns={columns} key={order.id} onDelete={onDelete}/>
+                            return <OrderListItem order={order} columns={columns} key={order._id} onDelete={onDelete}/>
                         })
                     }
                 </tbody>

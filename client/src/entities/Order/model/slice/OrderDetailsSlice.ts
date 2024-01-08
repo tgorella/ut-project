@@ -13,7 +13,7 @@ const initialState: OrderDetailsSchema = {
 }
 
 const formInitialState: Order = {
-    id: '',
+    _id: '',
     clientId: '',
     total: '',
     notes: '',
@@ -26,10 +26,7 @@ const formInitialState: Order = {
     endTime: '',
     title: '',
     userId: '',
-    createdAt: 0,
-    updatedAt: 0,
-    projectType: '',
-    steps: []
+    projectType: ''
 }
 export const OrderDetailsSlice = createSlice({
     name: 'OrderDetails',

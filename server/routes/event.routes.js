@@ -29,7 +29,8 @@ router.route('/')
   }
 })
 
-router('/:eventId')
+router
+.route('/:eventId')
 .delete(auth, async (req, res) => {
   try {
     const {eventId} = req.params

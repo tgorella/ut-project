@@ -1,5 +1,5 @@
 export interface OrderStatusDetails {
-  id: string,
+  _id: string,
   name: string,
   color:string,
   isDefault:boolean,

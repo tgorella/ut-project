@@ -25,7 +25,7 @@ const ProfilePage = memo(({className} : ProfilePageProps) => {
     useEffect(() => {
         if (userData) {
             if (__PROJECT__ !== 'storybook') {
-                dispatch(fetchProfileData(userData?.username))
+                dispatch(fetchProfileData(userData._id))
             }
         }
         

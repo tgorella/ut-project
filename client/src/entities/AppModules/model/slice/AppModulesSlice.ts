@@ -20,7 +20,7 @@ export const appModulesSlice = createSlice({
         },
         initModules: (state) => {
             state.data = {
-                id: Date.now().toString(),
+                _id: Date.now().toString(),
                 clients: true,
                 orders: true,
                 calendar: true,

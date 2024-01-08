@@ -15,11 +15,11 @@ const App = () => {
     
     useEffect(() => {
         dispatch(userAction.initAuthData())
-        if (userData?.username) {
-            dispatch(fetchProfileData(userData?.username))
+        if (userData?._id) {
+            dispatch(fetchProfileData(userData?._id))
         }
         dispatch(fetchUserModules())
-    } , [dispatch, userData?.username])
+    } , [dispatch, userData?._id])
     
     return (
         <div className={classNames('app', {}, [])} id='app'>

@@ -11,7 +11,7 @@ export const clientDetails: DeepPartial<StateSchema> = {
     clientDetails: {
         isLoading: false,
         data: {
-            id:'643c5fe7013e22868a6eb63c',
+            _id:'643c5fe7013e22868a6eb63c',
             avatarUrls: 'https://amur.info/wp-content/uploads/2023/07/3-16-768x518.jpg',
             name: 'Джонни Депп',
             profession: 'актер',
@@ -20,7 +20,7 @@ export const clientDetails: DeepPartial<StateSchema> = {
             notes: 'американский актёр, кинорежиссёр, музыкант, сценарист и продюсер.'
         },
         form: {
-            id:'643c5fe7013e22868a6eb63c',
+            _id:'643c5fe7013e22868a6eb63c',
             avatarUrls: 'https://amur.info/wp-content/uploads/2023/07/3-16-768x518.jpg',
             name: 'Джонни Депп',
             profession: 'актер',

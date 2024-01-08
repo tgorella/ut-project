@@ -7,6 +7,7 @@ import { addOrderButtonAction } from '../../slice/AddOrderButtonSlice'
 import { getProfileLastOrderNumber, profileAction, updateProfileData } from 'entities/Profile'
 import { getClientDetailsData } from 'entities/Clients'
 import { getNewOrderData } from 'features/AddOrder/model/selectors/getNewOrderData/getNewOrderData'
+import httpService from 'shared/api/api'
 
 interface addOrderProps {
  isClientPage: boolean,
@@ -17,30 +18,26 @@ export const addOrder = createAsyncThunk<Order, addOrderProps,ThunkConfig<string
     'orderAddButton/addOrder',
     async (props, thunkAPI) => {
         const {isClientPage, clientId} = props
-        const {rejectWithValue, extra, dispatch, getState} = thunkAPI
+        const {rejectWithValue, dispatch, getState} = thunkAPI
         const newOrder = getNewOrderData(getState())
         const authData = getUserAuthData(getState())
         const clientData = getClientDetailsData(getState())
         const lastOrder = getProfileLastOrderNumber(getState())
-        
         if (!authData || !newOrder) {
             return rejectWithValue(i18n.t('no data'))
         }
         const updatedOrder = {
             ...newOrder,
-            userId: authData.id ,
-            id: Date.now().toString(),
-            createdAt: Date.now().toString(),
             status: '6467834500aba6813881d4',
             orderNumber: lastOrder,
-            clientId: clientData?.id
+            clientId: clientData?._id
         }
 
         if (!isClientPage) {
             updatedOrder.clientId = clientId
         }
         try {
-            const {data} = await extra.api.post<Order>('/orders', {
+            const {data} = await httpService.post<Order>('/order/', {
                 ...updatedOrder
             })
             dispatch(profileAction.increaseOrderNumber())

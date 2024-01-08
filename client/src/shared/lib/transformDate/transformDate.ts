@@ -1,4 +1,7 @@
-export const transformDate = (date: string | number) => {
-    const result = new Date(Number(date)).toISOString().split('T')[0].split('-').reverse().join('.')
-    return result
+export const transformDate = (date: string ) => {
+    if (date) {
+        const result = date.split('T')[0].split('-').reverse().join('.')
+        return result
+    }
+    return ''
 }

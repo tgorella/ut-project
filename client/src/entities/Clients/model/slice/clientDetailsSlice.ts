@@ -16,7 +16,6 @@ const initialState: ClientDetailsSchema = {
 }
 
 const formInitialState: Client = {
-    id: Date.now().toString(),
     name: '',
     email: '',
     notes: '',
@@ -48,7 +47,7 @@ export const clientDetailsSlice = createSlice({
             state.orders?.push(action.payload)
         },
         orderDeleted: (state, action) => {
-            state.orders = state.orders?.filter((order) => order.id !== action.payload)
+            state.orders = state.orders?.filter((order) => order._id !== action.payload)
         }
 
     },

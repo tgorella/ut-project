@@ -1,20 +1,26 @@
 [
   {
-    "id": "67337-1",
-    "name": "завершен",
-    "color": "green",
+    "id": "643e58deaba80539138865d0",
+    "name": "Завершен",
+    "color": "#bde2a8",
     "isDefault": true
   },
   {
-    "id": "67337-2",
-    "name": "архив",
+    "id": "643e58efaba80539138865d2",
+    "name": "Отменен",
+    "color": "#ff759f",
+    "isDefault": true
+  },
+  {
+    "id": "643e5900aba80539138865d4",
+    "name": "Архив",
     "color": "gray",
     "isDefault": true
   },
   {
-		"id": "67337-3",
-		"name": "отменен",
-		"color": "red",
+    "id": "6467834500aba6813881d4",
+    "name": "Новый",
+    "color": "#abcdfa",
     "isDefault": true
-	}
+  }
 ]

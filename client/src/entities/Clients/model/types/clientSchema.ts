@@ -6,7 +6,7 @@ export interface DataWithCount {
 }
 
 export interface Client {
-id?: string;
+_id?: string;
 name?: string;
 email?: string;
 notes?: string;

@@ -15,7 +15,6 @@ export const LoginModal = memo(({className, isOpen, onClose} : LoginModalProps) 
     const handleClose = () => {
         onClose()
         navigate('/profile')
-        location.reload()
         
     }
     return ( 
