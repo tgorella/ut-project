@@ -12,11 +12,11 @@
     gap: 20px;
     height: 60px;
     justify-content: space-between;
-    
+
     @media screen and (max-width: 1200px) {
-      flex-wrap: wrap;
-      height: auto;
-  }
+        flex-wrap: wrap;
+        height: auto;
+    }
 }
 
 .toggle_item {
