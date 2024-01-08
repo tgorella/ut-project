@@ -17,12 +17,12 @@ export const getClientsBySearch = createAsyncThunk<Client[], string ,ThunkConfig
                     q: text
                 }
             })
-            // const foundedData = data.filter((item) => item.name?.toLowerCase()?.includes(text.toLowerCase()) || item.email?.toLowerCase().includes(text.toLowerCase()) || item.phone?.includes(text))
+            const foundedData = data.filter((item) => item.name?.toLowerCase()?.includes(text.toLowerCase()) || item.email?.toLowerCase().includes(text.toLowerCase()) || item.phone?.includes(text))
             
             if (!data) {
                 return rejectWithValue(i18n.t('Клиент не найден'))
             }
-            return data
+            return foundedData
         } catch (error) {
             return rejectWithValue(i18n.t('Клиент не найден'))
         }

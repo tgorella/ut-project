@@ -6,5 +6,4 @@ isLoading?: boolean,
 error?: string,
 limit: number,
 _inited: boolean
-
 }

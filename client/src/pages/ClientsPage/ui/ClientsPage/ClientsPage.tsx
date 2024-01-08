@@ -39,21 +39,23 @@ const ClientsPage = memo(() => {
     const limit = useSelector(getClientPageLimit) || 25
     const inited = useSelector(getClientPageInited)
 
-    const handlePageChange = useCallback((num: number) => setPage(num), [])
-    const handleChangeLimit = useCallback((num: number | string) => {
-        dispatch(ClientsPageActions.setLimit(Number(num)))
-    }, [dispatch])
-
-    const handleSearch = useCallback((val: string) => {
-        dispatch(getClientsBySearch(val))
-    }, [dispatch])
-
     const limitsValue: ToggleButtonValue[]  = [
         {title: '15', value: 15},
         {title: '25', value: 25},
         {title: '50', value: 50},
         {title: '100', value: 100}
     ]
+    const handlePageChange = useCallback((num: number) => setPage(num), [])
+    
+    const handleSearch = useCallback((val: string) => {
+        dispatch(getClientsBySearch(val))
+    }, [dispatch])
+    
+    const handleChangeLimit = useCallback((num: number | string) => {
+        dispatch(ClientsPageActions.setLimit(Number(num)))
+    }, [dispatch])
+    
+    const filterClients = clients?.slice((page-1)*limit, page*limit)
 
     useEffect(() => {
         if(__PROJECT__ !== 'storybook') {
@@ -66,7 +68,6 @@ const ClientsPage = memo(() => {
         }
     }, [dispatch, inited, limit, page, userData, userData?._id])
 
-    const filterClients = clients?.slice((page-1)*limit, page*limit)
    
     if (error) {
         return <Text text={t('Что-то пошло не так')} align={TextAlign.CENTER} />
