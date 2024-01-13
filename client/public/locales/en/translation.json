@@ -88,5 +88,8 @@
   "Введите номер заказа или название": "Enter order number or order title",
   "Заголовок": "Title",
   "Стоимость": "Total",
-  "Дата создания": "Created date"
+  "Дата создания": "Created date",
+  "Настройки": "Settings",
+  "Управление статусами заказов": "Editing order statuses",
+  "Добавить новый статус": "Add new status"
 }

@@ -33,6 +33,10 @@
     border: 0;
 }
 
+.icon {
+    fill: var(--primary-text);
+}
+
 .legend {
     background-color: var(--box-bg-color);
     color: var(--secondary-text);

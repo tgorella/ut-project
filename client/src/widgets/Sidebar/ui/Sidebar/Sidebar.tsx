@@ -9,6 +9,9 @@ import { getUserAuthData } from 'entities/User'
 import LOGO from 'shared/assets/img/logo.png'
 import { getUserModulesData } from 'entities/AppModules'
 import { AppModules } from 'entities/AppModules/model/types/AppModules'
+import { AppLink } from 'shared/ui/AppLink/AppLink'
+import SETTING_ICON from 'shared/assets/img/settings.svg'
+import { useTranslation } from 'react-i18next'
 
 
 interface SidebarProps {
@@ -17,6 +20,7 @@ interface SidebarProps {
 export const Sidebar = memo(({ className = ''}: SidebarProps) => {
     const [collapsed, setCollapsed] = useState(false)
 
+    const {t} = useTranslation()
     const authData = useSelector(getUserAuthData) ?? {_id: ''}
     const modules = useSelector(getUserModulesData)
     
@@ -50,8 +54,16 @@ export const Sidebar = memo(({ className = ''}: SidebarProps) => {
             ])}
         >
             <img src={LOGO} className={cls.logo} />
-            <div className={cls.list}>
-                {itemsList}
+            <div className={cls.links_wrapper}>
+                <div className={cls.list}>
+                    {itemsList}
+                </div>
+                <div>
+                    <AppLink to={'settings'} className={classNames(cls['menu-item'], {[cls.collapsed]: collapsed}, [cls.link])}>
+                        <SETTING_ICON className={cls.icon}/>
+                        <div>{t('Настройки')}</div>
+                    </AppLink>
+                </div>
             </div>
             <AppButton 
                 square 

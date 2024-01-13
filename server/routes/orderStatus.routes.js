@@ -36,8 +36,9 @@ router
   try {
     const {orderStatusId} = req.params
     const removedOrderStatus = await OrderStatus.findById(orderStatusId)
+     
     if (removedOrderStatus.userId.toString() === req.user._id) {
-      await removedOrderStatus.remove()
+      await removedOrderStatus.deleteOne({_id: orderStatusId})
       return res.send(removedOrderStatus._id)
     }
   } catch (error) {

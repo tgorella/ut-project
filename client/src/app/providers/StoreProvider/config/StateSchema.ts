@@ -13,6 +13,7 @@ import { ClientsPageSchema } from 'pages/ClientsPage'
 import { OrdersPageSchema } from 'pages/OrdersPage/model/types/OrdersPageSchema'
 import { AddClientButtonSchema } from 'widgets/AddClientButton/module/types/AddClientButtonSchema'
 import { AddOrderButtonSchema } from 'widgets/AddOrderButton/model/types/AddOrderButton'
+import { OrderStatusEditSchema } from 'widgets/OrderStatusEdit'
 
 export interface StateSchema {
   user: UserSchema,
@@ -29,7 +30,9 @@ export interface StateSchema {
   ordersPage?: OrdersPageSchema,
   addOrder?: AddOrderSchema,
   addOrderButton?: AddOrderButtonSchema,
-  orderStatuses?: OrderStatusesSchema
+  orderStatuses?: OrderStatusesSchema,
+  OrderStatusEditSchema?: OrderStatusEditSchema
+
 }
 
 export type StateSchemaKey = keyof StateSchema

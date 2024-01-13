@@ -44,28 +44,42 @@ export const Input = memo((props:InputProps) => {
     }
 
     if (type === 'password') {
-        return ( 
-            <fieldset className={classNames(className, Mods, [cls.group])}>
-                {label  && <legend className={cls.legend}>{label}</legend>}
+        return ( <>
+            {label && <fieldset className={classNames(cls.group, Mods, [className])}>
+                <legend className={cls.legend}>{label}</legend>
                 <div className={cls.Input}>
                     <input value={value} type={showPass ? 'text' : type} onChange={changeHandler}
                         className={classNames(className, Mods, [])}
                         {...otherProps}
                     />
-                    <div className={cls.eye_btn} onClick={showPassHandle}>{showPass ? <HideIcon />: <ShowIcon/>}</div>
+                    <div className={cls.eye_btn} onClick={showPassHandle}>{showPass ? <HideIcon />: <ShowIcon className={cls.icon}/>}</div>
                 </div>
                 {error && <Alert 
                     text={error} 
                     theme={AlertTheme.ERROR} 
                     variant={AlertVariant.ONLY_TEXT}
                 />}
-            </fieldset>
+            </fieldset>}
+            {!label && <div className={classNames(cls.group, Mods, [className])}>
+                <input value={value} type={showPass ? 'text' : type} onChange={changeHandler}
+                    className={classNames(className, Mods, [])}
+                    {...otherProps}
+                />
+                <div className={cls.eye_btn} onClick={showPassHandle}>{showPass ? <HideIcon />: <ShowIcon className={cls.icon}/>}</div>
+                {error && <Alert 
+                    text={error} 
+                    theme={AlertTheme.ERROR} 
+                    variant={AlertVariant.ONLY_TEXT}
+                />}
+            </div>}
+        </>
+            
             
         )
     }
-    return ( 
-        <fieldset className={classNames(className, Mods, [cls.group])}>
-            {label  && <legend className={cls.legend}>{label}</legend>}
+    return ( <>
+        {label  && <fieldset className={classNames(cls.group, Mods, [className])}>
+            <legend className={cls.legend}>{label}</legend>
             <div className={cls.Input}>
                 <input 
                     value={value} 
@@ -77,8 +91,24 @@ export const Input = memo((props:InputProps) => {
                     text={error} 
                     theme={AlertTheme.ERROR} 
                     variant={AlertVariant.ONLY_TEXT}
-                />}
+                />
+                }
             </div>
-        </fieldset>
+        </fieldset>}
+        {!label && <div className={classNames(cls.group, Mods, [cls.Input, className])}>
+            <input 
+                value={value} 
+                type={type} 
+                onChange={changeHandler} 
+                {...otherProps}
+            />
+            {error && <Alert 
+                text={error} 
+                theme={AlertTheme.ERROR} 
+                variant={AlertVariant.ONLY_TEXT}
+            />}
+        </div>}
+    </>
+         
     )
 })

@@ -1,6 +1,9 @@
 .Sidebar {
     background-color: var(--darker-bg-color);
     color: var(--primary);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     height: calc(100vh - var(--navbar-height));
     padding: 20px;
     position: relative;
@@ -37,6 +40,13 @@
     }
 }
 
+.links_wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+}
+
 .list {
     display: flex;
     flex-direction: column;
@@ -45,6 +55,21 @@
 .logo {
     transition: width 0.3s ease;
     width: 200px;
+}
+
+.link {
+    display: flex;
+}
+
+.link div {
+    opacity: 1;
+    overflow: hidden;
+    transition: width ease 0.4s;
+}
+
+.icon {
+    fill: var(--primary-text);
+    margin-right: 20px;
 }
 
 .collapsed {
@@ -59,4 +84,25 @@
     .logo {
         width: 60px;
     }
+
+    &.link div {
+        height: 0;
+        width: 0;
+    }
+
+    .icon {
+        margin-right: 0;
+    }
+}
+
+.menu-item {
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    font-weight: 500;
+    justify-content: flex-start;
+    padding: 5px 10px;
+    width: 100%;
 }

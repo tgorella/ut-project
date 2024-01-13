@@ -6,11 +6,14 @@ export const $api = axios.create({
 
 })
 
+export const http = axios.create({
+    baseURL:__API__,
+})
 export const httpAuth = axios.create({
     baseURL: __API__ + '/auth/',
 })
 
-$api.interceptors.request.use(
+http.interceptors.request.use(
     async function (config) {
         const expiresDate = tokenService.getExpiresDate()
         const refreshToken = tokenService.getRefreshToken()
@@ -39,7 +42,7 @@ $api.interceptors.request.use(
     }
 )
 
-$api.interceptors.response.use(
+http.interceptors.response.use(
     (res) => {
         // res.data = { content: res.data }
         return res
@@ -61,11 +64,11 @@ $api.interceptors.response.use(
 )
 
 const httpService = {
-    get: $api.get,
-    post: $api.post,
-    put: $api.put,
-    delete: $api.delete,
-    patch: $api.patch,
+    get: http.get,
+    post: http.post,
+    put: http.put,
+    delete: http.delete,
+    patch: http.patch,
 }
 
 export default httpService
