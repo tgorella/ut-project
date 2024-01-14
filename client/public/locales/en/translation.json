@@ -92,5 +92,6 @@
   "Настройки": "Settings",
   "Управление статусами заказов": "Editing order statuses",
   "Добавить новый статус": "Add new status",
-  "Что-то пошло не так. Не удалось загрузить статусы": "Something went wrong. Can't load order statuses."
+  "Что-то пошло не так. Не удалось загрузить статусы": "Something went wrong. Can't load order statuses.",
+  "Статусы заказов": "Order statuses"
 }

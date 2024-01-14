@@ -78,7 +78,7 @@ const ProfilePage = memo(({className} : ProfilePageProps) => {
     return ( 
         <DynamicModuleLoader reducers={reducers} >
             <div className={cls.page_wrapper}>
-                <h1 className={cls.title}>{t('Profile page')}</h1>
+                <h2 className={cls.title}>{t('Profile page')}</h2>
                 <div className={classNames(cls.ProfilePage, {}, [className])}>
                     <div className={cls.small_column} >
                         <ProfileCard 

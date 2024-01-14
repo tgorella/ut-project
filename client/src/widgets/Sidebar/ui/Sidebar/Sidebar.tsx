@@ -12,6 +12,9 @@ import { AppModules } from 'entities/AppModules/model/types/AppModules'
 import { AppLink } from 'shared/ui/AppLink/AppLink'
 import SETTING_ICON from 'shared/assets/img/settings.svg'
 import { useTranslation } from 'react-i18next'
+import { AuthButton } from 'widgets/AuthButton'
+import { LangSwitcher } from 'widgets/LangSwitcher'
+import { ThemeSwitcher } from 'widgets/ThemeSwitcher'
 
 
 interface SidebarProps {
@@ -63,7 +66,15 @@ export const Sidebar = memo(({ className = ''}: SidebarProps) => {
                         <SETTING_ICON className={cls.icon}/>
                         <div>{t('Настройки')}</div>
                     </AppLink>
+                    <div className={cls.only_mobile}>
+                        <div className={cls.switcher_wrapper}>
+                            <LangSwitcher />
+                            <ThemeSwitcher />
+                        </div>
+                        <AuthButton className={cls.btn} />
+                    </div>
                 </div>
+                
             </div>
             <AppButton 
                 square 

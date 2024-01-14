@@ -14,7 +14,7 @@ export const LoginModal = memo(({className, isOpen, onClose} : LoginModalProps) 
     const navigate = useNavigate()
     const handleClose = () => {
         onClose()
-        navigate('/profile')
+        navigate('/settings')
         
     }
     return ( 

@@ -7,6 +7,10 @@
     justify-content: flex-end;
     padding: 0 20px;
     width: 100%;
+
+    @media screen and (max-width: 600px) {
+        display: none;
+    }
 }
 
 .list {
@@ -17,4 +21,8 @@
 .switcherWrapper {
     display: flex;
     gap: 40px;
+
+    @media screen and (max-width: 600px) {
+        display: none;
+    }
 }

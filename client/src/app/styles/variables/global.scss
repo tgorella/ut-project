@@ -20,4 +20,10 @@
 
     // z-index
     --modal-z-index: 10;
+
+    @media screen and (max-width: 600px) {
+        --navbar-height: 0;
+        --sidebar-width: 100%;
+        --sidebar-width-collapsed: 0;
+    }
 }

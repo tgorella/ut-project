@@ -18,7 +18,7 @@ export const ClientListItem = memo(({className,client} : ClientListItemProps) =>
                 <Avatar src={client.avatarUrls} size={AvatarSize.S} />
                 {client.name}</div>
             <div>{client.email}</div>
-            <div>{client.profession}</div>
+            <div className={cls.only_pc}>{client.profession}</div>
             <div className={cls.icon_block}> {client.isFav &&  <FavIcon  className={cls.icon}/>}</div>
         </Link>
     )
