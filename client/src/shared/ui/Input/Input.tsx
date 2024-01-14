@@ -61,11 +61,13 @@ export const Input = memo((props:InputProps) => {
                 />}
             </fieldset>}
             {!label && <div className={classNames(cls.group, Mods, [className])}>
-                <input value={value} type={showPass ? 'text' : type} onChange={changeHandler}
-                    className={classNames(className, Mods, [])}
-                    {...otherProps}
-                />
-                <div className={cls.eye_btn} onClick={showPassHandle}>{showPass ? <HideIcon />: <ShowIcon className={cls.icon}/>}</div>
+                <div className={cls.Input}>
+                    <input value={value} type={showPass ? 'text' : type} onChange={changeHandler}
+                        className={classNames(className, Mods, [])}
+                        {...otherProps}
+                    />
+                    <div className={cls.eye_btn} onClick={showPassHandle}>{showPass ? <HideIcon />: <ShowIcon className={cls.icon}/>}</div>
+                </div>
                 {error && <Alert 
                     text={error} 
                     theme={AlertTheme.ERROR} 

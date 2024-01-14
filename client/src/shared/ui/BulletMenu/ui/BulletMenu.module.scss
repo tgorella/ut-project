@@ -1,7 +1,7 @@
 .BulletMenu {
     align-items: center;
-    background-color: #fff;
-    border: 2px solid #fff;
+    background-color: rgb(255 255 255 / 50%);
+    border: 2px solid rgb(255 255 255 / 30%);
     border-radius: 16px;
     display: inline-flex;
     flex-wrap: wrap;
@@ -14,6 +14,7 @@
 .BulletMenu .item {
     align-items: center;
     border-radius: 16px;
+    color: var(--primary-text);
     cursor: pointer;
     display: flex;
     font-size: 16px;
@@ -24,11 +25,12 @@
 }
 
 .BulletMenu .item:hover {
-    background-color: #a2a2a4;
-    color: #fff;
+    background-color: var(--darker-bg-color);
+    color: var(--primary-text);
+    opacity: 0.7;
 }
 
 .BulletMenu .active {
-    background-color: #6f7073 !important;
-    color: #fff;
+    background-color: var(--darker-bg-color);
+    color: var(--primary-text);
 }
