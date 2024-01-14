@@ -2,13 +2,12 @@ import type { Meta, StoryObj } from '@storybook/react'
 import 'app/styles/index.scss'
 import { WithColorsTheme } from 'shared/config/storybook/ThemeDecorator/WithColorsTheme'
 import { OrderStatusEdit } from './OrderStatusEdit'
+import { orderStatusesEditErrorStoreDecorator, orderStatusesEditIsLoadingStoreDecorator, orderStatusesEditStoreDecorator } from 'shared/config/storybook/StoreDecorator/OrderStatusesEditDecorator'
 
-// More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof OrderStatusEdit> = {
-    title: 'shared/OrderStatusEdit',
+    title: 'widgets/OrderStatusEdit',
     component: OrderStatusEdit,
     argTypes: {
-    // backgroundColor: { control: 'color' },
     },
     tags: ['autodocs']
 }
@@ -17,14 +16,44 @@ const meta: Meta<typeof OrderStatusEdit> = {
 export default meta
 type Story = StoryObj<typeof OrderStatusEdit>;
 
-// More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 
 export const Default: Story = {
     args: {
                                                                                                                                                           
     },
     decorators: [
-        WithColorsTheme
+        WithColorsTheme,
+        orderStatusesEditStoreDecorator
+    ],
+    parameters: {
+        docs: {
+            canvas: {sourceState: 'shown'}
+        },
+    }
+}
+
+export const WithError: Story = {
+    args: {
+                                                                                                                                                        
+    },
+    decorators: [
+        WithColorsTheme,
+        orderStatusesEditErrorStoreDecorator
+    ],
+    parameters: {
+        docs: {
+            canvas: {sourceState: 'shown'}
+        },
+    }
+}
+
+export const Loading: Story = {
+    args: {
+                                                                                                                                                      
+    },
+    decorators: [
+        WithColorsTheme,
+        orderStatusesEditIsLoadingStoreDecorator
     ],
     parameters: {
         docs: {

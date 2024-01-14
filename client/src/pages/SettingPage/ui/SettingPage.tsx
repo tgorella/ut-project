@@ -15,6 +15,9 @@ export const SettingPage = memo(({className} : SettingPageProps) => {
     return ( 
         <div className={classNames(cls.SettingPage, {}, [className])}>
             <h1>{t('Настройки')}</h1>
+            <div>
+              
+            </div>
             <OrderStatusEdit />
         </div>
         

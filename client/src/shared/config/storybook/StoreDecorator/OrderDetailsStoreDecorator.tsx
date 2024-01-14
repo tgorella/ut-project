@@ -16,7 +16,7 @@ export const orderDetails: DeepPartial<StateSchema> = {
         isLoading: false,
         data: {
             _id:'643c5fe7013e22868a6eb63c',
-            avatarUrls: 'https://amur.info/wp-content/uploads/2023/07/3-16-768x518.jpg',
+            avatarUrls: 'https://i1.mybook.io/p/x480/bookset/98/a5/98a52659-fbd2-4082-aada-940b7eb8ddb4.png',
             name: 'Джонни Депп',
             profession: 'актер',
             email: 'name@mydomain.com',
@@ -25,7 +25,7 @@ export const orderDetails: DeepPartial<StateSchema> = {
         },
         form: {
             _id:'643c5fe7013e22868a6eb63c',
-            avatarUrls: 'https://amur.info/wp-content/uploads/2023/07/3-16-768x518.jpg',
+            avatarUrls: 'https://i1.mybook.io/p/x480/bookset/98/a5/98a52659-fbd2-4082-aada-940b7eb8ddb4.png',
             name: 'Джонни Депп',
             profession: 'актер',
             email: 'name@mydomain.com',

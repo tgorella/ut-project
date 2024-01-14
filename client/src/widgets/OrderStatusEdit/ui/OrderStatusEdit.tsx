@@ -44,7 +44,9 @@ export const OrderStatusEdit = memo(({className} : OrderStatusEditProps) => {
     const [showNewInput, setShowNewInput] = useState(false)
 
     useEffect(() => {
-        dispatch(fetchOrderStatuses())
+        if (__PROJECT__ !== 'storybook') {
+            dispatch(fetchOrderStatuses())
+        }
     }, [dispatch])
 
     const toggleInput = (id: string, name: string, color: string) => {
@@ -108,8 +110,8 @@ export const OrderStatusEdit = memo(({className} : OrderStatusEditProps) => {
     }
     
     if (error) {
-        return <Box>
-            <Alert theme={AlertTheme.ERROR} text={error} />
+        return <Box header={t('Управление статусами заказов')}>
+            <Alert theme={AlertTheme.ERROR} text={t('Что-то пошло не так. Не удалось загрузить статусы.')} />
         </Box>
     }
     return ( 

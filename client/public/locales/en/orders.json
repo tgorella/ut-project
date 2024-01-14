@@ -17,6 +17,7 @@
   "Удалить":"Delete",
   "Удалить заказ":"Delete",
   "Добавить новый статус": "Add new status",
-  "Управление статусами заказов": "Editing order statuses"
+  "Управление статусами заказов": "Editing order statuses",
+  "Что-то пошло не так. Не удалось загрузить статусы": "Something went wrong. Can't load order statuses."
 
 }

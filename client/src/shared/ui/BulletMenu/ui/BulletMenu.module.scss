@@ -1,0 +1,34 @@
+.BulletMenu {
+    align-items: center;
+    background-color: #fff;
+    border: 2px solid #fff;
+    border-radius: 16px;
+    display: inline-flex;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    min-height: 32px;
+    width: 100%;
+}
+
+.BulletMenu .item {
+    align-items: center;
+    border-radius: 16px;
+    cursor: pointer;
+    display: flex;
+    font-size: 16px;
+    height: 28px;
+    justify-content: center;
+    padding: 0 20px;
+    transition: background-color 1s;
+}
+
+.BulletMenu .item:hover {
+    background-color: #a2a2a4;
+    color: #fff;
+}
+
+.BulletMenu .active {
+    background-color: #6f7073 !important;
+    color: #fff;
+}

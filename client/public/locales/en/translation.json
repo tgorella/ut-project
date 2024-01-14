@@ -91,5 +91,6 @@
   "Дата создания": "Created date",
   "Настройки": "Settings",
   "Управление статусами заказов": "Editing order statuses",
-  "Добавить новый статус": "Add new status"
+  "Добавить новый статус": "Add new status",
+  "Что-то пошло не так. Не удалось загрузить статусы": "Something went wrong. Can't load order statuses."
 }
