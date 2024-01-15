@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import 'app/styles/index.scss'
 import { WithColorsTheme } from 'shared/config/storybook/ThemeDecorator/WithColorsTheme'
 import { SettingPage } from './SettingPage'
-import { orderStatusesEditStoreDecorator } from 'shared/config/storybook/StoreDecorator/OrderStatusesEditDecorator'
+import { EditPageStoreDecorator } from 'shared/config/storybook/StoreDecorator/settingPageStoreDecorator'
 
 const meta: Meta<typeof SettingPage> = {
     title: 'pages/SettingPage',
@@ -23,7 +23,7 @@ export const Default: Story = {
     },
     decorators: [
         WithColorsTheme,
-        orderStatusesEditStoreDecorator
+        EditPageStoreDecorator,
     ],
     parameters: {
         docs: {

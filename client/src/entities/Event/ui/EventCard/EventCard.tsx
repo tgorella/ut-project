@@ -20,7 +20,6 @@ export const EventCard = memo(({className, event} : EventCardProps) => {
             <p><b>{t('Дата')}:</b> {transformDate(event.eventDate)}</p>
             <p><b>{t('Время')}:</b> {event.startTime} - {event.endTime}</p>
             <p><b>{t('Адрес')}:</b> {event.place}</p>
-            {event.eventType === 'work' && <p><b>{t('Номер заказа')}:</b> {event.orderNumber}</p>}
             <p className={cls.notes}><b>{t('Заметки')}:</b> {event.notes}</p>
         </section>
     )
