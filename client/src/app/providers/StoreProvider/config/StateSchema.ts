@@ -2,6 +2,7 @@ import { AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject } f
 import { AxiosInstance } from 'axios'
 import { AppModulesSchema } from 'entities/AppModules'
 import { ClientDetailsSchema } from 'entities/Clients'
+import { EventSchema } from 'entities/Event'
 import { OrderDetailsSchema } from 'entities/Order'
 import { OrderStatusesSchema } from 'entities/OrderStatus'
 import { ProfileSchema } from 'entities/Profile'
@@ -31,7 +32,8 @@ export interface StateSchema {
   addOrder?: AddOrderSchema,
   addOrderButton?: AddOrderButtonSchema,
   orderStatuses?: OrderStatusesSchema,
-  OrderStatusEditSchema?: OrderStatusEditSchema
+  OrderStatusEditSchema?: OrderStatusEditSchema,
+  eventDetails?: EventSchema
 
 }
 

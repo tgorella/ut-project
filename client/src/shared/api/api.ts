@@ -3,9 +3,7 @@ import axios from 'axios'
 
 export const $api = axios.create({
     baseURL:__API__,
-
 })
-
 export const http = axios.create({
     baseURL:__API__,
 })
@@ -34,7 +32,6 @@ http.interceptors.request.use(
                 Authorization: `Bearer ${accessToken}`,
             }
         }
-        
         return config
     },
     function (error) {

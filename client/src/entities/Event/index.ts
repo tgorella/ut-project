@@ -1,0 +1,5 @@
+export { eventAction, eventReducer } from './model/slice/EventSlice'
+export { EventsList } from './ui/EventsList/EventsList'
+export { EventBlock } from './ui/EventBlock/EventBlock'
+export { Event, EventSchema } from './model/types/Event'
+export { EventCard } from './ui/EventCard/EventCard'

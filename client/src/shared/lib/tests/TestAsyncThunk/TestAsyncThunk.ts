@@ -5,8 +5,7 @@ import axios, { AxiosStatic } from 'axios'
 type ActionCreatorType<Return, Arg, RejectedValue> = (arg: Arg) => AsyncThunkAction<Return,Arg , {rejectValue: RejectedValue}>
 
 jest.mock('axios')
-const mokedAxios = jest.mocked(axios, true)
-
+const mockedAxios = jest.mocked(axios, true)
 
 export class TestAsyncThunk<Return, Arg, RejectedValue> {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -22,7 +21,7 @@ export class TestAsyncThunk<Return, Arg, RejectedValue> {
         this.actionCreator = actionCreator
         this.dispatch = jest.fn()
         this.getState = jest.fn(() => state as StateSchema)
-        this.api = mokedAxios
+        this.api = mockedAxios
         this.navigate = jest.fn()
     }
 

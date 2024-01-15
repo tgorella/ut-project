@@ -1,0 +1,16 @@
+.eventForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.eventForm textarea {
+    background: none;
+    background-color: var(--box-bg-color);
+    border: 1px solid var(--darker-bg-color);
+    border-radius: 5px;
+    color: var(--primary-text);
+    margin: 0 6px;
+    padding: 5px 15px;
+}

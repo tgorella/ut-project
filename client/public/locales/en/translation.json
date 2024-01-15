@@ -80,7 +80,8 @@
       "": {
         " Заказ не добавлен": "Something went wrong. Order hasn't been added."
       }
-    }
+    },
+    " Не удалось загрузить данные": "Something went wrong. Can't load data."
   },
   "Заказы": "Orders",
   "Заказов нет": "Orders not found",
@@ -93,5 +94,10 @@
   "Управление статусами заказов": "Editing order statuses",
   "Добавить новый статус": "Add new status",
   "Что-то пошло не так. Не удалось загрузить статусы": "Something went wrong. Can't load order statuses.",
-  "Статусы заказов": "Order statuses"
+  "Статусы заказов": "Order statuses",
+  "Номер заказа:": "Order number",
+  "Номер заказа": "Order number",
+  "Редактировать": "Edit",
+  "Категория": "Category",
+  "Нет доступа": "No permission"
 }

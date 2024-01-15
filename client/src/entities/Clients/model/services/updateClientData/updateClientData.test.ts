@@ -19,11 +19,12 @@ describe('updateProfileData.test', () => {
                 form: data
             }
         })
-        thunk.api.put.mockReturnValue(Promise.resolve({data}))
+
+        thunk.api.patch.mockReturnValue(Promise.resolve({data}))
 
         const result = await thunk.callThunk('643c5fe7013e22868a6eb63c')
 
-        expect(thunk.api.put).toHaveBeenCalled()
+        expect(thunk.api.patch).toHaveBeenCalled()
         expect(result.meta.requestStatus).toBe('fulfilled')
         expect(result.payload).toEqual(data)
 
@@ -31,7 +32,7 @@ describe('updateProfileData.test', () => {
     test('error fetch', async() => {
         
         const thunk = new TestAsyncThunk(updateClientData)
-        thunk.api.get.mockReturnValue(Promise.resolve({status: 403}))
+        thunk.api.patch.mockReturnValue(Promise.resolve({status: 403}))
         const result = await thunk.callThunk('643c5fe7013e22868a6eb63c')
         
         expect(result.meta.requestStatus).toBe('rejected')
