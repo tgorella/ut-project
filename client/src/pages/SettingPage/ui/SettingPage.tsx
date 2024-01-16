@@ -12,7 +12,7 @@ interface SettingPageProps {
   className?: string;
 }
 
-export const SettingPage = memo(({className} : SettingPageProps) => {
+const SettingPage = memo(({className} : SettingPageProps) => {
     const {t} = useTranslation('settings')
     const [path, setPath] = useState('')
     const [pageContent, setPageContent] = useState(<ProfilePage />)
@@ -66,3 +66,5 @@ export const SettingPage = memo(({className} : SettingPageProps) => {
         
     )
 })
+
+export default SettingPage

@@ -4,8 +4,7 @@ import { fetchOrderStatuses } from '../services/fetchOrderStatuses/fetchOrderSta
 
 const initialState: OrderStatusesSchema = {
     isLoading: false,
-    data: undefined,
-    form: undefined,
+    data: undefined
 }
 
 export const orderStatusesSlice = createSlice({
@@ -24,7 +23,6 @@ export const orderStatusesSlice = createSlice({
                 state.isLoading = false
                 state.error = undefined
                 state.data = action.payload
-                state.form = action.payload
 
             })
             .addCase(fetchOrderStatuses.rejected, (state, action) => {

@@ -67,7 +67,7 @@ const OrdersPage = memo(() => {
     },[dispatch, search])
     
     return ( 
-        <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false} >
+        <DynamicModuleLoader reducers={reducers} removeAfterUnmount={true} >
             <h1 className={cls.header}>{t('Заказы')}</h1>
             <HStack className={cls.top_menu}>
                 <div>

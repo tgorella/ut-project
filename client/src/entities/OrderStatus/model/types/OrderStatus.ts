@@ -9,6 +9,5 @@ export interface OrderStatusDetails {
 export interface OrderStatusesSchema {
   isLoading: boolean,
   error?: string,
-  data?: OrderStatusDetails[],
-  form?: OrderStatusDetails[]
+  data?: OrderStatusDetails[]
 }

@@ -36,7 +36,7 @@ router
     const {eventTypeId} = req.params
     const removedEventType = await EventType.findById(eventTypeId)
     if (removedEventType.userId.toString() === req.user._id) {
-      await removedEventType.remove()
+      await removedEventType.deleteOne({_id: eventTypeId})
       return res.send(removedEventType._id)
     }
   } catch (error) {

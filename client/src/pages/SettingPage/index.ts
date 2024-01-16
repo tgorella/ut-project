@@ -1,1 +1,3 @@
-export {SettingPage} from './ui/SettingPage'
+import { SettingPageLazy as SettingPage } from './ui/SettingPage.lazy'
+
+export {SettingPage}

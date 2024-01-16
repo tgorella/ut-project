@@ -74,7 +74,7 @@ const ClientsPage = memo(() => {
     }
     
     return (
-        <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
+        <DynamicModuleLoader reducers={reducers} removeAfterUnmount={true}>
             <h1 className={cls.header}>
                 {t('Клиенты')}
             </h1>
