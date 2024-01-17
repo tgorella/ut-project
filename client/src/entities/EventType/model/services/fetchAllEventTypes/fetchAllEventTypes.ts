@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ThunkConfig } from 'app/providers/StoreProvider'
 import i18n from 'shared/config/i18n/i18n'
 import httpService from 'shared/api/api'
-import { EventType } from '@testing-library/react'
+import { EventType } from '../../types/EventType'
 
 export const fetchEventTypes = createAsyncThunk<EventType[], void,ThunkConfig<string>>(
     'eventTypes/fetchAll',
