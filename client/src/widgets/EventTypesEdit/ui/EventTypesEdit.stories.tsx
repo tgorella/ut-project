@@ -2,10 +2,10 @@ import type { Meta, StoryObj } from '@storybook/react'
 import 'app/styles/index.scss'
 import { WithColorsTheme } from 'shared/config/storybook/ThemeDecorator/WithColorsTheme'
 import { EventTypesEdit } from './EventTypesEdit'
+import { eventTypesEditErrorStoreDecorator, eventTypesEditIsLoadingStoreDecorator, eventTypesEditStoreDecorator } from 'shared/config/storybook/StoreDecorator/EventTypeEditDecorator'
 
-// More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof EventTypesEdit> = {
-    title: 'shared/EventTypesEdit',
+    title: 'widgets/EventTypesEdit',
     component: EventTypesEdit,
     argTypes: {
     // backgroundColor: { control: 'color' },
@@ -17,14 +17,43 @@ const meta: Meta<typeof EventTypesEdit> = {
 export default meta
 type Story = StoryObj<typeof EventTypesEdit>;
 
-// More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 
 export const Default: Story = {
     args: {
                                                                                                                                                           
     },
     decorators: [
-        WithColorsTheme
+        WithColorsTheme,
+        eventTypesEditStoreDecorator
+    ],
+    parameters: {
+        docs: {
+            canvas: {sourceState: 'shown'}
+        },
+    }
+}
+export const IsLoading: Story = {
+    args: {
+                                                                                                                                                        
+    },
+    decorators: [
+        WithColorsTheme,
+        eventTypesEditIsLoadingStoreDecorator
+    ],
+    parameters: {
+        docs: {
+            canvas: {sourceState: 'shown'}
+        },
+    }
+}
+
+export const WithError: Story = {
+    args: {
+                                                                                                                                                        
+    },
+    decorators: [
+        WithColorsTheme,
+        eventTypesEditErrorStoreDecorator
     ],
     parameters: {
         docs: {

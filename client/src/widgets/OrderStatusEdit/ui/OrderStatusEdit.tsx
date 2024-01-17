@@ -32,7 +32,7 @@ const reducers : ReducersList = {
     OrderStatusEditSchema: orderStatusEditReducer
 }
 
-export const OrderStatusEdit = memo(({className} : OrderStatusEditProps) => {
+const OrderStatusEdit = memo(({className} : OrderStatusEditProps) => {
     const dispatch = useAppDispatch()
     const {t} = useTranslation('orders')
     const editInputId = useSelector(getOrderStatusEditId) || ''
@@ -150,3 +150,5 @@ export const OrderStatusEdit = memo(({className} : OrderStatusEditProps) => {
         </DynamicModuleLoader>
     )
 })
+
+export default OrderStatusEdit

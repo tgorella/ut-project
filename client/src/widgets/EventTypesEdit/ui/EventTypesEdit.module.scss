@@ -1,3 +1,16 @@
 .EventTypesEdit {
-  padding: 0;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 1000px;
+    padding-top: 20px;
+
+    .button {
+        margin-top: 20px;
+    }
+}
+
+.box {
+    box-shadow: 0 35px 100px -35px rgb(0 0 0 / 40%);
 }

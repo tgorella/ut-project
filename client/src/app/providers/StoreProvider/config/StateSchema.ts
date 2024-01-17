@@ -35,7 +35,7 @@ export interface StateSchema {
   orderStatuses?: OrderStatusesSchema,
   OrderStatusEditSchema?: OrderStatusEditSchema,
   eventDetails?: EventSchema,
-  eventTypesEditSchema: EventTypesEditSchema
+  eventTypesEditSchema?: EventTypesEditSchema
 
 }
 

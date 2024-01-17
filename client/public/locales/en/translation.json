@@ -99,5 +99,8 @@
   "Номер заказа": "Order number",
   "Редактировать": "Edit",
   "Категория": "Category",
-  "Нет доступа": "No permission"
+  "Нет доступа": "No permission",
+  "Управление типами событий": "Editing event types",
+  "Типы событий": "Event types",
+  "Добавить новую категорию": "Add"
 }
