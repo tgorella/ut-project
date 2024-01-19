@@ -34,7 +34,7 @@ router.route('/:stepId')
     const {stepId} = req.mergeParams
     const removedStep = await ProjectStep.findById(stepId)
     if (removedStep.userId.toString() === req.user._id) {
-      await removedStep.remove()
+      await ProjectStep.deleteOne({_id: stepId})
       return res.send(removedStep._id)
     }
   } catch (error) {

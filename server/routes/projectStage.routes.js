@@ -1,6 +1,7 @@
 const express = require('express')
 const auth = require('../middleware/auth.middleware')
 const ProjectStage = require('../models/ProjectStage')
+const ProjectStep = require('../models/ProjectStep')
 const router = express.Router({mergeParams: true})
 
 
@@ -8,6 +9,7 @@ router.route('/')
 .get(auth, async (req, res) => {
   try {
     const list = await ProjectStage.find({userId: req.user._id})
+
     res.status(200).send(list)
   } catch (error) {
     res
@@ -36,7 +38,8 @@ router
     const {stageId} = req.params
     const removedProjectStage = await ProjectStage.findById(stageId)
     if (removedProjectStage.userId.toString() === req.user._id) {
-      await removedProjectStage.remove()
+      await ProjectStep.deleteMany({stageId: stageId})
+      await ProjectStage.deleteOne({_id: stageId})
       return res.send(removedProjectStage._id)
     }
   } catch (error) {

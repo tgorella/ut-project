@@ -1,0 +1,52 @@
+.ProjectRow {
+    align-items: center;
+    display: flex;
+    overflow-x: auto;
+    width: 100%;
+}
+
+.ProjectRow::-webkit-scrollbar {
+    height: 5px;
+    width: 100%;
+}
+
+.ProjectRow::-webkit-scrollbar-track {
+    background-color: var(--darker-bg-color);    /* цвет плашки */
+}
+
+.ProjectRow::-webkit-scrollbar-thumb {
+    background: var(--secondary-text);        /* цвет дорожки */
+    border-radius: 20px;       /* закругления плашки */
+}
+
+.project_info {
+    min-width: 200px;
+    text-overflow: ellipsis;
+}
+
+.project_title {
+    font-weight: bold;
+}
+
+.project_title a {
+    color: var(--primary-text),;
+}
+
+.status_wrapper {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    line-height: 12px;
+}
+
+.color_bullet {
+    border-radius: 5px;
+    height: 10px;
+    width: 10px;
+}
+
+.status {
+    font-size: 12px;
+    text-overflow: ellipsis;
+}

@@ -1,0 +1,61 @@
+.StepSelect {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    width: 100%;
+}
+
+.StepSelect select {
+    appearance: none; /* hide default arrow in chrome OSX */
+    background-color: #e5e4e3;
+    border: 1px solid #fff;
+    border: 0;
+    border-radius: 3px;
+    border-radius: 10px;
+    color: #000;
+    cursor: pointer;
+    font-size: 14px;
+    height: 76px;
+    margin: 0;
+    min-width: 76px;
+    overflow: hidden;
+    padding: 10px;
+    text-align: center !important;
+    text-indent: 0.01px;
+    width: 100%;
+}
+
+.StepSelect::after,
+.StepSelect::before {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+}
+
+.StepSelect select[disabled] {
+    color: rgb(0 0 0 / 30%);
+}
+
+.StepSelect select[disabled]::after {
+    color: rgb(0 0 0 / 10%);
+}
+
+.StepSelect .done {
+    background-color: #bde2a8 !important;
+}
+
+.StepSelect .in_progress {
+    background-color: #ffdf84 !important;
+}
+
+.StepSelect .none {
+    background-color: #e5e4e3 !important;
+}
+
+.StepSelect .paused {
+    background-color: #c9b5db !important;
+}
+
+.StepSelect .warning {
+    background-color: #ff8e97 !important;
+}

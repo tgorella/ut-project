@@ -1,13 +1,19 @@
 const express = require('express')
 const auth = require('../middleware/auth.middleware')
 const Project = require('../models/Project')
+const ProjectStage = require('../models/ProjectStage')
+const ProjectStep = require('../models/ProjectStep')
 const router = express.Router({mergeParams: true})
 
 
 router.route('/')
 .get(auth, async (req, res) => {
   try {
-    const list = await Project.find({userId: req.user._id})
+    const list = await Project.find({userId: req.user._id}).populate({
+      path: 'stages',
+      populate: {path: "steps"}
+    })
+
     res.status(200).send(list)
   } catch (error) {
     res
@@ -33,10 +39,15 @@ router
 .route('/:orderStatusId')
 .delete(auth, async (req, res) => {
   try {
-    const {orderStatusId} = req.params
-    const removedProject = await Project.findById(orderStatusId)
+    const {projectId} = req.params
+    const removedProject = await Project.findById(projectId)
     if (removedProject.userId.toString() === req.user._id) {
-      await removedProject.remove()
+      const stages = await ProjectStage.find({projectId: projectId})
+      stages.forEach(async (stage) => {
+        await ProjectStep.deleteMany({stageId: stage._id})
+      })
+      await ProjectStage.deleteMany({projectId: projectId})
+      await Project.deleteOne({_id: projectId})
       return res.send(removedProject._id)
     }
   } catch (error) {

@@ -1,4 +1,4 @@
-import { Client } from './model/types/clientSchema'
+export type { Client } from './model/types/clientSchema'
 import { ClientCard } from './ui/ClientCard/ClientCard'
 import { getClientById } from './model/services/getClientById/getClientById'
 import type { ClientDetailsSchema } from './model/types/clientDetailsSchema'
@@ -19,7 +19,6 @@ import { getClientOrdersLoading } from './model/selectors/getClientOrdersLoading
 
 
 export {
-    Client,
     ClientDetailsSchema,
     getClientById,
     updateClientData,

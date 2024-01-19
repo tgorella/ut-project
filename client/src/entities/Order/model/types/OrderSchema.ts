@@ -15,4 +15,5 @@ export interface Order {
   createdAt?:string,
   updatedAt?:string,
   projectType:string,
+  steps?: string[]
 }

@@ -9,5 +9,5 @@ export { getOrderStatusesData } from './model/selectors/getOrderStatusesData/get
 export { getOrderStatusesError } from './model/selectors/getOrderStatusesError/getOrderStatusesError'
 export { getOrderStatusesIsLoading } from './model/selectors/getOrderStatusesIsLoading/getOrderStatusesIsLoading'
 export { getOrderStatusById } from './model/selectors/getOrderStatusById/getOrderStatusByIs'
-export { OrderStatusDetails, OrderStatusesSchema } from './model/types/OrderStatus'
+export type { OrderStatusDetails, OrderStatusesSchema } from './model/types/OrderStatus'
 export {OrderStatusBlock} from './ui/OrderStatus/OrderStatusBlock'
