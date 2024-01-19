@@ -1,6 +1,6 @@
 # Система для отслеживания рабочих процессов, клиентов, заказов.  
 
-Перевожу старый пет-проект [crm.tanya-gorelova.website](crm.tanya-gorelova.websit) на TS и FSD архитектуру
+Перевожу старый пет-проект [crm.tanya-gorelova.website](http://crm.tanya-gorelova.website) на TS и FSD архитектуру
 
 Тестовый вход: test@mail.com - Test1234 (старый проект)
 
