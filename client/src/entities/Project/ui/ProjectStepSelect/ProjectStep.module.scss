@@ -5,6 +5,10 @@
     width: 100%;
 }
 
+.StepSelect fieldset {
+    padding: 1px;
+}
+
 .StepSelect select {
     appearance: none; /* hide default arrow in chrome OSX */
     background-color: #e5e4e3;
