@@ -9,6 +9,7 @@
     font-size: 20px;
     font-weight: bold;
     justify-content: flex-start;
+    align-items: center;
     min-width: 200px;
 }
 
@@ -31,7 +32,7 @@
 
 .stepTitle {
     align-content: stretch;
-    display: flex;
+    display:grid;
     text-align: center;
 }
 
@@ -39,9 +40,9 @@
     align-items: center;
     background-color: rgb(0 0 0 / 5%);
     border-right: 1px solid var(--bg-color);
-    display: flex;
     font-size: 14px;
     height: 70px;
+    display: flex;
     justify-content: center;
     line-height: 13px;
     overflow: hidden;

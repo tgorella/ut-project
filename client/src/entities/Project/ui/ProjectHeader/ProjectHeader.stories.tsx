@@ -40,7 +40,7 @@ export const Default: Story = {
                     stageId: '',
                     index: 0},
                 {_id: 'ldas5akj6gdg',
-                    name: 'ТЗ / Опросник',
+                    name: 'ТЗ / Бриф',
                     userId:'',
                     stageId: '',
                     index: 0},
@@ -49,7 +49,7 @@ export const Default: Story = {
                     userId:'',
                     stageId: '',
                     index: 0},
-                {_id: 's287dfg',
+                {_id: 's287kjhfd85rg567ро',
                     name: 'Бугалтерия',
                     userId:'',
                     stageId: '',
@@ -64,25 +64,41 @@ export const Default: Story = {
             index: 0,
             steps: [
                 {_id: 'ldk46jgdg',
-                    name: 'Исследование',
+                    name: 'Аудит маркетинга',
                     userId:'',
                     stageId: '',
-                    index: 0},
+                    index: 0
+                },
+                {_id: 'ld46впjgsdf5dg',
+                    name: 'Логотип',
+                    userId:'',
+                    stageId: '',
+                    index: 0
+                },
                 {_id: 'ld46jgsdf5dg',
-                    name: 'Разработка макета',
+                    name: 'Фирменный стиль',
                     userId:'',
                     stageId: '',
-                    index: 0},
+                    index: 0
+                },
+                {_id: 'ld44р67f5567g',
+                    name: 'Дизайн упаковки',
+                    userId:'',
+                    stageId: '',
+                    index: 0
+                },
                 {_id: 'lda789dakjgdg',
                     name: 'Согласование',
                     userId:'',
                     stageId: '',
-                    index: 0},
+                    index: 0
+                },
                 {_id: 'a357asddg',
                     name: 'Правки',
                     userId:'',
                     stageId: '',
-                    index: 0}
+                    index: 0
+                }
             ]
         },
         {

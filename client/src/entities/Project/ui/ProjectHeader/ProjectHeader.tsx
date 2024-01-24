@@ -10,26 +10,17 @@ interface ProjectHeaderProps {
   stages: ProjectStage[]
 }
 export const ProjectHeader = memo(({className, projectName, stages} : ProjectHeaderProps) => {
-    function totalSteps (stArr: ProjectStage[]) {
-        let total = 0
-        stArr.forEach((stage) => {
-            total += stage.steps.length
-        })
-        return total
-    }
-
-    const total = totalSteps(stages)
-    const width = document.documentElement.clientWidth > total*100 ? (document.documentElement.clientWidth- 300) / total+'px' : '100px'
+    
     return ( 
         <div className={classNames(cls.ProjectHeader, {}, [className])}>
             <div className={cls.projectName}>{projectName}</div>
             {stages.map((stage) => {
                 return <div key={stage._id} className={cls.stageWrapper}>
                     <div className={cls.title}>{stage.name}</div>
-                    <div className={cls.stepTitle}>
+                    <div className={cls.stepTitle} style={{gridTemplateColumns: `repeat(${stage.steps.length}, minmax(100px, 1fr))`}}>
                         {stage.steps.map((step) => {
                             return (
-                                <div key={step._id} className={cls.stepWrapper} style={{width: width}}>
+                                <div key={step._id} className={cls.stepWrapper} >
                                     {step.name}
                                 </div>
                             )

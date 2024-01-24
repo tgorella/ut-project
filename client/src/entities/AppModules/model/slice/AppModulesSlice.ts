@@ -24,7 +24,7 @@ export const appModulesSlice = createSlice({
                 clients: true,
                 orders: true,
                 calendar: true,
-                workFlow: true
+                projects: true
             }
         }
     },
