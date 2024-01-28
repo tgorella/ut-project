@@ -1,20 +1,23 @@
 .Project {
-  position: relative;
+    position: relative;
 }
+
 .stage_wrapper {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: stretch;
-  gap: 10px;
+    align-items: stretch;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    width: 100%;
 }
+
 .btn {
-  display: flex;
-  width: 100%;
-  margin: 5px;
+    display: flex;
+    margin: 5px;
+    width: 100%;
 }
+
 .delBtn {
-  position: absolute;
-  top: 20px;
-  right: 20px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
 }
