@@ -60,9 +60,9 @@ export const projectEditError: DeepPartial<StateSchema> = {
         error: 'error'
     },
     projectPage: {
-      isLoading: false,
-      error: 'error'
-  }
+        isLoading: false,
+        error: 'error'
+    }
 }
 export const ProjectEditIsLoading: DeepPartial<StateSchema> = {
     ProjectEdit: {
