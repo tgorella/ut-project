@@ -15,7 +15,7 @@ export const getClientById = createAsyncThunk<Client, FilterProps ,ThunkConfig<s
         const {clientId, currentUserId} = filter
         try {
             const response = await httpService.get<Client>(`/client/${clientId}`)
-            console.log(response)
+            
             if (response.data.userId !== currentUserId) {
                 throw new Error('Клиент не найден')
             }

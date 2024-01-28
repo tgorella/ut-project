@@ -33,7 +33,7 @@ interface ProfileCardProps {
   onChangeCountry: (value: Country) => void;
   saveProfile?: () => void
 }
-export const ProfileCard = memo((props : ProfileCardProps) => {
+const ProfileCard = memo((props : ProfileCardProps) => {
 
     const {
         className, 
@@ -185,3 +185,4 @@ export const ProfileCard = memo((props : ProfileCardProps) => {
         </div>
     )
 })
+export default ProfileCard

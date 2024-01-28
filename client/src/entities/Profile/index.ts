@@ -8,7 +8,7 @@ import { fetchProfileData } from './model/services/fetchProfileData/fetchProfile
 import { updateProfileData } from './model/services/updateProfileData/updateProfileData'
 import { profileAction, profileReducer } from './model/slice/profileSlice'
 export type { Profile, ProfileSchema } from './model/types/profileSchema'
-import { ProfileCard } from './ui/ProfileCard/ProfileCard'
+import { ProfileCardLazy as ProfileCard } from './ui/ProfileCard/ProfileCard.lazy'
 
 export {
     profileAction, 

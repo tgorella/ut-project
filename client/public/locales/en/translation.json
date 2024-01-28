@@ -81,7 +81,10 @@
         " Заказ не добавлен": "Something went wrong. Order hasn't been added."
       }
     },
-    " Не удалось загрузить данные": "Something went wrong. Can't load data."
+    " Не удалось загрузить данные": "Something went wrong. Can't load data.",
+    " Не получилось получить данные": {
+      "": "Something went wrong. "
+    }
   },
   "Заказы": "Orders",
   "Заказов нет": "Orders not found",
@@ -102,5 +105,15 @@
   "Нет доступа": "No permission",
   "Управление типами событий": "Editing event types",
   "Типы событий": "Event types",
-  "Добавить новую категорию": "Add"
+  "Добавить новую категорию": "Add",
+  "Удалить шаг": "Delete step",
+  "удалить стадию": "Delete stage",
+  "Удалить проект": "Delete project",
+  "Добавить новый проект": "Add new project",
+  "Добавить шаг": "Add step",
+  "Добавить стадию": "Add new stage",
+  "Добавить проект": "Add project",
+  "Введите название проекта": "Type in project name",
+  "Введите название стадии": "Type in stage name",
+  "Введите название шага": "Type in step name"
 }

@@ -36,7 +36,7 @@ router.route('/')
 })
 
 router
-.route('/:orderStatusId')
+.route('/:projectId')
 .delete(auth, async (req, res) => {
   try {
     const {projectId} = req.params
@@ -48,6 +48,7 @@ router
       })
       await ProjectStage.deleteMany({projectId: projectId})
       await Project.deleteOne({_id: projectId})
+      
       return res.send(removedProject._id)
     }
   } catch (error) {
@@ -58,14 +59,18 @@ router
 })
 .patch(auth, async (req, res) => {
   try {
-     const {orderStatusId} = req.params
-  const event = await Project.findById(orderStatusId)
-  if (event.userId.toString() === req.user._id) {
+     const {projectId} = req.params
+  const project = await Project.findById(projectId)
+  if (project.userId.toString() === req.user._id) {
     for (let key in req.body) {
-      event[key] = req.body[key]
+      project[key] = req.body[key]
     }
-    await event.save()
-    return res.status(200).send(event)
+    await project.save()
+    return res.status(200).send(project.populate({
+      path: 'stages',
+      populate: {path: "steps"}
+    })
+)
   } else {
     res.status(401).json({message:'Unauthorized'})
   }

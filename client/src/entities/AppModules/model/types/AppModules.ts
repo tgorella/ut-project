@@ -4,7 +4,7 @@ export interface AppModules {
  clients: boolean,
  orders: boolean,
  calendar: boolean,
-workFlow: boolean
+projects: boolean
 }
 
 export interface AppModulesSchema {

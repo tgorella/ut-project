@@ -22,7 +22,7 @@ export const fetchUserModules = createAsyncThunk<AppModules, void,ThunkConfig<st
                     calendar: true,
                     clients: true,
                     orders: true,
-                    workFlow: true
+                    projects: true
                 }
                 const response = await httpService.post<AppModules>('/appmodules', newData)
                 return response.data

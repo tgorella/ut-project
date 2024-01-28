@@ -17,6 +17,7 @@ export interface ProjectStep {
 _id: string,
 userId: string,
 stageId: string,
+projectId: string,
 name: string,
 index: number
 }

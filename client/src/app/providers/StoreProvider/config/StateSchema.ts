@@ -12,10 +12,12 @@ import { AddOrderSchema } from 'features/AddOrder/model/types/addOrderSchema'
 import { LoginSchema } from 'features/AuthByUsername'
 import { ClientsPageSchema } from 'pages/ClientsPage'
 import { OrdersPageSchema } from 'pages/OrdersPage/model/types/OrdersPageSchema'
+import { ProjectsPageSchema } from 'pages/ProjectsPage'
 import { AddClientButtonSchema } from 'widgets/AddClientButton/module/types/AddClientButtonSchema'
 import { AddOrderButtonSchema } from 'widgets/AddOrderButton/model/types/AddOrderButton'
 import { EventTypesEditSchema } from 'widgets/EventTypesEdit'
 import { OrderStatusEditSchema } from 'widgets/OrderStatusEdit'
+import { ProjectEditSchema } from 'widgets/ProjectEdit'
 
 export interface StateSchema {
   user: UserSchema,
@@ -35,7 +37,9 @@ export interface StateSchema {
   orderStatuses?: OrderStatusesSchema,
   OrderStatusEditSchema?: OrderStatusEditSchema,
   eventDetails?: EventSchema,
-  eventTypesEditSchema?: EventTypesEditSchema
+  eventTypesEditSchema?: EventTypesEditSchema,
+  projectPage?: ProjectsPageSchema,
+  ProjectEdit?: ProjectEditSchema
 
 }
 

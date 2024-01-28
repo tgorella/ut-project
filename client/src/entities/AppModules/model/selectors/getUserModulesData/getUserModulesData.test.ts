@@ -10,7 +10,7 @@ describe('getUserModulesData.test', () => {
             clients: true,
             orders: false,
             calendar: false,
-            workFlow: true
+            projects: true
         }
         const state : DeepPartial<StateSchema> = {
             userModules: {

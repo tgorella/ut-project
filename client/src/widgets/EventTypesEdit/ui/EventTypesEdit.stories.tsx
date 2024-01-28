@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import 'app/styles/index.scss'
 import { WithColorsTheme } from 'shared/config/storybook/ThemeDecorator/WithColorsTheme'
-import { EventTypesEdit } from './EventTypesEdit'
 import { eventTypesEditErrorStoreDecorator, eventTypesEditIsLoadingStoreDecorator, eventTypesEditStoreDecorator } from 'shared/config/storybook/StoreDecorator/EventTypeEditDecorator'
+import EventTypesEdit from './EventTypesEdit'
 
 const meta: Meta<typeof EventTypesEdit> = {
     title: 'widgets/EventTypesEdit',
