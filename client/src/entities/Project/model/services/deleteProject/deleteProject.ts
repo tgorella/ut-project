@@ -5,15 +5,15 @@ import httpService from 'shared/api/api'
 
 export const deleteProject = createAsyncThunk<string, string,ThunkConfig<string>>(
     'project/deleteProject',
-    async (eventTypeId, thunkAPI) => {
+    async (projectId, thunkAPI) => {
         const {rejectWithValue} = thunkAPI
         try {
-            const response = await httpService.delete<string>('/projects/'+ eventTypeId)
+            const response = await httpService.delete<string>('/projects/'+ projectId)
             
             if (!response) {
                 throw new Error('err')
             }
-            
+           
             return response.data
         } catch (error) {
             return rejectWithValue(i18n.t('Что-то пошло не так. Попробуйте позже'))

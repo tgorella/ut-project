@@ -1,0 +1,24 @@
+.Step {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.delBtn {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  opacity: 0;
+}
+.Step:hover .delBtn {
+  opacity: 1;
+}
+.step_title {
+  padding: 5px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  color: var(--primary-text)
+}

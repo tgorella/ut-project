@@ -2,6 +2,7 @@ const express = require('express')
 const auth = require('../middleware/auth.middleware')
 const ProjectStage = require('../models/ProjectStage')
 const ProjectStep = require('../models/ProjectStep')
+const Project = require('../models/Project')
 const router = express.Router({mergeParams: true})
 
 
@@ -23,6 +24,10 @@ router.route('/')
       ...req.body,
       userId: req.user._id
     }) 
+    const project = await Project.findById(newProjectStage.projectId)
+    project.stages.push(newProjectStage._id)
+    project.save()
+
     res.status(201).send(newProjectStage)
   } catch (error) {
     res
@@ -38,9 +43,12 @@ router
     const {stageId} = req.params
     const removedProjectStage = await ProjectStage.findById(stageId)
     if (removedProjectStage.userId.toString() === req.user._id) {
+      const project = await Project.findById(removedProjectStage.projectId) 
       await ProjectStep.deleteMany({stageId: stageId})
       await ProjectStage.deleteOne({_id: stageId})
-      return res.send(removedProjectStage._id)
+      project.stages = project.stages.filter((stage) => stage._id !== removedProjectStage._id)
+      project.save()
+      return res.send({stage: removedProjectStage._id, project:removedProjectStage.projectId})
     }
   } catch (error) {
     res
@@ -51,13 +59,16 @@ router
 .patch(auth, async (req, res) => {
   try {
      const {stageId} = req.params
-  const event = await ProjectStage.findById(stageId)
-  if (event.userId.toString() === req.user._id) {
+  const stage = await ProjectStage.findById(stageId)
+  if (stage.userId.toString() === req.user._id) {
     for (let key in req.body) {
-      event[key] = req.body[key]
+      stage[key] = req.body[key]
     }
-    await event.save()
-    return res.status(200).send(event)
+    await stage.save()
+    await stage.populate({
+      path: 'steps'
+    })
+    return res.status(200).send(stage)
   } else {
     res.status(401).json({message:'Unauthorized'})
   }

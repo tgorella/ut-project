@@ -17,6 +17,7 @@ import { AddClientButtonSchema } from 'widgets/AddClientButton/module/types/AddC
 import { AddOrderButtonSchema } from 'widgets/AddOrderButton/model/types/AddOrderButton'
 import { EventTypesEditSchema } from 'widgets/EventTypesEdit'
 import { OrderStatusEditSchema } from 'widgets/OrderStatusEdit'
+import { ProjectEditSchema } from 'widgets/ProjectEdit'
 
 export interface StateSchema {
   user: UserSchema,
@@ -37,7 +38,8 @@ export interface StateSchema {
   OrderStatusEditSchema?: OrderStatusEditSchema,
   eventDetails?: EventSchema,
   eventTypesEditSchema?: EventTypesEditSchema,
-  projectPage?: ProjectsPageSchema
+  projectPage?: ProjectsPageSchema,
+  ProjectEdit?: ProjectEditSchema
 
 }
 

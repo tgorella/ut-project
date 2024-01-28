@@ -21,7 +21,7 @@ interface EventTypesEditProps {
   className?: string;
 }
 
-const initalState = {
+const initial = {
     isDefault: false,
     name: '',
     color: '#000000',
@@ -31,11 +31,11 @@ const initalState = {
 const reducers: ReducersList = {
     eventTypesEditSchema: eventTypesEditReducer
 }
-export const EventTypesEdit = memo(({className} : EventTypesEditProps) => {
+const EventTypesEdit = memo(({className} : EventTypesEditProps) => {
     const dispatch = useAppDispatch()
     const {t} = useTranslation('events')
     const editTypeId = useSelector(getEventTypeEditTypeId) || ''
-    const newData = useSelector(getEventTypeEditNewData) || initalState
+    const newData = useSelector(getEventTypeEditNewData) || initial
     const isLoading = useSelector(getEventTypeEditIsLoading)
     const error = useSelector(getEventTypeEditError)
     const data = useSelector(getEventTypeEditData)
@@ -80,8 +80,8 @@ export const EventTypesEdit = memo(({className} : EventTypesEditProps) => {
 
     const toggleAddNewType = () => {
         if (!showNewInput) {
-            dispatch(eventTypesEditAction.updateEditEventId(initalState._id))
-            dispatch(eventTypesEditAction.updateEventData(initalState))
+            dispatch(eventTypesEditAction.updateEditEventId(initial._id))
+            dispatch(eventTypesEditAction.updateEventData(initial))
         }
         setShowNewInput((prev) => !prev)
     }
@@ -139,3 +139,5 @@ export const EventTypesEdit = memo(({className} : EventTypesEditProps) => {
     )
         
 })
+
+export default EventTypesEdit

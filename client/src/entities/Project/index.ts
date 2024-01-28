@@ -1,3 +1,4 @@
+export { ProjectBlock } from './ui/Project/ProjectBlock'
 export { addProject } from './model/services/addProject/addProject'
 export { addStage } from './model/services/addStage/addStage'
 export { addStep } from './model/services/addStep/addStep'
@@ -8,4 +9,4 @@ export { fetchProjects } from './model/services/fetchAllProjects/fetchAllProject
 export { updateProject } from './model/services/updateProject/updateProject'
 export { updateStage } from './model/services/updateStage/updateStage'
 export { updateStep } from './model/services/updateStep/updateStep'
-export type {Project, ProjectStage, ProjectStep} from './model/types/Project'
+export {Project, ProjectStage, ProjectStep} from './model/types/Project'
