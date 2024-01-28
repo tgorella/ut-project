@@ -115,7 +115,7 @@ const OrderStatusEdit = memo(({className} : OrderStatusEditProps) => {
         </Box>
     }
     return ( 
-        <DynamicModuleLoader reducers={reducers}>
+        <DynamicModuleLoader reducers={reducers} removeAfterUnmount={true}>
             <div className={classNames(cls.OrderStatusEdit, {}, [className])}>
                 <h2>{t('Статусы заказов')}</h2>
                 <p>{t('В этот разделе Вы можете добавить свои статусы к заказам. Например: "В ожидании оплаты". Или же если Вы часть работы над проектом делигируете членам команды, то можно создать статус с именем человека, кому поручено выполнение работы (например: "менеджер Мария").')}</p>

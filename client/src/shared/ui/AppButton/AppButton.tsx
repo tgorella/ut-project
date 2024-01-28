@@ -25,18 +25,20 @@ interface AppButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   rounded?: boolean,
   size?: ButtonSize,
   disabled?: boolean,
-  children: ReactNode
+  children: ReactNode,
+  stretch?: boolean,
 }
 
 
 export const AppButton= memo((props: AppButtonProps) => {
-    const { className, children, theme = ButtonTheme.OUTLINED, square, rounded, size = ButtonSize.M, disabled, ...otherProps } = props
+    const { className, children, theme = ButtonTheme.OUTLINED, square, rounded, size = ButtonSize.M, disabled, stretch = false, ...otherProps } = props
     const mods:Mods = {
         [cls[theme]]: true,
         [cls.square]: square,
         [cls[size]]: true,
         [cls.rounded]: rounded,
-        [cls.disabled]: disabled
+        [cls.disabled]: disabled,
+        [cls.stretch]: stretch
     }
     return (
         <button

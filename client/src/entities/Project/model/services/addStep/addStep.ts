@@ -10,7 +10,7 @@ export const addStep = createAsyncThunk<ProjectStep, Partial<ProjectStep>,ThunkC
         const {rejectWithValue} = thunkAPI
         try {
         
-            const response = await httpService.post<ProjectStep>('/project-stages/', data)
+            const response = await httpService.post<ProjectStep>('/project-steps/', data)
             
             if (!response) {
                 throw new Error('err')

@@ -6,6 +6,7 @@ import { NotFoundPage } from 'pages/NotFoundPage'
 import { OrderDetailsPage } from 'pages/OrderDetailsPage'
 import { OrdersPage } from 'pages/OrdersPage'
 import { ProfilePage } from 'pages/ProfilePage'
+import { ProjectsPage } from 'pages/ProjectsPage'
 import { SettingPage } from 'pages/SettingPage'
 import { RouteProps } from 'react-router-dom'
 
@@ -22,7 +23,8 @@ export enum AppRoutes {
   ORDERS ='orders',
   ORDERS_DETAILS = 'order_details',
   SETTINGS = 'settings',
-  NOTFOUND = 'not_found'
+  NOTFOUND = 'not_found',
+  PROJRCTS = 'projects'
 }
 export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.MAIN]: '/',
@@ -33,6 +35,7 @@ export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.ORDERS]: '/orders',
     [AppRoutes.ORDERS_DETAILS]: '/orders/',
     [AppRoutes.SETTINGS]: '/settings/',
+    [AppRoutes.PROJRCTS]: '/projects',
     [AppRoutes.NOTFOUND]: '*'
 }
 
@@ -61,6 +64,11 @@ export const routeConfig: Record<AppRoutes, AppRoutesProp> = {
     [AppRoutes.ORDERS]: {
         path: RoutePath.orders,
         element: <OrdersPage />,
+        authOnly: true
+    },
+    [AppRoutes.PROJRCTS]: {
+        path: RoutePath.projects,
+        element: <ProjectsPage />,
         authOnly: true
     },
     [AppRoutes.ORDERS_DETAILS]: {

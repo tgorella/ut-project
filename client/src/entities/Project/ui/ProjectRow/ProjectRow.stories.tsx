@@ -8,7 +8,7 @@ import { OrderStatusDetails } from 'entities/OrderStatus'
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof ProjectRow> = {
-    title: 'entities/ProjectRow',
+    title: 'entities/ProjectStatusRow',
     component: ProjectRow,
     argTypes: {
     // backgroundColor: { control: 'color' },

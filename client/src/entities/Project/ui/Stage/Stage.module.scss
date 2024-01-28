@@ -1,0 +1,47 @@
+.Stage {
+    align-items: center;
+    border: 2px dashed #ddd;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.stage_header__wrapper {
+    align-items: center;
+    background-color: #eee;
+    display: flex;
+    position: relative;
+    width: 100%;
+}
+
+.stage_header {
+    color: #333;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px;
+    text-align: center;
+    width: 100%;
+}
+
+.stage_header_delBtn {
+    color: red;
+    cursor: pointer;
+    opacity: 0;
+    position: absolute;
+    right: 10px;
+}
+
+.stage_header__wrapper:hover .stage_header_delBtn {
+    opacity: 1;
+}
+
+.steps_wrapper {
+    align-items: stretch;
+    width: 100%;
+}
+
+.addBtn {
+    width: 100%;
+}

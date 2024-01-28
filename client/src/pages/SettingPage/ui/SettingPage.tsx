@@ -7,6 +7,7 @@ import { BulletMenu } from 'shared/ui/BulletMenu'
 import { bulletMenuItemSchema } from 'shared/ui/BulletMenu/model/types/bulletMenuItemSchema'
 import { ProfilePage } from 'pages/ProfilePage'
 import { EventTypesEdit } from 'widgets/EventTypesEdit'
+import { ProjectEdit } from 'widgets/ProjectEdit'
 
 
 interface SettingPageProps {
@@ -42,7 +43,7 @@ const SettingPage = memo(({className} : SettingPageProps) => {
             setPath(name)
         }
         if (name === 'projects') {
-            setPageContent(<OrderStatusEdit />)
+            setPageContent(<ProjectEdit />)
             setPath(name)
         }
         if (name === 'events') {
