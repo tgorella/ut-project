@@ -57,7 +57,10 @@ const ProjectEdit = memo(({className} : ProjectEditProps) => {
     const [index, setIndex] = useState(0)
 
     useEffect(() => {
-        dispatch(fetchProjects())
+        if (__PROJECT__ !== 'storybook') {
+            dispatch(fetchProjects())
+        }
+        
     }, [dispatch])
 
     const toggleModal = (type: string) => {
@@ -150,7 +153,7 @@ const ProjectEdit = memo(({className} : ProjectEditProps) => {
     }
 
     if (widgetError) {
-        return <Alert theme={AlertTheme.ERROR} text={widgetError} />
+        return <Alert theme={AlertTheme.ERROR} text={t('Что-то пошло не так. Не получилось получить данные.')} />
     }
     return ( 
         <DynamicModuleLoader reducers={reducers}>
