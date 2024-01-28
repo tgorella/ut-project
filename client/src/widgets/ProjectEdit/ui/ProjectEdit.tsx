@@ -156,7 +156,7 @@ const ProjectEdit = memo(({className} : ProjectEditProps) => {
         return <Alert theme={AlertTheme.ERROR} text={t('Что-то пошло не так. Не получилось получить данные.')} />
     }
     return ( 
-        <DynamicModuleLoader reducers={reducers}>
+        <DynamicModuleLoader reducers={reducers} removeAfterUnmount={true}>
             <div className={classNames(cls.ProjectEdit, {}, [className])}>
                 {
                     data?.map((project) => {
