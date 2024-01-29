@@ -1,3 +1,4 @@
+export { updateOrderSteps } from './model/services/updateOrderSteps/updateOrderSteps'
 export { deleteOrder } from './model/services/deleteOrder/deleteOrder'
 export { OrderForm } from './ui/OrderForm/OrderForm'
 export { updateOrderData } from './model/services/updateOrderData/updateOrderData'

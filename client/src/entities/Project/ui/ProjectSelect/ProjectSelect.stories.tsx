@@ -21,8 +21,8 @@ type Story = StoryObj<typeof ProjectSelect>;
 
 export const Default: Story = {
     args: {
-        value: 'jha8475fdsgf',
-        onChange: () => {}                                                                                                              
+        value: 'ksjdhfhdf343',
+        onChange: () => {}                                                                                                           
     },
     decorators: [
         WithColorsTheme,

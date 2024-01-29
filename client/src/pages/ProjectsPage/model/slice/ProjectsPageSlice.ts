@@ -1,11 +1,15 @@
 import {PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { Project, fetchProjects } from 'entities/Project'
 import { ProjectsPageSchema } from '../types/ProjectsPage'
+import { fetchAllOrders } from 'pages/OrdersPage/model/services/fetchAllOrders/fetchAllOrders'
+import { fetchClients } from 'entities/Clients/model/services/fetchAll/fetchClients'
 
 const initialState: ProjectsPageSchema = {
     isLoading: false,
     error: undefined,
-    data: undefined
+    data: undefined,
+    orders: undefined,
+    clients: undefined
 }
 
 export const projectsPageSlice = createSlice({
@@ -29,6 +33,12 @@ export const projectsPageSlice = createSlice({
             .addCase(fetchProjects.rejected, (state, action) => {
                 state.isLoading= false
                 state.error = action.payload
+            })
+            .addCase(fetchAllOrders.fulfilled, (state, action) => {
+                state.orders = action.payload
+            })
+            .addCase(fetchClients.fulfilled, (state, action) => {
+                state.clients = action.payload
             })
     }
 })

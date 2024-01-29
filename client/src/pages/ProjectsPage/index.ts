@@ -1,3 +1,4 @@
+export { getProjectPageOrders } from './model/selectors/getProjectPageOrders/getProjectPageOrders'
 export { getProjectPageData } from './model/selectors/getProjectPageData/getProjectPageData'
 export { getProjectPageError } from './model/selectors/getProjectPageError/getProjectPageError'
 export { getProjectPageIsLoading } from './model/selectors/getProjectPageIsLoading/getProjectPageIsLoading'

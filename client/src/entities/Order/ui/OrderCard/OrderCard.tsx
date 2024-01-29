@@ -77,8 +77,6 @@ export const OrderCard = memo(({className, id, children} : OrderProps) => {
         })
     }
 
-
-    console.log(projectNames)
     const toggleStatusEditMode = useCallback(() => setStatusEdit(!statusEdit) , [statusEdit])
     const toggleEditMode = useCallback(() =>setEdit(!edit), [edit])
     const handleChancelEdit = () => {

@@ -39,7 +39,7 @@ export const ProjectSelect = memo(({className, value, onChange} : ProjectSelectP
     }
 
     if (error) {
-        return <Alert theme={AlertTheme.ERROR} text={t('Что-то пошло не так. Не получилось получить данные.')} />
+        return <Alert theme={AlertTheme.ERROR} text={t('Что-то пошло не так. Не получилось получить данные')} />
     }
 
     return ( 

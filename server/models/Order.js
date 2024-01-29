@@ -15,7 +15,8 @@ const schema = new Schema(
     place: { type: String },
     startTime: { type: String },
     endTime: { type: String },
-    total: {type: String}
+    total: {type: String},
+    steps: [String]
   },
   {
     timestamps: true,

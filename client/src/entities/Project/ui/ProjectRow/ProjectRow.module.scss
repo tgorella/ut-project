@@ -1,22 +1,13 @@
 .ProjectRow {
     align-items: center;
     display: flex;
-    overflow-x: auto;
-    width: 100%;
+    min-width: 100%;
 }
 
-.ProjectRow::-webkit-scrollbar {
-    height: 5px;
-    width: 100%;
-}
-
-.ProjectRow::-webkit-scrollbar-track {
-    background-color: var(--darker-bg-color);    /* цвет плашки */
-}
-
-.ProjectRow::-webkit-scrollbar-thumb {
-    background: var(--secondary-text);        /* цвет дорожки */
-    border-radius: 20px;       /* закругления плашки */
+.step_wrapper {
+    align-content: stretch;
+    display: grid;
+    text-align: center;
 }
 
 .project_info {

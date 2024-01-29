@@ -1,36 +1,66 @@
 import cls from './ProjectRow.module.scss'
 import classNames from 'shared/lib/classNames/ClassNames'
-import {memo} from 'react'
-import { Order } from 'entities/Order'
-import { Client } from 'entities/Clients'
+import {memo, useState} from 'react'
+import { Order, updateOrderSteps } from 'entities/Order'
 import { OrderStatusDetails } from 'entities/OrderStatus'
 import { ProjectStepSelect } from '../ProjectStepSelect/ProjectStepSelect'
 import { Link } from 'react-router-dom'
+import { Client } from 'entities/Clients'
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 
 
 interface ProjectRowProps {
   className?: string;
   order: Order,
-  status: OrderStatusDetails,
-  client: Client
-  onChange: (value: string) => void
+  client?: Client,
+  status?: OrderStatusDetails,
+  totalSteps: number
 }
-export const ProjectRow = memo(({className, order, status, client, onChange} : ProjectRowProps) => {
+export const ProjectRow = memo(({className, order, client, status, totalSteps} : ProjectRowProps) => {
+    const [steps, setSteps] = useState(order.steps || [])
+    const dispatch = useAppDispatch()
+
+    if (steps.length < totalSteps) {
+        const newArr = new Array(totalSteps-steps.length).fill('')
+        const totalArr = [...steps, ...newArr]
+        setSteps(totalArr)
+        dispatch(updateOrderSteps({_id: order._id, steps: steps}))
+    }
+
+    if (steps.length > totalSteps) {
+        const newArr = [...steps]
+        newArr.pop()
+        setSteps(newArr)
+        dispatch(updateOrderSteps({_id: order._id, steps: newArr}))
+    }
+
+    const handleChange = (index: number, value: string) => {
+        const newArr = [...steps]
+        newArr[index] = value
+        setSteps(newArr)
+        dispatch(updateOrderSteps({_id: order._id, steps: newArr}))
+    }
 
     return ( 
         <div className={classNames(cls.ProjectRow, {}, [className])}>
             <div className={cls.project_info}>
-                <div className={cls.project_title}><Link to={`/order/${order._id}`}>{order.title}</Link></div>
+                <div className={cls.project_title}><Link to={`/orders/${order._id}`}>{order.title}</Link></div>
+                {status &&
                 <div className={cls.status_wrapper}>
-                    <div className={cls.color_bullet} style={{backgroundColor: status.color}}></div>
+                    <div className={cls.color_bullet} style={{backgroundColor: status?.color}}></div>
                     <div className={cls.status}>{status.name}</div>
                 </div>
-                <div>{client.name}</div>
+                }
+                {client && <div>{client.name}</div>}
+                
             </div>
-            {order.steps?.map((step, index) => {
-                return <ProjectStepSelect key={index} stepValue={step} onChange={onChange} />
-            })}
+            <div className={cls.step_wrapper} style={{gridTemplateColumns: `repeat(${steps.length}, minmax(110px, ${window.innerWidth/totalSteps}px)`}}>
+                {steps?.map((step, index) => {
+                    return <ProjectStepSelect key={index} stepValue={step} onChange={handleChange} index={index}/>
+                })}
       
+            </div>
+           
         </div>
     )
 })
