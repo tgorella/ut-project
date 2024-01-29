@@ -24,6 +24,9 @@ import { OrderStatusBlock, OrderStatusSelect, orderStatusReducer } from 'entitie
 import { fetchOrderStatuses } from 'entities/OrderStatus/model/services/fetchOrderStatuses/fetchOrderStatuses'
 import { OrderInfo } from '../OrderInfo/OrderInfo'
 import { useTranslation } from 'react-i18next'
+import { projectSelectReducer } from 'entities/Project/ui/ProjectSelect/model/slice/projectSelectSlice'
+import { getProjectSelectData } from 'entities/Project/ui/ProjectSelect/model/selectors/getProjectSelectData/getProjectSelectData'
+import { fetchProjects } from 'entities/Project'
 
 interface OrderProps {
   className?: string;
@@ -33,7 +36,9 @@ interface OrderProps {
 
 const reducers: ReducersList = {
     orderDetails: orderDetailsReducer,
-    orderStatuses: orderStatusReducer
+    orderStatuses: orderStatusReducer,
+    ProjectSelect: projectSelectReducer
+
 }
 export const OrderCard = memo(({className, id, children} : OrderProps) => {
     const {t} = useTranslation('orders')
@@ -42,6 +47,7 @@ export const OrderCard = memo(({className, id, children} : OrderProps) => {
     const data = useSelector(getOrderDetailsForm)
     const isLoading = useSelector(getOrderDetailsIsLoading)
     const error = useSelector(getOrderDetailsError)
+    const projects = useSelector(getProjectSelectData) || []
     const [statusEdit, setStatusEdit] = useState(false)
     const [edit, setEdit] = useState(false)
     const [errors] = useState({
@@ -59,9 +65,17 @@ export const OrderCard = memo(({className, id, children} : OrderProps) => {
             if (authData) {
                 dispatch(getOrderById({orderId: id, currentUserId: authData._id}))
                 dispatch(fetchOrderStatuses())
+                dispatch(fetchProjects())
             }
         }
     }, [authData, dispatch, id])
+    
+    const projectNames: {[key: string]: string} = {}
+    if (projects.length !== 0) {
+        projects.forEach((project) => {
+            projectNames[project._id] = project.name
+        })
+    }
 
     const toggleStatusEditMode = useCallback(() => setStatusEdit(!statusEdit) , [statusEdit])
     const toggleEditMode = useCallback(() =>setEdit(!edit), [edit])
@@ -145,7 +159,7 @@ export const OrderCard = memo(({className, id, children} : OrderProps) => {
                         header={data?.title}
                         footer={<Text title={t('Стоимость')+': '+data?.total} />}>
                         <EditSwitcher  editMode={edit} onEdit={toggleEditMode} onChancelEdit={handleChancelEdit}  className={cls.edit_btn}/>
-                        {!edit && <OrderInfo orderInfo={data} />}
+                        {!edit && <OrderInfo orderInfo={{...data, projectType: projectNames[data.projectType]}} />}
                         {edit && <OrderForm  
                             data={data}
                             errors={errors}

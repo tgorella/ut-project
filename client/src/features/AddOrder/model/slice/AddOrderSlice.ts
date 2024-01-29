@@ -1,6 +1,7 @@
 import {PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { AddOrderSchema } from '../types/addOrderSchema'
 import { Order } from 'entities/Order'
+import { fetchProjects } from 'entities/Project'
 
 const initialState: AddOrderSchema = {
     data: {
@@ -17,7 +18,8 @@ const initialState: AddOrderSchema = {
         title: '',
         userId: '',
         projectType: ''
-    }
+    },
+    projects: []
     
 }
 
@@ -34,6 +36,12 @@ export const addOrderSlice = createSlice({
         resetState: (state) => {
             state.data = initialState.data
         }
+    },
+    extraReducers(builder) {
+        builder
+            .addCase(fetchProjects.fulfilled, (state, action) => {
+                state.projects = action.payload
+            })
     }
 })
 

@@ -5,6 +5,7 @@ import { ProjectRow } from './ProjectRow'
 import { Order } from 'entities/Order'
 import { Client } from 'entities/Clients'
 import { OrderStatusDetails } from 'entities/OrderStatus'
+import { EditProjectStoreDecorator } from 'shared/config/storybook/StoreDecorator/ProjectStoreDecorator'
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof ProjectRow> = {
@@ -52,7 +53,8 @@ export const Default: Story = {
         order: order                                                                                                                                     
     },
     decorators: [
-        WithColorsTheme
+        WithColorsTheme,
+        EditProjectStoreDecorator
     ],
     parameters: {
         docs: {

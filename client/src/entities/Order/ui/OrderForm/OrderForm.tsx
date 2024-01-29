@@ -3,9 +3,10 @@ import { Input } from 'shared/ui/Input/Input'
 import cls from './OrderForm.module.scss'
 import { Order} from 'entities/Order'
 import { useTranslation } from 'react-i18next'
+import { ProjectSelect } from 'entities/Project/ui/ProjectSelect/ProjectSelect'
 
 interface OrderFormProps {
-  data: Order
+  data: Order,
   errors: Partial<Order>,
   withButton?: boolean,
   onChangeTitle: (value: string) => void,
@@ -33,7 +34,7 @@ export const OrderForm = ({
 
 } : OrderFormProps) => {
     const {t} = useTranslation('orders')
-
+    
     return ( 
         <div className={cls.info_container}>
             <Input 
@@ -43,12 +44,9 @@ export const OrderForm = ({
                 name='title'
                 error={errors?.title}
             />
-            <Input 
-                label={t('Проект')} 
-                value={data?.projectType}  
+            <ProjectSelect 
+                value={data.projectType} 
                 onChange={onChangeProjectType} 
-                name='projectType' 
-                error={errors.projectType}
             />
             <Input 
                 label={t('Дата')} 
