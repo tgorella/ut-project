@@ -55,7 +55,7 @@ const OrdersPage = memo(() => {
         dispatch(ordersPageAction.setLimit(Number(num)))
     }, [dispatch])
 
-    const filteresOrders = orders?.slice((page-1)*limit, page*limit)
+    const filteredOrders = orders?.slice((page-1)*limit, page*limit)
 
     useEffect(() => {
         if (__PROJECT__ !== 'storybook') {
@@ -81,7 +81,7 @@ const OrdersPage = memo(() => {
                 </div>
             </HStack>
             <Box className={cls.orders_list}>
-                <OrderList orders={filteresOrders} isLoading={isLoading} />
+                <OrderList orders={filteredOrders} isLoading={isLoading} />
             </Box>
             <Pagination 
                 itemsLength={orders?.length || 0} 
