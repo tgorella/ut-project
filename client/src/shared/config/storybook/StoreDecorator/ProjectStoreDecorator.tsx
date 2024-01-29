@@ -43,6 +43,18 @@ const projectsArr = [{
             ]
         }
     ]
+},
+{
+    _id: 'jha8475fdsgf',
+    name: 'Разработка логотипа',
+    userId: 'апвапр',
+    stages: []
+},
+{
+    _id: 'ksjdhfhdf343',
+    name: 'Разработка фирменного стиля',
+    userId: 'апвапр',
+    stages: []
 }]
 export const projects: DeepPartial<StateSchema> = {
     ProjectEdit: {
@@ -50,6 +62,10 @@ export const projects: DeepPartial<StateSchema> = {
         data: projectsArr
     },
     projectPage: {
+        isLoading: false,
+        data: projectsArr
+    },
+    ProjectSelect: {
         isLoading: false,
         data: projectsArr
     }

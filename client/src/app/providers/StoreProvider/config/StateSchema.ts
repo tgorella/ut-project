@@ -6,6 +6,7 @@ import { EventSchema } from 'entities/Event'
 import { OrderDetailsSchema } from 'entities/Order'
 import { OrderStatusesSchema } from 'entities/OrderStatus'
 import { ProfileSchema } from 'entities/Profile'
+import { ProjectSelectSchema } from 'entities/Project/ui/ProjectSelect/model/types/projectSelect'
 import { UserSchema } from 'entities/User'
 import { AddClientSchema } from 'features/AddClient'
 import { AddOrderSchema } from 'features/AddOrder/model/types/addOrderSchema'
@@ -40,7 +41,7 @@ export interface StateSchema {
   eventTypesEditSchema?: EventTypesEditSchema,
   projectPage?: ProjectsPageSchema,
   ProjectEdit?: ProjectEditSchema
-
+ProjectSelect?: ProjectSelectSchema
 }
 
 export type StateSchemaKey = keyof StateSchema
