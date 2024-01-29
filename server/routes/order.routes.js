@@ -45,7 +45,7 @@ router
 .get(auth, async (req, res) => {
   try {
     const { orderId } = req.params;
-    const order = await Order.findById(orderId);
+    const order = await Order.findById(orderId)
     if (order.userId.toString() === req.user._id) {
       return res.status(200).send(order);
     } else {

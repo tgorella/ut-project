@@ -20,10 +20,12 @@ import { addClient } from 'widgets/AddClientButton/module/services/AddClient/add
 import { addClientAction, addClientReducer } from 'features/AddClient/model/slice/AddClientSlice'
 import { addClientButtonReducer } from 'widgets/AddClientButton/module/slice/AddClientButtonSlice'
 import { ordersPageAction } from 'pages/OrdersPage/model/slice/OrdersPageSlice'
+import { projectSelectReducer } from 'entities/Project/ui/ProjectSelect/model/slice/projectSelectSlice'
 
 const reducers: ReducersList = {
     addOrderButton: addOrderButtonReducer,
     addOrder: addOrderReducer,
+    ProjectSelect: projectSelectReducer
 }
 interface AddOrderButtonProps {
   className?: string;
