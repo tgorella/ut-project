@@ -2,7 +2,7 @@ import cls from './OrderStatus.module.scss'
 import classNames from 'shared/lib/classNames/ClassNames'
 import {memo} from 'react'
 import { useSelector } from 'react-redux'
-import { getOrderStatusById } from 'entities/OrderStatus/model/selectors/getOrderStatusById/getOrderStatusByIs'
+import { getOrderStatusById } from '../../model/selectors/getOrderStatusById/getOrderStatusById'
 import { useTranslation } from 'react-i18next'
 
 interface OrderStatusProps {
