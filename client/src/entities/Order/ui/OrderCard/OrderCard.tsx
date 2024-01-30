@@ -16,7 +16,7 @@ import { PageLoader } from 'widgets/PageLoader'
 import { Text } from 'shared/ui/Text'
 import { NotFound } from 'shared/ui/NotFound'
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
-import { ClientCard } from 'entities/Clients'
+import { Client } from 'entities/Clients'
 import { NoteBlock } from 'widgets/NoteBlock'
 import { updateOrderData } from '../../model/services/updateOrderData/updateOrderData'
 import { OrderForm } from '../OrderForm/OrderForm'
@@ -27,6 +27,7 @@ import { useTranslation } from 'react-i18next'
 import { projectSelectReducer } from 'entities/Project/ui/ProjectSelect/model/slice/projectSelectSlice'
 import { getProjectSelectData } from 'entities/Project/ui/ProjectSelect/model/selectors/getProjectSelectData/getProjectSelectData'
 import { fetchProjects } from 'entities/Project'
+import { ClientInfo } from 'entities/Clients/ui/ClientInfo/ClientInfo'
 
 interface OrderProps {
   className?: string;
@@ -151,7 +152,9 @@ export const OrderCard = memo(({className, id, children} : OrderProps) => {
             <div className={classNames(cls.OrderDetailsPage, {}, [className])}>
                 <div className={cls.small_column} >
                     {children}
-                    <ClientCard id={data?.clientId} onlyRead={true} withNotes={false} />
+                    <Box>
+                        <ClientInfo data={data.clientId as Client} />
+                    </Box>
                 </div>
                 <div className={cls.big_column}>
                     <Box 

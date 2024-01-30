@@ -46,6 +46,10 @@ router
   try {
     const { orderId } = req.params;
     const order = await Order.findById(orderId)
+    await order.populate({
+      path: 'clientId'
+    })
+    
     if (order.userId.toString() === req.user._id) {
       return res.status(200).send(order);
     } else {

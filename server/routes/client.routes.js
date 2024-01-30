@@ -47,7 +47,7 @@ router
   .get(auth, async (req, res) => {
     try {
       const { clientId } = req.params;
-      const client = await Client.findById(clientId);
+      const client = await Client.findById(clientId)
       
       if (client.userId.toString() === req.user._id) {
         return res.status(200).send(client);

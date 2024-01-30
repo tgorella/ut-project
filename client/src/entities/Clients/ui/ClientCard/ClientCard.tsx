@@ -191,7 +191,6 @@ export const ClientCard = memo((props : ClientCardProps) => {
                     <Alert theme={success} text={success === AlertTheme.SUCCESS ? (t('Сохранено')) : (t('Ошибка сохранения'))}/>
                 </div>}
     
-                <Avatar className={cls.avatar} src={data?.avatarUrls} size={AvatarSize.XL} alt={data?.name}/>
                 {!edit && <ClientInfo data={data} />}
                 {edit && <ClientForm 
                     data={data}
