@@ -3,7 +3,9 @@ import MainIcon from 'shared/assets/img/home.svg'
 import AboutIcon from 'shared/assets/img/about.svg'
 import ClientsIcon from 'shared/assets/img/client_icon.svg'
 import OrdersIcon from 'shared/assets/img/orders.svg'
-import { LucideIcon, Workflow } from 'lucide-react'
+import Calendar from 'shared/assets/img/calendar.svg'
+import ProjectIcon from 'shared/assets/img/projects.svg'
+import { LucideIcon } from 'lucide-react'
 
 export interface SidebarItemType {
   path: string,
@@ -47,8 +49,16 @@ export const SidebarItemsList: SidebarItemType[] = [
         moduleName: 'orders'
     },
     {
+        path: RoutePath.calendar,
+        icon: Calendar,
+        text: 'Календарь',
+        isAuth: true,
+        module: true,
+        moduleName: 'calendar'
+    },
+    {
         path: RoutePath.projects,
-        icon: Workflow,
+        icon: ProjectIcon,
         text: 'Проекты',
         isAuth: true,
         module: true,

@@ -8,7 +8,7 @@ import { Event } from '../../types/Event'
 export type FilterProps = {
   eventId: string,
 }
-export const deleteEvent = createAsyncThunk<Event, string ,ThunkConfig<string>>(
+export const deleteEvent = createAsyncThunk<string, string ,ThunkConfig<string>>(
     'event/deleteEvent',
     async (eventId, thunkAPI) => {
         const {rejectWithValue, getState} = thunkAPI

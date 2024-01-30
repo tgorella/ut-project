@@ -11,6 +11,7 @@ import { UserSchema } from 'entities/User'
 import { AddClientSchema } from 'features/AddClient'
 import { AddOrderSchema } from 'features/AddOrder/model/types/addOrderSchema'
 import { LoginSchema } from 'features/AuthByUsername'
+import { CalendarPageSchema } from 'pages/CalendarPage'
 import { ClientsPageSchema } from 'pages/ClientsPage'
 import { OrdersPageSchema } from 'pages/OrdersPage/model/types/OrdersPageSchema'
 import { ProjectsPageSchema } from 'pages/ProjectsPage'
@@ -40,8 +41,9 @@ export interface StateSchema {
   eventDetails?: EventSchema,
   eventTypesEditSchema?: EventTypesEditSchema,
   projectPage?: ProjectsPageSchema,
-  ProjectEdit?: ProjectEditSchema
-ProjectSelect?: ProjectSelectSchema
+  ProjectEdit?: ProjectEditSchema,
+  ProjectSelect?: ProjectSelectSchema,
+  CalendarPage?: CalendarPageSchema
 }
 
 export type StateSchemaKey = keyof StateSchema

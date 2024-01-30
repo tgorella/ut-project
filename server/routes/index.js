@@ -4,7 +4,7 @@ const router = express.Router({ mergeParams: true });
 router.use("/auth", require("./auth.routes"));
 router.use("/order", require("./order.routes"));
 router.use("/client", require("./client.routes"));
-router.use("/event", require("./event.routes"));
+router.use("/events", require("./event.routes"));
 router.use("/event-type", require("./eventType.routes"));
 router.use("/order-status", require("./orderStatus.routes"));
 router.use("/projects", require("./project.routes"));
