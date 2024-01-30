@@ -121,5 +121,9 @@
   "В процессе": "In progress",
   "Готово": "Done",
   "Пауза": "Pause",
-  "Проблема": "Problem"
+  "Проблема": "Problem",
+  "Календарь": "Calendar",
+  "Разделом не пользуетесь? Просто скройте его": {
+    "": "Don't use section? you can hide it."
+  }
 }

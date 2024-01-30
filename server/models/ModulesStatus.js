@@ -6,7 +6,8 @@ const schema = new Schema(
     clients: Boolean,
       orders: Boolean,
       calendar: Boolean,
-      workflow: Boolean
+      workflow: Boolean,
+      projects: Boolean
   },
   {
     timestamps: true,

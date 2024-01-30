@@ -12,3 +12,5 @@ export interface AppModulesSchema {
   data?: AppModules,
   error?: string
 }
+
+export type ModulesKey = keyof AppModules
