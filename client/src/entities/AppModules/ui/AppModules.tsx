@@ -9,8 +9,10 @@ import { PageLoader } from 'widgets/PageLoader'
 import { useTranslation } from 'react-i18next'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { appModulesAction } from '../model/slice/AppModulesSlice'
-import { AppModules } from '../model/types/AppModules'
+import { ModulesKey } from '../model/types/AppModules'
 import { updateModules } from '../model/services/updateModules/updateModules'
+import AppModulesItem from './AppModulesItem'
+
 
 interface AppModulesProps {
   className?: string;
@@ -23,8 +25,11 @@ export const AppModulesBlock = memo(({className} : AppModulesProps) => {
     const dispatch = useAppDispatch()
 
 
-    const toggleStatus = useCallback((value: Partial<AppModules>) => {
-        dispatch(appModulesAction.updateModulesVisibility(value))
+    const toggleStatus = useCallback((value: ModulesKey) => {
+        const data = {
+            [value]: !modules?.[value]
+        }
+        dispatch(appModulesAction.updateModulesVisibility(data))
         if (modules) {
             dispatch(updateModules(modules._id))
         }
@@ -38,28 +43,21 @@ export const AppModulesBlock = memo(({className} : AppModulesProps) => {
         return <p>{t('Что-то пошло не так')}</p>
     }
 
+    const items: {path: ModulesKey, name: string}[] = [
+        {path: 'clients', name: t('Клиенты')},  
+        {path: 'orders', name: t('Заказы')},
+        {path: 'projects', name: t('Проекты')},
+        {path: 'calendar', name: t('Календарь')}
+    ]
+
     return ( 
         <div className={classNames(cls.AppModules, {}, [className])}>
             <div>
                 {t('Разделом не пользуетесь? Просто скройте его.')}
             </div>
-            
-            <div className={cls.item} >
-                <div className={classNames(cls.switcherWrapper, {}, [className])}>
-                    <div onClick={() => toggleStatus({clients: !modules?.clients})} className={classNames(cls.themeSwitcher, {}, [modules?.clients ? cls.on : cls.off])}>
-                        <div className={classNames(cls.button)}></div>
-                    </div>
-                </div>
-                <div className={cls.item_name}>{t('Клиенты')}</div>
-            </div>
-            <div className={cls.item} >
-                <div className={classNames(cls.switcherWrapper, {}, [className])}>
-                    <div onClick={() => toggleStatus({orders: !modules?.orders})} className={classNames(cls.themeSwitcher, {}, [modules?.orders ? cls.on : cls.off])}>
-                        <div className={classNames(cls.button)}></div>
-                    </div>
-                </div>
-                <div className={cls.item_name}>{t('Заказы')}</div>
-            </div>
+            {items.map(item => (
+                <AppModulesItem  key={item.path} onClick={toggleStatus} item={item} status={modules?.[item.path] as boolean} />)
+            )}
         </div>
     )
 })
