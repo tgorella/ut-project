@@ -16,7 +16,7 @@ interface SettingPageProps {
 
 const SettingPage = memo(({className} : SettingPageProps) => {
     const {t} = useTranslation('settings')
-    const [path, setPath] = useState('')
+    const [path, setPath] = useState('profile')
     const [pageContent, setPageContent] = useState(<ProfilePage />)
 
     const items: bulletMenuItemSchema[]  = [{

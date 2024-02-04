@@ -15,7 +15,7 @@ export const updateOrderSteps = createAsyncThunk<Order, newStepData,ThunkConfig<
         const {rejectWithValue} = thunkAPI
       
         try {
-            const {data} = await httpService.patch<Order>(`/order/${newData._id}`, newData)
+            const {data} = await httpService.patch<Order>(`/orders/${newData._id}`, newData)
 
             if (!data) {
                 throw new Error('err')

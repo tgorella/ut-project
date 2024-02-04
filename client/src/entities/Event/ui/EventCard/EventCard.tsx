@@ -3,17 +3,19 @@ import classNames from 'shared/lib/classNames/ClassNames'
 import {memo} from 'react'
 import { Event } from '../../model/types/Event'
 import { transformDate } from 'shared/lib/transformDate/transformDate'
-import { Order } from 'entities/Order'
 import { useTranslation } from 'react-i18next'
+import { Alert, AlertTheme } from 'shared/ui/Alert'
 
 
 interface EventCardProps {
   className?: string;
-  event: Event | Order
+  event: Event | undefined
 }
 export const EventCard = memo(({className, event} : EventCardProps) => {
     const {t} = useTranslation('events')
-
+    if (!event) {
+        return <Alert text={t('Нет данных')} theme={AlertTheme.ERROR} />
+    }
     return ( 
         <section className={classNames(cls.EventCard, {}, [className])}>
             <h2 className={cls.title}>{event.title}</h2>

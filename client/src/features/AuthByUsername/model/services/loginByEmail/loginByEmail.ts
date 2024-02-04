@@ -22,7 +22,7 @@ export const loginByEmail = createAsyncThunk<User, loginByEmailProps,ThunkConfig
             }
 
             tokenService.setTokens(response.data)
-            const user = await httpService.get('/user/'+ response.data.userId)
+            const user = await httpService.get('/users/'+ response.data.userId)
             
 
             dispatch(userAction.setAuthData(user.data))

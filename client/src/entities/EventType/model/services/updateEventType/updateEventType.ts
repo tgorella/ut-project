@@ -10,7 +10,7 @@ export const updateEventType = createAsyncThunk<EventType, Partial<EventType>,Th
     async (data, thunkAPI) => {
         const {rejectWithValue} = thunkAPI
         try {
-            const response = await httpService.patch<EventType>('/event-type/'+ data._id, data)
+            const response = await httpService.patch<EventType>('/event-types/'+ data._id, data)
             
             if (!response) {
                 throw new Error('err')

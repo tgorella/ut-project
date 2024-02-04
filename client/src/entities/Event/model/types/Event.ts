@@ -1,12 +1,13 @@
+
 export interface EventSchema {
-isLoading?: boolean,
-eventDetails?: Event,
-formData?: Event,
+isLoading: boolean,
+eventDetails: Event,
+formData: Event,
 error?: string
 }
 
 export interface Event {
-  _id: string,
+  _id?: string,
   title: string,
   userId: string,
   eventType: string,

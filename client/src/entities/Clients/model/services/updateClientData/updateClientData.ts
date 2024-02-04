@@ -12,7 +12,7 @@ export const updateClientData = createAsyncThunk<Client, string,ThunkConfig<stri
         const {rejectWithValue, getState} = thunkAPI
         const formData = getClientDetailsForm(getState())
         try {
-            const {data} = await httpService.patch<Client>(`/client/${id}`, formData)
+            const {data} = await httpService.patch<Client>(`/clients/${id}`, formData)
             
             if (!data) {
                 throw new Error('err')

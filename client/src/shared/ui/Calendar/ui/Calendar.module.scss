@@ -1,40 +1,51 @@
 .Calendar {
- align-items: center;
+    align-items: center;
 }
+
+.Calendar h1 {
+    margin-bottom: 40px;
+}
+
 .navWrapper {
-  width: 100%;
-  justify-content: center;
-  gap: 100px;
-  margin-bottom: 40px;
+    gap: 100px;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    width: 100%;
 }
+
 .monthName {
-  font-weight: bold;
-  font-size: 28px;
+    font-size: 28px;
+    font-weight: bold;
 }
 
 .bodyWrapper {
-  width: 100%;
-  display: grid;
- grid-template-columns: repeat(7, 1fr);
- gap: 8px;
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(7, 1fr);
+    width: 100%;
 }
+
 .day {
-  height: 150px;
-  background-color: var(--darker-bg-color);
-  padding: 5px 10px;
-  border-radius: 9px;
+    background-color: var(--darker-bg-color);
+    border-radius: 9px;
+    height: 150px;
+    overflow-y: auto;
+    padding: 5px 10px;
+    text-overflow: ellipsis;
 }
+
 .daysWrapper {
-  width: 100%;
-  display: grid;
- grid-template-columns: repeat(7, 1fr);
- gap: 8px;
- margin-bottom: 10px;
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(7, 1fr);
+    margin-bottom: 10px;
+    width: 100%;
 }
+
 .dayName {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #fff;
+    align-items: center;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }

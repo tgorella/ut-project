@@ -15,6 +15,7 @@ export const EventTypeSelect = memo(({eventTypes, value, onChange} : EventTypeSe
     const options: Option[] = eventTypes.map((type) => {
         return {name: type.name, value: type._id}
     })
+    options.unshift({name: 'Выберите категорию..', value: ''})
     if (!eventTypes) {
         return <>{t('Loading...')}</>
     }

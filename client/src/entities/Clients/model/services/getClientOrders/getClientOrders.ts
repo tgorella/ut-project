@@ -10,7 +10,7 @@ export const getClientOrders = createAsyncThunk<Order[], string,ThunkConfig<stri
     async (clientId, thunkAPI) => {
         const {rejectWithValue} = thunkAPI
         try {
-            const {data} = await httpService.get<Order[]>('/order/', {
+            const {data} = await httpService.get<Order[]>('/orders/', {
                 params: {
                     clientId: clientId
                 }

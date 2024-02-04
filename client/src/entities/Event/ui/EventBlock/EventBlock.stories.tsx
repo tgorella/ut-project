@@ -31,7 +31,7 @@ const event: Event = {
 export const Default: Story = {
     args: {
         event: event,
-        color: 'rgb(255, 209, 41)'
+        color: 'yellow'
     },
     decorators: [
         WithColorsTheme

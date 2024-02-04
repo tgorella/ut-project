@@ -10,7 +10,7 @@ export const updateStatus = createAsyncThunk<OrderStatusDetails, Partial<OrderSt
     async (data, thunkAPI) => {
         const {rejectWithValue} = thunkAPI
         try {
-            const response = await httpService.patch<OrderStatusDetails>('/order-status/'+ data._id, data)
+            const response = await httpService.patch<OrderStatusDetails>('/order-statuses'+ data._id, data)
             
             if (!response) {
                 throw new Error('err')

@@ -1,7 +1,9 @@
 .eventBlock {
-    align-items: center;
-    color: #000;
-    display: flex;
-    justify-content: center;
-    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 12px;
+    margin-bottom: 2px;
+    padding: 5px 10px;
+    width: 100%;
 }

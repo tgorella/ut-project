@@ -1,3 +1,4 @@
+export { addEvent } from './model/services/addEvent/addEvent'
 export { deleteEvent } from './model/services/deleteEvent/deleteEvent'
 export { fetchEvents } from './model/services/fetchEvents/fetchEvents'
 export { getEventById } from './model/services/getEventbyId/getEventById'

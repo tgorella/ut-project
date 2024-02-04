@@ -10,7 +10,7 @@ export const fetchAllOrders = createAsyncThunk<Order[], string,ThunkConfig<strin
     async (search, thunkAPI) => {
         const {rejectWithValue} = thunkAPI
         try {
-            const {data} = await httpService.get<Order[]>('/order', {
+            const {data} = await httpService.get<Order[]>('/orders', {
                 params: {search}
             })
             if (!data) {

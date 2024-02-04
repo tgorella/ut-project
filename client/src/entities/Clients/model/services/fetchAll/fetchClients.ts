@@ -16,7 +16,7 @@ export const fetchClients = createAsyncThunk<Client[], void,ThunkConfig<string>>
     async (_, thunkAPI) => {
         const {rejectWithValue} = thunkAPI
         try {
-            const {data} = await httpService.get<Client[]>('/client/')
+            const {data} = await httpService.get<Client[]>('/clients/')
             if (!data) {
                 throw new Error('err')
             }

@@ -13,7 +13,7 @@ export const updateOrderData = createAsyncThunk<Order, string,ThunkConfig<string
         const formData = getOrderDetailsForm(getState())
         try {
           
-            const {data} = await httpService.patch<Order>(`/order/${id}`, formData)
+            const {data} = await httpService.patch<Order>(`/orders/${id}`, formData)
 
             if (!data) {
                 throw new Error('err')

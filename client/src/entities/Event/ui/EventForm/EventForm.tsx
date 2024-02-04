@@ -6,12 +6,14 @@ import { Input } from 'shared/ui/Input/Input'
 import { useTranslation } from 'react-i18next'
 import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
 import { Alert, AlertTheme } from 'shared/ui/Alert'
+import { EventType, EventTypeSelect } from 'entities/EventType'
 
 
 interface EventFormProps {
   className?: string;
   errors: Partial<Event>
   data: Event,
+  events: EventType[]
   onChangeTitle: (value: string) => void,
   onChangeEventDate: (value: string) => void,
   onChangePlace: (value: string) => void,
@@ -25,6 +27,7 @@ export const EventForm = memo(({
     className, 
     data, 
     errors,
+    events,
     onChangeEndTime, 
     onChangeEventDate, 
     onChangePlace, 
@@ -43,22 +46,20 @@ export const EventForm = memo(({
     const handleNotesChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         onChangeEventNotes(e.target.value)
     }
+    
     return ( 
         <form onSubmit={handleSave} className={classNames(cls.eventForm, {}, [className])}>
             <Input 
                 label={t('Заголовок')} 
-                value={data.title}  
+                value={data?.title}  
                 onChange={onChangeTitle} 
                 name='title'
                 error={errors?.title}
             />
-            <Input 
-                label={t('Категория')} 
-                value={data?.eventType}  
-                onChange={onChangeEventType} 
-                name='eventType' 
-                error={errors?.eventType}
-            />
+            <EventTypeSelect 
+                value={data?.eventType}
+                eventTypes={events}
+                onChange={onChangeEventType}/>
             <Input 
                 label={t('Дата')} 
                 value={data?.eventDate}  
