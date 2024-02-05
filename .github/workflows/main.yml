@@ -29,6 +29,9 @@ jobs:
       - name: linting css
         run: cd client && npm run lint:scss
         if: always()
+      - name: unit tests
+        run: cd client && npm run test:unit
+        if: always()
       - name: Publish to Chromatic
         if: always()
         uses: chromaui/action@v1

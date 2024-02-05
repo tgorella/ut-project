@@ -1,16 +1,15 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ThunkConfig } from 'app/providers/StoreProvider'
 import i18n from 'shared/config/i18n/i18n'
-import httpService from 'shared/api/api'
 import { Project } from '../../types/Project'
 
 export const addProject = createAsyncThunk<Project, Partial<Project>,ThunkConfig<string>>(
     'project/add',
     async (data, thunkAPI) => {
-        const {rejectWithValue} = thunkAPI
+        const {rejectWithValue, extra} = thunkAPI
         try {
         
-            const response = await httpService.post<Project>('/projects/', data)
+            const response = await extra.api.post<Project>('/projects/', data)
             
             if (!response) {
                 throw new Error('err')

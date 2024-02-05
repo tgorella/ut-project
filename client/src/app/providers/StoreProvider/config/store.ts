@@ -2,7 +2,7 @@ import { CombinedState, Reducer, ReducersMapObject, configureStore } from '@redu
 import { StateSchema } from './StateSchema'
 import { userReducer } from 'entities/User'
 import { createReducerManager } from './reducerManager'
-import { $api } from 'shared/api/api'
+import { http } from 'shared/api/api'
 import { profileReducer } from 'entities/Profile'
 import { appModulesReducer } from 'entities/AppModules/model/slice/AppModulesSlice'
 
@@ -26,7 +26,7 @@ export function createReduxStore(
         middleware: curryGetDefaultMiddleware => curryGetDefaultMiddleware({
             thunk: {
                 extraArgument: {
-                    api: $api
+                    api: http
                 }
             }
         })

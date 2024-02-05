@@ -78,7 +78,9 @@ router
 .patch(auth, async (req, res) => {
   try {
      const {orderId} = req.params
-  const event = await Order.findById(orderId)
+  const event = await Order.findById(orderId).populate({
+    path: 'clientId'
+  })
   if (event.userId.toString() === req.user._id) {
     for (let key in req.body) {
       event[key] = req.body[key]
