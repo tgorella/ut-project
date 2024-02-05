@@ -17,7 +17,7 @@ export default meta
 type Story = StoryObj<typeof EventCard>;
 
 const event: Event = {
-    title: 'Тестовый заказ',
+    title: 'Тестовое событие',
     eventDate: '2024-02-12',
     startTime: '12:00',
     endTime: '15:00',

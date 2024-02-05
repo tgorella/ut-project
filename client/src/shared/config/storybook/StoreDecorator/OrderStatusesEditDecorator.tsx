@@ -2,6 +2,7 @@ import { ReducersMapObject } from '@reduxjs/toolkit'
 import { Decorator } from '@storybook/react'
 import { StateSchema, StoreProvider } from 'app/providers/StoreProvider'
 import { orderStatusEditReducer } from 'widgets/OrderStatusEdit'
+import { stateAllErrors, stateAllIn, stateAllIsLoading } from './state'
 
 export const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
     OrderStatusEditSchema: orderStatusEditReducer,
@@ -59,18 +60,18 @@ export const orderStatusesEditIsLoading: DeepPartial<StateSchema> = {
 }
 
 export const orderStatusesEditStoreDecorator: Decorator = (Story) => (
-    <StoreProvider initialState={orderStatusesEdit} asyncReducers={defaultAsyncReducers}>
+    <StoreProvider initialState={stateAllIn} asyncReducers={defaultAsyncReducers}>
         {Story()}
     </StoreProvider>
 )
 export const orderStatusesEditIsLoadingStoreDecorator: Decorator = (Story) => (
-    <StoreProvider initialState={orderStatusesEditIsLoading} asyncReducers={defaultAsyncReducers}>
+    <StoreProvider initialState={stateAllIsLoading} asyncReducers={defaultAsyncReducers}>
         {Story()}
     </StoreProvider>
 )
 
 export const orderStatusesEditErrorStoreDecorator: Decorator = (Story) => (
-    <StoreProvider initialState={orderStatusesEditError} asyncReducers={defaultAsyncReducers}>
+    <StoreProvider initialState={stateAllErrors} asyncReducers={defaultAsyncReducers}>
         {Story()}
     </StoreProvider>
 )

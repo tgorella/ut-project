@@ -37,9 +37,12 @@ export const CalendarPage = memo(({className} : CalendarPageProps) => {
     const [path, setPath] = useState('calendar')
     
     useEffect(() => {
-        dispatch(fetchEvents())
-        dispatch(eventAction.newEvent())
-        dispatch(fetchEventTypes())
+        if (__PROJECT__ !== 'storybook') {
+            dispatch(fetchEvents())
+            dispatch(eventAction.newEvent())
+            dispatch(fetchEventTypes())
+        }
+        
     }, [dispatch])
     
     const [content, setPageContent] = useState(<Calendar />)

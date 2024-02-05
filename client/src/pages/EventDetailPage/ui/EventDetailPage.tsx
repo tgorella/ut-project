@@ -52,14 +52,14 @@ export const EventDetailPage = memo(({className, isNew = false} : EventDetailPag
     const [added, setAdded] = useState(false)
     const [changed, setChanged] = useState(false)
 
-
-
     useEffect(() => {
-        dispatch(fetchEventTypes())
-        if (!isNew && id) {
-            dispatch(getEventById(id))
-        } else {
-            dispatch(eventDetailAction.newEvent())
+        if (__PROJECT__ !== 'storybook') {
+            dispatch(fetchEventTypes())
+            if (!isNew && id) {
+                dispatch(getEventById(id))
+            } else {
+                dispatch(eventDetailAction.newEvent())
+            }
         }
     }, [dispatch, id, isNew])
 

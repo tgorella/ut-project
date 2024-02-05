@@ -2,10 +2,11 @@ import type { Meta, StoryObj } from '@storybook/react'
 import 'app/styles/index.scss'
 import { WithColorsTheme } from 'shared/config/storybook/ThemeDecorator/WithColorsTheme'
 import { CalendarPage } from './CalendarPage'
+import { CalendarStoreDecorator } from 'shared/config/storybook/StoreDecorator/CalendarStoreDecorator'
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof CalendarPage> = {
-    title: 'shared/CalendarPage',
+    title: 'pages/CalendarPage',
     component: CalendarPage,
     argTypes: {
     // backgroundColor: { control: 'color' },
@@ -24,7 +25,9 @@ export const Default: Story = {
                                                                                                                                                           
     },
     decorators: [
-        WithColorsTheme
+        WithColorsTheme,
+        CalendarStoreDecorator
+        
     ],
     parameters: {
         docs: {
