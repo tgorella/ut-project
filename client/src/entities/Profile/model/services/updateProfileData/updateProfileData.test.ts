@@ -22,11 +22,11 @@ describe('updateProfileData.test', () => {
                 form: data
             }
         })
-        thunk.api.put.mockReturnValue(Promise.resolve({data}))
+        thunk.api.patch.mockReturnValue(Promise.resolve({data}))
 
         const result = await thunk.callThunk()
 
-        expect(thunk.api.put).toHaveBeenCalled()
+        expect(thunk.api.patch).toHaveBeenCalled()
         expect(result.meta.requestStatus).toBe('fulfilled')
         expect(result.payload).toEqual(data)
 
