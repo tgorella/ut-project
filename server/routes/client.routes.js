@@ -67,7 +67,7 @@ router
       const removedClient = await Client.findById(clientId);
       if (removedClient.userId.toString() === req.user._id) {
         await Client.deleteOne({_id: clientId});
-        return res.send(null);
+        return res.send(clientId);
       } else {
         res.status(401).json({ message: "Unauthorized" });
       }

@@ -13,7 +13,7 @@ export const addEventType = createAsyncThunk<EventType, Partial<EventType>,Thunk
             const newType = {
                 ...data, isDefault: false
             }
-            const response = await httpService.post<EventType>('/event-type/', newType)
+            const response = await httpService.post<EventType>('/event-types/', newType)
             
             if (!response) {
                 throw new Error('err')

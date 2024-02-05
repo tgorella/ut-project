@@ -3,14 +3,6 @@ import { Event, EventSchema } from '../types/Event'
 import { getEventById } from '../services/getEventbyId/getEventById'
 import { updateEventData } from '../services/updateEventData/updateEventData'
 
-
-const initialState: EventSchema = {
-    isLoading: false,
-    error: undefined,
-    formData: undefined,
-    eventDetails: undefined
-}
-
 const eventInitialState: Event = {
     _id: '',
     title: '',
@@ -21,6 +13,13 @@ const eventInitialState: Event = {
     place: '',
     notes: '',
     eventDate: ''
+}
+
+const initialState: EventSchema = {
+    isLoading: false,
+    error: undefined,
+    formData: eventInitialState,
+    eventDetails: eventInitialState
 }
 
 export const eventSlice = createSlice({
@@ -64,4 +63,4 @@ export const eventSlice = createSlice({
 })
 
 export const {actions: eventAction} = eventSlice
-export const {reducer: eventReducer} =eventSlice
+export const {reducer: eventReducer} = eventSlice

@@ -17,7 +17,7 @@ export function createReduxStore(
         userModules: appModulesReducer
     }
 
-    const reducerManager = createReducerManager  (rootReducer)
+    const reducerManager = createReducerManager(rootReducer)
 
     const store = configureStore({
         reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,

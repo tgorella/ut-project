@@ -1,3 +1,8 @@
+export { addEvent } from './model/services/addEvent/addEvent'
+export { deleteEvent } from './model/services/deleteEvent/deleteEvent'
+export { fetchEvents } from './model/services/fetchEvents/fetchEvents'
+export { getEventById } from './model/services/getEventbyId/getEventById'
+export { updateEventData } from './model/services/updateEventData/updateEventData'
 export { eventAction, eventReducer } from './model/slice/EventSlice'
 export { EventsList } from './ui/EventsList/EventsList'
 export { EventBlock } from './ui/EventBlock/EventBlock'

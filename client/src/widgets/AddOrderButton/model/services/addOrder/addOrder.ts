@@ -37,7 +37,7 @@ export const addOrder = createAsyncThunk<Order, addOrderProps,ThunkConfig<string
             updatedOrder.clientId = clientId
         }
         try {
-            const {data} = await httpService.post<Order>('/order/', {
+            const {data} = await httpService.post<Order>('/orders/', {
                 ...updatedOrder
             })
             dispatch(profileAction.increaseOrderNumber())

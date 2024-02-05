@@ -9,7 +9,7 @@ export const deleteStatus = createAsyncThunk<string, string,ThunkConfig<string>>
     async (orderStatusId, thunkAPI) => {
         const {rejectWithValue} = thunkAPI
         try {
-            const response = await httpService.delete<string>('/order-status/'+ orderStatusId)
+            const response = await httpService.delete<string>('/order-statuses'+ orderStatusId)
             
             if (!response) {
                 throw new Error('err')

@@ -10,7 +10,7 @@ export const fetchEventTypes = createAsyncThunk<EventType[], void,ThunkConfig<st
     async (_, thunkAPI) => {
         const {rejectWithValue} = thunkAPI
         try {
-            const list = await httpService.get<EventType[]>('/event-type/')
+            const list = await httpService.get<EventType[]>('/event-types/')
             
             if (!list) {
                 throw new Error('err')

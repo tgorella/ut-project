@@ -14,7 +14,7 @@ export const updateProfileData = createAsyncThunk<Profile, void,ThunkConfig<stri
         const formData = getProfileForm(getState())
         try {
             const userData = getUserAuthData(getState())
-            const {data} = await httpService.patch<Profile>('/user/'+userData?._id, formData)
+            const {data} = await httpService.patch<Profile>('/users/'+userData?._id, formData)
 
             if (!data) {
                 throw new Error('err')

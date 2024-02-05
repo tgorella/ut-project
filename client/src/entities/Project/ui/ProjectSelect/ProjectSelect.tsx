@@ -27,6 +27,7 @@ export const ProjectSelect = memo(({className, value, onChange} : ProjectSelectP
     const options: Option[] = data?.map((project) => {
         return {name: project.name, value: project._id}
     })
+    options.unshift({name: 'Выберите проект...', value: ''})
 
     useEffect(() => {
         if (__PROJECT__ !== 'storybook') {

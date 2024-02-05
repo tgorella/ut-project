@@ -3,7 +3,6 @@ import 'app/styles/index.scss'
 import { WithColorsTheme } from 'shared/config/storybook/ThemeDecorator/WithColorsTheme'
 import { orderDetailsStoreDecorator } from 'shared/config/storybook/StoreDecorator/OrderDetailsStoreDecorator'
 import { OrderCard } from './OrderCard'
-import { orderStatusesStoreDecorator } from 'shared/config/storybook/StoreDecorator/orderStatusStoreDecorator'
 
 const meta: Meta<typeof OrderCard> = {
     title: 'entities/OrderCard',
@@ -25,7 +24,6 @@ export const Default: Story = {
     decorators: [
         WithColorsTheme,
         orderDetailsStoreDecorator,
-        orderStatusesStoreDecorator
     ],
     parameters: {
         docs: {

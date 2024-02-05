@@ -1,5 +1,6 @@
+
 export interface EventSchema {
-isLoading?: boolean,
+isLoading: boolean,
 eventDetails?: Event,
 formData?: Event,
 error?: string

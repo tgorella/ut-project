@@ -15,14 +15,14 @@ export const deleteClient = createAsyncThunk<Client, string ,ThunkConfig<string>
         const {rejectWithValue, getState, dispatch} = thunkAPI
         const userData = getUserAuthData(getState())
         try {
-            const {data} = await httpService.get<Client>(`/client/${clientId}`)
+            const {data} = await httpService.get<Client>(`/clients/${clientId}`)
             if (data.userId !== userData?._id) {
                 throw new Error('Нет доступа')
             }
             if (!data) {
                 throw new Error('err')
             }
-            const response = await httpService.delete(`/client/${clientId}`)
+            const response = await httpService.delete(`/clients/${clientId}`)
             dispatch(ClientsPageActions.clientDeleted(clientId))
             return response.data
 

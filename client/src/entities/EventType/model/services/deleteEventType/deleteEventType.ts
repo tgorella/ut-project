@@ -9,7 +9,7 @@ export const deleteEventType = createAsyncThunk<string, string,ThunkConfig<strin
     async (eventTypeId, thunkAPI) => {
         const {rejectWithValue} = thunkAPI
         try {
-            const response = await httpService.delete<string>('/event-type/'+ eventTypeId)
+            const response = await httpService.delete<string>('/event-types/'+ eventTypeId)
             
             if (!response) {
                 throw new Error('err')

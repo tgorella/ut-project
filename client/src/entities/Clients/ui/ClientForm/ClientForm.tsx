@@ -35,6 +35,8 @@ export const ClientForm = ({
 
 } : ClientFormProps) => {
     const {t} = useTranslation('clients')
+
+   
     return ( 
         <div className={cls.info_container}>
             <Input 
@@ -63,6 +65,7 @@ export const ClientForm = ({
                 value={data?.phone}  
                 onChange={onChangeClientPhone} 
                 name='phone' 
+                type='tel'
                 error={errors.phone}
             />
             <Input 

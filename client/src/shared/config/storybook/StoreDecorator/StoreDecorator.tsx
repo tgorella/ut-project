@@ -3,21 +3,18 @@ import { ReducersMapObject } from '@reduxjs/toolkit'
 import { Decorator } from '@storybook/react'
 import { StateSchema, StoreProvider } from 'app/providers/StoreProvider'
 import { userReducer } from 'entities/User'
+import { stateAllIn } from './state'
 
 export const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
     user: userReducer,
 }
-
-const stateUser: DeepPartial<StateSchema> = {
-    user: {authData: {_id: '1', email: 'user'}},
-} 
 
 const logoutStateUser: DeepPartial<StateSchema> = {
     user: {authData: {_id: '', email: ''}},
 } 
 
 export const UserStoreDecorator: Decorator = (Story) => (
-    <StoreProvider initialState={stateUser} asyncReducers={defaultAsyncReducers}>
+    <StoreProvider initialState={stateAllIn} asyncReducers={defaultAsyncReducers}>
         {Story()}
     </StoreProvider>
 )

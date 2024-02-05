@@ -39,7 +39,7 @@ export const EventsList = memo(({className, events, isLoading, error} : EventCar
                 return <EventListItem 
                     key={event._id}
                     event={event} 
-                    color={colors[event.eventType]}/>
+                    color={colors[event.eventType as keyof typeof colors]}/>
             })}
         </div>
     )

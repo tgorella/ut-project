@@ -1,14 +1,32 @@
 const express = require('express')
 const auth = require('../middleware/auth.middleware')
 const Event = require('../models/Event')
+const Order = require('../models/Order')
+
 const router = express.Router({mergeParams: true})
 
 
 router.route('/')
 .get(auth, async (req, res) => {
   try {
-    const list = await Event.find({userId: req.user._id})
-    res.status(200).send(list)
+    const event_list = await Event.find({userId: req.user._id})
+    const orders_list = await Order.find({userId: req.user._id})
+
+    orders_list.forEach((order) => {
+      const data = {
+        _id: order._id,
+        title: order.title,
+        userId: order.userId,
+        eventType: order.eventType,
+        eventDate: order.eventDate,
+        startTime: order.startTime,
+        endTime: order.endTime,
+        place: order.place,
+        notes: order.notes
+      }
+      event_list.push(data)
+    })
+    res.status(200).send(event_list)
   } catch (error) {
     res
         .status(500)
@@ -31,13 +49,26 @@ router.route('/')
 
 router
 .route('/:eventId')
+.get(auth, async(req, res) => {
+  try {
+    const {eventId} = req.params
+    const foundedEvent = await Event.findById(eventId)
+    if (foundedEvent.userId.toString() === req.user._id) {
+      res.status(200).send(foundedEvent)
+    }
+  } catch (error) {
+    res
+        .status(500)
+        .json({ message: "На сервере произошла ошибка. Попробуйте позже" });
+  }
+})
 .delete(auth, async (req, res) => {
   try {
     const {eventId} = req.params
     const removedEvent = await Event.findById(eventId)
     if (removedEvent.userId.toString() === req.user._id) {
-      await removedEvent.remove()
-      return res.send(removedEvent._id)
+      await Event.deleteOne({_id: eventId})
+      return res.send(eventId)
     }
   } catch (error) {
     res

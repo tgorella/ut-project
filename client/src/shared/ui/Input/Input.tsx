@@ -1,5 +1,5 @@
 /* eslint-disable react/display-name */
-import { InputHTMLAttributes, memo, useState } from 'react'
+import React, { InputHTMLAttributes, memo, useState } from 'react'
 import cls from './Input.module.scss'
 import classNames from 'shared/lib/classNames/ClassNames'
 import ShowIcon from 'shared/assets/img/show.svg'
@@ -38,11 +38,50 @@ export const Input = memo((props:InputProps) => {
         setShowPass((prev) => !prev)
     }
     // @ts-ignore
-    
-    function changeHandler(e: React.ChangeEvent<HTMLInputElement>) {
-        onChange?.(e.target.value)
-    }
+    let formatedValue = ''
 
+    function changeHandler(e: React.ChangeEvent<HTMLInputElement>) {
+        if (type === 'tel') {
+            let validateValue = e.target.value.replace(/\D/g, '')
+            if (validateValue[0] === '9') validateValue = '7'+ validateValue
+
+            
+            if (['7','8','9'].includes(validateValue[0])) {
+                const firsSymbols = (validateValue[0] === '8') ? '8': '+7'
+
+                formatedValue = firsSymbols + ' '
+
+            
+                if (validateValue.length > 1) {
+                    formatedValue += '(' + validateValue.substring(1, 4) 
+                }
+                if (validateValue.length >= 5) {
+                    formatedValue += ') ' + validateValue.substring(4, 7) 
+                }
+                if (validateValue.length > 7) {
+                    formatedValue += ' ' + validateValue.substring(7, 9)
+                }
+                if (validateValue.length > 9) {
+                    formatedValue += ' ' + validateValue.substring(9,11)
+                }
+
+            } else {
+                formatedValue = '+'+ validateValue
+           
+            }
+            onChange?.(formatedValue)
+        } else {
+            onChange?.(e.target.value)
+        }
+        
+    }
+    function handlePhoneKeyDown (e: React.KeyboardEvent<HTMLInputElement>) {
+        if (e.key === 'Backspace' && (formatedValue.trim().length === 1 || (formatedValue.trim().length === 2 && formatedValue.includes('+')))) {
+          
+            onChange?.(formatedValue = '')
+            
+        }
+    }
     if (type === 'password') {
         return ( <>
             {label && <fieldset className={classNames(cls.group, Mods, [className])}>
@@ -88,6 +127,7 @@ export const Input = memo((props:InputProps) => {
                     type={type} 
                     onChange={changeHandler} 
                     {...otherProps}
+                    onKeyDown={ (type === 'tel')  ? handlePhoneKeyDown : () => {}}
                 />
                 {error && <Alert 
                     text={error} 
@@ -103,6 +143,7 @@ export const Input = memo((props:InputProps) => {
                 type={type} 
                 onChange={changeHandler} 
                 {...otherProps}
+                onKeyDown={ (type === 'tel')  ? handlePhoneKeyDown : () => {}}
             />
             {error && <Alert 
                 text={error} 

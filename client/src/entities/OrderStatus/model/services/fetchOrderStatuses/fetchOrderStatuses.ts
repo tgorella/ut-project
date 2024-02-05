@@ -10,7 +10,7 @@ export const fetchOrderStatuses = createAsyncThunk<OrderStatusDetails[], void,Th
     async (_, thunkAPI) => {
         const {rejectWithValue} = thunkAPI
         try {
-            const list = await httpService.get<OrderStatusDetails[]>('/order-status/')
+            const list = await httpService.get<OrderStatusDetails[]>('/order-statuses')
             
             if (!list) {
                 throw new Error('err')

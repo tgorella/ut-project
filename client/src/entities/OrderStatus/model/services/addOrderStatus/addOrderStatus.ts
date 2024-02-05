@@ -13,7 +13,7 @@ export const addOrderStatus = createAsyncThunk<OrderStatusDetails, Partial<Order
             const newStatus = {
                 ...data, isDefault: false
             }
-            const response = await httpService.post<OrderStatusDetails>('/order-status/', newStatus)
+            const response = await httpService.post<OrderStatusDetails>('/order-statuses', newStatus)
             
             if (!response) {
                 throw new Error('err')

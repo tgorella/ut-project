@@ -22,7 +22,7 @@ export const Select = memo(({className, options, value, label, onChange} : Selec
             <select className={classNames(cls.Selector, {}, [className])} onChange={changeHandler} value={value}>
                 {options.map((item) => {
                     return (
-                        <option value={item.value} key={item.value}>{item.name}</option>
+                        <option value={item.value} key={item.value} disabled={!item.value}>{item.name}</option>
                     )
                 })}
             </select>

@@ -1,7 +1,8 @@
+import { Client } from 'entities/Clients'
 
 export interface Order {
   _id?: string,
-  clientId:string,
+  clientId:string | Client,
   total:string,
   notes:string,
   eventDate: string,

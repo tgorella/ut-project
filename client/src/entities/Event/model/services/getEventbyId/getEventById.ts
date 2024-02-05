@@ -12,7 +12,7 @@ export const getEventById = createAsyncThunk<Event, string ,ThunkConfig<string>>
         const {rejectWithValue, getState} = thunkAPI
         try {
             const userData = getUserAuthData(getState())
-            const {data} = await httpService.get<Event>(`/event/${eventId}`)
+            const {data} = await httpService.get<Event>(`/events/${eventId}`)
             if (data.userId !== userData?._id) {
                 return rejectWithValue(i18n.t('Нет доступа'))
             }

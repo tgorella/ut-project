@@ -12,7 +12,7 @@ export const getClientsBySearch = createAsyncThunk<Client[], string ,ThunkConfig
     async (text, thunkAPI) => {
         const {rejectWithValue} = thunkAPI
         try {
-            const {data} = await httpService.get<Client[]>('/client/', {
+            const {data} = await httpService.get<Client[]>('/clients/', {
                 params: {
                     q: text
                 }

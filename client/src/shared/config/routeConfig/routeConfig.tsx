@@ -1,6 +1,8 @@
 import { AboutPage } from 'pages/AboutPage'
+import { CalendarPage } from 'pages/CalendarPage'
 import { ClientDetailPageLazy } from 'pages/ClientDetailPage/ui/ClientDetailPage/ClientDetailPage.lazy'
 import { ClientsPage } from 'pages/ClientsPage'
+import { EventDetailPage } from 'pages/EventDetailPage'
 import { MainPage } from 'pages/MainPage'
 import { NotFoundPage } from 'pages/NotFoundPage'
 import { OrderDetailsPage } from 'pages/OrderDetailsPage'
@@ -22,9 +24,11 @@ export enum AppRoutes {
   CLIENT_DETAILS = 'client_details',
   ORDERS ='orders',
   ORDERS_DETAILS = 'order_details',
+  EVENT_EDIT = 'event_edit',
   SETTINGS = 'settings',
   NOTFOUND = 'not_found',
-  PROJRCTS = 'projects'
+  PROJECTS = 'projects',
+  CALENDAR = 'calendar'
 }
 export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.MAIN]: '/',
@@ -35,7 +39,9 @@ export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.ORDERS]: '/orders',
     [AppRoutes.ORDERS_DETAILS]: '/orders/',
     [AppRoutes.SETTINGS]: '/settings/',
-    [AppRoutes.PROJRCTS]: '/projects',
+    [AppRoutes.PROJECTS]: '/projects',
+    [AppRoutes.CALENDAR]: '/calendar',
+    [AppRoutes.EVENT_EDIT]: '/events/',
     [AppRoutes.NOTFOUND]: '*'
 }
 
@@ -66,7 +72,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesProp> = {
         element: <OrdersPage />,
         authOnly: true
     },
-    [AppRoutes.PROJRCTS]: {
+    [AppRoutes.PROJECTS]: {
         path: RoutePath.projects,
         element: <ProjectsPage />,
         authOnly: true
@@ -74,6 +80,11 @@ export const routeConfig: Record<AppRoutes, AppRoutesProp> = {
     [AppRoutes.ORDERS_DETAILS]: {
         path: RoutePath.order_details+':id',
         element: <OrderDetailsPage />,
+        authOnly: true
+    },
+    [AppRoutes.EVENT_EDIT]: {
+        path: RoutePath.event_edit+':id',
+        element: <EventDetailPage />,
         authOnly: true
     },
     [AppRoutes.PROFILE]: {
@@ -84,6 +95,11 @@ export const routeConfig: Record<AppRoutes, AppRoutesProp> = {
     [AppRoutes.SETTINGS]: {
         path: RoutePath.settings,
         element: <SettingPage />,
+        authOnly: true
+    },
+    [AppRoutes.CALENDAR]: {
+        path: RoutePath.calendar,
+        element: <CalendarPage />,
         authOnly: true
     },
     [AppRoutes.NOTFOUND]: {

@@ -15,14 +15,14 @@ export const deleteOrder = createAsyncThunk<Order, string ,ThunkConfig<string>>(
         const {rejectWithValue, getState, dispatch} = thunkAPI
         const userData = getUserAuthData(getState())
         try {
-            const {data} = await httpService.get<Order>(`/order/${orderId}`)
+            const {data} = await httpService.get<Order>(`/orders/${orderId}`)
             if (data.userId !== userData?._id) {
                 throw new Error('Нет доступа')
             }
             if (!data) {
                 throw new Error('err')
             }
-            const response = await httpService.delete(`/order/${orderId}`)
+            const response = await httpService.delete(`/orders/${orderId}`)
             dispatch(ordersPageAction.orderDeleted(orderId))
             return response.data
 
