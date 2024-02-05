@@ -1,7 +1,12 @@
 import {PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { Event, EventSchema } from '../types/Event'
-import { getEventById } from '../services/getEventbyId/getEventById'
-import { updateEventData } from '../services/updateEventData/updateEventData'
+import { Event, getEventById, updateEventData } from 'entities/Event'
+import { EventDetailPageSchema } from '../types/EventDetailPage'
+import { fetchEventTypes } from 'entities/EventType'
+
+const initialState: EventDetailPageSchema = {
+    isLoading: false,
+    error: undefined
+}
 
 const eventInitialState: Event = {
     _id: '',
@@ -15,28 +20,22 @@ const eventInitialState: Event = {
     eventDate: ''
 }
 
-const initialState: EventSchema = {
-    isLoading: false,
-    error: undefined,
-    formData: eventInitialState,
-    eventDetails: eventInitialState
-}
-
-export const eventSlice = createSlice({
-    name: 'event',
+export const editEventSlice = createSlice({
+    name: 'event/edit',
     initialState,
     reducers: {
-        updateEvent: (state, action) => {
-            state.formData = {
-                ...state.formData,
+        changeEvent: (state, action) => {
+            state.form = {
+                ...state.form,
                 ...action.payload
             }
         },
         chancelEdit: (state) => {
-            state.formData = state.eventDetails
+            state.form = state.data
         },
         newEvent: (state) => {
-            state.formData = eventInitialState
+            state.data = eventInitialState
+            state.form = eventInitialState
         }
     },
     extraReducers(builder) {
@@ -48,8 +47,8 @@ export const eventSlice = createSlice({
             .addCase(getEventById.fulfilled, (state, action: PayloadAction<Event>) => {
                 state.isLoading = false
                 state.error = undefined
-                state.eventDetails = action.payload
-                state.formData = action.payload
+                state.data = action.payload
+                state.form = action.payload
 
             })
             .addCase(getEventById.rejected, (state, action) => {
@@ -57,10 +56,13 @@ export const eventSlice = createSlice({
                 state.error = action.payload
             })
             .addCase(updateEventData.fulfilled, (state, action) => {
-                state.eventDetails = action.payload
+                state.data = action.payload
+            })
+            .addCase(fetchEventTypes.fulfilled, (state, action) => {
+                state.eventTypes = action.payload
             })
     }
 })
 
-export const {actions: eventAction} = eventSlice
-export const {reducer: eventReducer} = eventSlice
+export const {actions: eventDetailAction} = editEventSlice
+export const {reducer: eventDetailReducer} = editEventSlice

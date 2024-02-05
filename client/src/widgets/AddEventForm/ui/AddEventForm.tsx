@@ -22,6 +22,7 @@ import { calendarPageAction } from 'pages/CalendarPage'
 // }
 
 const eventInitialState = {
+    _id: '',
     title: '',
     userId: '',
     eventType: '',

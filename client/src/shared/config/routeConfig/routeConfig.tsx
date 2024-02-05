@@ -2,6 +2,7 @@ import { AboutPage } from 'pages/AboutPage'
 import { CalendarPage } from 'pages/CalendarPage'
 import { ClientDetailPageLazy } from 'pages/ClientDetailPage/ui/ClientDetailPage/ClientDetailPage.lazy'
 import { ClientsPage } from 'pages/ClientsPage'
+import { EventDetailPage } from 'pages/EventDetailPage'
 import { MainPage } from 'pages/MainPage'
 import { NotFoundPage } from 'pages/NotFoundPage'
 import { OrderDetailsPage } from 'pages/OrderDetailsPage'
@@ -23,6 +24,7 @@ export enum AppRoutes {
   CLIENT_DETAILS = 'client_details',
   ORDERS ='orders',
   ORDERS_DETAILS = 'order_details',
+  EVENT_EDIT = 'event_edit',
   SETTINGS = 'settings',
   NOTFOUND = 'not_found',
   PROJECTS = 'projects',
@@ -39,6 +41,7 @@ export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.SETTINGS]: '/settings/',
     [AppRoutes.PROJECTS]: '/projects',
     [AppRoutes.CALENDAR]: '/calendar',
+    [AppRoutes.EVENT_EDIT]: '/events/',
     [AppRoutes.NOTFOUND]: '*'
 }
 
@@ -77,6 +80,11 @@ export const routeConfig: Record<AppRoutes, AppRoutesProp> = {
     [AppRoutes.ORDERS_DETAILS]: {
         path: RoutePath.order_details+':id',
         element: <OrderDetailsPage />,
+        authOnly: true
+    },
+    [AppRoutes.EVENT_EDIT]: {
+        path: RoutePath.event_edit+':id',
+        element: <EventDetailPage />,
         authOnly: true
     },
     [AppRoutes.PROFILE]: {

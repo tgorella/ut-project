@@ -1,5 +1,6 @@
 .Calendar {
     align-items: center;
+    position: relative;
 }
 
 .Calendar h1 {
@@ -48,4 +49,11 @@
     display: flex;
     justify-content: center;
     width: 100%;
+}
+
+.alert {
+    bottom: 20px;
+    position: fixed;
+    right: 20px;
+    width: 320px;
 }

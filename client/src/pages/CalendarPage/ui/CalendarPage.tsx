@@ -14,9 +14,9 @@ import { PageLoader } from 'widgets/PageLoader'
 import { Alert, AlertTheme } from 'shared/ui/Alert'
 import { BulletMenu } from 'shared/ui/BulletMenu'
 import { bulletMenuItemSchema } from 'shared/ui/BulletMenu/model/types/bulletMenuItemSchema'
-import { AddEventForm } from 'widgets/AddEventForm'
 import { eventTypesEditReducer } from 'widgets/EventTypesEdit'
 import { fetchEventTypes } from 'entities/EventType'
+import { EventDetailPage } from 'pages/EventDetailPage'
 
 interface CalendarPageProps {
   className?: string;
@@ -60,7 +60,7 @@ export const CalendarPage = memo(({className} : CalendarPageProps) => {
             setPath(name)
         }
         if (name === 'add_event') {
-            setPageContent(<AddEventForm />)
+            setPageContent(<EventDetailPage isNew={true} />)
             setPath(name)
         }
     }

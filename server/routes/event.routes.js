@@ -49,13 +49,26 @@ router.route('/')
 
 router
 .route('/:eventId')
+.get(auth, async(req, res) => {
+  try {
+    const {eventId} = req.params
+    const foundedEvent = await Event.findById(eventId)
+    if (foundedEvent.userId.toString() === req.user._id) {
+      res.status(200).send(foundedEvent)
+    }
+  } catch (error) {
+    res
+        .status(500)
+        .json({ message: "На сервере произошла ошибка. Попробуйте позже" });
+  }
+})
 .delete(auth, async (req, res) => {
   try {
     const {eventId} = req.params
     const removedEvent = await Event.findById(eventId)
     if (removedEvent.userId.toString() === req.user._id) {
-      await removedEvent.remove()
-      return res.send(removedEvent._id)
+      await Event.deleteOne({_id: eventId})
+      return res.send(eventId)
     }
   } catch (error) {
     res
