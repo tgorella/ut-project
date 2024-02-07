@@ -67,7 +67,6 @@ export const stateAllIn: StateSchema = {
         data: {
             firstname:'Tatiana',
             lastname:'Gorelova',
-            age:38,
             currency:Currency.RUB,
             country:Country.Russia,
             city:'Zvenigorod',
@@ -77,7 +76,6 @@ export const stateAllIn: StateSchema = {
         form: {
             firstname:'Tatiana',
             lastname:'Gorelova',
-            age:38,
             currency:Currency.RUB,
             country:Country.Russia,
             city:'Zvenigorod',

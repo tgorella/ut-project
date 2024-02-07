@@ -20,7 +20,6 @@ export const Default: Story = {
         data: { 
             firstname:'Tatiana',
             lastname:'Gorelova',
-            age:38,
             currency:Currency.RUB,
             country:Country.Russia,
             city:'Zvenigorod',
@@ -59,7 +58,6 @@ export const EditMode: Story = {
         data: { 
             firstname:'Tatiana',
             lastname:'Gorelova',
-            age:38,
             currency:Currency.RUB,
             country:Country.Russia,
             city:'Zvenigorod',

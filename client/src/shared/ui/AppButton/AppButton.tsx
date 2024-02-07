@@ -27,11 +27,12 @@ interface AppButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean,
   children: ReactNode,
   stretch?: boolean,
+  // onClick?: () => void
 }
 
 
 export const AppButton= memo((props: AppButtonProps) => {
-    const { className, children, theme = ButtonTheme.OUTLINED, square, rounded, size = ButtonSize.M, disabled, stretch = false, ...otherProps } = props
+    const {className, children, theme = ButtonTheme.OUTLINED, square, rounded, size = ButtonSize.M, disabled, stretch = false, ...otherProps } = props
     const mods:Mods = {
         [cls[theme]]: true,
         [cls.square]: square,
@@ -40,11 +41,20 @@ export const AppButton= memo((props: AppButtonProps) => {
         [cls.disabled]: disabled,
         [cls.stretch]: stretch
     }
+
+    // const handleSubmit = (e: FormEvent<HTMLButtonElement>) => {
+    //     e.preventDefault()
+    //     if (onClick) {
+    //         onClick()
+    //     }
+        
+    // }
     return (
         <button
             className={classNames(cls.AppButton, mods, [className])}
             disabled={disabled}
             {...otherProps}
+            // onClick={handleSubmit}
         >
             {children}
         </button>

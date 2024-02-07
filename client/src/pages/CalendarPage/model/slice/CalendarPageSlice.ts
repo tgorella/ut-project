@@ -29,6 +29,9 @@ export const calendarPageSlice = createSlice({
                 state.events = action.payload
 
             })
+            .addCase(fetchEvents.rejected, (state) => {
+                state.isLoading = false
+            })
             .addCase(deleteEvent.fulfilled, (state, action: PayloadAction<string>) => {
                 state.isLoading = false
                 state.error = undefined

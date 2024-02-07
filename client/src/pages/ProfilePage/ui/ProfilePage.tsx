@@ -11,6 +11,7 @@ import { Country } from 'entities/Country'
 import { getUserAuthData } from 'entities/User'
 import { Box } from 'shared/ui/Box'
 import { AppModulesBlock } from 'entities/AppModules'
+import { updateProfilePassword } from 'entities/Profile/model/services/updateProfilePassword/updateProfilePassword'
 
 const reducers: ReducersList = {
     profile: profileReducer
@@ -46,12 +47,12 @@ const ProfilePage = memo(({className} : ProfilePageProps) => {
         dispatch(profileAction.updateProfile({lastname: value || ''}))
     }, [dispatch])
 
-    const onChangeProfileCity = useCallback((value: string) => {
-        dispatch(profileAction.updateProfile({city: value || ''}))
+    const handleChangeProfileEmail = useCallback((value: string) => {
+        dispatch(profileAction.updateProfile({email: value || ''}))
     }, [dispatch])
 
-    const onChangeProfileAge = useCallback((value: string) => {
-        dispatch(profileAction.updateProfile({age: Number(value) || 0}))
+    const onChangeProfileCity = useCallback((value: string) => {
+        dispatch(profileAction.updateProfile({city: value || ''}))
     }, [dispatch])
 
     const onChangeProfileUsername = useCallback((value: string) => {
@@ -62,18 +63,30 @@ const ProfilePage = memo(({className} : ProfilePageProps) => {
         dispatch(profileAction.updateProfile({avatar: value}))
     }, [dispatch])
 
-    const onChangeCurrency = useCallback((value: Currency) => {
-        dispatch(profileAction.updateProfile({currency: value}))
+    const onChangeCurrency = useCallback((value: string) => {
+        dispatch(profileAction.updateProfile({currency: value as Currency}))
+        console.log(value)
     }, [dispatch])
 
-    const onChangeCountry = useCallback((value: Country) => {
-        dispatch(profileAction.updateProfile({country: value}))
+    const onChangeCountry = useCallback((value: string) => {
+        dispatch(profileAction.updateProfile({country: value as Country}))
+    }, [dispatch])
+
+    const handleChangePassword = useCallback((value: string) => {
+        dispatch(profileAction.updateProfile({newPassword: value}))
+    }, [dispatch])
+
+    const handleRepeatPassword = useCallback((value: string) => {
+        dispatch(profileAction.updateProfile({repeatPassword: value}))
     }, [dispatch])
 
     const saveProfile = useCallback(() => {
+        if (data?.newPassword && data.repeatPassword) {
+            dispatch(updateProfilePassword(data.newPassword))
+        }
         dispatch(updateProfileData())
         dispatch(profileAction.setReadOnly(true))
-    }, [dispatch])
+    }, [data?.newPassword, data?.repeatPassword, dispatch])
 
     return ( 
         <DynamicModuleLoader reducers={reducers} >
@@ -90,10 +103,12 @@ const ProfilePage = memo(({className} : ProfilePageProps) => {
                             onChangeProfileLastName={onChangeProfileLastName}
                             onChangeProfileName={onChangeProfileName}
                             onChangeProfileUsername={onChangeProfileUsername}
-                            onChangeProfileAge={onChangeProfileAge}
                             onChangeAvatar={onChangeProfileAvatar}
                             onChangeCurrency={onChangeCurrency}
                             onChangeCountry={onChangeCountry}
+                            onChangeProfileEmail={handleChangeProfileEmail}
+                            onChangePassword={handleChangePassword}
+                            onRepeatPassword={handleRepeatPassword}
                             saveProfile={saveProfile}
                         />
                     </div>

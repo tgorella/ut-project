@@ -8,14 +8,11 @@ import { TextAlign, TextTheme } from 'shared/ui/Text/ui/Text'
 import { Avatar, AvatarSize } from 'shared/ui/Avatar/Avatar'
 import { Box } from 'shared/ui/Box'
 import { EditSwitcher } from 'widgets/EditeSwitcher/ui/EditSwitcher'
-import { Input } from 'shared/ui/Input/Input'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { profileAction } from 'entities/Profile/model/slice/profileSlice'
-import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
-import { Currency, CurrencySelect } from 'entities/Currency'
-import { Country, CountrySelect } from 'entities/Country'
 import profileFormValidation from 'entities/Profile/lib/profileFormValidation/profileFormValidation'
 import { memo, useEffect, useState } from 'react'
+import { ProfileForm } from './ProfileForm'
 
 interface ProfileCardProps {
   className?: string;
@@ -23,15 +20,17 @@ interface ProfileCardProps {
   isLoading?: boolean;
   error?: string;
   readonly?: boolean;
-  onChangeProfileName?: (value: string) => void;
-  onChangeProfileLastName?: (value: string) => void;
-  onChangeProfileUsername?: (value: string) => void;
-  onChangeProfileCity?: (value: string) => void;
-  onChangeProfileAge?: (value: string) => void;
-  onChangeAvatar?: (value: string) => void;
-  onChangeCurrency: (value: Currency) => void;
-  onChangeCountry: (value: Country) => void;
-  saveProfile?: () => void
+  onChangeProfileName: (value: string) => void;
+  onChangeProfileLastName: (value: string) => void;
+  onChangeProfileUsername: (value: string) => void;
+  onChangeProfileCity: (value: string) => void;
+  onChangeAvatar: (value: string) => void;
+  onChangeCurrency: (value: string) => void;
+  onChangeCountry: (value: string) => void;
+  onChangeProfileEmail: (value: string) => void,
+  onChangePassword: (val: string) => void,
+  onRepeatPassword: (val: string) => void,
+  saveProfile: () => void
 }
 const ProfileCard = memo((props : ProfileCardProps) => {
 
@@ -44,10 +43,12 @@ const ProfileCard = memo((props : ProfileCardProps) => {
         onChangeProfileLastName,
         onChangeProfileName,
         onChangeProfileUsername,
-        onChangeProfileAge,
         onChangeAvatar,
         onChangeCurrency,
         onChangeCountry,
+        onChangeProfileEmail,
+        onChangePassword,
+        onRepeatPassword,
         saveProfile
     } = props
     const {t} = useTranslation('profile')
@@ -71,9 +72,10 @@ const ProfileCard = memo((props : ProfileCardProps) => {
         dispatch(profileAction.chancelEdit())
     }
 
+
     useEffect(() => {
         if (data) {
-            setErrors(profileFormValidation(data))
+            setErrors(profileFormValidation(data))   
         }
     }, [data])
 
@@ -109,9 +111,9 @@ const ProfileCard = memo((props : ProfileCardProps) => {
                         <div className={cls.item}>
                             {t('Имя пользователя')}: {data?.username}
                         </div>
-                        {data.age && <div className={cls.item}>
-                            {t('Возраст')}: {data?.age}
-                        </div>}
+                        <div className={cls.item}>
+                            {t('Email')}: {data?.email}
+                        </div>
                         {data.country && <div className={cls.item}>
                             <p>{t('Страна')}: {data?.country}</p>
                         </div>}
@@ -123,63 +125,21 @@ const ProfileCard = memo((props : ProfileCardProps) => {
                         </div>}
                     </div>
                 )}
-                {edit && (
-                    <div className={cls.info_container}>
-                        <Input 
-                            label={t('Имя')} 
-                            value={data.firstname}  
-                            onChange={onChangeProfileName} 
-                            name='name' 
-                            error={errors.firstname}
-                        />
-                        <Input 
-                            label={t('Фамилия')} 
-                            value={data.lastname} 
-                            onChange={onChangeProfileLastName} 
-                            name='lastname'
-                            error={errors.lastname}
-                        />
-                        <Input 
-                            label={t('Логин')} 
-                            value={data.username} 
-                            onChange={onChangeProfileUsername} 
-                            name='login'
-                        />
-                        <CountrySelect 
-                            value={data.country} 
-                            onChange={onChangeCountry} 
-                        />
-                        <Input 
-                            label={t('Город')} 
-                            value={data.city}  
-                            onChange={onChangeProfileCity} 
-                            name='city'
-                            error={errors.city}
-                        />
-                        <Input 
-                            label={t('Возраст')} 
-                            value={data?.age?.toString()}  
-                            type='number' onChange={onChangeProfileAge} 
-                            name='age'
-                            error={errors.age}
-                        />
-                        <CurrencySelect 
-                            value={data.currency} 
-                            onChange={onChangeCurrency} 
-                        />
-                        <Input 
-                            label={t('Ссылка на аватар')} 
-                            value={data.avatar}  
-                            onChange={onChangeAvatar} 
-                            name='avatar'
-                            error={errors.avatar}
-                        />
-
-                        <AppButton theme={ButtonTheme.OUTLINED} onClick={saveProfile} disabled={Object.values(errors).filter((item) => item !== '').length > 0 ? true : false}>{t('Сохранить')}</AppButton>
-
-
-                    </div>
-                )}
+                {edit && <ProfileForm
+                    data={data}
+                    errors={errors}
+                    onChangeAvatar={onChangeAvatar}
+                    onChangeCurrency={onChangeCurrency} 
+                    onChangeCountry={onChangeCountry}
+                    onChangeProfileCity={onChangeProfileCity}
+                    onChangeProfileLastName={onChangeProfileLastName}
+                    onChangeProfileName={onChangeProfileName}
+                    onChangeProfileUsername={onChangeProfileUsername}
+                    onChangeProfileEmail={onChangeProfileEmail}
+                    onChangePassword={onChangePassword}
+                    onRepeatPassword={onRepeatPassword}
+                    saveProfile={saveProfile}
+                />}
                 
             </Box>
         </div>

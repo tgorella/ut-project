@@ -5,3 +5,9 @@ isLoading: boolean,
 rememberMe?: boolean,
 error?: string,
 }
+
+export interface RegistrationFormSchema {
+  email: string,
+  password: string,
+  repeatPassword: string
+}
