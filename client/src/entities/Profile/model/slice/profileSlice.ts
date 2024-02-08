@@ -1,5 +1,5 @@
 import {PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { Profile, ProfileSchema } from '../types/profileSchema'
+import { Profile, ProfileSchema, ProfileWithPass } from '../types/profileSchema'
 import { fetchProfileData } from '../services/fetchProfileData/fetchProfileData'
 import { updateProfileData } from '../services/updateProfileData/updateProfileData'
 
@@ -21,17 +21,21 @@ export const profileSlice = createSlice({
             state.readonly = true
             state.form = state.data
         },
-        updateProfile: (state, action: PayloadAction<Profile>) => {
+        updateProfile: (state, action: PayloadAction<ProfileWithPass>) => {
             state.form = {
                 ...state.form,
                 ...action.payload
             }
         },
+        
         increaseOrderNumber: (state) => {
             state.data!.lastOrderNumber = (Number(state.data?.lastOrderNumber) + 1).toString()
             state.form!.lastOrderNumber = (Number(state.form?.lastOrderNumber) + 1).toString()
         },
-        
+        logOut: (state) => {
+            state.data = undefined
+            state.form = undefined
+        }
     },
     extraReducers(builder) {
         builder

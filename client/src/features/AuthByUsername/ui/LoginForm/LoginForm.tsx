@@ -8,7 +8,6 @@ import { Input } from 'shared/ui/Input/Input'
 import { useSelector } from 'react-redux'
 import { memo, useCallback } from 'react'
 import { loginAction, loginReducer } from 'features/AuthByUsername/model/slice/loginSlice'
-import { Text } from 'shared/ui/Text'
 import { Alert, AlertTheme } from 'shared/ui/Alert'
 import { getLoginEmail } from '../../model/selectors/getLoginEmail/getLoginEmail'
 import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword'
@@ -52,7 +51,7 @@ const LoginForm = memo(({className, onSuccess} : LoginFormProps) => {
     return ( 
         <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
             <form className={classNames(cls.LoginForm, {}, [className])}>
-                <Text title={t('Форма авторизации')} />
+                <h1>{t('Войти')}</h1>
                 <Input type='text' placeholder={t('Введите email')} autoFocus rounded onChange={handleChangeUsername} value={email}/>
                 <Input type='password' placeholder={t('Введите пароль')} rounded onChange={handleChangePassword} value={password}/>
                 {error && <Alert theme={AlertTheme.ERROR} text={error}/>}

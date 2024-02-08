@@ -26,6 +26,9 @@ export const appModulesSlice = createSlice({
                 calendar: true,
                 projects: true
             }
+        },
+        logOut: (state) => {
+            state.data = undefined
         }
     },
     extraReducers(builder) {

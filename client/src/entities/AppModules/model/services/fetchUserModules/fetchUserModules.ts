@@ -15,8 +15,7 @@ export const fetchUserModules = createAsyncThunk<AppModules, void,ThunkConfig<st
             const {data} = await extra.api.get<AppModules[]>('/appmodules/')
 
             if (!data) {
-                const newData: AppModules = {
-                    _id: Date.now.toString(),
+                const newData: Partial<AppModules> = {
                     userId: authData?._id,
                     calendar: true,
                     clients: true,

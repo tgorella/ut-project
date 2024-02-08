@@ -1,4 +1,4 @@
-import { Profile } from 'entities/Profile/model/types/profileSchema'
+import { ProfileWithPass } from 'entities/Profile/model/types/profileSchema'
 import i18n from 'shared/config/i18n/i18n'
 
 interface MethodInfo {
@@ -10,7 +10,7 @@ interface MethodInfo {
 
 type Method = Record<string, MethodInfo>
 
-const profileFormValidation = (data: Profile) => {
+const profileFormValidation = (data: ProfileWithPass) => {
     const errors = {
         age: '',
         firstname: '',
@@ -19,9 +19,12 @@ const profileFormValidation = (data: Profile) => {
         city: '',
         currency: '',
         username: '',
+        email: '',
         country: '',
         lastOrderNumber: '',
-        modules: ''
+        modules: '',
+        newPassword: '',
+        repeatPassword: '',
     }
    
     const config : Record<string, Method>= {
@@ -55,7 +58,7 @@ const profileFormValidation = (data: Profile) => {
             },
             length: {
                 message: i18n.t('Город не должно превышать 30 символдов'),
-                value: 30 
+                max: 30,
             },
             onlyLettersNumbers: {
                 message:   i18n.t('Город может содержать только буквы, цифры и \'-\'')
@@ -75,6 +78,19 @@ const profileFormValidation = (data: Profile) => {
             isLink: {
                 message: i18n.t('Ссылка должна быть вида http://...'),
             }
+        }, 
+        newPassword: {
+            passReg: {
+                message: i18n.t('Пароль должен содержать от 8 до 15 символов и включать 1 заглавную букву, 1 строчную и 1 цифру')
+            },
+            notLatin: {
+                message: i18n.t('Пароль должен быть латиницей')
+            }
+        },
+        repeatPassword: {
+            equalPass: {
+                message: i18n.t('Пароли должны совпадать')
+            }
         }
     }
 
@@ -90,7 +106,10 @@ const profileFormValidation = (data: Profile) => {
             break
         case 'length':
             if (typeof value !== 'number') {
-                if (config['value'] && value.length > config?.['value']) {
+                if (config['max'] && value.length > config?.['max']) {
+                    return config.message
+                }
+                if (config['min'] && value.length < config?.['min']) {
                     return config.message
                 }
             }
@@ -115,6 +134,22 @@ const profileFormValidation = (data: Profile) => {
                 return config.message
             }
             break
+
+        case 'equalPass': 
+            if (data.repeatPassword !== data.newPassword) {
+                return config.message
+            }
+            break
+        case 'passReg':
+            if (data.newPassword !== '' && !passRegEx.test(String(value))) {
+                return config.message
+            }
+            break
+        case 'notLatin':
+            if (data.newPassword !== '' && !notLatin.test(String(value))) {
+                return config.message
+            }
+            break
         default:
             break
         }
@@ -122,13 +157,15 @@ const profileFormValidation = (data: Profile) => {
     const notLetters = /[^а-яА-Яa-zA-Z]+/g
     const notLettersNumbers = /[^а-яА-Яa-zA-Z0-9\-\s]+/g
     const linkRegEx = /^(http)/g
+    const passRegEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
+    const notLatin = /[^а-яА-Я]+/g
 
     for (const fieldName in data) {
         for (const method in config[fieldName]) {
             // @ts-ignore
             const error = validate(method, data[fieldName], config[fieldName][method])
             if (error) {
-                errors[fieldName as keyof Profile] = error
+                errors[fieldName as keyof ProfileWithPass] = error
             }
         }
     }

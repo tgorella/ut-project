@@ -54,7 +54,7 @@ export const ProjectsPage = memo(({className} : ProjectsPageProps) => {
     }
 
     return ( 
-        <DynamicModuleLoader reducers={reducers} >
+        <DynamicModuleLoader reducers={reducers} removeAfterUnmount={true}>
             <div className={classNames(cls.ProjectsPage, {}, [className])}>
                 <h1>{t('Проекты')}</h1>
                 {data?.map((project) => {

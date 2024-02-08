@@ -11,8 +11,8 @@ router.route('/')
   try {
     const event_list = await Event.find({userId: req.user._id})
     const orders_list = await Order.find({userId: req.user._id})
-
-    orders_list.forEach((order) => {
+ 
+orders_list.forEach((order) => {
       const data = {
         _id: order._id,
         title: order.title,
@@ -26,6 +26,7 @@ router.route('/')
       }
       event_list.push(data)
     })
+ 
     res.status(200).send(event_list)
   } catch (error) {
     res

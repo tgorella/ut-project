@@ -77,7 +77,7 @@ export const CalendarPage = memo(({className} : CalendarPageProps) => {
     }
 
     return ( 
-        <DynamicModuleLoader reducers={reducers}>
+        <DynamicModuleLoader reducers={reducers} removeAfterUnmount={true}>
             <div className={classNames(cls.CalendarPage, {}, [className])}>
                 <BulletMenu items={items} onClick={togglePages} path={path}/>
                 {content}

@@ -1,9 +1,12 @@
 import classNames from 'shared/lib/classNames/ClassNames'
 import { Modal } from 'shared/ui/Modal'
 import { LoginFormLazy } from '../LoginForm/LoginForm.lazy'
-import { Suspense, memo } from 'react'
+import { Suspense, memo, useState } from 'react'
 import { PageLoader } from 'widgets/PageLoader'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
+import { RegistrationForm } from '../RegistrationForm/RegistrationForm'
 
 interface LoginModalProps {
   className?: string;
@@ -11,21 +14,39 @@ interface LoginModalProps {
   onClose: () => void
 }
 export const LoginModal = memo(({className, isOpen, onClose} : LoginModalProps) => {
+    const {t} = useTranslation()
     const navigate = useNavigate()
-    const handleClose = () => {
+    const [login, setLogin] = useState(true)
+    const handleSuccessLogin = () => {
         onClose()
         navigate('/settings')
-        
     }
+    const handleClose = () => {
+        onClose()
+        setLogin(true)
+    }
+    const toggleLogin = () => {
+        setLogin(!login)
+    }
+
     return ( 
         <Modal 
             lazy={true}
             isOpen={isOpen}
-            onClose={onClose}
+            onClose={handleClose}
             className={classNames('', {}, [className])}>
-            <Suspense fallback={<PageLoader />}>
-                <LoginFormLazy onSuccess={handleClose}/>
-            </Suspense>
+            {login && <>
+                <Suspense fallback={<PageLoader />}>
+                    <LoginFormLazy onSuccess={handleSuccessLogin}/>
+                </Suspense>
+                <p>{t('Еще нет аккаунта?')} <Link to='' onClick={toggleLogin}>{t('Регистрация')}</Link></p>
+            </>
+            }
+            {!login && <Suspense fallback={<PageLoader />} >
+                <RegistrationForm />
+                <p>{t('Уже есть аккаунт?')} <Link to='' onClick={toggleLogin}>{t('Войти')}</Link></p>
+
+            </Suspense>}
         </Modal>
     )
 })

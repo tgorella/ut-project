@@ -10,7 +10,7 @@ interface CurrencySelectProps {
   onChange: (value: Currency) => void
 }
 
-const options = Object.keys(Currency).map((key) =>{
+const options = Object.values(Currency).map((key) =>{
     // @ts-ignore
     return {value: Currency[key], name: Currency[key]}
 } )
@@ -20,7 +20,6 @@ export const CurrencySelect = memo(({className, value, onChange} : CurrencySelec
     const changeHandler = useCallback((value: string) => {
         onChange?.(value as Currency)
     },[onChange])
-
 
     return ( 
         <Select className={classNames(className, {}, [])} 
