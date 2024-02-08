@@ -6,6 +6,8 @@ import { LoginModal } from 'features/AuthByUsername'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { profileAction } from 'entities/Profile'
+import { appModulesAction } from 'entities/AppModules'
 
 
 interface AuthButtonProps {
@@ -22,9 +24,13 @@ export const AuthButton = memo(({className} : AuthButtonProps) => {
     }, [])
 
     const handleLogout = () => {
-        dispatch(userAction.logout()) 
+        dispatch(userAction.logout())
+        dispatch(profileAction.logOut())
+        dispatch(appModulesAction.logOut())
         navigate?.('/')
+  
     }
+       
 
     if (!authData || authData._id === '' ) {
         return ( 

@@ -27,11 +27,15 @@ export const profileSlice = createSlice({
                 ...action.payload
             }
         },
+        
         increaseOrderNumber: (state) => {
             state.data!.lastOrderNumber = (Number(state.data?.lastOrderNumber) + 1).toString()
             state.form!.lastOrderNumber = (Number(state.form?.lastOrderNumber) + 1).toString()
         },
-        
+        logOut: (state) => {
+            state.data = undefined
+            state.form = undefined
+        }
     },
     extraReducers(builder) {
         builder

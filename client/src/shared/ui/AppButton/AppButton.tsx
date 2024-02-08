@@ -42,19 +42,11 @@ export const AppButton= memo((props: AppButtonProps) => {
         [cls.stretch]: stretch
     }
 
-    // const handleSubmit = (e: FormEvent<HTMLButtonElement>) => {
-    //     e.preventDefault()
-    //     if (onClick) {
-    //         onClick()
-    //     }
-        
-    // }
     return (
         <button
             className={classNames(cls.AppButton, mods, [className])}
             disabled={disabled}
             {...otherProps}
-            // onClick={handleSubmit}
         >
             {children}
         </button>
