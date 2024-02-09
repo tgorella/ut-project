@@ -2,6 +2,7 @@ import { AboutPage } from 'pages/AboutPage'
 import { CalendarPage } from 'pages/CalendarPage'
 import { ClientDetailPageLazy } from 'pages/ClientDetailPage/ui/ClientDetailPage/ClientDetailPage.lazy'
 import { ClientsPage } from 'pages/ClientsPage'
+import { DashboardPage } from 'pages/DashboardPage'
 import { EventDetailPage } from 'pages/EventDetailPage'
 import { MainPage } from 'pages/MainPage'
 import { NotFoundPage } from 'pages/NotFoundPage'
@@ -26,9 +27,10 @@ export enum AppRoutes {
   ORDERS_DETAILS = 'order_details',
   EVENT_EDIT = 'event_edit',
   SETTINGS = 'settings',
-  NOTFOUND = 'not_found',
   PROJECTS = 'projects',
-  CALENDAR = 'calendar'
+  CALENDAR = 'calendar',
+  DASHBOARD = 'dashboard',
+  NOTFOUND = 'not_found',
 }
 export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.MAIN]: '/',
@@ -42,6 +44,7 @@ export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.PROJECTS]: '/projects',
     [AppRoutes.CALENDAR]: '/calendar',
     [AppRoutes.EVENT_EDIT]: '/events/',
+    [AppRoutes.DASHBOARD]: '/dashboard',
     [AppRoutes.NOTFOUND]: '*'
 }
 
@@ -50,6 +53,11 @@ export const routeConfig: Record<AppRoutes, AppRoutesProp> = {
         path: RoutePath.main,
         element: <MainPage />,
         authOnly: false
+    },
+    [AppRoutes.DASHBOARD]: {
+        path: RoutePath.dashboard,
+        element: <DashboardPage />,
+        authOnly: true
     },
     [AppRoutes.ABOUT]: {
         path: RoutePath.about,
