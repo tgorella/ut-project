@@ -23,6 +23,13 @@ export const SidebarItemsList: SidebarItemType[] = [
         text: 'Главная страница',
         isAuth: false,
         module: false
+    },
+    {
+        path: RoutePath.dashboard,
+        icon: MainIcon,
+        text: 'Главная',
+        isAuth: true,
+        module: false
     },  
     {
         path: RoutePath.about,

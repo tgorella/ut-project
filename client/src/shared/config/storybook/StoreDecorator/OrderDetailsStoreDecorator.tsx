@@ -5,11 +5,13 @@ import { clientDetailsReducer } from 'entities/Clients'
 import { orderDetailsReducer } from 'entities/Order'
 import { orderStatusReducer } from 'entities/OrderStatus'
 import { stateAllErrors, stateAllIn, stateAllIsLoading } from './state'
+import { ordersPageReducer } from 'pages/OrdersPage/model/slice/OrdersPageSlice'
 
 export const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
     orderDetails: orderDetailsReducer,
     orderStatuses: orderStatusReducer,
-    clientDetails: clientDetailsReducer
+    clientDetails: clientDetailsReducer,
+    ordersPage: ordersPageReducer
 }
 
 export const orderDetailsStoreDecorator: Decorator = (Story) => (

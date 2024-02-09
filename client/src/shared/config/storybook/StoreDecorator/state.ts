@@ -379,6 +379,68 @@ export const stateAllIn: StateSchema = {
             userId: '643c36ad8545463c883af7a8',
             projectType: '6469da05312bc36f4e9ecedc'
         }
+    },
+    ordersPage: {
+        isLoading: false,
+        limit: 100,
+        search: '',
+        data: [
+            {
+                _id:'65c6300f1ff36e56be85ec31',
+                clientId:'659bb190b1e8a9de6b4e5b53',
+                userId:'65988d28a1bc6c3d31acb718',
+                title:'Заказ в феврале',
+                projectType:'65b6b7fac7b2228b5761ab62',
+                status:'6467834500aba6813881d4',
+                notes:'',
+                eventDate:'2024-02-25',
+                eventType:'work',
+                place:'',
+                startTime:'',
+                endTime:'',
+                total:'56757',
+                steps:[],
+                createdAt:'2024-02-09T14:00:47.123Z',
+                updatedAt:'2024-02-09T14:01:13.033Z',
+                orderNumber: '14'
+            },
+            {
+                _id:'65b10d79388072a2cc87c0a2',
+                clientId:'65b10d78388072a2cc87c0a0',
+                userId:'65988d28a1bc6c3d31acb718',
+                title:'Test1',
+                projectType:'65b7b18257fa328bb2d901a3',
+                status:'659bc05bec9c6a620f683036',
+                notes:'',
+                eventDate:'2024-12-12',
+                eventType:'work',
+                orderNumber:'13',
+                place:'',
+                startTime:'12:00',
+                endTime:'14:00',
+                total:'100000',
+                createdAt:'2024-01-24T13:15:37.077Z',
+                updatedAt:'2024-01-29T18:39:04.177Z',
+            },
+            {
+                _id:'659c13af2021bc9855b6b6eb',
+                clientId:'659bb1cdb1e8a9de6b4e5b5b',
+                userId:'65988d28a1bc6c3d31acb718',
+                title:'Первый заказ Томаса',
+                projectType:'65b6b7fac7b2228b5761ab62',
+                status:'659bc05bec9c6a620f683035',
+                notes:'',
+                eventDate:'2024-04-11',
+                eventType:'work',
+                orderNumber:'12',
+                place:'',
+                startTime:'14:00',
+                endTime:'19:00',
+                total:'50000',
+                createdAt:'2024-01-08T15:24:31.132Z',
+                updatedAt:'2024-02-05T21:52:00.759Z'
+            }
+        ]
     }
 
 }
