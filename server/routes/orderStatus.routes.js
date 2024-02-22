@@ -1,6 +1,6 @@
 const express = require('express')
 const auth = require('../middleware/auth.middleware')
-const OrderStatus = require('../models/OrderStatus')
+const OrderStatus = require('../models/OrderStatus').default
 const router = express.Router({mergeParams: true})
 
 

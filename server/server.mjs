@@ -10,22 +10,17 @@ import mongoose from 'mongoose'
 import chalk from 'chalk'
 import initDatabase from './startUp/initDatabase.js';
 
-const PORT = config.get("port") ?? 8080;
-// The GraphQL schema
-const typeDefs = `#graphql
-  type Query {
-    hello: String
-  }
-`;
+import graphqlSchema from './graphql/schema/index.js';
+import resolvers from './graphql/resolvers/index.js';
 
-// A map of functions which return data for the schema.
-const resolvers = {
-  Query: {
-    hello: () => 'world',
-  },
-};
+
+// The GraphQL schema
+const typeDefs = graphqlSchema
+
 
 const app = express();
+const PORT = config.get("port") ?? 8080;
+
 const httpServer = http.createServer(app);
 
 // Set up Apollo Server
@@ -51,5 +46,9 @@ await new Promise((resolve) => {
   console.log(chalk.green(`MongoDB connected`));
   httpServer.listen(PORT, resolve)
 
+}).catch((error) => {
+  console.log(chalk.red(error.message));
+process.exit(1);
 });
-console.log(`🚀 Server ready at http://localhost:${PORT}`);
+
+console.log(chalk.green(`Server has been started on PORT ${PORT}...`));;

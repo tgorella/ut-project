@@ -1,13 +1,12 @@
-const { Schema, model } = require("mongoose");
+import { Schema, model } from "mongoose";
 
 const schema = new Schema(
   {
 		clientId: { type: Schema.Types.ObjectId, ref: "Client", required: true },
     userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
     title: { type: String, required: true },
-		projectType: {type: String},
-    status: { type: String },
-    cost: { type: Number },
+		projectType:  { type: Schema.Types.ObjectId, ref: "Project", required: true },
+    status: { type: Schema.Types.ObjectId, ref: "OrderStatus", required: true  },
     notes: { type: String },
     eventDate: { type: String },
     eventType: { type: String },
@@ -23,4 +22,4 @@ const schema = new Schema(
   }
 );
 
-module.exports = model("Order", schema);
+export default model("Order", schema);

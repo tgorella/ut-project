@@ -9,7 +9,7 @@ export const updateStatus = createAsyncThunk<OrderStatusDetails, Partial<OrderSt
     async (data, thunkAPI) => {
         const {rejectWithValue, extra} = thunkAPI
         try {
-            const response = await extra.api.patch<OrderStatusDetails>('/order-statuses'+ data._id, data)
+            const response = await extra.api.patch<OrderStatusDetails>('/order-statuses/'+ data._id, data)
             
             if (!response) {
                 throw new Error('err')
