@@ -119,6 +119,38 @@ input UserInput {
   username: String
  }
 
+ input OrderInput {
+  clientId: String!,
+  userId: String!,
+  title: String,
+  projectType: String!,
+  status: String!,
+  notes: String,
+  eventData: String,
+  eventType: String,
+  orderNumber: Int,
+  place: String
+  startTime: String,
+  endTime: String
+  total: String
+  steps: [String]
+ }
+
+ input OrderNewDataInput {
+  _id: ID
+  title: String,
+  projectType: String,
+  status: String,
+  notes: String,
+  eventData: String,
+  eventType: String,
+  place: String
+  startTime: String,
+  endTime: String
+  total: String
+  steps: [String]
+ }
+
 input UserSignInInput {
   email: String,
   password: String
@@ -127,40 +159,34 @@ input UserSignInInput {
 input FilterOrderInput {
   search: String
 }
+
 type Query {
   users: [User]
   user(id: ID!): User
-
   signInWithPassword(data: UserSignInInput): AuthData
-
   orders: [Order]
   order(id: ID): Order
   filteredOrders(data: String): [Order]
-
   projects: [Project]
   project(id: ID): Project
-
   clients: [Client]
   client(id: ID): Client
   filteredClients(data: String): [Client]
-
   events: [Event]
   event(id: ID): Event
-  
   eventTypes: [EventType]
-
   orderStatuses: [OrderStatus]
-
   modules(userId: ID): [ModulesStatus]
 },
+
 type Mutation {
   addUser(data: UserInput): User
   updateUser(data: ID): User # check it later
   deleteUser(id: ID): String
   updateToken(token: String): AuthData
-  # addOrder(data: OrderInput): Order
-  # updateOrder(data: OrderNewDataInput): Order
-  # deleteOrder(id: ID): string
+  addOrder(data: OrderInput): Order
+  deleteOrder(id: ID): String
+  updateOrder(data: OrderNewDataInput): Order
   # addClient(data: ClientInput): Client
   # updateClient(data: ClientNewDataInput): Client
   # deleteClient(id: ID): string
