@@ -9,6 +9,7 @@ import eventTypesQueryResolvers from './eventTypesQueryResolvers.js';
 import orderStatusesQueryResolvers from './orderStatusesQueryResolvers.js';
 import modulesStatusQueryResolvers from './modulesQueryResolvers.js';
 import orderMutationResolvers from './orderMutationResolvers.js';
+import clientMutationResolvers from './clientMutationResolvers.js';
 
 const resolvers =  {
   Query: {
@@ -24,7 +25,8 @@ const resolvers =  {
   Mutation: {
     ...userMutationResolvers,
     ...tokenMutationResolvers,
-    ...orderMutationResolvers
+    ...orderMutationResolvers,
+    ...clientMutationResolvers
   }
 }
 

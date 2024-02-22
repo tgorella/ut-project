@@ -3,7 +3,7 @@ import { Schema, model } from "mongoose";
 const schema = new Schema(
   {
     name: { type: String },
-    email: { type: String, unique: true },
+    email: { type: String},
     notes: {type: String},
     phone: { type: String},
     avatarUrls: {type: String},

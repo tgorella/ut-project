@@ -151,6 +151,30 @@ input UserInput {
   steps: [String]
  }
 
+ input ClientInput {
+  name: String!,
+    email: String,
+    notes: String,
+    phone: String,
+    avatarUrls: String,
+    profession: String,
+    address: String,
+    isFav: Boolean,
+    userId:String!
+ }
+
+ input ClientNewDataInput {
+  _id: ID!
+  name: String,
+    email: String,
+    notes: String,
+    phone: String,
+    avatarUrls: String,
+    profession: String,
+    address: String,
+    isFav: Boolean,
+ }
+
 input UserSignInInput {
   email: String,
   password: String
@@ -187,9 +211,9 @@ type Mutation {
   addOrder(data: OrderInput): Order
   deleteOrder(id: ID): String
   updateOrder(data: OrderNewDataInput): Order
-  # addClient(data: ClientInput): Client
-  # updateClient(data: ClientNewDataInput): Client
-  # deleteClient(id: ID): string
+  addClient(data: ClientInput): Client
+  updateClient(data: ClientNewDataInput): Client
+  deleteClient(id: ID): String
   # addOrderStatus(data: OrderStatusInput): OrderStatus
   # updateOrderStatus(data: OrderStatusNewDataInput): OrderStatus
   # deleteOrderStatus(id: ID): string

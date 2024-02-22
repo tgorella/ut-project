@@ -8,9 +8,7 @@ const orderMutationResolvers = {
         ...args.data,
       })
       
-      await newOrder.populate({
-        path: "userId"
-      })
+      await newOrder.populate(['clientId', 'status'])
       return newOrder
     } catch (error) {
       throw new GraphQLError(error)
@@ -31,6 +29,7 @@ const orderMutationResolvers = {
       const updatedOrder = await Order.findByIdAndUpdate(orderId, args.data, {
         new: true,
       })
+      await updatedOrder.populate(['clientId', 'status'])
       return updatedOrder
     } catch (error) {
       throw new GraphQLError(error)
