@@ -210,6 +210,19 @@ input UserInput {
     notes:String,
  }
 
+ input EventTypeInput {
+  name: String!,
+  color: String!,
+  userId: String!,
+  isDefault: Boolean
+ }
+
+ input EventTypeNewDataInput {
+  _id: ID,
+  name: String,
+  color: String,
+ }
+
 input UserSignInInput {
   email: String,
   password: String
@@ -255,9 +268,9 @@ type Mutation {
   addEvent(data: EventInput): Event
   updateEvent(data: EventNewDataInput): Event
   deleteEvent(id: ID): String
-  # addEventType(data: EventTypeInput): EventType
-  # updateEventType(data: EventTypeNewDataInput): EventType
-  # deleteEventType(id: ID): string
+  addEventType(data: EventTypeInput): EventType
+  updateEventType(data: EventTypeNewDataInput): EventType
+  deleteEventType(id: ID): String
   # addProjectType(data: ProjectTypeInput): ProjectType
   # updateProjectType(data: ProjectTypeNewDataInput): ProjectType
   # deleteProjectType(id: ID): string
