@@ -81,9 +81,9 @@ steps: [Step]
 
 type Step {
 _id: ID!,
-userId: User,
-stageId: Stage,
-projectId: Project,
+userId: String,
+stageId: String,
+projectId: String,
 name: String!,
 index: Int
 }
@@ -237,6 +237,17 @@ name: String,
 index: Int
 }
 
+input ProjectInput {
+  name: String!,
+userId: String,
+stages: [String]!
+}
+
+input ProjectNewDataInput {
+  _id: ID!,
+name: String,
+}
+
 type ProjectData {
   step: String,
   stage: String,
@@ -291,12 +302,12 @@ type Mutation {
   addEventType(data: EventTypeInput): EventType
   updateEventType(data: EventTypeNewDataInput): EventType
   deleteEventType(id: ID): String
-  # addProject(data: ProjectInput): Project
-  # updateProject(data: ProjectNewDataInput): Project
-  # deleteProject(id: ID): string
+  addProject(data: ProjectInput): Project
+  updateProject(data: ProjectNewDataInput): Project
+  deleteProject(id: ID): String
   # addProjectStage(data: ProjectStageInput): ProjectStage
   # updateProjectStage(data: ProjectStageNewDataInput): ProjectStage
-  # deleteProjectStage(id: ID): string
+  # deleteProjectStage(id: ID): String
   addProjectStep(data: ProjectStepInput): Step
   updateProjectStep(data: ProjectStepNewDataInput): Step
   deleteProjectStep(id: ID): ProjectData
