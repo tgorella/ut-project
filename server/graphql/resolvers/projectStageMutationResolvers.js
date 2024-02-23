@@ -22,12 +22,10 @@ const projectStageMutationResolvers = {
   deleteProjectStage: async (_, args) => {
     try {
       const stage = await ProjectStage.findById(args.id)
-      console.log(stage)
       const project = await Project.findById(stage.projectId)
       await ProjectStep.deleteMany({stageId: args.id})
       await ProjectStage.deleteOne({_id: args.id})
       
-     
       project.stages.pull(stage._id)
       await project.save()
       

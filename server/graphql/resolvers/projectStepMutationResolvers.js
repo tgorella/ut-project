@@ -21,10 +21,10 @@ const projectStepMutationResolvers = {
   deleteProjectStep: async (_, args) => {
     try {
       const step = await ProjectStep.findById(args.id)
-      const deletedStep = await ProjectStep.deleteOne({ _id: args.id })
+      await ProjectStep.deleteOne({ _id: args.id })
 
       const stage = await ProjectStage.findById(step.stageId)
-      stage.steps = stage.steps.filter((item) => item !== deletedStep._id)
+      stage.steps.pull(step._id)
       stage.save()
 
       const result =  {
