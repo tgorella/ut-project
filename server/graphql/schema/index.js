@@ -237,6 +237,20 @@ name: String,
 index: Int
 }
 
+input ProjectStageInput {
+userId: String,
+projectId:String,
+name: String,
+index: Int,
+steps: [String]!
+}
+
+input ProjectStageNewDataInput {
+  _id: ID,
+name: String,
+index: Int,
+}
+
 input ProjectInput {
   name: String!,
 userId: String,
@@ -250,6 +264,11 @@ name: String,
 
 type ProjectData {
   step: String,
+  stage: String,
+  project: String
+}
+
+type StageData {
   stage: String,
   project: String
 }
@@ -305,9 +324,9 @@ type Mutation {
   addProject(data: ProjectInput): Project
   updateProject(data: ProjectNewDataInput): Project
   deleteProject(id: ID): String
-  # addProjectStage(data: ProjectStageInput): ProjectStage
-  # updateProjectStage(data: ProjectStageNewDataInput): ProjectStage
-  # deleteProjectStage(id: ID): String
+  addProjectStage(data: ProjectStageInput): Stage
+  updateProjectStage(data: ProjectStageNewDataInput): Stage
+  deleteProjectStage(id: ID): StageData
   addProjectStep(data: ProjectStepInput): Step
   updateProjectStep(data: ProjectStepNewDataInput): Step
   deleteProjectStep(id: ID): ProjectData

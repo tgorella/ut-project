@@ -15,6 +15,7 @@ import eventMutationResolvers from './eventMutationResolvers.js';
 import eventTypeMutationResolvers from './eventTypeMutationResolvers.js';
 import projectStepMutationResolvers from './projectStepMutationResolvers.js';
 import projectMutationResolvers from './projectMutationResolvers.js';
+import projectStageMutationResolvers from './projectStageMutationResolvers.js';
 
 const resolvers =  {
   Query: {
@@ -36,6 +37,7 @@ const resolvers =  {
     ...eventMutationResolvers,
     ...eventTypeMutationResolvers,
     ...projectMutationResolvers,
+    ...projectStageMutationResolvers,
     ...projectStepMutationResolvers
   }
 }
