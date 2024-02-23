@@ -188,6 +188,28 @@ input UserInput {
   color: String,
  }
 
+ input EventInput {
+  title: String!,
+		userId: String,
+    eventType:String,
+    eventDate: String,
+    startTime:String,
+    endTime:String,
+    place:String,
+    notes:String,
+ }
+
+ input EventNewDataInput {
+  _id: ID!,
+  title: String!,
+    eventType:String,
+    eventDate: String,
+    startTime:String,
+    endTime:String,
+    place:String,
+    notes:String,
+ }
+
 input UserSignInInput {
   email: String,
   password: String
@@ -230,9 +252,9 @@ type Mutation {
   addOrderStatus(data: OrderStatusInput): OrderStatus
   updateOrderStatus(data: OrderStatusNewDataInput): OrderStatus
   deleteOrderStatus(id: ID): String
-  # addEvent(data: EventInput): Event
-  # updateEvent(data: EventNewDataInput): Event
-  # deleteEvent(id: ID): string
+  addEvent(data: EventInput): Event
+  updateEvent(data: EventNewDataInput): Event
+  deleteEvent(id: ID): String
   # addEventType(data: EventTypeInput): EventType
   # updateEventType(data: EventTypeNewDataInput): EventType
   # deleteEventType(id: ID): string
