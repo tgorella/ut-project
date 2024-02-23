@@ -223,6 +223,26 @@ input UserInput {
   color: String,
  }
 
+input ProjectStepInput {
+userId: String,
+stageId: String,
+projectId: String,
+name: String!,
+index: Int
+}
+
+input ProjectStepNewDataInput {
+  _id: ID!,
+name: String,
+index: Int
+}
+
+type ProjectData {
+  step: String,
+  stage: String,
+  project: String
+}
+
 input UserSignInInput {
   email: String,
   password: String
@@ -271,18 +291,15 @@ type Mutation {
   addEventType(data: EventTypeInput): EventType
   updateEventType(data: EventTypeNewDataInput): EventType
   deleteEventType(id: ID): String
-  # addProjectType(data: ProjectTypeInput): ProjectType
-  # updateProjectType(data: ProjectTypeNewDataInput): ProjectType
-  # deleteProjectType(id: ID): string
   # addProject(data: ProjectInput): Project
   # updateProject(data: ProjectNewDataInput): Project
   # deleteProject(id: ID): string
   # addProjectStage(data: ProjectStageInput): ProjectStage
   # updateProjectStage(data: ProjectStageNewDataInput): ProjectStage
   # deleteProjectStage(id: ID): string
-  # addProjectStep(data: ProjectStepInput): ProjectStep
-  # updateProjectStep(data: ProjectStepNewDataInput): ProjectStep
-  # deleteProjectStep(id: ID): string
+  addProjectStep(data: ProjectStepInput): Step
+  updateProjectStep(data: ProjectStepNewDataInput): Step
+  deleteProjectStep(id: ID): ProjectData
   # addModules(data: ModulesInput): Modules
   # updateModules(data: ModulesNewDataInput): Modules
 },

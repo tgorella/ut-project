@@ -13,6 +13,7 @@ import clientMutationResolvers from './clientMutationResolvers.js';
 import orderStatusMutationResolvers from './orderStatusMutationResolvers.js';
 import eventMutationResolvers from './eventMutationResolvers.js';
 import eventTypeMutationResolvers from './eventTypeMutationResolvers.js';
+import projectStepMutationResolvers from './projectStepMutationResolvers.js';
 
 const resolvers =  {
   Query: {
@@ -32,7 +33,8 @@ const resolvers =  {
     ...clientMutationResolvers,
     ...orderStatusMutationResolvers,
     ...eventMutationResolvers,
-    ...eventTypeMutationResolvers
+    ...eventTypeMutationResolvers,
+    ...projectStepMutationResolvers
   }
 }
 
