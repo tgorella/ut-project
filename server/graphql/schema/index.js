@@ -175,6 +175,19 @@ input UserInput {
     isFav: Boolean,
  }
 
+ input OrderStatusInput {
+  userId: String!,
+  name: String!,
+  color: String!,
+  isDefault: Boolean,
+ }
+
+ input OrderStatusNewDataInput {
+  _id: ID!,
+  name: String,
+  color: String,
+ }
+
 input UserSignInInput {
   email: String,
   password: String
@@ -214,9 +227,9 @@ type Mutation {
   addClient(data: ClientInput): Client
   updateClient(data: ClientNewDataInput): Client
   deleteClient(id: ID): String
-  # addOrderStatus(data: OrderStatusInput): OrderStatus
-  # updateOrderStatus(data: OrderStatusNewDataInput): OrderStatus
-  # deleteOrderStatus(id: ID): string
+  addOrderStatus(data: OrderStatusInput): OrderStatus
+  updateOrderStatus(data: OrderStatusNewDataInput): OrderStatus
+  deleteOrderStatus(id: ID): String
   # addEvent(data: EventInput): Event
   # updateEvent(data: EventNewDataInput): Event
   # deleteEvent(id: ID): string
