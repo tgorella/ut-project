@@ -2,7 +2,7 @@ const graphqlSchema = `#graphql
 type Event {
   _id: ID!,
   title: String!,
-		userId: User,
+		userId: String,
     eventType:EventType,
     eventDate: String,
     startTime:String,
@@ -14,7 +14,7 @@ type EventType {
   _id: ID,
   name: String!,
   color: String!,
-  userId: User,
+  userId: String,
   isDefault: Boolean
 }
 type ModulesStatus {
@@ -35,12 +35,12 @@ type Client {
     profession: String,
     address: String,
     isFav: Boolean,
-    userId: User
+    userId: String
 }
 type Order {
   _id: ID,
   clientId: Client,
-  userId: User,
+  userId: String,
   title: String
   projectType: Project,
   status: OrderStatus,
@@ -57,7 +57,7 @@ type Order {
 
 type OrderStatus {
   _id: ID!,
-  userId: User,
+  userId: String,
   name: String!,
   color: String!,
   isDefault: Boolean,
@@ -66,13 +66,13 @@ type OrderStatus {
 type Project {
   _id: ID,
   name: String!,
-userId: User,
+userId: String,
 stages: [Stage]
 }
 
 type Stage {
 _id: ID,
-userId: User,
+userId: String,
 projectId:Project,
 name: String,
 index: Int,
@@ -262,6 +262,15 @@ input ProjectNewDataInput {
 name: String,
 }
 
+
+input ModulesNewDataInput {
+  clients: Boolean,
+  orders: Boolean,
+  calendar: Boolean,
+  workflow: Boolean,
+  projects: Boolean
+}
+
 type ProjectData {
   step: String,
   stage: String,
@@ -283,8 +292,8 @@ input FilterOrderInput {
 }
 
 type Query {
-  users: [User]
-  user(id: ID!): User
+  # users: [User]
+  user: User
   signInWithPassword(data: UserSignInInput): AuthData
   orders: [Order]
   order(id: ID): Order
@@ -298,12 +307,12 @@ type Query {
   event(id: ID): Event
   eventTypes: [EventType]
   orderStatuses: [OrderStatus]
-  modules(userId: ID): [ModulesStatus]
+  modules: ModulesStatus
 },
 
 type Mutation {
-  addUser(data: UserInput): User
-  updateUser(data: ID): User # check it later
+  signUp(data: UserInput): User
+  updateUser(data: ID): User
   deleteUser(id: ID): String
   updateToken(token: String): AuthData
   addOrder(data: OrderInput): Order
@@ -330,8 +339,8 @@ type Mutation {
   addProjectStep(data: ProjectStepInput): Step
   updateProjectStep(data: ProjectStepNewDataInput): Step
   deleteProjectStep(id: ID): ProjectData
-  # addModules(data: ModulesInput): Modules
-  # updateModules(data: ModulesNewDataInput): Modules
+  addModules: ModulesStatus
+  updateModules(data: ModulesNewDataInput): ModulesStatus
 },
 
 `

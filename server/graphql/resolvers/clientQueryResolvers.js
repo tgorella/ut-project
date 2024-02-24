@@ -1,26 +1,31 @@
 import Client from '../../models/Client.js'
-import { GraphQLError } from 'graphql'
+import { checkAuth, checkUserId, throwServerError } from './helpers.js'
 
 const clientQueryResolvers = {
-  clients: async () => {
+
+  clients: async (_, __, context) => {
+    checkAuth(context)
     try {
-      const clients = await Client.find()
+      const clients = await Client.find({userId: context.user._id})
       return clients
     } catch (error) {
-      throw new GraphQLError(error)
+      throwServerError()
     }
   },
-  client: async (_, args) => {
+  client: async (_, args, context) => {
+    checkAuth(context)
     try {
       const client = await Client.findById(args.id)
+      checkUserId(client, context)
       return client
     } catch (error) {
-      throw new GraphQLError(error)
+      throwServerError()
     }
   },
-  filteredClients: async (_, args) => {
+  filteredClients: async (_, args, context) => {
+    checkAuth(context)
     try {
-      const list = await Client.find()
+      const list = await Client.find({userId: context.user._id})
       const filteredList = list.filter((item) => {
         return (
           item.name.toLowerCase().includes(args.data.toLowerCase()) ||
@@ -30,9 +35,10 @@ const clientQueryResolvers = {
           item.phone.includes(args.data)
         )
       })
+
       return filteredList
     } catch (error) {
-      throw new GraphQLError(error)
+      throwServerError()
     }
   },
 }

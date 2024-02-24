@@ -1,38 +1,47 @@
-import { GraphQLError } from 'graphql'
 import Order from '../../models/Order.js'
+import { checkAuth, checkUserId, throwServerError } from './helpers.js'
 
 const orderMutationResolvers = {
-  addOrder: async (_, args) => {
+  addOrder: async (_, args, context) => {
+    checkAuth(context)
     try {
       const newOrder = await Order.create({
         ...args.data,
+        userId: context.user._id
       })
       
       await newOrder.populate(['clientId', 'status'])
       return newOrder
     } catch (error) {
-      throw new GraphQLError(error)
+      throwServerError()
     }
   },
-  deleteOrder: async (_, args) => {
+
+  deleteOrder: async (_, args, context) => {
+    checkAuth(context)
     try {
+      const order = await Order.findById(args.id)
+      checkUserId(order, context)
       await Order.deleteOne({ _id: args.id })
       return args.id
     } catch (error) {
-      throw new GraphQLError(error)
+      throwServerError()
     }
   },
-  updateOrder: async (_, args) => {
+
+  updateOrder: async (_, args, context) => {
+    checkAuth(context)
     try {
       const orderId = args.data._id
-      // if (userId === req.user._id) {
+      const order = await Order.findById(orderId)
+      checkUserId(order, context)
       const updatedOrder = await Order.findByIdAndUpdate(orderId, args.data, {
         new: true,
       })
       await updatedOrder.populate(['clientId', 'status'])
       return updatedOrder
     } catch (error) {
-      throw new GraphQLError(error)
+      throwServerError()
     }
   },
 }

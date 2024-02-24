@@ -1,15 +1,17 @@
 import OrderStatus from '../../models/OrderStatus.js'
-
-import { GraphQLError } from 'graphql';
+import { checkAuth, throwServerError } from './helpers.js';
 
 
 const orderStatusesQueryResolvers = {
-  orderStatuses: async () => {
+
+  orderStatuses: async (_, __, context) => {
+    checkAuth(context)
     try {
-      const statuses = await OrderStatus.find()
-      return statuses
+      const statuses = await OrderStatus.find({userId: context.user._id})
+      const defaultStatuses = await OrderStatus.find({isDefault: true})
+      return [...statuses, ...defaultStatuses]
     } catch (error) {
-      throw new GraphQLError(error)
+      throwServerError()
     }
   }
 }

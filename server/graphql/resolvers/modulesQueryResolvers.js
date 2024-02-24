@@ -1,15 +1,15 @@
 import ModulesStatus from '../../models/ModulesStatus.js'
-
-import { GraphQLError } from 'graphql';
+import { checkAuth, throwServerError } from './helpers.js';
 
 
 const modulesStatusQueryResolvers = {
-  modules: async (_, args) => {
+  modules: async (_, __, context) => {
+    checkAuth(context)
     try {
-      const statuses = await ModulesStatus.find({userId: args.userId})
+      const statuses = await ModulesStatus.find({userId: context.user._id})
       return statuses
     } catch (error) {
-      throw new GraphQLError(error)
+      throwServerError()
     }
   }
 }

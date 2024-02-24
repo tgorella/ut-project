@@ -1,12 +1,14 @@
-import { GraphQLError } from 'graphql'
 import ProjectStep from '../../models/ProjectStep.js'
 import ProjectStage from '../../models/ProjectStage.js'
+import { checkAuth, checkUserId, throwServerError } from './helpers.js'
 
 const projectStepMutationResolvers = {
-  addProjectStep: async (_, args) => {
+  addProjectStep: async (_, args, context) => {
+    checkAuth(context)
     try {
       const newStep = await ProjectStep.create({
         ...args.data,
+        userId: context.user._id
       })
 
       const stage = await ProjectStage.findById(newStep.stageId)
@@ -15,12 +17,15 @@ const projectStepMutationResolvers = {
 
       return newStep
     } catch (error) {
-      throw new GraphQLError(error)
+      throwServerError()
     }
   },
-  deleteProjectStep: async (_, args) => {
+
+  deleteProjectStep: async (_, args, context) => {
+    checkAuth(context)
     try {
       const step = await ProjectStep.findById(args.id)
+      checkUserId(step, context)
       await ProjectStep.deleteOne({ _id: args.id })
 
       const stage = await ProjectStage.findById(step.stageId)
@@ -34,19 +39,22 @@ const projectStepMutationResolvers = {
       }
       return result
     } catch (error) {
-      throw new GraphQLError(error)
+      throwServerError()
     }
   },
-  updateProjectStep: async (_, args) => {
+
+  updateProjectStep: async (_, args, context) => {
+    checkAuth(context)
     try {
       const projectStepId = args.data._id
-      // if (userId === req.user._id) {
+      const step = await ProjectStep.findById(projectStepId)
+      checkUserId(step, context)
       const updatedProjectStep = await ProjectStep.findByIdAndUpdate(projectStepId, args.data, {
         new: true,
       })
       return updatedProjectStep
     } catch (error) {
-      throw new GraphQLError(error)
+      throwServerError()
     }
   },
 }

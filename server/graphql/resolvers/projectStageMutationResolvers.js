@@ -1,13 +1,16 @@
-import { GraphQLError } from 'graphql'
 import Project from '../../models/Project.js'
 import ProjectStage from '../../models/ProjectStage.js'
 import ProjectStep from '../../models/ProjectStep.js'
+import { checkAuth, checkUserId, throwServerError } from './helpers.js'
 
 const projectStageMutationResolvers = {
-  addProjectStage: async (_, args) => {
+
+  addProjectStage: async (_, args, context) => {
+    checkAuth(context)
     try {
       const newStage = await ProjectStage.create({
         ...args.data,
+        userId: context.user._id
       })
 
       const project = await Project.findById(newStage.projectId)
@@ -16,12 +19,15 @@ const projectStageMutationResolvers = {
 
       return newStage
     } catch (error) {
-      throw new GraphQLError(error)
+      throwServerError()
     }
   },
-  deleteProjectStage: async (_, args) => {
+
+  deleteProjectStage: async (_, args, context) => {
+    checkAuth(context)
     try {
       const stage = await ProjectStage.findById(args.id)
+      checkUserId(stage, context)
       const project = await Project.findById(stage.projectId)
       await ProjectStep.deleteMany({stageId: args.id})
       await ProjectStage.deleteOne({_id: args.id})
@@ -35,19 +41,22 @@ const projectStageMutationResolvers = {
       }
       return result
     } catch (error) {
-      throw new GraphQLError(error)
+      throwServerError()
     }
   },
-  updateProjectStage: async (_, args) => {
+
+  updateProjectStage: async (_, args, context) => {
+    checkAuth(context)
     try {
       const projectStageId = args.data._id
-      // if (userId === req.user._id) {
+     const stage = await ProjectStage.findById(projectStageId)
+     checkUserId(stage)
       const updatedProjectStage = await ProjectStage.findByIdAndUpdate(projectStageId, args.data, {
         new: true,
       })
       return updatedProjectStage
     } catch (error) {
-      throw new GraphQLError(error)
+      throwServerError()
     }
   },
 }

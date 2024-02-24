@@ -2,37 +2,42 @@ import Order from '../../models/Order.js'
 import Client from '../../models/Client.js'
 import OrderStatus from '../../models/OrderStatus.js'
 import Project from '../../models/Project.js'
-
-import { GraphQLError } from 'graphql'
+import { checkAuth, checkUserId, throwServerError } from './helpers.js'
 
 const orderQueryResolvers = {
-  orders: async () => {
+  orders: async (_, __, context) => {
+    checkAuth(context)
     try {
-      const orders = await Order.find().populate([
+      const orders = await Order.find({ userId: context.user._id }).populate([
         'clientId',
         'status',
         'projectType',
       ])
       return orders
     } catch (error) {
-      throw new GraphQLError(error)
+      throwServerError()
     }
   },
-  order: async (_, args) => {
+
+  order: async (_, args, context) => {
+    checkAuth(context)
     try {
       const order = await Order.findById(args.id).populate([
         'clientId',
         'status',
         'projectType',
       ])
+      checkUserId(order, context)
       return order
     } catch (error) {
-      throw new GraphQLError(error)
+      throwServerError()
     }
   },
-  filteredOrders: async (_, args) => {
+
+  filteredOrders: async (_, args, context) => {
+    checkAuth(context)
     try {
-      const list = await Order.find().populate(['clientId', 'status'])
+      const list = await Order.find({ userId: context.user._id}).populate(['clientId', 'status'])
       const filteredList = list.filter((item) => {
         return (
           item.title.toLowerCase().includes(args.data.toLowerCase()) ||
@@ -41,7 +46,7 @@ const orderQueryResolvers = {
       })
       return filteredList
     } catch (error) {
-      throw new GraphQLError(error)
+      throwServerError()
     }
   },
 }

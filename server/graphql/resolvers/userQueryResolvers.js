@@ -2,28 +2,18 @@ import { GraphQLError } from 'graphql';
 import User from '../../models/User.js'
 import bcryptjs from "bcryptjs"
 import tokenService from '../../services/token.service.js';
+import { checkAuth, throwServerError } from './helpers.js';
 
 
 const userQueryResolvers = {
-  users: async () =>{
+  user: async (_, __, context) => {
+    checkAuth(context)
     try {
-      const users = await User.find();
-    return users.map((user) => {
-      user.password = null
-      return user
-    })
-    } catch (error) {
-      throw new GraphQLError(error)
-    }
-    
-  },
-  user: async (_,args) => {
-    try {
-      const user = await User.findById(args.id);
+      const user = await User.findById(context.user._id);
       user.password = null
     return user
     } catch (error) {
-      throw new GraphQLError(error)
+      throwServerError()
     }
   },
   signInWithPassword: async (_, args) => {
@@ -46,7 +36,7 @@ const userQueryResolvers = {
       await tokenService.save(existingUser._id, tokens.refreshToken);
       return ({ ...tokens, userId: existingUser._id })
     } catch (error) {
-      throw new GraphQLError(error)
+      throwServerError()
     }
   }
 }

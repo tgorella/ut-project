@@ -1,33 +1,36 @@
-import { GraphQLError } from 'graphql';
 import Project from '../../models/Project.js';
 import ProjectStage from '../../models/ProjectStage.js';
 import ProjectStep from '../../models/ProjectStep.js';
+import { checkAuth, checkUserId, throwServerError } from './helpers.js';
 
 
 
 const projectQueryResolvers = {
-  projects: async () => {
+  projects: async (_, __, context) => {
+    checkAuth(context)
     try {
-      const projects = await Project.find().populate({
+      const projects = await Project.find({userId: context.user._id}).populate({
         path: "stages",
         populate: {path: "steps"}
       })
       return projects
     } catch (error) {
-      throw new GraphQLError(error)
+      throwServerError()
     }
   },
-  project: async (_, args) => {
+
+  project: async (_, args, context) => {
+    checkAuth(context)
     try {
       const project = await Project.findById(args.id).populate({
         path: "stages",
         populate: {path: "steps"}
       }
      )
-      // order.userId = await getUser(order.userId)
+      checkUserId(project, context)
       return project
     } catch (error) {
-      throw new GraphQLError(error)
+      throwServerError()
     }
   }
 }

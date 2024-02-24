@@ -2,9 +2,11 @@ import { GraphQLError } from 'graphql';
 import User from '../../models/User.js'
 import bcryptjs from 'bcryptjs'
 import tokenService from '../../services/token.service.js';
+import { checkAuth, checkUserId, throwServerError } from './helpers.js';
 
 const userMutationResolvers = {
-  addUser: async (_, args) => {
+
+  signUp: async (_, args) => {
     try {
     const { password} = args.data;
     const existingUser = await User.findOne({ email: args.data.email });
@@ -24,30 +26,32 @@ const userMutationResolvers = {
     newUser.password = null
     return newUser
     } catch (error) {
-      throw new GraphQLError(error)
+      throwServerError()
     }
   },
-  deleteUser: async (_, args) => {
+
+  deleteUser: async (_, __, context) => {
+    checkAuth(context)
     try {
-    await User.deleteOne({_id: args.id});
-    return args.id
+    await User.deleteOne({_id:context.user._id});
+    return context.user._id
     } catch (error) {
-      throw new GraphQLError(error)
+      throwServerError()
     }
   },
-  updateUser: async (_, args) => {
+
+  updateUser: async (_, args, context) => {
+    checkAuth(context)
     try {
       const {userId} = args
-      // if (userId === req.user._id) {
+      const user = await User.findById(userId)
+      checkUserId(user, context)
         const updatedUser = await User.findByIdAndUpdate(userId, req.body, {
           new: true,
         });
-        res.send(updatedUser);
-      // } else {
-      //   res.status(401).json({ message: "Unauthorized" });
-      // }
+        return updatedUser;
     } catch (error) {
-      throw new GraphQLError(error)
+      throwServerError()
     }
   }
 }
