@@ -25,7 +25,7 @@ const modulesMutationResolvers = {
   updateModules: async (_, args, context) => {
     checkAuth(context)
     try {
-      const modules = await ModulesStatus.find({userId: context.user._id})
+      const modules = await ModulesStatus.findOne({userId: context.user._id})
       const updatedModuleStatus = await ModulesStatus.findByIdAndUpdate(
         modules._id,
         args.data,
