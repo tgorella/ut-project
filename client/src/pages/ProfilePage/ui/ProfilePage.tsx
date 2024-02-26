@@ -80,10 +80,12 @@ const ProfilePage = memo(({className} : ProfilePageProps) => {
     }, [dispatch])
 
     const saveProfile = useCallback(() => {
-        if (data?.newPassword && data.repeatPassword) {
+        if (data?.newPassword && data?.newPassword && data.repeatPassword) {
             dispatch(updateProfilePassword(data.newPassword))
+        } else {
+            dispatch(updateProfileData())
         }
-        dispatch(updateProfileData())
+        
         dispatch(profileAction.setReadOnly(true))
     }, [data?.newPassword, data?.repeatPassword, dispatch])
 
