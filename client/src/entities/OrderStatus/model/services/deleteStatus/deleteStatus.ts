@@ -8,13 +8,17 @@ export const deleteStatus = createAsyncThunk<string, string,ThunkConfig<string>>
     async (orderStatusId, thunkAPI) => {
         const {rejectWithValue, extra} = thunkAPI
         try {
-            const response = await extra.api.delete<string>('/order-statuses/'+ orderStatusId)
+            const response = await extra.api.post('/', {
+                'query': 'mutation Mutation($deleteOrderStatusId: ID) { deleteOrderStatus(id: $deleteOrderStatusId) }',
+                'operation-name': 'Mutation',
+                'variables': {'deleteOrderStatusId': orderStatusId}
+            })
             
             if (!response) {
                 throw new Error('err')
             }
             
-            return response.data
+            return response.data.data.deleteOrderStatus
         } catch (error) {
             return rejectWithValue(i18n.t('Что-то пошло не так. Попробуйте позже'))
         }
