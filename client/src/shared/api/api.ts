@@ -8,7 +8,7 @@ export const http = axios.create({
     baseURL:__API__,
 })
 export const httpAuth = axios.create({
-    baseURL: __API__ + '/auth/',
+    baseURL: __API__,
 })
 
 http.interceptors.request.use(
@@ -17,13 +17,15 @@ http.interceptors.request.use(
         const refreshToken = tokenService.getRefreshToken()
         const isExpired = refreshToken && expiresDate < Date.now()
 
-        
         if (isExpired) {
-            const { data } = await httpAuth.post('token', {
-                grant_type: 'refresh_token',
-                refresh_token: tokenService.getRefreshToken(),
-            })
-            tokenService.setTokens(data)
+            const { data } = await httpAuth.post('/', 
+                {
+                    'query': 'mutation Mutation($refreshToken: String) { updateToken(refreshToken: $refreshToken) { accessToken refreshToken userId } }',
+                    'operationName': 'Mutation',
+                    'variables': { 'refreshToken': tokenService.getRefreshToken()},
+                    
+                })
+            tokenService.setTokens(data.data.updateToken)
         }
         const accessToken = tokenService.getAccessToken()
         if (accessToken) {
@@ -54,7 +56,7 @@ http.interceptors.response.use(
         }
         if (error.response.data.message === 'Bad token') {
             localStorage.clear()
-            window.location.href = '/auth'
+            window.location.href = '/'
         }
         return Promise.reject(error)
     }

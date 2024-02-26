@@ -15,13 +15,28 @@ export const loginByEmail = createAsyncThunk<User, loginByEmailProps,ThunkConfig
         const {dispatch, rejectWithValue, extra} = thunkAPI
 
         try {
-            const response = await extra.api.post('/auth/signInWithPassword',authData)
+
+            const resBody = 
+            {
+                'query': 'query Query($data: UserSignInInput) { signInWithPassword(data: $data) { accessToken refreshToken userId } }',
+                'operationName': 'Query',
+                'variables': { 'data': {'password': authData.password,
+                    'email': authData.email }}
+            }
+          
+         
+            const response = await extra.api.post('/', resBody)
             if (!response.data) {
                 throw new Error('user not found')
             }
 
-            tokenService.setTokens(response.data)
-            const user = await extra.api.get('/users/'+ response.data.userId)
+            await tokenService.setTokens(response.data.data.signInWithPassword)
+            const user = await extra.api.post('/',
+                {
+                    'query': 'query Query { user { _id avatar city country currency email firstname lastOrderNumber lastname username } }',
+                    'operationName': 'Query'
+                }
+            )
             
 
             dispatch(userAction.setAuthData(user.data))
