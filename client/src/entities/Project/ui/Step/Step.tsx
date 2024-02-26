@@ -15,9 +15,8 @@ import { useTranslation } from 'react-i18next'
 interface StepProps {
   className?: string;
   step: ProjectStep,
-  onDeleteStep: (val: string) => void
 }
-export const Step = memo(({className, step, onDeleteStep} : StepProps) => {
+export const Step = memo(({className, step} : StepProps) => {
     const dispatch = useAppDispatch()
     const {t} = useTranslation('project')
     const contentEditable: RefObject<HTMLElement>  = React.createRef()
@@ -33,7 +32,7 @@ export const Step = memo(({className, step, onDeleteStep} : StepProps) => {
         }
     }
     const handleDelete = (id: string) => {
-        dispatch(deleteProjectStep(id)).then(() => onDeleteStep(id))
+        dispatch(deleteProjectStep(id))
     }
 
     return ( 

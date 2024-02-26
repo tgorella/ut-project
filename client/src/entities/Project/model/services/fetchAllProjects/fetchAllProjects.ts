@@ -10,13 +10,17 @@ export const fetchProjects = createAsyncThunk<Project[], void,ThunkConfig<string
     async (_, thunkAPI) => {
         const {rejectWithValue, extra} = thunkAPI
         try {
-            const list = await extra.api.get<Project[]>('/projects/')
+            const list = await extra.api.post('/', {
+                'query': 'query Query { projects { _id name stages { _id name projectId steps  { _id name } } } }',
+                'operation-name': 'Query',
+             
+            })
           
             if (!list) {
                 throw new Error('err')
             }
           
-            return list.data
+            return list.data.data.projects
         } catch (error) {
             return rejectWithValue(i18n.t('Неправильные логин или пароль'))
         }
