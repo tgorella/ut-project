@@ -35,7 +35,7 @@ const clientsPageSlice = createSlice({
         },
         initState: (state) => {
             state.limit = Number(localStorage.getItem('clients_limits')) || 25
-            state._inited = true
+            state._inited = false
         },
         clientDeleted: (state, action: PayloadAction<string>) => {
             clientsPageAdapter.removeOne(state, action.payload)
