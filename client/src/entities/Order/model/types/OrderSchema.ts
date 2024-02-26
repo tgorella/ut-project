@@ -1,6 +1,7 @@
 import { Client } from 'entities/Clients'
+import { OrderStatusDetails } from 'entities/OrderStatus'
 
-export interface Order {
+export interface OrderDefault {
   _id?: string,
   clientId:string | Client,
   total:string,
@@ -9,7 +10,6 @@ export interface Order {
   eventType:string,
   orderNumber:string,
   place?:string,
-  status:string,
   startTime?: string,
   endTime?:string,
   title:string,
@@ -18,4 +18,12 @@ export interface Order {
   updatedAt?:string,
   projectType:string,
   steps?: string[]
+}
+
+export interface Order extends OrderDefault {
+  status:string,
+}
+
+export interface OrderExtended extends OrderDefault {
+  status: OrderStatusDetails
 }

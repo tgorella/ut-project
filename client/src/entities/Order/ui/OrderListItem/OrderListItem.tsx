@@ -1,26 +1,31 @@
-import { Order } from 'entities/Order/model/types/OrderSchema'
+import { Order, OrderExtended } from 'entities/Order/model/types/OrderSchema'
 import cls from './OrderListItem.module.scss'
 import classNames from 'shared/lib/classNames/ClassNames'
 import { Column } from 'shared/ui/Table/model/types/tableSchema'
 import { useNavigate } from 'react-router-dom'
-import { OrderStatusBlock } from 'entities/OrderStatus'
 import DELETE_ICON from 'shared/assets/img/delete.svg'
 import { transformDate } from 'shared/lib/transformDate/transformDate'
+import { useTranslation } from 'react-i18next'
 
 interface OrderListItemProps {
   className?: string;
-  order: Order,
+  order: OrderExtended | Order,
   columns: Column[],
   onDelete: (id: string | undefined) => void
 }
 export const OrderListItem = ({className, order, columns, onDelete} : OrderListItemProps) => {
     const navigate = useNavigate()
+    const {t} = useTranslation()
     let data: string
     
     if (order.createdAt) {
-        data =  transformDate(order.createdAt)
+        data =  transformDate(new Date(Number(order.createdAt)).toISOString())
     }
-
+    // @ts-ignore
+    const statusBlock = order.status?.color 
+    // @ts-ignore
+        ? (<div className={cls.OrderStatus} style={{backgroundColor: order.status.color}}>{order.status.name}</div>) 
+        : (<div className={cls.OrderStatus} >{t('Новый')}</div>)
     function generateItemCode (column: Column) {
         let itemClass
         let itemContent
@@ -40,26 +45,27 @@ export const OrderListItem = ({className, order, columns, onDelete} : OrderListI
         case 'createdAt':
             itemClass = cls.date
             itemContent = data
-            onClick = () => navigate('/orders/' +order._id)
+            onClick = () => navigate('/orders/' + order._id)
             break
         case 'total':
             itemClass = cls.date
             itemContent = order[column.path as keyof Order]
-            onClick = () => navigate('/orders/' +order._id)
+            onClick = () => navigate('/orders/' + order._id)
             break
         case 'status':
             itemClass = cls.status
-            itemContent = <OrderStatusBlock id={order.status}/>
-            onClick = () => navigate('/orders/' +order._id)
+            // @ts-ignore
+            itemContent = statusBlock
+            onClick = () => navigate('/orders/' + order._id)
             break
         default:
             itemClass = cls.item
             itemContent = order[column.path as keyof Order]
-            onClick = () => navigate('/orders/' +order._id)
+            onClick = () => navigate('/orders/' + order._id)
             break
         }
 
-        return <td className={itemClass} key={order._id+'_'+column.path} onClick={onClick}>{itemContent}</td>
+        return <td className={itemClass} key={order._id + '_' + column.path} onClick={onClick}>{itemContent}</td>
     }
     
     return ( 

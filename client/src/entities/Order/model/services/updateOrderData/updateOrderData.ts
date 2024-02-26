@@ -11,13 +11,17 @@ export const updateOrderData = createAsyncThunk<Order, string,ThunkConfig<string
         const {rejectWithValue,getState, extra} = thunkAPI
         const formData = getOrderDetailsForm(getState())
         try {
-          
-            const {data} = await extra.api.patch<Order>(`/orders/${id}`, formData)
+            
+            const {data} = await extra.api.post('/', {
+                'query': 'mutation Mutation($data: OrderNewDataInput) { updateOrder(data: $data) { total title notes eventData endTime startTime place } }',
+                'operation-name':'Mutation',
+                'variables': {'data': formData}
+            })
 
             if (!data) {
                 throw new Error('err')
             }
-            return data
+            return data.data.updateOrder
         } catch (error) {
             return rejectWithValue(i18n.t('Неправильные логин или пароль'))
         }
