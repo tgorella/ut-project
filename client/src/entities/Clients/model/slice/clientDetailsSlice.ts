@@ -4,7 +4,6 @@ import { getClientById } from '../services/getClientById/getClientById'
 import { Client } from '../types/clientSchema'
 import { updateClientData } from '../services/updateClientData/updateClientData'
 import { getClientOrders } from '../services/getClientOrders/getClientOrders'
-import { Order } from 'entities/Order'
 
 const initialState: ClientDetailsSchema = {
     isLoading: true,
@@ -85,7 +84,7 @@ export const clientDetailsSlice = createSlice({
                 state.orders = []
                 state.ordersLoading = true
             })
-            .addCase(getClientOrders.fulfilled, (state, action: PayloadAction<Order[]>) => {
+            .addCase(getClientOrders.fulfilled, (state, action) => {
                 state.orders = action.payload
                 state.ordersLoading = false
             })

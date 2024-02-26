@@ -17,7 +17,6 @@ import { ClientOrdersList } from './ui/ClientOrdersList/ClientOrdersList'
 import { getClientOrdersLoading } from './model/selectors/getClientOrdersLoading/getClientOrdersLoading'
 
 
-
 export {
     ClientDetailsSchema,
     getClientById,

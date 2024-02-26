@@ -22,7 +22,7 @@ describe('updateProfileData.test', () => {
 
         thunk.api.patch.mockReturnValue(Promise.resolve({data}))
 
-        const result = await thunk.callThunk('643c5fe7013e22868a6eb63c')
+        const result = await thunk.callThunk()
 
         expect(thunk.api.patch).toHaveBeenCalled()
         expect(result.meta.requestStatus).toBe('fulfilled')
@@ -33,7 +33,7 @@ describe('updateProfileData.test', () => {
         
         const thunk = new TestAsyncThunk(updateClientData)
         thunk.api.patch.mockReturnValue(Promise.resolve({status: 403}))
-        const result = await thunk.callThunk('643c5fe7013e22868a6eb63c')
+        const result = await thunk.callThunk()
         
         expect(result.meta.requestStatus).toBe('rejected')
     })
