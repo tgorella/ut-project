@@ -7,13 +7,17 @@ export const deleteProjectStage = createAsyncThunk<{stage: string, project: stri
     async (projectStageId, thunkAPI) => {
         const {rejectWithValue, extra} = thunkAPI
         try {
-            const response = await extra.api.delete<{stage: string, project: string}>('/project-stages/'+ projectStageId)
+            const response = await extra.api.post('/', {
+                'query': 'mutation Mutation($deleteProjectStageId: ID) { deleteProjectStage(id: $deleteProjectStageId) { project stage } }',
+                'operation-name': 'Mutation',
+                'variables': {'deleteProjectStageId': projectStageId}
+            })
             
             if (!response) {
                 throw new Error('err')
             }
             
-            return response.data
+            return response.data.data.deleteProjectStage
         } catch (error) {
             return rejectWithValue(i18n.t('Что-то пошло не так. Попробуйте позже'))
         }

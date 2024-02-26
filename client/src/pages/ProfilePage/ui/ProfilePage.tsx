@@ -26,7 +26,7 @@ const ProfilePage = memo(({className} : ProfilePageProps) => {
     useEffect(() => {
         if (userData) {
             if (__PROJECT__ !== 'storybook') {
-                dispatch(fetchProfileData(userData._id))
+                dispatch(fetchProfileData())
             }
         }
         
@@ -65,7 +65,6 @@ const ProfilePage = memo(({className} : ProfilePageProps) => {
 
     const onChangeCurrency = useCallback((value: string) => {
         dispatch(profileAction.updateProfile({currency: value as Currency}))
-        console.log(value)
     }, [dispatch])
 
     const onChangeCountry = useCallback((value: string) => {

@@ -11,11 +11,15 @@ export const deleteEvent = createAsyncThunk<string, string ,ThunkConfig<string>>
         const {rejectWithValue, extra} = thunkAPI
         try {
           
-            const {data} = await extra.api.delete(`/events/${eventId}`)
+            const {data} = await extra.api.post('/', {
+                'query': 'mutation DeleteEvent($deleteEventId: ID) { deleteEvent(id: $deleteEventId) }',
+                'operation-name': 'DeleteEvent',
+                'variables': {'deleteEventId': eventId}
+            })
             if (!data) {
                 throw new Error('err')
             }
-            return data
+            return data.data.deleteEvent
 
         } catch (error) {
             return rejectWithValue(i18n.t('Клиент не найден'))

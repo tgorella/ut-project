@@ -1,7 +1,7 @@
 import cls from './OrderList.module.scss'
 import classNames from 'shared/lib/classNames/ClassNames'
 import {memo, useCallback, useState} from 'react'
-import { Order } from 'entities/Order/model/types/OrderSchema'
+import { Order, OrderExtended } from 'entities/Order/model/types/OrderSchema'
 import { Text, TextAlign } from 'shared/ui/Text'
 import { useTranslation } from 'react-i18next'
 import { Column } from 'shared/ui/Table/model/types/tableSchema'
@@ -16,7 +16,7 @@ import { clientDetailsAction } from 'entities/Clients'
 
 interface OrderListProps {
   className?: string;
-  orders?: Order[],
+  orders?: (OrderExtended | Order)[],
   isLoading?: boolean,
 }
 export const OrderList = memo(({className, orders = [], isLoading} : OrderListProps) => {

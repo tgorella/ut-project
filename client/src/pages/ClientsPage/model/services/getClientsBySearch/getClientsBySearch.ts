@@ -11,17 +11,16 @@ export const getClientsBySearch = createAsyncThunk<Client[], string ,ThunkConfig
     async (text, thunkAPI) => {
         const {rejectWithValue, extra} = thunkAPI
         try {
-            const {data} = await extra.api.get<Client[]>('/clients/', {
-                params: {
-                    q: text
-                }
+            const {data} = await extra.api.post('/', {
+                'query': 'query Query($data: String) { filteredClients(data: $data) { _id email avatarUrls name profession } }',
+                'operation-name':'Query',
+                'variables': {'data': text}
             })
-            const foundedData = data.filter((item) => item.name?.toLowerCase()?.includes(text.toLowerCase()) || item.email?.toLowerCase().includes(text.toLowerCase()) || item.phone?.includes(text))
-            
+            // const foundedData = data.filter((item: Client) => item.name?.toLowerCase()?.includes(text.toLowerCase()) || item.email?.toLowerCase().includes(text.toLowerCase()) || item.phone?.includes(text))
             if (!data) {
                 return rejectWithValue(i18n.t('Клиент не найден'))
             }
-            return foundedData
+            return data.data.filteredClients
         } catch (error) {
             return rejectWithValue(i18n.t('Клиент не найден'))
         }

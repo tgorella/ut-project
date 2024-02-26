@@ -11,17 +11,16 @@ export const getClientById = createAsyncThunk<Client, FilterProps ,ThunkConfig<s
     'clientDetails/getClientById',
     async (filter, thunkAPI) => {
         const {rejectWithValue, extra} = thunkAPI
-        const {clientId, currentUserId} = filter
+        const {clientId} = filter
         try {
-            const response = await extra.api.get<Client>(`/clients/${clientId}`)
-            
-            if (response.data.userId !== currentUserId) {
-                throw new Error('Клиент не найден')
-            }
-            if (!response.data) {
-                throw new Error('err')
-            }
-            return response.data
+            const {data} = await extra.api.post('/', {
+                'query': 'query Query($clientId: ID) { client(id: $clientId) { _id address avatarUrls email isFav name notes phone profession } }',
+                'operation-name':'Query',
+                'variables': {'clientId': clientId}
+            })
+
+            return data.data.client
+
         } catch (error) {
             return rejectWithValue(i18n.t('Клиент не найден'))
         }

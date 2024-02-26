@@ -12,13 +12,17 @@ export const addEventType = createAsyncThunk<EventType, Partial<EventType>,Thunk
             const newType = {
                 ...data, isDefault: false
             }
-            const response = await extra.api.post<EventType>('/event-types/', newType)
+            const response = await extra.api.post('/', {
+                'query': 'mutation Mutation($data: EventTypeInput) { addEventType(data: $data) { _id color name } }',
+                'operation-name': 'Mutation',
+                'variables': {'data': newType}
+            })
             
             if (!response) {
                 throw new Error('err')
             }
             
-            return response.data
+            return response.data.data.addEventType
         } catch (error) {
             return rejectWithValue(i18n.t('Что-то пошло не так. Попробуйте позже'))
         }

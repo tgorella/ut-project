@@ -1,4 +1,4 @@
-const {Schema, model} = require('mongoose')
+import { Schema, model } from 'mongoose'
 
 const schema = new Schema({
 userId: {type: Schema.Types.ObjectId, ref: "User"},
@@ -10,4 +10,4 @@ isDefault: {type: Boolean, required: true},
   timestamps: true
 })
 
-module.exports = model("OrderStatus", schema)
+export default model("OrderStatus", schema)

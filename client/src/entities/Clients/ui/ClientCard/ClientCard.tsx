@@ -112,12 +112,12 @@ export const ClientCard = memo((props : ClientCardProps) => {
 
     const handleChangeFavStatus = useCallback(() => {
         dispatch(clientDetailsAction.updateClient({isFav: !data?.isFav}))
-        dispatch(updateClientData(id))
-    }, [data?.isFav, dispatch, id])
+        dispatch(updateClientData())
+    }, [data?.isFav, dispatch])
 
     const saveUser = useCallback(async () => {
         try {
-            await dispatch(updateClientData(id)).then(() => {
+            await dispatch(updateClientData()).then(() => {
                 success = AlertTheme.SUCCESS
                 setSaved(true)
                 setTimeout(() => {
@@ -137,7 +137,7 @@ export const ClientCard = memo((props : ClientCardProps) => {
     }, [dispatch, id, toggleEditMode])
 
     const saveNotes = useCallback((): void => {
-        dispatch(updateClientData(id))
+        dispatch(updateClientData())
         toggleNoteEditMode()
     }, [dispatch, id, toggleNoteEditMode])
 

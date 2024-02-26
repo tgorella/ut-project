@@ -9,13 +9,17 @@ export const addStage = createAsyncThunk<ProjectStage, Partial<ProjectStage>,Thu
         const {rejectWithValue, extra} = thunkAPI
         try {
         
-            const response = await extra.api.post<ProjectStage>('/project-stages/', data)
+            const response = await extra.api.post('/', {
+                'query': 'mutation Mutation($data: ProjectStageInput) { addProjectStage(data: $data) { _id name projectId steps  { _id name } } }',
+                'operation-name': 'Mutation',
+                'variables': {'data': data}
+            })
             
             if (!response) {
                 throw new Error('err')
             }
             
-            return response.data
+            return response.data.data.addProjectStage
         } catch (error) {
             return rejectWithValue(i18n.t('Что-то пошло не так. Попробуйте позже'))
         }

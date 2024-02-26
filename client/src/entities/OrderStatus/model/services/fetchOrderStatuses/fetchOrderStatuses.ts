@@ -9,13 +9,16 @@ export const fetchOrderStatuses = createAsyncThunk<OrderStatusDetails[], void,Th
     async (_, thunkAPI) => {
         const {rejectWithValue, extra} = thunkAPI
         try {
-            const list = await extra.api.get<OrderStatusDetails[]>('/order-statuses')
+            const list = await extra.api.post('/', {
+                'query': 'query Query { orderStatuses { _id color name } }',
+                'operation-name': 'Query'
+            })
             
             if (!list) {
                 throw new Error('err')
             }
             
-            return list.data
+            return list.data.data.orderStatuses
         } catch (error) {
             return rejectWithValue(i18n.t('Неправильные логин или пароль'))
         }

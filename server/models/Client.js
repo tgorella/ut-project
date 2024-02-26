@@ -1,9 +1,9 @@
-const { Schema, model } = require("mongoose");
+import { Schema, model } from "mongoose";
 
 const schema = new Schema(
   {
     name: { type: String },
-    email: { type: String, unique: true },
+    email: { type: String},
     notes: {type: String},
     phone: { type: String},
     avatarUrls: {type: String},
@@ -17,4 +17,4 @@ const schema = new Schema(
   }
 );
 
-module.exports = model("Client", schema);
+export default model("Client", schema);

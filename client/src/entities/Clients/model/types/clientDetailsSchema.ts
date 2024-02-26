@@ -1,4 +1,4 @@
-import { Order } from 'entities/Order'
+import { Order, OrderExtended } from 'entities/Order'
 import { Client } from './clientSchema'
 
 export interface ClientDetailsSchema {
@@ -6,6 +6,6 @@ export interface ClientDetailsSchema {
   error?: string,
   data?: Client,
   form?: Client,
-  orders?: Order[],
+  orders?: (Order | OrderExtended)[],
   ordersLoading?: boolean
 }

@@ -1,7 +1,7 @@
 import {PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { OrdersPageSchema } from '../types/OrdersPageSchema'
 import { fetchAllOrders } from '../services/fetchAllOrders/fetchAllOrders'
-import { Order } from 'entities/Order'
+import { Order, OrderExtended } from 'entities/Order'
 
 const initialState: OrdersPageSchema = {
     isLoading: false,
@@ -39,7 +39,7 @@ export const ordersPageSlice = createSlice({
                 state.error = undefined
                 state.isLoading = true
             })
-            .addCase(fetchAllOrders.fulfilled, (state, action: PayloadAction<Order[]>) => {
+            .addCase(fetchAllOrders.fulfilled, (state, action: PayloadAction<(Order | OrderExtended)[]>) => {
                 state.isLoading = false
                 state.error = undefined
                 state.data = action.payload

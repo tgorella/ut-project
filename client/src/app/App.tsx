@@ -16,7 +16,7 @@ const App = () => {
     useEffect(() => {
         dispatch(userAction.initAuthData())
         if (userData?._id) {
-            dispatch(fetchProfileData(userData?._id))
+            dispatch(fetchProfileData())
             dispatch(fetchUserModules())
         }
     } , [dispatch, userData?._id])

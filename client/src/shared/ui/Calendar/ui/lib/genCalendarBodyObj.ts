@@ -23,6 +23,5 @@ export const genCalendarBodyObj = (thisMonthEvents: Event[] = [], currentDate: C
         bodyObj.push({number: j, events: thisMonthEvents.filter((el) => new Date(el.eventDate).getDate() === j)})
     }
 
-    console.log(bodyObj)
     return bodyObj
 }

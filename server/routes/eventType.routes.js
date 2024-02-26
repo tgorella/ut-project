@@ -1,7 +1,7 @@
 const express = require('express')
 const auth = require('../middleware/auth.middleware')
 const router = express.Router({mergeParams: true})
-const EventType = require('../models/EventType')
+const EventType = require('../models/EventType').default
 
 
 router.route('/')

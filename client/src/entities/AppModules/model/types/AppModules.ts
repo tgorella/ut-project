@@ -1,5 +1,5 @@
 export interface AppModules {
-  _id: string,
+  _id?: string,
   userId?: string,
  clients: boolean,
  orders: boolean,

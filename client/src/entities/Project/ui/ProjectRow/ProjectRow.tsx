@@ -1,7 +1,7 @@
 import cls from './ProjectRow.module.scss'
 import classNames from 'shared/lib/classNames/ClassNames'
 import {memo, useState} from 'react'
-import { Order, updateOrderSteps } from 'entities/Order'
+import { Order, OrderExtended, updateOrderSteps } from 'entities/Order'
 import { OrderStatusDetails } from 'entities/OrderStatus'
 import { ProjectStepSelect } from '../ProjectStepSelect/ProjectStepSelect'
 import { Link } from 'react-router-dom'
@@ -11,7 +11,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 
 interface ProjectRowProps {
   className?: string;
-  order: Order,
+  order: Order | OrderExtended,
   client?: Client,
   status?: OrderStatusDetails,
   totalSteps: number

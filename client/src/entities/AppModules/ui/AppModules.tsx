@@ -31,7 +31,7 @@ export const AppModulesBlock = memo(({className} : AppModulesProps) => {
         }
         dispatch(appModulesAction.updateModulesVisibility(data))
         if (modules) {
-            dispatch(updateModules(modules._id))
+            dispatch(updateModules())
         }
     }, [dispatch, modules])
 

@@ -1,7 +1,7 @@
-const OrderStatus = require("../models/OrderStatus.js");
-const orderStatusMock = require("../mock/OrderStatusMock.json");
+import OrderStatus from "../models/OrderStatus.js";
+import orderStatusMock from "../mock/OrderStatusMock.json" assert { type: "json" };
 
-module.exports = async () => {
+export default async () => {
   const ordersStatuses = await OrderStatus.find();
 
   if (ordersStatuses.length === 0) {

@@ -1,6 +1,6 @@
 const express = require("express");
 const auth = require("../middleware/auth.middleware");
-const Client = require("../models/Client");
+const Client = require("../models/Client").default;
 const router = express.Router({ mergeParams: true });
 
 router

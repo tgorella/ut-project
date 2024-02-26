@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ThunkConfig } from 'app/providers/StoreProvider'
+import { Client } from 'entities/Clients'
 import i18n from 'shared/config/i18n/i18n'
-import { Client } from '../../../../../entities/Clients/model/types/clientSchema'
 
 
 export type filterData = {
@@ -15,11 +15,14 @@ export const fetchClients = createAsyncThunk<Client[], void,ThunkConfig<string>>
     async (_, thunkAPI) => {
         const {rejectWithValue,extra} = thunkAPI
         try {
-            const {data} = await extra.api.get<Client[]>('/clients/')
+            const {data} = await extra.api.post('/', {
+                'query': 'query Query { clients { _id email name avatarUrls profession } }',
+                'operation-name':'Query'
+            })
             if (!data) {
                 throw new Error('err')
             }
-            return data
+            return data.data.clients
         } catch (error) {
             return rejectWithValue(i18n.t('Неправильные логин или пароль'))
         }

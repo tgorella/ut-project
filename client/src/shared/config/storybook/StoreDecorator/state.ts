@@ -391,7 +391,12 @@ export const stateAllIn: StateSchema = {
                 userId:'65988d28a1bc6c3d31acb718',
                 title:'Заказ в феврале',
                 projectType:'65b6b7fac7b2228b5761ab62',
-                status:'6467834500aba6813881d4',
+                status:{
+                    _id: '6467834500aba6813881d4',
+                    name: '',
+                    color: '',
+                    isDefault: false
+                },
                 notes:'',
                 eventDate:'2024-02-25',
                 eventType:'work',
@@ -410,7 +415,12 @@ export const stateAllIn: StateSchema = {
                 userId:'65988d28a1bc6c3d31acb718',
                 title:'Test1',
                 projectType:'65b7b18257fa328bb2d901a3',
-                status:'659bc05bec9c6a620f683036',
+                status: {
+                    _id: '659bc05bec9c6a620f683036',
+                    name: '',
+                    color: '',
+                    isDefault: false
+                },
                 notes:'',
                 eventDate:'2024-12-12',
                 eventType:'work',
@@ -428,7 +438,12 @@ export const stateAllIn: StateSchema = {
                 userId:'65988d28a1bc6c3d31acb718',
                 title:'Первый заказ Томаса',
                 projectType:'65b6b7fac7b2228b5761ab62',
-                status:'659bc05bec9c6a620f683035',
+                status:{
+                    _id: '659bc05bec9c6a620f683035',
+                    name: '',
+                    color: '',
+                    isDefault: false
+                },
                 notes:'',
                 eventDate:'2024-04-11',
                 eventType:'work',

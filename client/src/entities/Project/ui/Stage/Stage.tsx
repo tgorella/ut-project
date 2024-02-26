@@ -16,10 +16,9 @@ import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
 interface StageProps {
   className?: string;
   stage: ProjectStage,
-  onDeleteStage: (stageId: string) => void,
   onAddStep: (projectId: string, stageId: string, index: number) => void
 }
-export const Stage = memo(({className, stage, onAddStep, onDeleteStage} : StageProps) => {
+export const Stage = memo(({className, stage, onAddStep} : StageProps) => {
     const dispatch = useAppDispatch()
     const {t} = useTranslation()
     const contentEditable: RefObject<HTMLElement>  = React.createRef()
@@ -34,17 +33,12 @@ export const Stage = memo(({className, stage, onAddStep, onDeleteStage} : StageP
         }
     }
     const handleDelete = (stageId: string) => {
-        dispatch(deleteProjectStage(stageId)).then(() => {
-            onDeleteStage(stage._id)
-        })
+        dispatch(deleteProjectStage(stageId))
     }
     const handleAddStep = () => {
         onAddStep(stage.projectId, stage._id, stage.steps.length)
     }
-    const handleDeleteStep = (stepId: string) => {
-        const steps = stage.steps.filter((step) => step._id !== stepId)
-        dispatch(updateStage({_id: stage._id, steps: steps}))
-    }
+   
     return ( 
         <div className={classNames(cls.Stage, {}, [className])}>
             <div className={cls.stage_header__wrapper}>
@@ -59,7 +53,7 @@ export const Stage = memo(({className, stage, onAddStep, onDeleteStage} : StageP
             </div>
             <div className={cls.steps_wrapper}>
                 {stage.steps.map((step) => (
-                    <Step step={step} key={step._id} onDeleteStep={handleDeleteStep} />))}
+                    <Step step={step} key={step._id} />))}
             </div>
             <AppButton 
                 stretch={true} 

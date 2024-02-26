@@ -1,8 +1,8 @@
 const express = require('express')
 const auth = require('../middleware/auth.middleware')
-const Project = require('../models/Project')
-const ProjectStage = require('../models/ProjectStage')
-const ProjectStep = require('../models/ProjectStep')
+const Project = require('../models/Project').default
+const ProjectStage = require('../models/ProjectStage').default
+const ProjectStep = require('../models/ProjectStep').default
 const router = express.Router({mergeParams: true})
 
 

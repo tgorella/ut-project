@@ -8,13 +8,16 @@ export const updateStep = createAsyncThunk<ProjectStep, Partial<ProjectStep>,Thu
     async (data, thunkAPI) => {
         const {rejectWithValue, extra} = thunkAPI
         try {
-            const response = await extra.api.patch<ProjectStep>('/project-steps/'+ data._id, data)
-            
+            const response = await extra.api.post('/', {
+                'query': 'mutation Mutation($data: ProjectStepNewDataInput) { updateProjectStep(data: $data) { _id name index projectId stageId } }',
+                'operation-name': 'Mutation',
+                'variables': {'data': data}
+            })
             if (!response) {
                 throw new Error('err')
             }
             
-            return response.data
+            return response.data.data.updateProjectStep
         } catch (error) {
             return rejectWithValue(i18n.t('Что-то пошло не так. Попробуйте позже'))
         }

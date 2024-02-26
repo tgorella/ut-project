@@ -9,13 +9,16 @@ export const fetchEventTypes = createAsyncThunk<EventType[], void,ThunkConfig<st
     async (_, thunkAPI) => {
         const {rejectWithValue, extra} = thunkAPI
         try {
-            const list = await extra.api.get<EventType[]>('/event-types/')
+            const list = await extra.api.post('/', {
+                'query': 'query Query { eventTypes { _id color name } }',
+                'operation-name': 'Query'
+            })
             
             if (!list) {
                 throw new Error('err')
             }
             
-            return list.data
+            return list.data.data.eventTypes
         } catch (error) {
             return rejectWithValue(i18n.t('Неправильные логин или пароль'))
         }
