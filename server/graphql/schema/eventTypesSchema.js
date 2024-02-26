@@ -10,7 +10,7 @@ type EventType {
 input EventTypeInput {
   name: String!,
   color: String!,
-  userId: String!,
+  userId: String,
   isDefault: Boolean
  }
 

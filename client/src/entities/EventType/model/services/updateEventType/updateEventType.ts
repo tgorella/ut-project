@@ -9,13 +9,17 @@ export const updateEventType = createAsyncThunk<EventType, Partial<EventType>,Th
     async (data, thunkAPI) => {
         const {rejectWithValue, extra} = thunkAPI
         try {
-            const response = await extra.api.patch<EventType>('/event-types/'+ data._id, data)
+            const response = await extra.api.post('/', {
+                'query': 'mutation Mutation($data: EventTypeNewDataInput) { updateEventType(data: $data) { _id color name } }',
+                'operation-name': 'Mutation',
+                'variables': {'data': data}
+            })
             
             if (!response) {
                 throw new Error('err')
             }
             
-            return response.data
+            return response.data.data.updateEventType
         } catch (error) {
             return rejectWithValue(i18n.t('Что-то пошло не так. Попробуйте позже'))
         }
