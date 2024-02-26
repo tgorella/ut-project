@@ -12,7 +12,12 @@ export const fetchUserModules = createAsyncThunk<AppModules, void,ThunkConfig<st
         try {
             const authData = getUserAuthData(getState())
             
-            const {data} = await extra.api.get<AppModules[]>('/appmodules/')
+            const {data} = await extra.api.post('/', {
+              
+                'query': 'query Query { modules { _id calendar clients orders projects userId workflow } }',
+                'operationName': 'Query'
+            
+            })
 
             if (!data) {
                 const newData: Partial<AppModules> = {
@@ -26,7 +31,7 @@ export const fetchUserModules = createAsyncThunk<AppModules, void,ThunkConfig<st
                 return response.data
             }
 
-            return data
+            return data.data.modules
         } catch (error) {
             return rejectWithValue(i18n.t('Что-то пошло не так'))
         }
