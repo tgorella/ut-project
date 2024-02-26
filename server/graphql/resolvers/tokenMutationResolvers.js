@@ -5,6 +5,7 @@ const tokenMutationResolvers = {
   updateToken: async (_, args) => {
     try {
       const { refreshToken } = args
+      
       const data = tokenService.validateRefresh(refreshToken)
       const dbToken = await tokenService.findToken(refreshToken)
 

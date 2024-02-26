@@ -8,7 +8,6 @@ type OrderStatus {
 }
 
 input OrderStatusInput {
-  userId: String!,
   name: String!,
   color: String!,
   isDefault: Boolean,
@@ -18,6 +17,7 @@ input OrderStatusInput {
   _id: ID!,
   name: String,
   color: String,
+ 
  }
 
 `

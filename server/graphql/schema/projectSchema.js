@@ -9,7 +9,7 @@ stages: [Stage]
 type Stage {
 _id: ID,
 userId: String,
-projectId:Project,
+projectId:String,
 name: String,
 index: Int,
 steps: [Step]

@@ -22,6 +22,7 @@ type Query {
   signInWithPassword(data: UserSignInInput): AuthData
   orders: [Order]
   order(id: ID): Order
+  ordersByClient(id: ID): [Order]
   filteredOrders(data: String): [Order]
   projects: [Project]
   project(id: ID): Project
@@ -39,7 +40,7 @@ type Mutation {
   signUp(data: UserInput): User
   updateUser(data: ID): User
   deleteUser(id: ID): String
-  updateToken(token: String): AuthData
+  updateToken(refreshToken: String): AuthData
   addOrder(data: OrderInput): Order
   deleteOrder(id: ID): String
   updateOrder(data: OrderNewDataInput): Order

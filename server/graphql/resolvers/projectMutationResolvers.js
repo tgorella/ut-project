@@ -46,7 +46,10 @@ const projectMutationResolvers = {
         {
           new: true,
         }
-      )
+      ).populate({
+        path: "stages",
+        populate: {path: 'steps'}
+      })
       return updatedProject
     } catch (error) {
       throwServerError()

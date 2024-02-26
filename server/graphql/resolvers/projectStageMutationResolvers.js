@@ -50,7 +50,7 @@ const projectStageMutationResolvers = {
     try {
       const projectStageId = args.data._id
      const stage = await ProjectStage.findById(projectStageId)
-     checkUserId(stage)
+     checkUserId(stage, context)
       const updatedProjectStage = await ProjectStage.findByIdAndUpdate(projectStageId, args.data, {
         new: true,
       })

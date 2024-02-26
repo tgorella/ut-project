@@ -10,6 +10,8 @@ type ModulesStatus {
 }
 
 input ModulesNewDataInput {
+  _id: ID,
+  userId: String,
   clients: Boolean,
   orders: Boolean,
   calendar: Boolean,

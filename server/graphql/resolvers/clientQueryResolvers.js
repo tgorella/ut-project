@@ -2,11 +2,10 @@ import Client from '../../models/Client.js'
 import { checkAuth, checkUserId, throwServerError } from './helpers.js'
 
 const clientQueryResolvers = {
-
   clients: async (_, __, context) => {
     checkAuth(context)
     try {
-      const clients = await Client.find({userId: context.user._id})
+      const clients = await Client.find({ userId: context.user._id })
       return clients
     } catch (error) {
       throwServerError()
@@ -24,19 +23,11 @@ const clientQueryResolvers = {
   },
   filteredClients: async (_, args, context) => {
     checkAuth(context)
+   const search = new RegExp(args.data, "i")
     try {
-      const list = await Client.find({userId: context.user._id})
-      const filteredList = list.filter((item) => {
-        return (
-          item.name.toLowerCase().includes(args.data.toLowerCase()) ||
-          item.email
-            .toLocaleLowerCase()
-            .includes(args.data.toLocaleLowerCase()) ||
-          item.phone.includes(args.data)
-        )
-      })
+      const list = await Client.find({ userId: context.user._id,}).or([{email: search}, {name: search}, {phone: search}])
 
-      return filteredList
+      return list
     } catch (error) {
       throwServerError()
     }

@@ -5,10 +5,13 @@ const orderStatusMutationResolvers = {
   addOrderStatus: async (_, args, context) => {
     checkAuth(context)
     try {
-      const newOrderStatus = await OrderStatus.create({
+      const newData = {
         ...args.data,
-        userId: context.user._id
-      })
+        userId: context.user._id,
+        isDefault: false
+      }
+      console.log(newData)
+      const newOrderStatus = await OrderStatus.create(newData)
       return newOrderStatus
     } catch (error) {
       throwServerError()

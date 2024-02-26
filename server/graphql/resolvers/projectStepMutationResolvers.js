@@ -10,7 +10,7 @@ const projectStepMutationResolvers = {
         ...args.data,
         userId: context.user._id
       })
-
+console.log(newStep)
       const stage = await ProjectStage.findById(newStep.stageId)
       stage.steps.push(newStep._id)
       stage.save()

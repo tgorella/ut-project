@@ -19,7 +19,7 @@ const userQueryResolvers = {
   signInWithPassword: async (_, args) => {
     try {
       const { email, password } = args.data;
-      const existingUser = await User.findOne({ email });
+      const existingUser = await User.findOne({ email: email.toLowerCase() });
       if (!existingUser) {
         throw new GraphQLError("EMAIL_NOT_FOUND")
         };
