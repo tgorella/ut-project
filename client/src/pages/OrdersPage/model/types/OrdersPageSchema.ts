@@ -1,8 +1,8 @@
-import { Order } from 'entities/Order'
+import { Order, OrderExtended } from 'entities/Order'
 
 export interface OrdersPageSchema {
 isLoading: boolean,
-data?: Order[],
+data?: (OrderExtended | Order)[],
 error?: string,
 limit: number,
 search: string

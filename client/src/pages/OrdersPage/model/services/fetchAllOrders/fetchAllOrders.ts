@@ -1,24 +1,26 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ThunkConfig } from 'app/providers/StoreProvider'
 import i18n from 'shared/config/i18n/i18n'
-import { Order } from 'entities/Order'
-import httpService from 'shared/api/api'
+import { Order, OrderExtended } from 'entities/Order'
 
-export const fetchAllOrders = createAsyncThunk<Order[], string,ThunkConfig<string>>(
+export const fetchAllOrders = createAsyncThunk<(OrderExtended | Order)[], string,ThunkConfig<string>>(
     'ordersPage/fetchAllOrders',
-    // @ts-ignore
-    async (search, thunkAPI) => {
-        const {rejectWithValue} = thunkAPI
-        try {
-            const {data} = await httpService.get<Order[]>('/orders', {
-                params: {search}
-            })
-            if (!data) {
-                throw new Error('err')
-            }
-            return data
-        } catch (error) {
-            return rejectWithValue(i18n.t('Неправильные логин или пароль'))
+// @ts-ignore
+async (text, thunkAPI) => {
+    const {rejectWithValue, extra} = thunkAPI
+    try {
+        const {data} = await extra.api.post('/', {
+            'query': 'query Query($data: String) { filteredOrders(data: $data) { total title status { _id color name } orderNumber createdAt _id } }',
+            'operation-name': 'Query',
+            'variables': {'data': text}
+        })
+        
+        if (!data) {
+            return rejectWithValue(i18n.t('Заказы не найдены'))
         }
+        return data.data.filteredOrders
+    } catch (error) {
+        return rejectWithValue(i18n.t('Неправильные логин или пароль'))
     }
+}
 )

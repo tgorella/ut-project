@@ -15,7 +15,9 @@ type Order {
   endTime: String
   total: String
   steps: [String]
+  createdAt: String
 }
+
 input OrderInput {
   clientId: String!,
   userId: String!,

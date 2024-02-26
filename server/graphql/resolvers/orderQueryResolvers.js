@@ -3,6 +3,7 @@ import Client from '../../models/Client.js'
 import OrderStatus from '../../models/OrderStatus.js'
 import Project from '../../models/Project.js'
 import { checkAuth, checkUserId, throwServerError } from './helpers.js'
+import clientMutationResolvers from './clientMutationResolvers.js'
 
 const orderQueryResolvers = {
   orders: async (_, __, context) => {
@@ -10,6 +11,19 @@ const orderQueryResolvers = {
     try {
       const orders = await Order.find({ userId: context.user._id }).populate([
         'clientId',
+        'status',
+        'projectType',
+      ]).sort({createdAt: -1})
+      return orders
+    } catch (error) {
+      throwServerError()
+    }
+  },
+
+  ordersByClient: async (_, args, context) => {
+    checkAuth(context)
+    try {
+      const orders = await Order.find({ userId: context.user._id, clientId: args.id }).populate([
         'status',
         'projectType',
       ])
@@ -36,15 +50,21 @@ const orderQueryResolvers = {
 
   filteredOrders: async (_, args, context) => {
     checkAuth(context)
+    const search = new RegExp(args.data, "i")
+    const num = new RegExp(Number(args.data), "i")
     try {
-      const list = await Order.find({ userId: context.user._id}).populate(['clientId', 'status'])
-      const filteredList = list.filter((item) => {
-        return (
-          item.title.toLowerCase().includes(args.data.toLowerCase()) ||
-          item.orderNumber.toString().includes(args.data)
-        )
-      })
-      return filteredList
+      const list = await Order.find({ userId: context.user._id}).populate([
+        'status',
+        'projectType',
+      ]).or([{title: search}]).sort({createdAt: -1})
+      // const filteredList = list.filter((item) => {
+      //   return (
+      //     item.title.toLowerCase().includes(args.data.toLowerCase()) ||
+      //     item.orderNumber.toString().includes(args.data)
+      //   )
+      // })
+      console.log(list)
+      return list
     } catch (error) {
       throwServerError()
     }
