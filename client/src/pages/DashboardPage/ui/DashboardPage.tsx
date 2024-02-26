@@ -17,7 +17,7 @@ import {
     Tooltip,
     Legend,
 } from 'chart.js'
-import { Order } from 'entities/Order'
+import { Order, OrderExtended } from 'entities/Order'
 import { getOrdersPageData } from 'pages/OrdersPage/model/selectors/getOrdersPageData/getOrdersPageData'
 import { ordersPageReducer } from 'pages/OrdersPage/model/slice/OrdersPageSlice'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
@@ -85,11 +85,11 @@ const DashboardPage = memo(({className} : DashboardPageProps) => {
         if (orders) {
             const filteredOrders = (monthNumber: number) => {
                 return orders.filter(
-                    (i: Order) => Number(i.createdAt?.split('T')[0].split('-')[1]) === monthNumber
+                    (i: Order | OrderExtended) => Number(i.createdAt?.split('T')[0].split('-')[1]) === monthNumber
                 )
             }
     
-            const money = (array: Order[]) => {
+            const money = (array: (OrderExtended | Order)[]) => {
                 return array.reduce((acc, item) => acc + Number(item.total), 0)
             }
     
