@@ -41,7 +41,6 @@ const userMutationResolvers = {
 
   updateUser: async (_, args, context) => {
     checkAuth(context)
-    console.log(args.data)
     try {
       const userId = args.data._id
       if (context.user._id !== userId) {
@@ -72,7 +71,6 @@ const userMutationResolvers = {
 
   updatePass: async (_, args, context) => {
     checkAuth(context)
-console.log(args)
     try {
 
       const hashedPassword = await bcryptjs.hash(args.pass, 12)

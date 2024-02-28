@@ -18,25 +18,28 @@ function getDayNumber (item: string) {
 }
 
 export const EventListItem = memo(({className, event, color} : EventListItemProps) => {
+   
+    if (event.eventDate) {
+        const dayName = getDayName(event.eventDate)
+        const monthName = getMonthName(event.eventDate)
+        const dayNumber = getDayNumber(event.eventDate)
+        const year = new Date(event.eventDate).getFullYear()
 
-    const dayName = getDayName(event.eventDate)
-    const monthName = getMonthName(event.eventDate)
-    const dayNumber = getDayNumber(event.eventDate)
-    const year = new Date(event.eventDate).getFullYear()
-
-    return ( 
-        <div key={event._id} className={classNames(cls.item, {}, [className])}
-            style={{borderLeftColor: color}}>
-            <div className={cls.date_wrapper}>
-                <div>{monthName}</div>
-                <div className={cls.number}>{dayNumber}</div>
-                <div>{year}</div>
+        return ( 
+            <div key={event._id} className={classNames(cls.item, {}, [className])}
+                style={{borderLeftColor: color}}>
+                <div className={cls.date_wrapper}>
+                    <div>{monthName}</div>
+                    <div className={cls.number}>{dayNumber}</div>
+                    <div>{year}</div>
+                </div>
+                <div className={cls.day}>{dayName}</div>
+                <div className={cls.event_info}>
+                    <p>{event.title}</p>
+                    <p>{event.place}</p>
+                </div>
             </div>
-            <div className={cls.day}>{dayName}</div>
-            <div className={cls.event_info}>
-                <p>{event.title}</p>
-                <p>{event.place}</p>
-            </div>
-        </div>
-    )
+        )
+    }
+    return null
 })

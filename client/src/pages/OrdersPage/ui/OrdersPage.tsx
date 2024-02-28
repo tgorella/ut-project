@@ -60,7 +60,7 @@ const OrdersPage = memo(() => {
     useEffect(() => {
         if (__PROJECT__ !== 'storybook') {
             dispatch(ordersPageAction.initState())
-            dispatch(fetchAllOrders(search))
+            dispatch(fetchAllOrders({text:'', resParams: 'total title status { _id color name } orderNumber createdAt _id'}))
             dispatch(fetchOrderStatuses())
         }
         

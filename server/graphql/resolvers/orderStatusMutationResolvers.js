@@ -10,7 +10,6 @@ const orderStatusMutationResolvers = {
         userId: context.user._id,
         isDefault: false
       }
-      console.log(newData)
       const newOrderStatus = await OrderStatus.create(newData)
       return newOrderStatus
     } catch (error) {

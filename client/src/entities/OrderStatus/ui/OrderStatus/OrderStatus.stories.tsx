@@ -22,7 +22,10 @@ type Story = StoryObj<typeof OrderStatusBlock>;
 
 export const Default: Story = {
     args: {
-        id:'643e58efaba80539138865d2'
+        status:{
+            _id:'643e58efaba80539138865d2',
+            name: 'Test status',
+            color: 'gold'}
                                                                                                                                      
     },
     decorators: [

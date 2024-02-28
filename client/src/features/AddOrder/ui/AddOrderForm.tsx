@@ -1,7 +1,7 @@
 import { Alert, AlertTheme } from 'shared/ui/Alert'
 import { PageLoader } from 'widgets/PageLoader'
 import cls from './AddOrderForm.module.scss'
-import { Order, OrderForm } from 'entities/Order'
+import { OrderExtended, OrderForm } from 'entities/Order'
 import { useCallback, useState } from 'react'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { Text } from 'shared/ui/Text'
@@ -11,7 +11,7 @@ import { getNewOrderData } from '../model/selectors/getNewOrderData/getNewOrderD
 import { addOrderAction } from '../model/slice/AddOrderSlice'
 
 interface AddOrderFormProps {
-  onAddOrder: (newOrder: Order) => void;
+  onAddOrder: (newOrder: OrderExtended) => void;
   added?: boolean,
   error?: string,
   withButton: boolean
@@ -64,7 +64,10 @@ export const AddOrderForm = ({onAddOrder, added, error, withButton} : AddOrderFo
 
     const handleChangeProjectType = useCallback((value: string) => {
         dispatch(addOrderAction.updateNewOrderData({
-            projectType: value
+            projectType: {_id: value,
+                name: '',
+                userId:'',
+                stages: []}
         }))
     }, [dispatch])
 

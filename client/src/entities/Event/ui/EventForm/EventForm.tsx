@@ -64,7 +64,7 @@ export const EventForm = memo(({
                 label={t('Дата')} 
                 value={data?.eventDate}  
                 onChange={onChangeEventDate} 
-                name='eventData' 
+                name='eventDate' 
                 error={errors?.eventDate}
                 type='date'
             />

@@ -3,16 +3,20 @@ import { ThunkConfig } from 'app/providers/StoreProvider'
 import i18n from 'shared/config/i18n/i18n'
 import { Order, OrderExtended } from 'entities/Order'
 
-export const fetchAllOrders = createAsyncThunk<(OrderExtended | Order)[], string,ThunkConfig<string>>(
+interface FetchProps {
+  text: string,
+  resParams: string
+}
+export const fetchAllOrders = createAsyncThunk<(OrderExtended | Order)[], FetchProps,ThunkConfig<string>>(
     'ordersPage/fetchAllOrders',
 // @ts-ignore
-async (text, thunkAPI) => {
+async (props, thunkAPI) => {
     const {rejectWithValue, extra} = thunkAPI
     try {
         const {data} = await extra.api.post('/', {
-            'query': 'query Query($data: String) { filteredOrders(data: $data) { total title status { _id color name } orderNumber createdAt _id } }',
+            'query': `query Query($data: String) { filteredOrders(data: $data) { ${props.resParams} } }`,
             'operation-name': 'Query',
-            'variables': {'data': text}
+            'variables': {'data': props.text}
         })
         
         if (!data) {

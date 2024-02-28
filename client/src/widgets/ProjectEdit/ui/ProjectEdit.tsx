@@ -144,7 +144,6 @@ const ProjectEdit = memo(({className} : ProjectEditProps) => {
         newStep.projectId = projectId
         newStep.stageId = stageId
         newStep.index = index
-        console.log(projectId)
         dispatch(addStep(newStep)).then(() => {
             resetAll()
         })

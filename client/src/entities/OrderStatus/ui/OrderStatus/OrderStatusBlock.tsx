@@ -1,17 +1,15 @@
 import cls from './OrderStatus.module.scss'
 import classNames from 'shared/lib/classNames/ClassNames'
 import {memo} from 'react'
-import { useSelector } from 'react-redux'
-import { getOrderStatusById } from '../../model/selectors/getOrderStatusById/getOrderStatusById'
 import { useTranslation } from 'react-i18next'
+import { OrderStatusDetails } from 'entities/OrderStatus/model/types/OrderStatus'
 
 interface OrderStatusProps {
   className?: string;
-  id: string
+  status?: OrderStatusDetails
 }
-export const OrderStatusBlock = memo(({className, id} : OrderStatusProps) => {
+export const OrderStatusBlock = memo(({className, status} : OrderStatusProps) => {
     const {t} = useTranslation('orders')
-    const status = useSelector(getOrderStatusById(id))
 
     if (!status) {
         return <>{t('Loading...')}</>

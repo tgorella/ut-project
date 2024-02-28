@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ThunkConfig } from 'app/providers/StoreProvider'
 import i18n from 'shared/config/i18n/i18n'
-import { getUserAuthData } from 'entities/User'
 import { Order } from '../../types/OrderSchema'
 import { ordersPageAction } from 'pages/OrdersPage/model/slice/OrdersPageSlice'
 
@@ -12,19 +11,22 @@ export type FilterProps = {
 export const deleteOrder = createAsyncThunk<Order, string ,ThunkConfig<string>>(
     'orderDetails/deleteOrder',
     async (orderId, thunkAPI) => {
-        const {rejectWithValue, getState, dispatch, extra} = thunkAPI
-        const userData = getUserAuthData(getState())
+        const {rejectWithValue, dispatch, extra} = thunkAPI
         try {
-            const {data} = await extra.api.get<Order>(`/orders/${orderId}`)
-            if (data.userId !== userData?._id) {
-                throw new Error('Нет доступа')
-            }
+            const {data} = await extra.api.post('/', {
+                'query': 'mutation DeleteOrder($deleteOrderId: ID) { deleteOrder(id: $deleteOrderId) }',
+                'operation-name': 'DeleteOrder',
+                'variables': {
+                    'deleteOrderId': orderId
+                }
+            })
+
             if (!data) {
                 throw new Error('err')
             }
-            const response = await extra.api.delete(`/orders/${orderId}`)
+
             dispatch(ordersPageAction.orderDeleted(orderId))
-            return response.data
+            return data.data.deleteOrder
 
         } catch (error) {
             return rejectWithValue(i18n.t('Клиент не найден'))

@@ -39,7 +39,7 @@ const DashboardPage = memo(({className} : DashboardPageProps) => {
     const orders = useSelector(getOrdersPageData)
 
     useEffect(() => {
-        dispatch(fetchAllOrders(''))
+        dispatch(fetchAllOrders({text: '', resParams: '_id total createdAt'}))
     }, [dispatch])
 
     ChartJS.register(

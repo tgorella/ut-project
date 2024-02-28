@@ -5,12 +5,16 @@ const orderMutationResolvers = {
   addOrder: async (_, args, context) => {
     checkAuth(context)
     try {
-      const newOrder = await Order.create({
+      const newData = {
         ...args.data,
         userId: context.user._id
-      })
-      
-      await newOrder.populate(['clientId', 'status'])
+      }
+      console.log(newData)
+      const newOrder = await Order.create(newData)
+      await newOrder.populate(['clientId',
+      'status',
+      'projectType'])
+
       return newOrder
     } catch (error) {
       throwServerError()
@@ -32,13 +36,14 @@ const orderMutationResolvers = {
   updateOrder: async (_, args, context) => {
     checkAuth(context)
     try {
-      const orderId = args.data._id
-      const order = await Order.findById(orderId)
+      const order = await Order.findById(args.data._id)
       checkUserId(order, context)
-      const updatedOrder = await Order.findByIdAndUpdate(orderId, args.data, {
+      const updatedOrder = await Order.findByIdAndUpdate(args.data._id, args.data, {
         new: true,
       })
-      await updatedOrder.populate(['clientId', 'status'])
+      await updatedOrder.populate(['clientId',
+      'status',
+      'projectType'])
       return updatedOrder
     } catch (error) {
       throwServerError()

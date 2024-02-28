@@ -12,9 +12,12 @@ export const updateOrderSteps = createAsyncThunk<Order, newStepData,ThunkConfig<
     'orderDetails/updateOrderSteps',
     async (newData, thunkAPI) => {
         const {rejectWithValue, extra} = thunkAPI
-      
         try {
-            const {data} = await extra.api.patch<Order>(`/orders/${newData._id}`, newData)
+            const {data} = await extra.api.post('/', {
+                'query': 'mutation Mutation($data: OrderNewDataInput) { updateOrder(data: $data) { total title notes eventDate endTime startTime place } }',
+                'operation-name':'Mutation',
+                'variables': {'data': newData}
+            })
 
             if (!data) {
                 throw new Error('err')
