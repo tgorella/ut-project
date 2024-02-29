@@ -10,6 +10,7 @@ const orderQueryResolvers = {
     checkAuth(context)
     try {
       const orders = await Order.find({ userId: context.user._id }).populate([
+        'eventType',
         'clientId',
         'status',
         'projectType',

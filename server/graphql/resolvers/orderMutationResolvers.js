@@ -1,15 +1,21 @@
 import Order from '../../models/Order.js'
 import { checkAuth, checkUserId, throwServerError } from './helpers.js'
+import EventType from '../../models/EventType.js'
+import OrderStatus from '../../models/OrderStatus.js'
 
 const orderMutationResolvers = {
   addOrder: async (_, args, context) => {
     checkAuth(context)
     try {
+      const status = await OrderStatus.findOne({isDefault: true, name: 'Новый'})
+      const eventType = await EventType.findOne({name: 'wfworket'})
+    
       const newData = {
         ...args.data,
-        userId: context.user._id
+        userId: context.user._id,
+        eventType: eventType._id,
+        status: status._id
       }
-      console.log(newData)
       const newOrder = await Order.create(newData)
       await newOrder.populate(['clientId',
       'status',

@@ -137,7 +137,12 @@ export const stateAllIn: StateSchema = {
             _id:'65c0dd1ead1c83296987d952',
             title:'Movie night 123',
             userId:'65988d28a1bc6c3d31acb718',
-            eventType:'643e5900aba80539138865d4',
+            eventType:{
+                _id: '643e58deaba80539138865d0',
+                name: 'Учеба',
+                color: '#bde2a8',
+                isDefault: false
+            },
             eventDate:'2024-02-17',
             startTime:'18:00',
             endTime:'21:00',
@@ -148,7 +153,12 @@ export const stateAllIn: StateSchema = {
             _id:'65c0e386ad1c83296987d96e',
             title:'Test123',
             userId:'65988d28a1bc6c3d31acb718',
-            eventType:'643e5900aba80539138865d4',
+            eventType:{
+                _id: '6467834500aba6813881d4',
+                name: 'Друзья',
+                color: 'blue',
+                isDefault: false
+            },
             eventDate:'2024-02-16',
             startTime:'13:00',
             endTime:'15:00',
@@ -161,7 +171,7 @@ export const stateAllIn: StateSchema = {
         isLoading: false,
         eventTypes: [{
             _id: '643e58deaba80539138865d0',
-            name: 'Учеьба',
+            name: 'Учеба',
             color: '#bde2a8',
             isDefault: false
         },
@@ -188,7 +198,12 @@ export const stateAllIn: StateSchema = {
             _id:'65c0dd1ead1c83296987d952',
             title:'Movie night 123',
             userId:'65988d28a1bc6c3d31acb718',
-            eventType:'65a850b0a26d859d25aecaf6',
+            eventType:{
+                _id: '643e58efaba80539138865d2',
+                name: 'Личное',
+                color: '#ff759f',
+                isDefault: false
+            },
             eventDate:'2024-02-17',
             startTime:'18:00',
             endTime:'21:00',
@@ -199,7 +214,12 @@ export const stateAllIn: StateSchema = {
             _id:'65c0dd1ead1c83296987d952',
             title:'Movie night 123',
             userId:'65988d28a1bc6c3d31acb718',
-            eventType:'65a850b0a26d859d25aecaf6',
+            eventType:{
+                _id: '643e58efaba80539138865d2',
+                name: 'Личное',
+                color: '#ff759f',
+                isDefault: false
+            },
             eventDate:'2024-02-17',
             startTime:'18:00',
             endTime:'21:00',
@@ -213,7 +233,12 @@ export const stateAllIn: StateSchema = {
             _id:'65c0dd1ead1c83296987d952',
             title:'Movie night 123',
             userId:'65988d28a1bc6c3d31acb718',
-            eventType:'643e5900aba80539138865d4',
+            eventType:{
+                _id: '643e58efaba80539138865d2',
+                name: 'Личное',
+                color: '#ff759f',
+                isDefault: false
+            },
             eventDate:'2024-02-17',
             startTime:'18:00',
             endTime:'21:00',
@@ -224,7 +249,12 @@ export const stateAllIn: StateSchema = {
             _id:'65c0dd1ead1c83296987d952',
             title:'Movie night 123',
             userId:'65988d28a1bc6c3d31acb718',
-            eventType:'643e5900aba80539138865d4',
+            eventType:{
+                _id: '643e58efaba80539138865d2',
+                name: 'Личное',
+                color: '#ff759f',
+                isDefault: false
+            },
             eventDate:'2024-02-17',
             startTime:'18:00',
             endTime:'21:00',

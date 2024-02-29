@@ -1,6 +1,6 @@
 import {PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { CalendarPageSchema } from '../types/CalendarPage'
-import { Event, deleteEvent, fetchEvents } from 'entities/Event'
+import { EventExtended, deleteEvent, fetchEvents } from 'entities/Event'
 
 
 const initialState: CalendarPageSchema = {
@@ -23,7 +23,7 @@ export const calendarPageSlice = createSlice({
                 state.isLoading = true
                 state.error = undefined
             })
-            .addCase(fetchEvents.fulfilled, (state, action: PayloadAction<Event[]>) => {
+            .addCase(fetchEvents.fulfilled, (state, action: PayloadAction<EventExtended[]>) => {
                 state.isLoading = false
                 state.error = undefined
                 state.events = action.payload

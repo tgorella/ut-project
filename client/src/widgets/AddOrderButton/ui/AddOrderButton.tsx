@@ -51,7 +51,6 @@ export const AddOrderButton = memo(({className, withClient = false, buttonTheme}
         if (withClient) {
             dispatch(addClient())
                 .then(({payload}) => {
-                    console.log(payload)
                     dispatch(addOrder({
                         isClientPage: !withClient,
                         //@ts-ignore

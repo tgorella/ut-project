@@ -22,7 +22,7 @@ const eventQueryResolvers = {
     checkAuth(context)
     try {
       const event = await Event.findById(args.id)
-      checkUserId(event.context)
+      checkUserId(event,context)
       return event
     } catch (error) {
      throwServerError()

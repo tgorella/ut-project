@@ -13,6 +13,7 @@ export const addEvent = createAsyncThunk<Event, void,ThunkConfig<string>>(
             const newEvent = getEventDetailsForm(getState())
             const event = {
                 ...newEvent,
+                eventType: newEvent?.eventType._id
             }
             delete event._id
             const {data} = await extra.api.post('/',{

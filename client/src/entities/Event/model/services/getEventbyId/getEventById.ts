@@ -1,24 +1,24 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ThunkConfig } from 'app/providers/StoreProvider'
 import i18n from 'shared/config/i18n/i18n'
-import { Event } from '../../types/Event'
-import { getUserAuthData } from 'entities/User'
+import { EventExtended } from '../../types/Event'
 
 
-export const getEventById = createAsyncThunk<Event, string ,ThunkConfig<string>>(
+export const getEventById = createAsyncThunk<EventExtended, string ,ThunkConfig<string>>(
     'event/getEventById',
     async (eventId, thunkAPI) => {
-        const {rejectWithValue, getState, extra} = thunkAPI
+        const {rejectWithValue, extra} = thunkAPI
         try {
-            const userData = getUserAuthData(getState())
-            const {data} = await extra.api.get<Event>(`/events/${eventId}`)
-            if (data.userId !== userData?._id) {
-                return rejectWithValue(i18n.t('Нет доступа'))
-            }
+            const {data} = await extra.api.post('/', {
+                'query': 'query Event($eventId: ID) { event(id: $eventId) { _id endTime eventDate eventType { _id } notes place startTime title } }',
+                'operation-name': 'Event',
+                'variables': { 'eventId': eventId }
+            })
+            
             if (!data) {
                 throw new Error('err')
             }
-            return data
+            return data.data.event
         } catch (error) {
             return rejectWithValue(i18n.t('Клиент не найден'))
         }
