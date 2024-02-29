@@ -10,6 +10,7 @@ const orderQueryResolvers = {
     checkAuth(context)
     try {
       const orders = await Order.find({ userId: context.user._id }).populate([
+        'eventType',
         'clientId',
         'status',
         'projectType',
@@ -57,13 +58,7 @@ const orderQueryResolvers = {
         'status',
         'projectType',
       ]).or([{title: search}]).sort({createdAt: -1})
-      // const filteredList = list.filter((item) => {
-      //   return (
-      //     item.title.toLowerCase().includes(args.data.toLowerCase()) ||
-      //     item.orderNumber.toString().includes(args.data)
-      //   )
-      // })
-      console.log(list)
+      
       return list
     } catch (error) {
       throwServerError()

@@ -1,7 +1,7 @@
 import cls from './EventCard.module.scss'
 import classNames from 'shared/lib/classNames/ClassNames'
 import {memo} from 'react'
-import { Event } from '../../model/types/Event'
+import { EventExtended } from '../../model/types/Event'
 import { transformDate } from 'shared/lib/transformDate/transformDate'
 import { useTranslation } from 'react-i18next'
 import { Alert, AlertTheme } from 'shared/ui/Alert'
@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom'
 
 interface EventCardProps {
   className?: string;
-  event: Event,
+  event: EventExtended,
   onDelete: (id: string) => void
 }
 export const EventCard = memo(({className, event, onDelete} : EventCardProps) => {
@@ -34,16 +34,16 @@ export const EventCard = memo(({className, event, onDelete} : EventCardProps) =>
             <p><b>{t('Адрес')}:</b> {event.place}</p>
             <p className={cls.notes_title}><b>{t('Заметки')}:</b></p>
             <p className={cls.notes}>{event.notes}</p>
-            {event.eventType === 'work' && <Alert className={cls.alert} theme={AlertTheme.INFO} text={t('Это событие относится к заказам')} />}
+            {event.eventType.name === 'wfworket' && <Alert className={cls.alert} theme={AlertTheme.INFO} text={t('Это событие относится к заказам')} />}
 
-            {event.eventType !== 'work' &&
+            {event.eventType.name !== 'wfworket' &&
             <div className={cls.button_wrapper}>
                 <AppButton theme={ButtonTheme.OUTLINED} stretch={true} onClick={() => handleDeleteEvent(event._id)} >{t('Удалить')}</AppButton>
                 <Link to={'/events/'+event._id}><AppButton theme={ButtonTheme.SOLID} stretch={true} >{t('Редактировать')}</AppButton></Link>
             </div>
             }
 
-            {event.eventType === 'work' &&
+            {event.eventType.name === 'wfworket' &&
             <div className={cls.button_wrapper}>
                 <Link to={'/orders/'+event._id}><AppButton theme={ButtonTheme.SOLID} stretch={true} >{t('Редактировать')}</AppButton></Link>
             </div>

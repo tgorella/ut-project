@@ -8,7 +8,7 @@ import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/Dynamic
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { getEventDetailIsLoading } from '../model/selectors/getEventDetailIsLoading/getEventDetailIsLoading'
 import { getEventDetailError } from '../model/selectors/getEventDetailError/getEventDetailError'
-import { Event, addEvent, getEventById, updateEventData } from 'entities/Event'
+import { EventExtended, addEvent, getEventById, updateEventData } from 'entities/Event'
 import { PageLoader } from 'widgets/PageLoader'
 import { Alert, AlertTheme } from 'shared/ui/Alert'
 import { useTranslation } from 'react-i18next'
@@ -24,11 +24,16 @@ interface EventDetailPageProps {
   isNew?: boolean,
 }
 
-const eventInitialState: Event = {
+const eventInitialState: EventExtended = {
     _id: '',
     title: '',
     userId: '',
-    eventType: '',
+    eventType: {
+        _id: '',
+        name: '',
+        color: '',
+        isDefault: false
+    },
     startTime: '',
     endTime: '',
     place: '',
@@ -72,7 +77,9 @@ export const EventDetailPage = memo(({className, isNew = false} : EventDetailPag
     }
 
     const handleChangeEventType = (value: string) => {
-        dispatch(eventDetailAction.changeEvent({eventType: value}))
+        dispatch(eventDetailAction.changeEvent({eventType:{
+            _id: value
+        }}))
     }
 
     const handleChangePlace = (value: string) => {

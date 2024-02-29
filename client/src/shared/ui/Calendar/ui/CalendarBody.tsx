@@ -1,4 +1,4 @@
-import { Event, EventBlock, EventCard, deleteEvent } from 'entities/Event'
+import { EventBlock, EventCard, EventExtended, deleteEvent } from 'entities/Event'
 import cls from './Calendar.module.scss'
 import { BodyObj } from './lib/genCalendarBodyObj'
 import { useSelector } from 'react-redux'
@@ -13,11 +13,16 @@ interface CalendarBodyProps {
   days: BodyObj
 }
 
-const clearEvent: Event = {
+const clearEvent: EventExtended = {
     _id: '',
     title: '',
     userId: '',
-    eventType: '',
+    eventType: {
+        _id: '',
+        color: '',
+        name: '',
+        isDefault: false
+    },
     eventDate: '',
     startTime: '',
     endTime: '',
@@ -36,7 +41,7 @@ export const CalendarBody = ({days} : CalendarBodyProps) => {
         setOpen((prev) => !prev)
     }
 
-    const eventToggle = (event: Event) => {
+    const eventToggle = (event: EventExtended) => {
         togglePreviewWindow()
         setContent(event)
     }
@@ -60,7 +65,7 @@ export const CalendarBody = ({days} : CalendarBodyProps) => {
             {days.map((day, index) => {
                 return (<div key={'day_' + index} className={day.number ? cls.day: ''}>
                     {day.number}
-                    {day.events?.map((event) => <EventBlock key={event._id} event={event}  color={colors[event.eventType as keyof typeof colors]} onClick={() => eventToggle(event)} />)}
+                    {day.events?.map((event) => <EventBlock key={event._id} event={event} onClick={() => eventToggle(event)} />)}
                 </div>)
             })}
             <PreviewWindow isOpen={open} onClose={togglePreviewWindow}>

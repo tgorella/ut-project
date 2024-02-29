@@ -3,7 +3,6 @@ import { ThunkConfig } from 'app/providers/StoreProvider'
 import i18n from 'shared/config/i18n/i18n'
 import { Profile } from '../../types/profileSchema'
 import { getProfileForm } from '../../selectors/getProfileForm/getProfileForm'
-import { getUserAuthData } from 'entities/User'
 
 
 export const updateProfileData = createAsyncThunk<Profile, void,ThunkConfig<string>>(
@@ -12,13 +11,20 @@ export const updateProfileData = createAsyncThunk<Profile, void,ThunkConfig<stri
         const {rejectWithValue, getState, extra} = thunkAPI
         const formData = getProfileForm(getState())
         try {
-            const userData = getUserAuthData(getState())
-            const {data} = await extra.api.patch<Profile>('/users/'+userData?._id, formData)
+            const newData = formData
+            delete newData?.newPassword
+            delete newData?.repeatPassword
+
+            const {data} = await extra.api.post('/', {
+                'query': 'mutation Mutation($data: UserNewDataInput) { updateUser(data: $data) { _id avatar city currency country email firstname lastOrderNumber lastname username } }',
+                'operation-name': 'Mutation',
+                'variables': {'data': newData}
+            })
 
             if (!data) {
                 throw new Error('err')
             }
-            return data
+            return data.data.updateUser
         } catch (error) {
             return rejectWithValue(i18n.t('Неправильные логин или пароль'))
         }

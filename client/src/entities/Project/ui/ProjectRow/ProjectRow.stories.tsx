@@ -2,9 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import 'app/styles/index.scss'
 import { WithColorsTheme } from 'shared/config/storybook/ThemeDecorator/WithColorsTheme'
 import { ProjectRow } from './ProjectRow'
-import { Order } from 'entities/Order'
-import { Client } from 'entities/Clients'
-import { OrderStatusDetails } from 'entities/OrderStatus'
+import { OrderExtended } from 'entities/Order'
 import { EditProjectStoreDecorator } from 'shared/config/storybook/StoreDecorator/ProjectStoreDecorator'
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -17,30 +15,31 @@ const meta: Meta<typeof ProjectRow> = {
     tags: ['autodocs']
 }
 
-const order: Order = {
-    clientId: 'sdjldsjflsdjk',
+const order: OrderExtended = {
+    clientId: {
+        _id:'sdjldsjflsdjk',
+        name: 'Kristina Gold'},
     total: '20000',
     notes: '',
     eventDate: '',
     eventType: '',
     orderNumber: '',
-    status: '',
+    status: {
+        _id: 'sdlk89ftgd7jskgfrdfk',
+        name: 'В процессе',
+        color: '#ffd129',
+        isDefault: false
+    },
     title: 'Брендбук Vaf work',
     userId: '',
-    projectType: '',
+    projectType: {
+        _id: '',
+        name: '',
+        userId: '',
+        stages: []},
     steps: ['done','done','in_progress','in_progress','','','','','','','']
 }
 
-const client: Client = {
-    name: 'Kristina Gold'
-}
-
-const status: OrderStatusDetails = {
-    _id: 'sdlk89ftgd7jskgfrdfk',
-    name: 'В процессе',
-    color: '#ffd129',
-    isDefault: false
-}
 export default meta
 type Story = StoryObj<typeof ProjectRow>;
 
@@ -48,8 +47,8 @@ type Story = StoryObj<typeof ProjectRow>;
 
 export const Default: Story = {
     args: {
-        status: status,      
-        client: client,
+        status: order.status,      
+        client: order.clientId,
         order: order                                                                                                                                     
     },
     decorators: [

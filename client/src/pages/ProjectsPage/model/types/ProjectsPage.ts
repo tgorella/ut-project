@@ -1,11 +1,11 @@
 import { Client } from 'entities/Clients'
-import { Order, OrderExtended } from 'entities/Order'
+import { OrderExtended } from 'entities/Order'
 import { Project } from 'entities/Project'
 
 export interface ProjectsPageSchema {
   isLoading: boolean,
   data?: Project[],
-  orders?: (OrderExtended | Order)[],
+  orders?: OrderExtended[],
   clients?: Client[],
   error?: string,
 }

@@ -6,5 +6,5 @@ export { updateEventData } from './model/services/updateEventData/updateEventDat
 export { eventAction, eventReducer } from './model/slice/EventSlice'
 export { EventsList } from './ui/EventsList/EventsList'
 export { EventBlock } from './ui/EventBlock/EventBlock'
-export type { Event, EventSchema } from './model/types/Event'
+export type { Event,EventExtended, EventSchema } from './model/types/Event'
 export { EventCard } from './ui/EventCard/EventCard'

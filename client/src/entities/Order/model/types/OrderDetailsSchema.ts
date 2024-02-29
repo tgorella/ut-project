@@ -1,8 +1,8 @@
-import { Order } from './OrderSchema'
+import { OrderExtended } from './OrderSchema'
 
 export interface OrderDetailsSchema {
   isLoading?: boolean,
-  data?: Order,
-  form?: Order
+  data?: OrderExtended,
+  form?: OrderExtended
   error?: string;
 }

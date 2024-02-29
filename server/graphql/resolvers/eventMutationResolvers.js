@@ -6,10 +6,16 @@ const eventMutationResolvers = {
   addEvent: async (_, args, context) => {
     checkAuth(context)
     try {
+
       const newEvent = await Event.create({
         ...args.data,
         userId: context.user._id,
       })
+      
+      await newEvent.populate({
+        path: 'eventType'
+      })
+
       return newEvent
     } catch (error) {
       throwServerError()
@@ -30,13 +36,21 @@ const eventMutationResolvers = {
 
   updateEvent: async (_, args, context) => {
     checkAuth(context)
+    const id = args.data._id
+    const newData = args.data
+    delete newData._id
+    
     try {
-      const eventId = args.data._id
-      const event = Event.findById(eventId)
+      const event = await Event.findById(id)
       checkUserId(event, context)
-      const updatedEvent = await Event.findByIdAndUpdate(eventId, args.data, {
+      const updatedEvent = await Event.findByIdAndUpdate(id, newData, {
         new: true,
       })
+      
+      await updatedEvent.populate({
+        path: 'eventType'
+      })
+
       return updatedEvent
     } catch (error) {
       throwServerError()

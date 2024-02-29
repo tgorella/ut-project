@@ -1,7 +1,7 @@
 import cls from './EventForm.module.scss'
 import classNames from 'shared/lib/classNames/ClassNames'
 import {memo} from 'react'
-import { Event } from 'entities/Event/model/types/Event'
+import { Event, EventExtended } from 'entities/Event/model/types/Event'
 import { Input } from 'shared/ui/Input/Input'
 import { useTranslation } from 'react-i18next'
 import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
@@ -12,7 +12,7 @@ import { EventType, EventTypeSelect } from 'entities/EventType'
 interface EventFormProps {
   className?: string;
   errors: Partial<Event>
-  data: Event,
+  data: EventExtended,
   events: EventType[]
   onChangeTitle: (value: string) => void,
   onChangeEventDate: (value: string) => void,
@@ -57,14 +57,14 @@ export const EventForm = memo(({
                 error={errors?.title}
             />
             <EventTypeSelect 
-                value={data?.eventType}
+                value={data?.eventType._id}
                 eventTypes={events}
                 onChange={onChangeEventType}/>
             <Input 
                 label={t('Дата')} 
                 value={data?.eventDate}  
                 onChange={onChangeEventDate} 
-                name='eventData' 
+                name='eventDate' 
                 error={errors?.eventDate}
                 type='date'
             />

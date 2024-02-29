@@ -1,7 +1,7 @@
 import cls from './ProjectRow.module.scss'
 import classNames from 'shared/lib/classNames/ClassNames'
 import {memo, useState} from 'react'
-import { Order, OrderExtended, updateOrderSteps } from 'entities/Order'
+import {OrderExtended, updateOrderSteps } from 'entities/Order'
 import { OrderStatusDetails } from 'entities/OrderStatus'
 import { ProjectStepSelect } from '../ProjectStepSelect/ProjectStepSelect'
 import { Link } from 'react-router-dom'
@@ -11,7 +11,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 
 interface ProjectRowProps {
   className?: string;
-  order: Order | OrderExtended,
+  order: OrderExtended,
   client?: Client,
   status?: OrderStatusDetails,
   totalSteps: number
@@ -24,7 +24,7 @@ export const ProjectRow = memo(({className, order, client, status, totalSteps} :
         const newArr = new Array(totalSteps-steps.length).fill('')
         const totalArr = [...steps, ...newArr]
         setSteps(totalArr)
-        dispatch(updateOrderSteps({_id: order._id, steps: steps}))
+        dispatch(updateOrderSteps({_id: order._id, steps: totalArr}))
     }
 
     if (steps.length > totalSteps) {

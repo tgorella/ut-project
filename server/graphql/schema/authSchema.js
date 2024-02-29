@@ -30,6 +30,20 @@ input UserInput {
   username: String
  }
 
+ input UserNewDataInput {
+  _id: ID,
+  firstname: String,
+  lastname: String,
+  currency: String,
+  country: String,
+  city: String,
+  username: String,
+  email: String,
+  avatar: String,
+  password: String,
+  lastOrderNumber: String
+ }
+
  input UserSignInInput {
   email: String,
   password: String

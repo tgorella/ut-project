@@ -10,7 +10,7 @@ const schema = new Schema(
       type: String,
       required: true
     },
-		userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
+		userId: { type: Schema.Types.ObjectId, ref: "User" },
 		isDefault: {type: Boolean, required: true}
   },
   {

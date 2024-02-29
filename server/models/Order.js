@@ -9,7 +9,7 @@ const schema = new Schema(
     status: { type: Schema.Types.ObjectId, ref: "OrderStatus", required: true  },
     notes: { type: String },
     eventDate: { type: String },
-    eventType: { type: String },
+    eventType: {  type: Schema.Types.ObjectId, ref: "EventType", required: true },
     orderNumber: { type: Number },
     place: { type: String },
     startTime: { type: String },

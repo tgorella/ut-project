@@ -9,17 +9,16 @@ import { projectsPageReducer } from '../model/slice/ProjectsPageSlice'
 import { useSelector } from 'react-redux'
 import { getProjectPageData } from '../model/selectors/getProjectPageData/getProjectPageData'
 import { getProjectPageOrders } from '../model/selectors/getProjectPageOrders/getProjectPageOrders'
-import { fetchAllOrders } from 'pages/OrdersPage/model/services/fetchAllOrders/fetchAllOrders'
 import { ProjectHeader } from 'entities/Project/ui/ProjectHeader/ProjectHeader'
 import { ProjectRow } from 'entities/Project/ui/ProjectRow/ProjectRow'
 import { orderStatusEditReducer } from 'widgets/OrderStatusEdit'
-import { fetchOrderStatuses, getOrderStatusesData } from 'entities/OrderStatus'
+import { fetchOrderStatuses } from 'entities/OrderStatus'
 import { fetchClients } from 'entities/Clients/model/services/fetchAll/fetchClients'
 'pages/ClientsPage/model/services/fetchAll/fetchClients'
-import { getProjectPageClient } from '../model/selectors/getProjectPageClient/getProjectPageClient'
 import { countTotalSteps } from '../model/lib/countTotalSteps'
 import { getProjectPageIsLoading } from '../model/selectors/getProjectPageIsLoading/getProjectPageIsLoading'
 import { PageLoader } from 'widgets/PageLoader'
+import { OrderExtended, fetchOrders } from 'entities/Order'
 
 interface ProjectsPageProps {
   className?: string;
@@ -34,25 +33,31 @@ export const ProjectsPage = memo(({className} : ProjectsPageProps) => {
     const {t} = useTranslation('project')
     const isLoading = useSelector(getProjectPageIsLoading)
     const data = useSelector(getProjectPageData)
-    const orders = useSelector(getProjectPageOrders)
-    const orderStatuses = useSelector(getOrderStatusesData) || []
-    const clients = useSelector(getProjectPageClient) || []
+    const orders = useSelector(getProjectPageOrders) || []
 
-    const filteredOrders = orders?.filter((order) => order.status !== '659bc05bec9c6a620f683034' && order.status !== '659bc05bec9c6a620f683036' && order.status !== '659bc05bec9c6a620f683035')
+   
     useEffect(() => {
         if (__PROJECT__ !== 'storybook') {
             dispatch(fetchProjects())
-            dispatch(fetchAllOrders(''))
+            dispatch(fetchOrders({text:'', resParams: ' _id clientId { name } projectType { _id } status { _id color name } title steps'}))
             dispatch(fetchOrderStatuses())
             dispatch(fetchClients())
         }
     }, [dispatch])
 
+    let filteredOrders: OrderExtended[] = []
 
-    if (isLoading) {
+    if (orders.length > 0) {
+        filteredOrders = orders?.filter((order) => {
+            return order.status !== null && order.status?._id !== '659bc05bec9c6a620f683034' && order.status?._id !== '659bc05bec9c6a620f683036' && order.status?._id !== '659bc05bec9c6a620f683035'})
+
+    }
+    
+
+    if (isLoading && !filteredOrders) {
         return <PageLoader />
     }
-
+    
     return ( 
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={true}>
             <div className={classNames(cls.ProjectsPage, {}, [className])}>
@@ -61,13 +66,13 @@ export const ProjectsPage = memo(({className} : ProjectsPageProps) => {
                     return (
                         <div className={cls.project_wrapper}  key={project._id}>
                             <ProjectHeader stages={project.stages} projectName={project.name} />
-                            {filteredOrders?.filter((order) => order.projectType === project._id).map((order) => {
+                            {filteredOrders?.filter((order) => order.projectType?._id === project._id).map((order) => {
                                 return <ProjectRow 
                                     key={order._id} 
                                     order={order} 
                                     totalSteps={countTotalSteps(project.stages)}
-                                    status={orderStatuses.find((el) => el._id === order.status )} 
-                                    client={clients.find((el) => el._id === order.clientId)} 
+                                    status={order.status} 
+                                    client={order.clientId} 
                                 />
                             })}
                         </div>)

@@ -1,5 +1,5 @@
 import {PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { Event, getEventById, updateEventData } from 'entities/Event'
+import { EventExtended, getEventById, updateEventData } from 'entities/Event'
 import { EventDetailPageSchema } from '../types/EventDetailPage'
 import { fetchEventTypes } from 'entities/EventType'
 
@@ -8,11 +8,16 @@ const initialState: EventDetailPageSchema = {
     error: undefined
 }
 
-const eventInitialState: Event = {
+const eventInitialState: EventExtended = {
     _id: '',
     title: '',
     userId: '',
-    eventType: '',
+    eventType: {
+        _id: '',
+        color: '',
+        name: '',
+        isDefault: false
+    },
     startTime: '',
     endTime: '',
     place: '',
@@ -44,7 +49,7 @@ export const editEventSlice = createSlice({
                 state.error = undefined
                 state.isLoading = true
             })
-            .addCase(getEventById.fulfilled, (state, action: PayloadAction<Event>) => {
+            .addCase(getEventById.fulfilled, (state, action: PayloadAction<EventExtended>) => {
                 state.isLoading = false
                 state.error = undefined
                 state.data = action.payload

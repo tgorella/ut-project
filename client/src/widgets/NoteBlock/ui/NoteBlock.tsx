@@ -8,7 +8,7 @@ import classNames from 'shared/lib/classNames/ClassNames'
 
 interface NoteBlockProps {
   className?: string;
-  value: string;
+  value?: string;
   onChange: (el: string) => void;
   onSave: () => void;
   onChancelEdit: () => void;
@@ -34,7 +34,6 @@ export const NoteBlock = memo(({className, value = '', onChancelEdit, onChange, 
         onSave()
         toggleEditMode()
     }
-
     return ( 
         <Box header={t('Заметки')} className={classNames(cls.NoteBlock, {}, [className])}>
             {!onlyRead && 
@@ -49,7 +48,9 @@ export const NoteBlock = memo(({className, value = '', onChancelEdit, onChange, 
                     __html: value
                         .replace('<', '')
                         .replace('>', '')
-                        .replace(/\n/g, '<br/>')
+                        .split(/\n/g)
+                        .map((el) => `<p>${el}</p>`)
+                        .join('')
                         .replace('[b]', '<b>')
                         .replace('[/b]', '</b>'),
                 }}></p>}

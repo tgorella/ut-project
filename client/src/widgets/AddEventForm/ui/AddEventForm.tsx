@@ -25,7 +25,12 @@ const eventInitialState = {
     _id: '',
     title: '',
     userId: '',
-    eventType: '',
+    eventType: {
+        _id: '',
+        name: '',
+        color: '',
+        isDefault: false
+    },
     startTime: '',
     endTime: '',
     place: '',

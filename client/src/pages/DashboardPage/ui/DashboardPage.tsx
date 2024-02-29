@@ -39,7 +39,7 @@ const DashboardPage = memo(({className} : DashboardPageProps) => {
     const orders = useSelector(getOrdersPageData)
 
     useEffect(() => {
-        dispatch(fetchAllOrders(''))
+        dispatch(fetchAllOrders({text: '', resParams: '_id total createdAt'}))
     }, [dispatch])
 
     ChartJS.register(
@@ -85,7 +85,7 @@ const DashboardPage = memo(({className} : DashboardPageProps) => {
         if (orders) {
             const filteredOrders = (monthNumber: number) => {
                 return orders.filter(
-                    (i: Order | OrderExtended) => Number(i.createdAt?.split('T')[0].split('-')[1]) === monthNumber
+                    (i: Order | OrderExtended) => Number((new Date(Number(i.createdAt)).toISOString()).split('T')[0].split('-')[1]) === monthNumber
                 )
             }
     

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import 'app/styles/index.scss'
 import { WithColorsTheme } from 'shared/config/storybook/ThemeDecorator/WithColorsTheme'
-import { Event } from 'entities/Event/model/types/Event'
+import { EventExtended } from 'entities/Event/model/types/Event'
 import { EventForm } from './EventForm'
 
 const meta: Meta<typeof EventForm> = {
@@ -16,13 +16,18 @@ const meta: Meta<typeof EventForm> = {
 export default meta
 type Story = StoryObj<typeof EventForm>;
 
-const event: Event = {
+const event: EventExtended = {
     title: 'Тестовое событие',
     eventDate: '2024-02-12',
     startTime: '12:00',
     endTime: '15:00',
     place: 'Moscow',
-    eventType: 'personal',
+    eventType: {
+        _id: '643e58efaba80539138865d2',
+        name: 'personal',
+        color: '#ff759f',
+        isDefault: false
+    },
     _id: 'sldjlsdj893945mnbxwe8',
     notes: 'Не забыть с собой документы',
     userId: '9348kjr873l34'

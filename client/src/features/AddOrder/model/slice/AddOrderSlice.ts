@@ -1,23 +1,32 @@
 import {PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { AddOrderSchema } from '../types/addOrderSchema'
-import { Order } from 'entities/Order'
+import { OrderExtended } from 'entities/Order'
 import { fetchProjects } from 'entities/Project'
 
 const initialState: AddOrderSchema = {
     data: {
-        clientId: '',
+        clientId: {},
         total: '',
         notes: '',
         eventDate: '',
         eventType: 'work',
         orderNumber: '',
         place: '',
-        status: '',
+        status: {
+            _id: '',
+            name: '',
+            color: ''
+        },
         startTime: '',
         endTime: '',
         title: '',
         userId: '',
-        projectType: ''
+        projectType: {
+            _id: '',
+            name: '',
+            userId: '',
+            stages: []
+        }
     },
     projects: []
     
@@ -27,7 +36,7 @@ export const addOrderSlice = createSlice({
     name: 'addOrder',
     initialState,
     reducers: {
-        updateNewOrderData: (state, action: PayloadAction<Partial<Order>>) => {
+        updateNewOrderData: (state, action: PayloadAction<Partial<OrderExtended>>) => {
             state.data = {
                 ...state.data,
                 ...action.payload

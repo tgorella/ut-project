@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { OrderDetailsSchema } from '../types/OrderDetailsSchema'
-import { Order } from '../types/OrderSchema'
+import { OrderExtended } from '../types/OrderSchema'
 import { getOrderById } from '../services/getOrderById/getOrderById'
 import { updateOrderData } from '../services/updateOrderData/updateOrderData'
 
@@ -12,21 +12,31 @@ const initialState: OrderDetailsSchema = {
     error: undefined
 }
 
-const formInitialState: Order = {
+const formInitialState: OrderExtended = {
     _id: '',
-    clientId: '',
+    clientId: {
+        _id: '',
+
+    },
     total: '',
     notes: '',
     eventDate: '',
     eventType: '',
     orderNumber: '',
     place: '',
-    status: '',
+    status: {
+        _id:'',
+        name: '',
+        color: ''},
     startTime: '',
     endTime: '',
     title: '',
     userId: '',
-    projectType: ''
+    projectType: {
+        _id:'',
+        name: '',
+        userId: '',
+        stages: []}
 }
 export const OrderDetailsSlice = createSlice({
     name: 'OrderDetails',
@@ -51,7 +61,7 @@ export const OrderDetailsSlice = createSlice({
                 state.error = undefined
                 state.isLoading = true
             })
-            .addCase(getOrderById.fulfilled, (state, action: PayloadAction<Order>) => {
+            .addCase(getOrderById.fulfilled, (state, action: PayloadAction<OrderExtended>) => {
                 state.isLoading = false
                 state.error = undefined
                 state.data = action.payload
@@ -64,7 +74,7 @@ export const OrderDetailsSlice = createSlice({
             .addCase(updateOrderData.pending, (state) => {
                 state.error = undefined
             })
-            .addCase(updateOrderData.fulfilled, (state, action: PayloadAction<Order>) => {
+            .addCase(updateOrderData.fulfilled, (state, action: PayloadAction<OrderExtended>) => {
                 state.data = action.payload
                 state.form = action.payload
 

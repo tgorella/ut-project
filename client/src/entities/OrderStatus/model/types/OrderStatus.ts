@@ -2,7 +2,7 @@ export interface OrderStatusDetails {
   _id: string,
   name: string,
   color:string,
-  isDefault:boolean,
+  isDefault?:boolean,
   userId?: string
 }
 

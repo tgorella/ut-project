@@ -1,18 +1,17 @@
 import cls from './EventBlock.module.scss'
 import classNames from 'shared/lib/classNames/ClassNames'
 import {HTMLAttributes, memo} from 'react'
-import { Event } from 'entities/Event/model/types/Event'
+import { EventExtended } from 'entities/Event/model/types/Event'
 
 
 interface EventBlockProps  extends HTMLAttributes<HTMLDivElement>{
   className?: string;
-  event: Event,
-  color: string
+  event: EventExtended
 }
-export const EventBlock = memo(({className, event, color, ...props} : EventBlockProps) => {
+export const EventBlock = memo(({className, event, ...props} : EventBlockProps) => {
     
     return ( 
-        <div className={classNames(cls.eventBlock, {}, [className])} style={{backgroundColor: color}} {...props} >
+        <div className={classNames(cls.eventBlock, {}, [className])} style={{backgroundColor: event.eventType.color}} {...props} >
             {event.title}
         </div>
     )

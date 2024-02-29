@@ -137,7 +137,12 @@ export const stateAllIn: StateSchema = {
             _id:'65c0dd1ead1c83296987d952',
             title:'Movie night 123',
             userId:'65988d28a1bc6c3d31acb718',
-            eventType:'643e5900aba80539138865d4',
+            eventType:{
+                _id: '643e58deaba80539138865d0',
+                name: 'Учеба',
+                color: '#bde2a8',
+                isDefault: false
+            },
             eventDate:'2024-02-17',
             startTime:'18:00',
             endTime:'21:00',
@@ -148,7 +153,12 @@ export const stateAllIn: StateSchema = {
             _id:'65c0e386ad1c83296987d96e',
             title:'Test123',
             userId:'65988d28a1bc6c3d31acb718',
-            eventType:'643e5900aba80539138865d4',
+            eventType:{
+                _id: '6467834500aba6813881d4',
+                name: 'Друзья',
+                color: 'blue',
+                isDefault: false
+            },
             eventDate:'2024-02-16',
             startTime:'13:00',
             endTime:'15:00',
@@ -161,7 +171,7 @@ export const stateAllIn: StateSchema = {
         isLoading: false,
         eventTypes: [{
             _id: '643e58deaba80539138865d0',
-            name: 'Учеьба',
+            name: 'Учеба',
             color: '#bde2a8',
             isDefault: false
         },
@@ -188,7 +198,12 @@ export const stateAllIn: StateSchema = {
             _id:'65c0dd1ead1c83296987d952',
             title:'Movie night 123',
             userId:'65988d28a1bc6c3d31acb718',
-            eventType:'65a850b0a26d859d25aecaf6',
+            eventType:{
+                _id: '643e58efaba80539138865d2',
+                name: 'Личное',
+                color: '#ff759f',
+                isDefault: false
+            },
             eventDate:'2024-02-17',
             startTime:'18:00',
             endTime:'21:00',
@@ -199,7 +214,12 @@ export const stateAllIn: StateSchema = {
             _id:'65c0dd1ead1c83296987d952',
             title:'Movie night 123',
             userId:'65988d28a1bc6c3d31acb718',
-            eventType:'65a850b0a26d859d25aecaf6',
+            eventType:{
+                _id: '643e58efaba80539138865d2',
+                name: 'Личное',
+                color: '#ff759f',
+                isDefault: false
+            },
             eventDate:'2024-02-17',
             startTime:'18:00',
             endTime:'21:00',
@@ -213,7 +233,12 @@ export const stateAllIn: StateSchema = {
             _id:'65c0dd1ead1c83296987d952',
             title:'Movie night 123',
             userId:'65988d28a1bc6c3d31acb718',
-            eventType:'643e5900aba80539138865d4',
+            eventType:{
+                _id: '643e58efaba80539138865d2',
+                name: 'Личное',
+                color: '#ff759f',
+                isDefault: false
+            },
             eventDate:'2024-02-17',
             startTime:'18:00',
             endTime:'21:00',
@@ -224,7 +249,12 @@ export const stateAllIn: StateSchema = {
             _id:'65c0dd1ead1c83296987d952',
             title:'Movie night 123',
             userId:'65988d28a1bc6c3d31acb718',
-            eventType:'643e5900aba80539138865d4',
+            eventType:{
+                _id: '643e58efaba80539138865d2',
+                name: 'Личное',
+                color: '#ff759f',
+                isDefault: false
+            },
             eventDate:'2024-02-17',
             startTime:'18:00',
             endTime:'21:00',
@@ -348,12 +378,21 @@ export const stateAllIn: StateSchema = {
             eventType: 'crm-work',
             orderNumber: '31',
             place: 'Лондон',
-            status: '643e58efaba80539138865d2',
+            status: {
+                _id:'643e58efaba80539138865d2',
+                name: '',
+                color: ''
+            },
             startTime: '10',
             endTime: '17',
             title: 'Первый заказ Джонни',
             userId: '643c36ad8545463c883af7a8',
-            projectType: '6469da05312bc36f4e9ecedc'
+            projectType: {
+                _id:'6469da05312bc36f4e9ecedc',
+                name: '',
+                userId: '',
+                stages: []}
+      
         },
         form: {
             _id: '64469ad32e53c6aa4c0746b6',
@@ -372,12 +411,20 @@ export const stateAllIn: StateSchema = {
             eventType: 'crm-work',
             orderNumber: '31',
             place: 'Лондон',
-            status: '643e58efaba80539138865d2',
+            status: {
+                _id:'643e58efaba80539138865d2',
+                name: '',
+                color: ''
+            },
             startTime: '10',
             endTime: '17',
             title: 'Первый заказ Дориана',
             userId: '643c36ad8545463c883af7a8',
-            projectType: '6469da05312bc36f4e9ecedc'
+            projectType: {
+                _id:'6469da05312bc36f4e9ecedc',
+                name: '',
+                userId: '',
+                stages: []}
         }
     },
     ordersPage: {
@@ -387,10 +434,16 @@ export const stateAllIn: StateSchema = {
         data: [
             {
                 _id:'65c6300f1ff36e56be85ec31',
-                clientId:'659bb190b1e8a9de6b4e5b53',
+                clientId:{
+                    _id: '659bb190b1e8a9de6b4e5b53'},
                 userId:'65988d28a1bc6c3d31acb718',
                 title:'Заказ в феврале',
-                projectType:'65b6b7fac7b2228b5761ab62',
+                projectType: {
+                    _id: '65b6b7fac7b2228b5761ab62',
+                    name: '',
+                    userId: '',
+                    stages: []
+                },
                 status:{
                     _id: '6467834500aba6813881d4',
                     name: '',
@@ -405,16 +458,21 @@ export const stateAllIn: StateSchema = {
                 endTime:'',
                 total:'56757',
                 steps:[],
-                createdAt:'2024-02-09T14:00:47.123Z',
+                createdAt:'1709192683393',
                 updatedAt:'2024-02-09T14:01:13.033Z',
                 orderNumber: '14'
             },
             {
                 _id:'65b10d79388072a2cc87c0a2',
-                clientId:'65b10d78388072a2cc87c0a0',
+                clientId:{
+                    _id: '65b10d78388072a2cc87c0a0'},
                 userId:'65988d28a1bc6c3d31acb718',
                 title:'Test1',
-                projectType:'65b7b18257fa328bb2d901a3',
+                projectType:{
+                    _id: '65b7b18257fa328bb2d901a3',
+                    name: '',
+                    userId: '',
+                    stages: []},
                 status: {
                     _id: '659bc05bec9c6a620f683036',
                     name: '',
@@ -429,15 +487,20 @@ export const stateAllIn: StateSchema = {
                 startTime:'12:00',
                 endTime:'14:00',
                 total:'100000',
-                createdAt:'2024-01-24T13:15:37.077Z',
+                createdAt:'1709192683393',
                 updatedAt:'2024-01-29T18:39:04.177Z',
             },
             {
                 _id:'659c13af2021bc9855b6b6eb',
-                clientId:'659bb1cdb1e8a9de6b4e5b5b',
+                clientId:{
+                    _id: '659bb1cdb1e8a9de6b4e5b5b'},
                 userId:'65988d28a1bc6c3d31acb718',
                 title:'Первый заказ Томаса',
-                projectType:'65b6b7fac7b2228b5761ab62',
+                projectType:{
+                    _id: '65b6b7fac7b2228b5761ab62',
+                    name: '',
+                    userId: '',
+                    stages: []},
                 status:{
                     _id: '659bc05bec9c6a620f683035',
                     name: '',
@@ -452,7 +515,7 @@ export const stateAllIn: StateSchema = {
                 startTime:'14:00',
                 endTime:'19:00',
                 total:'50000',
-                createdAt:'2024-01-08T15:24:31.132Z',
+                createdAt:'1704726875398',
                 updatedAt:'2024-02-05T21:52:00.759Z'
             }
         ]

@@ -109,7 +109,7 @@ export const OrderCard = memo(({className, id, children} : OrderProps) => {
     }, [dispatch])
 
     const handleChangeProjectType = useCallback((value: string) => {
-        dispatch(orderDetailsAction.updateOrder({projectType: value}))
+        dispatch(orderDetailsAction.updateOrder({projectType: {_id:value}}))
     }, [dispatch])
 
     const handleChangeTotal = useCallback((value: string) => {
@@ -121,7 +121,9 @@ export const OrderCard = memo(({className, id, children} : OrderProps) => {
     }, [dispatch])
 
     const handleChangeStatus = useCallback((value: string) => {
-        dispatch(orderDetailsAction.updateOrder({status: value}))
+        dispatch(orderDetailsAction.updateOrder({
+            status: {
+                _id: value}}))
         dispatch(updateOrderData(id))
         toggleStatusEditMode()
     }, [dispatch, id, toggleStatusEditMode])
@@ -135,6 +137,7 @@ export const OrderCard = memo(({className, id, children} : OrderProps) => {
     }, [dispatch, id])
 
     let content 
+
     if (isLoading || !data) {
         content = <PageLoader />
     }
@@ -145,15 +148,15 @@ export const OrderCard = memo(({className, id, children} : OrderProps) => {
     else {
         content = <>
             <div className={cls.status}>
-                {!statusEdit && <>{t('Статус')}: <OrderStatusBlock id={data?.status}/></>}
-                {statusEdit && <OrderStatusSelect onChange={handleChangeStatus} value={data.status}/>}
+                {!statusEdit && <>{t('Статус')}: <OrderStatusBlock status={data?.status}/></>}
+                {statusEdit && data.status && <OrderStatusSelect onChange={handleChangeStatus} value={data?.status?._id}/>}
                 <EditSwitcher  editMode={statusEdit} onEdit={toggleStatusEditMode} onChancelEdit={toggleStatusEditMode} className={cls.status_edit_btn}/>
             </div>
             <div className={classNames(cls.OrderDetailsPage, {}, [className])}>
                 <div className={cls.small_column} >
                     {children}
                     <Box>
-                        <ClientInfo data={data.clientId as Client} />
+                        <ClientInfo data={data?.clientId as Client} />
                     </Box>
                 </div>
                 <div className={cls.big_column}>
@@ -162,7 +165,7 @@ export const OrderCard = memo(({className, id, children} : OrderProps) => {
                         header={data?.title}
                         footer={<Text title={t('Стоимость')+': '+data?.total} />}>
                         <EditSwitcher  editMode={edit} onEdit={toggleEditMode} onChancelEdit={handleChancelEdit}  className={cls.edit_btn}/>
-                        {!edit && <OrderInfo orderInfo={{...data, projectType: projectNames[data.projectType]}} />}
+                        {!edit && <OrderInfo orderInfo={data} />}
                         {edit && <OrderForm  
                             data={data}
                             errors={errors}

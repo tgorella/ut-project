@@ -12,7 +12,6 @@ export const addOrderStatus = createAsyncThunk<OrderStatusDetails, Partial<Order
             const newStatus = {
                 ...data, isDefault: false
             }
-            console.log(newStatus)
             const response = await extra.api.post('/', {
                 'query': 'mutation Mutation($data: OrderStatusInput) { addOrderStatus(data: $data) { _id color name } }',
                 'operation-name': 'Mutation',

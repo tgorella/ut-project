@@ -10,8 +10,6 @@ const initialState: AddClientSchema = {
         phone: '',
         avatarUrls: '',
         profession: '',
-        createdAt: '',
-        updatedAt: '',
         userId: '',
         telegram: '',
         instagram: '',

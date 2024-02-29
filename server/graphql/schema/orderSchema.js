@@ -7,7 +7,7 @@ type Order {
   projectType: Project,
   status: OrderStatus,
   notes: String,
-  eventData: String,
+  eventDate: String,
   eventType: EventType,
   orderNumber: Int,
   place: String
@@ -25,7 +25,7 @@ input OrderInput {
   projectType: String!,
   status: String!,
   notes: String,
-  eventData: String,
+  eventDate: String,
   eventType: String,
   orderNumber: Int,
   place: String
@@ -41,7 +41,7 @@ input OrderInput {
   projectType: String,
   status: String,
   notes: String,
-  eventData: String,
+  eventDate: String,
   eventType: String,
   place: String
   startTime: String,

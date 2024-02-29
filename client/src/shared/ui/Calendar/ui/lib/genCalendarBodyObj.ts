@@ -1,15 +1,15 @@
-import { Event } from 'entities/Event'
+import { EventExtended } from 'entities/Event'
 import { CurrentDate } from './vars'
 
 interface BodyObjItem {
   number?: number,
-  events?: Event[]
+  events?: EventExtended[]
 }
 
 export type BodyObj = BodyObjItem[]
 
 
-export const genCalendarBodyObj = (thisMonthEvents: Event[] = [], currentDate: CurrentDate, totalDays: number): BodyObj => {
+export const genCalendarBodyObj = (thisMonthEvents: EventExtended[] = [], currentDate: CurrentDate, totalDays: number): BodyObj => {
     const monthStart = new Date(currentDate.year, currentDate.month, 1).getDay()
     const bodyObj: BodyObj = []
 

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import 'app/styles/index.scss'
 import { WithColorsTheme } from 'shared/config/storybook/ThemeDecorator/WithColorsTheme'
-import { Event } from 'entities/Event/model/types/Event'
+import { EventExtended } from 'entities/Event/model/types/Event'
 import { EventBlock } from './EventBlock'
 
 const meta: Meta<typeof EventBlock> = {
@@ -16,13 +16,18 @@ const meta: Meta<typeof EventBlock> = {
 export default meta
 type Story = StoryObj<typeof EventBlock>;
 
-const event: Event = {
+const event: EventExtended = {
     title: 'Тестовый заказ',
     eventDate: '2024-02-12',
     startTime: '12:00',
     endTime: '15:00',
     place: 'Moscow',
-    eventType: 'personal',
+    eventType:{
+        _id: '6467834500aba6813881d4',
+        name: 'Друзья',
+        color: 'blue',
+        isDefault: false
+    },
     _id: 'sldjlsdj893945mnbxwe8',
     notes: 'Не забыть с собой документы',
     userId: '9348kjr873l34'

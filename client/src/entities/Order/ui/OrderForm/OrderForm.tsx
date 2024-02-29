@@ -1,12 +1,12 @@
 import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
 import { Input } from 'shared/ui/Input/Input'
 import cls from './OrderForm.module.scss'
-import { Order} from 'entities/Order'
+import { Order, OrderExtended} from 'entities/Order'
 import { useTranslation } from 'react-i18next'
 import { ProjectSelect } from 'entities/Project/ui/ProjectSelect/ProjectSelect'
 
 interface OrderFormProps {
-  data: Order,
+  data: OrderExtended,
   errors: Partial<Order>,
   withButton?: boolean,
   onChangeTitle: (value: string) => void,
@@ -44,15 +44,17 @@ export const OrderForm = ({
                 name='title'
                 error={errors?.title}
             />
+            {data.projectType &&
             <ProjectSelect 
-                value={data.projectType} 
+                value={data.projectType._id} 
                 onChange={onChangeProjectType} 
             />
+            }
             <Input 
                 label={t('Дата')} 
                 value={data?.eventDate}  
                 onChange={onChangeEventDate} 
-                name='eventData' 
+                name='eventDate' 
                 error={errors.eventDate}
                 type='date'
             />

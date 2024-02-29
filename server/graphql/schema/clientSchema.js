@@ -8,6 +8,8 @@ type Client {
     phone: String,
     avatarUrls: String,
     profession: String,
+    telegram: String,
+    instagram: String,
     address: String,
     isFav: Boolean,
     userId: String
@@ -20,9 +22,11 @@ input ClientInput {
     phone: String,
     avatarUrls: String,
     profession: String,
+    telegram: String,
+    instagram: String,
     address: String,
     isFav: Boolean,
-    userId:String!
+    userId:String
  }
 
  input ClientNewDataInput {
@@ -33,6 +37,8 @@ input ClientInput {
     phone: String,
     avatarUrls: String,
     profession: String,
+    telegram: String,
+    instagram: String,
     address: String,
     isFav: Boolean,
  }

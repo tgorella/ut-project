@@ -5,13 +5,12 @@ import { Client } from 'entities/Clients'
 import { getUserAuthData } from 'entities/User'
 import { addClientButtonAction } from '../../slice/AddClientButtonSlice'
 import { getNewClientData } from 'features/AddClient/model/selectors/getNewClientData/getNewClientData'
-import httpService from 'shared/api/api'
 
 
 export const addClient = createAsyncThunk<Client, void,ThunkConfig<string>>(
     'clientAddButton/addClient',
     async (_, thunkAPI) => {
-        const {rejectWithValue, dispatch, getState} = thunkAPI
+        const {rejectWithValue, dispatch, getState, extra} = thunkAPI
         const authData = getUserAuthData(getState())
         const newClient = getNewClientData(getState())
         
@@ -20,8 +19,12 @@ export const addClient = createAsyncThunk<Client, void,ThunkConfig<string>>(
         }
 
         try {
-            const {data} = await httpService.post<Client>('/client', {
-                ...newClient
+            const {data} = await extra.api.post('/', {
+                'query': 'mutation AddClient($data: ClientInput) { addClient(data: $data) { _id name avatarUrls email profession } }',
+                'operation-name': 'AddClient',
+                'variables': {
+                    'data': newClient
+                }
             })
 
             if (!data) {
@@ -30,7 +33,7 @@ export const addClient = createAsyncThunk<Client, void,ThunkConfig<string>>(
             setTimeout(() => {
                 dispatch(addClientButtonAction.reset())
             }, 3000)
-            return data
+            return data.data.addClient
         } catch (error) {
             return rejectWithValue(i18n.t('Неправильные логин или пароль'))
         }
