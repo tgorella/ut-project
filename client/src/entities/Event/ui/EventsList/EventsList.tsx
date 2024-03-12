@@ -3,7 +3,7 @@ import classNames from 'shared/lib/classNames/ClassNames'
 import {memo} from 'react'
 import { PageLoader } from 'widgets/PageLoader'
 import { EventListItem } from '../EventsListItem/EventsListItem'
-import { Event } from 'entities/Event/model/types/Event'
+import { Event } from '../../model/types/Event'
 import { Alert, AlertTheme } from 'shared/ui/Alert'
 import { useTranslation } from 'react-i18next'
 

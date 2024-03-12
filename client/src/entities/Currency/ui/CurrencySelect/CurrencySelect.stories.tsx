@@ -1,7 +1,7 @@
 import type {  Meta, StoryObj } from '@storybook/react'
 import { WithColorsTheme } from 'shared/config/storybook/ThemeDecorator/WithColorsTheme'
 import { CurrencySelect } from './CurrencySelect'
-import { Currency } from 'entities/Currency/model/types/сurrency'
+import { Currency } from '../../model/types/сurrency'
 
 const meta: Meta<typeof CurrencySelect> = {
     title: 'entities/CurrencySelect',

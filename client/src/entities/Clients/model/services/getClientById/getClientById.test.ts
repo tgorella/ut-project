@@ -36,3 +36,4 @@ describe('getClientById.test', () => {
         expect(result.meta.requestStatus).toBe('rejected')
     })
 })
+

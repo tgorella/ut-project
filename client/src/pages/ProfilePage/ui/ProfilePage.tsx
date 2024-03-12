@@ -90,7 +90,7 @@ const ProfilePage = memo(({className} : ProfilePageProps) => {
     }, [data?.newPassword, data?.repeatPassword, dispatch])
 
     return ( 
-        <DynamicModuleLoader reducers={reducers} >
+        <DynamicModuleLoader reducers={reducers}>
             <div className={cls.page_wrapper}>
                 <h2 className={cls.title}>{t('Profile page')}</h2>
                 <div className={classNames(cls.ProfilePage, {}, [className])}>

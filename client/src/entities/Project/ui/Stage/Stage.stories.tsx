@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import 'app/styles/index.scss'
 import { WithColorsTheme } from 'shared/config/storybook/ThemeDecorator/WithColorsTheme'
 import { Stage } from './Stage'
-import { ProjectStage } from 'entities/Project/model/types/Project'
+import { ProjectStage } from '../../model/types/Project'
 import { UserStoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator'
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export

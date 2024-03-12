@@ -3,10 +3,10 @@ import cls from './Calendar.module.scss'
 import { BodyObj } from './lib/genCalendarBodyObj'
 import { useSelector } from 'react-redux'
 import { getEventTypeEditData } from 'widgets/EventTypesEdit/model/selectors/getEventTypeEditData/getEventTypeEditData'
-import { PreviewWindow } from 'shared/ui/PreviewWindow'
+import { PreviewWindow } from '../../PreviewWindow'
 import { useState } from 'react'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
-import { Alert, AlertTheme } from 'shared/ui/Alert'
+import { Alert, AlertTheme } from '../../Alert'
 import { useTranslation } from 'react-i18next'
 
 interface CalendarBodyProps {

@@ -6,7 +6,7 @@ import {
 import { StateSchema } from 'app/providers/StoreProvider'
 import { Client } from 'entities/Clients'
 import { ClientsPageSchema } from '../types/clientsPageSchema'
-import { fetchClients } from 'pages/ClientsPage/model/services/fetchAll/fetchClients'
+import { fetchClients } from '../../model/services/fetchAll/fetchClients'
 import { getClientsBySearch } from '../services/getClientsBySearch/getClientsBySearch'
 import { addClient } from '../../../../widgets/AddClientButton/module/services/AddClient/addClient'
 

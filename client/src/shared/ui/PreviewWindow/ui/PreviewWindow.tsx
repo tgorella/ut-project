@@ -2,7 +2,7 @@
 import { memo, useCallback } from 'react'
 import cls from './PreviewWindow.module.scss'
 import classNames from 'shared/lib/classNames/ClassNames'
-import { CloseBtn } from 'shared/ui/CloseBtn'
+import { CloseBtn } from '../../CloseBtn'
 
 interface PreviewWindowProps {
   className?: string;

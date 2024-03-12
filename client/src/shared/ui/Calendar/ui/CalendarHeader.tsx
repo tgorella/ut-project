@@ -1,5 +1,5 @@
-import { AppButton } from 'shared/ui/AppButton/AppButton'
-import { HStack } from 'shared/ui/HStack/HStack'
+import { AppButton } from '../../AppButton/AppButton'
+import { HStack } from '../../HStack/HStack'
 import cls from './Calendar.module.scss'
 import { CurrentDate, monthInfo } from './lib/vars'
 import { useTranslation } from 'react-i18next'

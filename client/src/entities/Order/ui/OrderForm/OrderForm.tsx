@@ -1,7 +1,7 @@
 import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
 import { Input } from 'shared/ui/Input/Input'
 import cls from './OrderForm.module.scss'
-import { Order, OrderExtended} from 'entities/Order'
+import { Order, OrderExtended} from '../../model/types/OrderSchema'
 import { useTranslation } from 'react-i18next'
 import { ProjectSelect } from 'entities/Project/ui/ProjectSelect/ProjectSelect'
 

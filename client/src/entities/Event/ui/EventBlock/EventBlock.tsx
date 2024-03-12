@@ -1,7 +1,7 @@
 import cls from './EventBlock.module.scss'
 import classNames from 'shared/lib/classNames/ClassNames'
 import {HTMLAttributes, memo} from 'react'
-import { EventExtended } from 'entities/Event/model/types/Event'
+import { EventExtended } from '../../model/types/Event'
 
 
 interface EventBlockProps  extends HTMLAttributes<HTMLDivElement>{

@@ -2,10 +2,10 @@ import cls from './RegistrationForm.module.scss'
 import classNames from 'shared/lib/classNames/ClassNames'
 import {memo, useEffect, useState} from 'react'
 import formGenerator, { FormItem, FromComponent } from 'shared/lib/formGenerator/formGenerator'
-import registrationFormValidation from 'features/AuthByUsername/model/lib/registrationFormValidation/registrationFormValidation'
+import registrationFormValidation from '../../model/lib/registrationFormValidation/registrationFormValidation'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { useTranslation } from 'react-i18next'
-import { signUp } from 'features/AuthByUsername/model/services/signUp/signUp'
+import { signUp } from '../../model/services/signUp/signUp'
 import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
 
 

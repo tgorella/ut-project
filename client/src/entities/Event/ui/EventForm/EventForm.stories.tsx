@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import 'app/styles/index.scss'
 import { WithColorsTheme } from 'shared/config/storybook/ThemeDecorator/WithColorsTheme'
-import { EventExtended } from 'entities/Event/model/types/Event'
+import { EventExtended } from '../../model/types/Event'
 import { EventForm } from './EventForm'
 
 const meta: Meta<typeof EventForm> = {

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import 'app/styles/index.scss'
 import { WithColorsTheme } from 'shared/config/storybook/ThemeDecorator/WithColorsTheme'
 import { OrderStatusInput } from './OrderStatusInput'
-import { OrderStatusDetails } from 'entities/OrderStatus/model/types/OrderStatus'
+import { OrderStatusDetails } from '../../../model/types/OrderStatus'
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof OrderStatusInput> = {

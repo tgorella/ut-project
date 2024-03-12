@@ -7,11 +7,11 @@ import { Stage } from '../Stage/Stage'
 import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
 import { PlusCircle, Trash2 } from 'lucide-react'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
-import { deleteProject } from 'entities/Project/model/services/deleteProject/deleteProject'
+import { deleteProject } from '../../model/services/deleteProject/deleteProject'
 import { useTranslation } from 'react-i18next'
 import React from 'react'
 import ContentEditable, { ContentEditableEvent } from 'react-contenteditable'
-import { updateProject } from 'entities/Project/model/services/updateProject/updateProject'
+import { updateProject } from '../../model/services/updateProject/updateProject'
 
 interface ProjectProps {
   className?: string;

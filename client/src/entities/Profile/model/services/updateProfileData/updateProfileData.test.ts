@@ -6,35 +6,37 @@ import { updateProfileData } from './updateProfileData'
 describe('updateProfileData.test', () => {
 
     test('success', async() => {
-        const data = {
-            firstname:'Name',
-            lastname:'Surname',
-            age:38,
-            currency:Currency.RUB,
-            country:Country.Russia,
-            city:'NY',
-            username:'lol',
-            avatar:''
-        }
+        const data = { data: { 
+            updateUser: {
+                avatar:'https://img.freepik.com/premium-photo/robot-with-cute-face_821898-1076.jpg',
+                city:'Moscow',
+                country:Country.Russia,
+                currency:Currency.RUB,
+                email:'tratata@mail.ru',
+                firstname:'Robo',
+                lastOrderNumber:'22',
+                lastname:'Kit',
+                username:'tratata'
+            }}}
 
         const thunk = new TestAsyncThunk(updateProfileData, {
             profile: {
-                form: data
+                form: data.data.updateUser
             }
         })
-        thunk.api.patch.mockReturnValue(Promise.resolve({data}))
+        thunk.api.post.mockReturnValue(Promise.resolve({data}))
 
         const result = await thunk.callThunk()
 
-        expect(thunk.api.patch).toHaveBeenCalled()
+        expect(thunk.api.post).toHaveBeenCalled()
         expect(result.meta.requestStatus).toBe('fulfilled')
-        expect(result.payload).toEqual(data)
+        expect(result.payload).toEqual(data.data.updateUser)
 
     })
     test('error fetch', async() => {
         
         const thunk = new TestAsyncThunk(updateProfileData)
-        thunk.api.get.mockReturnValue(Promise.resolve({status: 403}))
+        thunk.api.post.mockReturnValue(Promise.resolve({status: 403}))
         const result = await thunk.callThunk()
         
         expect(result.meta.requestStatus).toBe('rejected')

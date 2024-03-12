@@ -1,7 +1,7 @@
 import {PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { ProjectSelectSchema } from '../types/projectSelect'
-import { fetchProjects } from 'entities/Project/model/services/fetchAllProjects/fetchAllProjects'
-import { Project } from 'entities/Project/model/types/Project'
+import { fetchProjects } from '../../../../model/services/fetchAllProjects/fetchAllProjects'
+import { Project } from '../../../../model/types/Project'
 
 const initialState: ProjectSelectSchema = {
     isLoading: false,

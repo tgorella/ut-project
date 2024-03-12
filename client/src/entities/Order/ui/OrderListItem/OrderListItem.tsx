@@ -1,4 +1,4 @@
-import { Order, OrderExtended } from 'entities/Order/model/types/OrderSchema'
+import { Order, OrderExtended } from '../../model/types/OrderSchema'
 import cls from './OrderListItem.module.scss'
 import classNames from 'shared/lib/classNames/ClassNames'
 import { Column } from 'shared/ui/Table/model/types/tableSchema'

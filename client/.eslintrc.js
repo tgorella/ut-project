@@ -43,7 +43,8 @@ module.exports = {
         '@typescript-eslint',
         'react', 
         'i18next',
-        'react-hooks'
+        'react-hooks',
+        'watcher-plugin'
     ],
     'rules': {
         'react/jsx-indent': [
@@ -75,5 +76,6 @@ module.exports = {
         'react-hooks/exhaustive-deps': 'error',
         '@typescript-eslint/no-var-requires': 'off',
         'react/display-name': 'off',
+        'watcher-plugin/patch-checker': 'error'
     }
 }

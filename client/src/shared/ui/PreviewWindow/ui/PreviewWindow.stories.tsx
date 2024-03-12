@@ -3,7 +3,7 @@ import type {  Meta, StoryObj } from '@storybook/react'
 import { DarkDecorator } from 'shared/config/storybook/ThemeDecorator/DarkDecorator'
 import { LightDecorator } from 'shared/config/storybook/ThemeDecorator/LightDecorator'
 import { PreviewWindow } from './PreviewWindow'
-import { Text } from 'shared/ui/Text'
+import { Text } from '../../Text'
 
 const meta: Meta<typeof PreviewWindow> = {
     title: 'shared/PreviewWindow',

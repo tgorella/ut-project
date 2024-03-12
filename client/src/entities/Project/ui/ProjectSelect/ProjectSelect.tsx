@@ -10,7 +10,7 @@ import { getProjectSelectError } from './model/selectors/getProjectSelectError/g
 import { PageLoader } from 'widgets/PageLoader'
 import { Alert, AlertTheme } from 'shared/ui/Alert'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
-import { fetchProjects } from 'entities/Project'
+import { fetchProjects } from '../../model/services/fetchAllProjects/fetchAllProjects'
 
 interface ProjectSelectProps {
   className?: string;

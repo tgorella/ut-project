@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import 'app/styles/index.scss'
 import { WithColorsTheme } from 'shared/config/storybook/ThemeDecorator/WithColorsTheme'
-import { Event } from 'entities/Event/model/types/Event'
+import { Event } from '../../model/types/Event'
 import { EventListItem } from './EventsListItem'
 
 const meta: Meta<typeof EventListItem> = {

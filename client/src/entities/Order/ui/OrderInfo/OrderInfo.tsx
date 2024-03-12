@@ -1,4 +1,4 @@
-import { OrderExtended } from 'entities/Order/model/types/OrderSchema'
+import { OrderExtended } from '../../model/types/OrderSchema'
 import cls from './OrderInfo.module.scss'
 import { useTranslation } from 'react-i18next'
 

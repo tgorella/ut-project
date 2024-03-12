@@ -1,6 +1,6 @@
 import cls from './OrderStatusInput.module.scss'
 import {memo} from 'react'
-import { OrderStatusDetails } from 'entities/OrderStatus/model/types/OrderStatus'
+import { OrderStatusDetails } from '../../../model/types/OrderStatus'
 import { Input } from 'shared/ui/Input/Input'
 import EDIT_ICON from 'shared/assets/img/pencil.svg'
 import DELETE_ICON from 'shared/assets/img/delete.svg'

@@ -111,7 +111,7 @@ const DashboardPage = memo(({className} : DashboardPageProps) => {
     }
 
     return ( 
-        <DynamicModuleLoader reducers={reducers} removeAfterUnmount={true}>
+        <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
             <Vstack className={classNames(cls.DashboardPage, {}, [className])}>
                 <p className={cls.greeting}>{greeting()+ ', ' + userInfo?.firstname + ' '+ userInfo?.lastname}</p>
                 <p className={cls.sentence}>{randomSentence}</p>
