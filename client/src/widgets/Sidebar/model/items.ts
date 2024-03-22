@@ -27,7 +27,7 @@ export const SidebarItemsList: SidebarItemType[] = [
     {
         path: RoutePath.dashboard,
         icon: MainIcon,
-        text: 'Главная',
+        text: 'Dashboard',
         isAuth: true,
         module: false
     },  
