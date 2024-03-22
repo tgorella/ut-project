@@ -23,7 +23,7 @@ import { ordersPageReducer } from 'pages/OrdersPage/model/slice/OrdersPageSlice'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { fetchAllOrders } from 'pages/OrdersPage/model/services/fetchAllOrders/fetchAllOrders'
 import { Box } from 'shared/ui/Box'
-import { VStack } from 'shared/ui/Vstack/Vstack'
+import { VStack } from 'shared/ui/Stack/VStack/VStack'
 
 interface DashboardPageProps {
   className?: string;

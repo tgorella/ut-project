@@ -12,6 +12,7 @@ import { AppModules } from 'entities/AppModules/model/types/AppModules'
 import { AuthButton } from 'widgets/AuthButton'
 import { LangSwitcher } from 'widgets/LangSwitcher'
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher'
+import { VStack } from 'shared/ui/Stack'
 
 
 interface SidebarProps {
@@ -46,17 +47,19 @@ export const Sidebar = memo(({ className = ''}: SidebarProps) => {
 
 
     return (
-        <div
+        <VStack
+            max
+            gap='10'
             data-testid='sidebar'
             className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [
                 className
             ])}
         >
             <img src={LOGO} className={cls.logo} />
-            <div className={cls.links_wrapper}>
-                <div className={cls.list}>
+            <VStack max>
+                <VStack max>
                     {itemsList}
-                </div>
+                </VStack>
                 <div>
                     <div className={cls.only_mobile}>
                         <div className={cls.switcher_wrapper}>
@@ -67,7 +70,7 @@ export const Sidebar = memo(({ className = ''}: SidebarProps) => {
                     </div>
                 </div>
                 
-            </div>
+            </VStack>
             <AppButton 
                 square 
                 theme={ButtonTheme.SOLID}
@@ -77,6 +80,6 @@ export const Sidebar = memo(({ className = ''}: SidebarProps) => {
                 onClick={toggleSidebar} >
                 {!collapsed ? '«': '»'}
             </AppButton>
-        </div>
+        </VStack>
     )
 })

@@ -1,7 +1,7 @@
 import cls from './Calendar.module.scss'
 import classNames from 'shared/lib/classNames/ClassNames'
 import {memo, useState} from 'react'
-import { VStack } from 'shared/ui/Vstack/Vstack'
+import { VStack } from 'shared/ui/Stack/VStack/VStack'
 import { CalendarHeader } from './CalendarHeader'
 import { CurrentDate, monthInfo } from './lib/vars'
 import { genCalendarBodyObj } from './lib/genCalendarBodyObj'

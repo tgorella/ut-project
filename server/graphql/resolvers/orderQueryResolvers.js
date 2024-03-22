@@ -52,10 +52,9 @@ const orderQueryResolvers = {
   filteredOrders: async (_, args, context) => {
     checkAuth(context)
     const search = new RegExp(args.data, "i")
-    const num = new RegExp(Number(args.data), "i")
+    const num = new RegExp(args.data, "i")
     try {
       if (args.data !== '' && Number(args.data) == args.data) {
-        console.log(num)
         const list = await Order.find({ userId: context.user._id}).populate([
           'status',
           'projectType',

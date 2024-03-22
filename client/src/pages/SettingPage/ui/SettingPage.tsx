@@ -8,7 +8,7 @@ import { bulletMenuItemSchema } from 'shared/ui/BulletMenu/model/types/bulletMen
 import { ProfilePage } from 'pages/ProfilePage'
 import { EventTypesEdit } from 'widgets/EventTypesEdit'
 import { ProjectEdit } from 'widgets/ProjectEdit'
-import { VStack } from 'shared/ui/Vstack/Vstack'
+import { VStack } from 'shared/ui/Stack/VStack/VStack'
 
 
 interface SettingPageProps {

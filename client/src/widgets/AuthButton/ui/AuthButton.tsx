@@ -12,9 +12,8 @@ import { Dropdown } from 'shared/ui/Dropdown'
 import { Avatar, AvatarSize } from 'shared/ui/Avatar/Avatar'
 import { DropDownItem } from 'shared/ui/Dropdown/ui/Dropdown'
 import { RoutePath } from 'shared/config/routeConfig/routeConfig'
-import { HStack } from 'shared/ui/HStack/HStack'
-import { Text } from 'shared/ui/Text'
-
+import { HStack } from 'shared/ui/Stack/HStack/HStack'
+import cls from './AuthButton.module.scss'
 
 interface AuthButtonProps {
   className?: string;
@@ -62,9 +61,9 @@ export const AuthButton = memo(({className} : AuthButtonProps) => {
         <div className={classNames(className, {}, [])}>
             <Dropdown 
                 items={items}
-                trigger={<HStack>
+                trigger={<HStack gap='10'>
+                    <div className={cls.name}>{userData?.firstname + ' ' + userData?.lastname}</div>
                     <Avatar  src={userData?.avatar} size={AvatarSize.S} />
-                    <Text text={userData?.firstname + ' ' + userData?.lastname} />
                 </HStack>} 
                 // eslint-disable-next-line i18next/no-literal-string
                 position={'bottom-right'} 

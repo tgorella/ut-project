@@ -1,7 +1,9 @@
 .Flex {
   display: flex;
 }
-
+.max {
+  width: 100%;
+}
 .justifyStart {
   justify-content: flex-start;
 }
