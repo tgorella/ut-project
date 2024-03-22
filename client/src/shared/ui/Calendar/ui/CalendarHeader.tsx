@@ -16,11 +16,13 @@ export const CalendarHeader = ({currentDate, onNextMont, onPrevMonth, onToday} :
     const {t} = useTranslation()
 
     return ( 
-        <HStack className={cls.navWrapper}>
+        <HStack 
+            justify='between' 
+            className={cls.navWrapper}>
             <div className={cls.monthName}>
                 {monthInfo(currentDate.year)[currentDate.month as keyof typeof monthInfo].name} {currentDate.year}
             </div>
-            <HStack>
+            <HStack justify='end'>
                 <AppButton title={t('Назад')} onClick={onPrevMonth}><ChevronLeft size={32} /></AppButton>
                 <AppButton title={t('Вперед')} onClick={onNextMont}><ChevronRight size={32} /></AppButton>
                 <AppButton title={t('Сегодня')} onClick={onToday}>{t('Сегодня')}</AppButton>

@@ -23,7 +23,7 @@ import { ordersPageReducer } from 'pages/OrdersPage/model/slice/OrdersPageSlice'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { fetchAllOrders } from 'pages/OrdersPage/model/services/fetchAllOrders/fetchAllOrders'
 import { Box } from 'shared/ui/Box'
-import { Vstack } from 'shared/ui/Vstack/Vstack'
+import { VStack } from 'shared/ui/Vstack/Vstack'
 
 interface DashboardPageProps {
   className?: string;
@@ -112,7 +112,7 @@ const DashboardPage = memo(({className} : DashboardPageProps) => {
 
     return ( 
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
-            <Vstack className={classNames(cls.DashboardPage, {}, [className])}>
+            <VStack className={classNames(cls.DashboardPage, {}, [className])}>
                 <p className={cls.greeting}>{greeting()+ ', ' + userInfo?.firstname + ' '+ userInfo?.lastname}</p>
                 <p className={cls.sentence}>{randomSentence}</p>
                 <Box>
@@ -120,7 +120,7 @@ const DashboardPage = memo(({className} : DashboardPageProps) => {
                 </Box>
                 
                     
-            </Vstack>
+            </VStack>
         </DynamicModuleLoader>
     )
 })
