@@ -168,6 +168,15 @@ export default {
     testPathIgnorePatterns: [
         '.fttemplates'
     ],
+    'reporters': [
+        'default',
+        ['./node_modules/jest-html-reporter', {
+            'pageTitle': 'Test Report',
+            'outputPath': '<rootDir>/reports/unit/test-report.html',
+            'includeFailureMsg': true,
+
+        }]
+    ]
 
     // The regexp pattern or array of patterns that Jest uses to detect test files
     // testRegex: [],
