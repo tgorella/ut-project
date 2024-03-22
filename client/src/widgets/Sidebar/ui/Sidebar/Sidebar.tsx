@@ -9,9 +9,6 @@ import { getUserAuthData } from 'entities/User'
 import LOGO from 'shared/assets/img/logo.png'
 import { getUserModulesData } from 'entities/AppModules'
 import { AppModules } from 'entities/AppModules/model/types/AppModules'
-import { AppLink } from 'shared/ui/AppLink/AppLink'
-import SETTING_ICON from 'shared/assets/img/settings.svg'
-import { useTranslation } from 'react-i18next'
 import { AuthButton } from 'widgets/AuthButton'
 import { LangSwitcher } from 'widgets/LangSwitcher'
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher'
@@ -23,7 +20,6 @@ interface SidebarProps {
 export const Sidebar = memo(({ className = ''}: SidebarProps) => {
     const [collapsed, setCollapsed] = useState(false)
 
-    const {t} = useTranslation()
     const authData = useSelector(getUserAuthData) ?? {_id: ''}
     const modules = useSelector(getUserModulesData)
     
@@ -62,10 +58,6 @@ export const Sidebar = memo(({ className = ''}: SidebarProps) => {
                     {itemsList}
                 </div>
                 <div>
-                    <AppLink to={'settings'} className={classNames(cls['menu-item'], {[cls.collapsed]: collapsed}, [cls.link])}>
-                        <SETTING_ICON className={cls.icon}/>
-                        <div>{t('Настройки')}</div>
-                    </AppLink>
                     <div className={cls.only_mobile}>
                         <div className={cls.switcher_wrapper}>
                             <LangSwitcher />

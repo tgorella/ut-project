@@ -6,8 +6,14 @@ import { LoginModal } from 'features/AuthByUsername'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { profileAction } from 'entities/Profile'
+import { getProfileData, profileAction } from 'entities/Profile'
 import { appModulesAction } from 'entities/AppModules'
+import { Dropdown } from 'shared/ui/Dropdown'
+import { Avatar, AvatarSize } from 'shared/ui/Avatar/Avatar'
+import { DropDownItem } from 'shared/ui/Dropdown/ui/Dropdown'
+import { RoutePath } from 'shared/config/routeConfig/routeConfig'
+import { HStack } from 'shared/ui/HStack/HStack'
+import { Text } from 'shared/ui/Text'
 
 
 interface AuthButtonProps {
@@ -19,6 +25,7 @@ export const AuthButton = memo(({className} : AuthButtonProps) => {
     const navigate = useNavigate()
     const [isAuthModal, setIsAuthModal] = useState(false)
     const authData = useSelector(getUserAuthData)
+    const userData = useSelector(getProfileData)
     const toggleModal = useCallback(() => {
         setIsAuthModal((prev) => !prev)
     }, [])
@@ -30,7 +37,18 @@ export const AuthButton = memo(({className} : AuthButtonProps) => {
         navigate?.('/')
   
     }
-       
+    const items: DropDownItem[] = [
+        {
+            content: t('Настройки'),
+            href: RoutePath.settings
+
+        },  
+        {
+            content: t('Выйти'),
+            onClick: handleLogout
+                       
+        }
+    ]
 
     if (!authData || authData._id === '' ) {
         return ( 
@@ -42,7 +60,15 @@ export const AuthButton = memo(({className} : AuthButtonProps) => {
     }
     return ( 
         <div className={classNames(className, {}, [])}>
-            {authData._id !== '' && <AppButton theme={ButtonTheme.SOLID} onClick={handleLogout}>{t('Выйти')}</AppButton> }
+            <Dropdown 
+                items={items}
+                trigger={<HStack>
+                    <Avatar  src={userData?.avatar} size={AvatarSize.S} />
+                    <Text text={userData?.firstname + ' ' + userData?.lastname} />
+                </HStack>} 
+                // eslint-disable-next-line i18next/no-literal-string
+                position={'bottom-right'} 
+            />
         </div>
     )
 })

@@ -16,11 +16,12 @@
 .list {
     display: flex;
     gap: 20px;
-}
-
-.switcherWrapper {
+  }
+  
+  .switcherWrapper {
     display: flex;
     gap: 40px;
+    align-items: center;
 
     @media screen and (max-width: 600px) {
         display: none;
