@@ -54,6 +54,15 @@ const orderQueryResolvers = {
     const search = new RegExp(args.data, "i")
     const num = new RegExp(Number(args.data), "i")
     try {
+      if (args.data !== '' && Number(args.data) == args.data) {
+        console.log(num)
+        const list = await Order.find({ userId: context.user._id}).populate([
+          'status',
+          'projectType',
+        ]).or([{orderNumber: args.data}]).sort({createdAt: -1})
+        
+        return list
+      }
       const list = await Order.find({ userId: context.user._id}).populate([
         'status',
         'projectType',
