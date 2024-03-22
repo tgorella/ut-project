@@ -10,7 +10,7 @@ export const fetchEventTypes = createAsyncThunk<EventType[], void,ThunkConfig<st
         const {rejectWithValue, extra} = thunkAPI
         try {
             const list = await extra.api.post('/', {
-                'query': 'query Query { eventTypes { _id color name } }',
+                'query': 'query Query { eventTypes { _id color name isDefault } }',
                 'operation-name': 'Query'
             })
             

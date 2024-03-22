@@ -10,7 +10,7 @@ export const fetchOrderStatuses = createAsyncThunk<OrderStatusDetails[], void,Th
         const {rejectWithValue, extra} = thunkAPI
         try {
             const list = await extra.api.post('/', {
-                'query': 'query Query { orderStatuses { _id color name } }',
+                'query': 'query Query { orderStatuses { _id color name isDefault } }',
                 'operation-name': 'Query'
             })
             
