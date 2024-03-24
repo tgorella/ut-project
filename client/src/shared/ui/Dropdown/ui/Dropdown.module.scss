@@ -1,61 +1,61 @@
 .Dropdown {
-  padding: 0;
-  position: relative;
- 
+    padding: 0;
+    position: relative;
 }
 
 .menu {
-  display: flex;
-  flex-direction: column;
-position: absolute;
-z-index: 10000;
-background-color: var(--darker-bg-color);
-border-radius: 9px;
-overflow: hidden;
-margin-block: 10px;
-padding: 5px;
+    background-color: var(--darker-bg-color);
+    border-radius: 9px;
+    display: flex;
+    flex-direction: column;
+    margin-block: 10px;
+    overflow: hidden;
+    padding: 5px;
+    position: absolute;
+    z-index: 10000;
 }
 
 .btn {
-  border: 0;
-  outline-color: transparent;
-  color: #fff;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: transparent;
+    align-items: center;
+    background-color: transparent;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    outline-color: transparent;
 }
+
 .item {
-  padding: 5px 15px;
-  background-color: transparent;
-  border: 0;
-  color: var(--primary-text);
-  border-radius: 7px;
-  cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    border-radius: 7px;
+    color: var(--primary-text);
+    cursor: pointer;
+    padding: 5px 15px;
 }
 
 .active {
-  background-color: var(--accent);
-  color: var(--primary-color)
+    background-color: var(--accent);
+    color: var(--primary-color);
 }
 
 .bottom-right {
- top: 100%;
-  right: 0;
+    right: 0;
+    top: 100%;
 }
 
 .bottom-left {
-  top: 100%;
-  left: 0;
+    left: 0;
+    top: 100%;
 }
 
 .top-right {
-  bottom: 100%;
-  right: 0;
+    bottom: 100%;
+    right: 0;
 }
 
 .top-left {
-  bottom: 100%;
-  left: 0;
+    bottom: 100%;
+    left: 0;
 }
