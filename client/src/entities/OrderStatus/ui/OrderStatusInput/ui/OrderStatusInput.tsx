@@ -39,7 +39,6 @@ export const OrderStatusInput = memo(({
         onDelete && onDelete(itemData._id)
     }
 
-    console.log(itemData)
 
     return ( 
         <div className={cls.input_wrapper}>

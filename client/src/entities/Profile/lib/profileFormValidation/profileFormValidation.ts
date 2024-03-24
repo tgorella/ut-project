@@ -53,9 +53,6 @@ const profileFormValidation = (data: ProfileWithPass) => {
             }
         },
         city: {
-            isRequired: { 
-                message: i18n.t('Поле не может быть пустым')
-            },
             length: {
                 message: i18n.t('Город не должно превышать 30 символдов'),
                 max: 30,
@@ -105,7 +102,7 @@ const profileFormValidation = (data: ProfileWithPass) => {
             }
             break
         case 'length':
-            if (typeof value !== 'number') {
+            if (typeof value !== 'number' && value) {
                 if (config['max'] && value.length > config?.['max']) {
                     return config.message
                 }
@@ -125,7 +122,7 @@ const profileFormValidation = (data: ProfileWithPass) => {
             }
             break
         case 'isLink':
-            if (typeof value !== 'number' && !linkRegEx.test(value)) {
+            if (typeof value !== 'number' && !linkRegEx.test(value) && value) {
                 return config.message
             }
             break

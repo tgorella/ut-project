@@ -27,7 +27,9 @@ type User {
 input UserInput {
   email: String,
   password: String,
-  username: String
+  username: String,
+  lastname: String,
+  firstname: String
  }
 
  input UserNewDataInput {

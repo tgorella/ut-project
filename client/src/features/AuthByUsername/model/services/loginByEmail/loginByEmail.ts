@@ -16,7 +16,7 @@ export const loginByEmail = createAsyncThunk<User, loginByEmailProps,ThunkConfig
 
         try {
 
-            const resBody = 
+            const reqBody = 
             {
                 'query': 'query Query($data: UserSignInInput) { signInWithPassword(data: $data) { accessToken refreshToken userId } }',
                 'operationName': 'Query',
@@ -25,7 +25,7 @@ export const loginByEmail = createAsyncThunk<User, loginByEmailProps,ThunkConfig
             }
           
          
-            const response = await extra.api.post('/', resBody)
+            const response = await extra.api.post('/', reqBody)
             if (!response.data) {
                 throw new Error('user not found')
             }
@@ -39,7 +39,7 @@ export const loginByEmail = createAsyncThunk<User, loginByEmailProps,ThunkConfig
             )
             
 
-            dispatch(userAction.setAuthData(user.data))
+            dispatch(userAction.setAuthData(user.data.data.user))
 
             return user.data
         } catch (error) {

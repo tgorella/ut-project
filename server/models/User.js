@@ -8,7 +8,7 @@ const schema = new Schema(
     currency: {type: String},
     country: { type: String},
     city: {type: String},
-    username: { type: String, unique: true},
+    username: { type: String},
     avatar: { type: String},
     email: { type: String, unique: true },
     password: { type: String },

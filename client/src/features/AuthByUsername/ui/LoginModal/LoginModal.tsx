@@ -43,7 +43,7 @@ export const LoginModal = memo(({className, isOpen, onClose} : LoginModalProps) 
             </>
             }
             {!login && <Suspense fallback={<PageLoader />} >
-                <RegistrationForm />
+                <RegistrationForm  onSuccess={handleSuccessLogin}/>
                 <p>{t('Уже есть аккаунт?')} <Link to='' onClick={toggleLogin}>{t('Войти')}</Link></p>
 
             </Suspense>}
