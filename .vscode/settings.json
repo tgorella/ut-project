@@ -2,5 +2,8 @@
   "i18next.i18nPaths": "c:/Users/mogil/OneDrive/Документы/codes/ut-project/clients/public/locales,c:/Users/mogil/OneDrive/Документы/codes/ut-project/clients/src/shared/config/i18n",
   "background.editorBackgrounds": [
     "../../../../Downloads/vs-back.jpeg"
+  ],
+  "cSpell.words": [
+    "Searchbar"
   ]
 }

@@ -38,7 +38,7 @@ const ClientsPage = memo(() => {
     const error = useSelector(getClientsError)
     const [page, setPage] = useState(1)
     const limit = useSelector(getClientPageLimit) || 25
-    const inited = useSelector(getClientPageInited)
+    const initiated = useSelector(getClientPageInited)
 
     const limitsValue: ToggleButtonValue[]  = [
         {title: '15', value: 15},
@@ -61,13 +61,13 @@ const ClientsPage = memo(() => {
     useEffect(() => {
         if(__PROJECT__ !== 'storybook') {
             if (userData) {
-                if(!inited) {
+                if(!initiated) {
                     dispatch(ClientsPageActions.initState())
                     dispatch(fetchClients())
                 }
             }
         }
-    }, [dispatch, inited, limit, page, userData, userData?._id])
+    }, [dispatch, initiated, limit, page, userData, userData?._id])
 
    
     if (error) {
@@ -76,10 +76,8 @@ const ClientsPage = memo(() => {
     
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={true}>
-            <VStack max gap='20'>
-                <h1 className={cls.header}>
-                    {t('Клиенты')}
-                </h1>
+            <VStack max gap='20' align='center'>
+                <h1>{t('Клиенты')} </h1>
                 <HStack max justify='between' align='center' gap='20' className={cls.top_menu}>
                     <AddClientButton />
                     <div className={cls.searchBlock}>
