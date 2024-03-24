@@ -19,6 +19,7 @@ import { countTotalSteps } from '../model/lib/countTotalSteps'
 import { getProjectPageIsLoading } from '../model/selectors/getProjectPageIsLoading/getProjectPageIsLoading'
 import { PageLoader } from 'widgets/PageLoader'
 import { OrderExtended, fetchOrders } from 'entities/Order'
+import { VStack } from 'shared/ui/Stack'
 
 interface ProjectsPageProps {
   className?: string;
@@ -60,7 +61,7 @@ export const ProjectsPage = memo(({className} : ProjectsPageProps) => {
     
     return ( 
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={true}>
-            <div className={classNames(cls.ProjectsPage, {}, [className])}>
+            <VStack max gap='20' align='center' className={classNames(className, {}, [])}>
                 <h1>{t('Проекты')}</h1>
                 {data?.map((project) => {
                     return (
@@ -77,7 +78,7 @@ export const ProjectsPage = memo(({className} : ProjectsPageProps) => {
                             })}
                         </div>)
                 })}
-            </div>
+            </VStack>
         </DynamicModuleLoader>
         
     )

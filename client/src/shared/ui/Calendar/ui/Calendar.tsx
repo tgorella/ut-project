@@ -1,7 +1,7 @@
 import cls from './Calendar.module.scss'
 import classNames from 'shared/lib/classNames/ClassNames'
 import {memo, useState} from 'react'
-import { Vstack } from 'shared/ui/Vstack/Vstack'
+import { VStack } from 'shared/ui/Stack/VStack/VStack'
 import { CalendarHeader } from './CalendarHeader'
 import { CurrentDate, monthInfo } from './lib/vars'
 import { genCalendarBodyObj } from './lib/genCalendarBodyObj'
@@ -45,11 +45,11 @@ export const Calendar = memo(({className} : CalendarProps) => {
     }
 
     return ( 
-        <Vstack className={classNames(cls.Calendar, {}, [className])}>
+        <VStack className={classNames(cls.Calendar, {}, [className])}>
             <h1>{t('Календарь')}</h1>
             <CalendarHeader onNextMont={handleNextMonth} onPrevMonth={handlePrevMonth} onToday={handleToday} currentDate={currentDate} />
             <CalendarDaysNameRow />
             <CalendarBody days={days} />
-        </Vstack>
+        </VStack>
     )
 })

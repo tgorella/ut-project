@@ -21,8 +21,9 @@ import { getClientsIsLoading } from '../../model/selectors/getClientsIsLoading/g
 import { getClientsBySearch } from '../../model/services/getClientsBySearch/getClientsBySearch'
 import { ClientsList } from '../../../../entities/Clients/ui/ClientsList/ClientsList'
 import { getClientPageInited } from '../../model/selectors/getClientsPageInited/getClientsPageInited'
-import { HStack } from 'shared/ui/HStack/HStack'
+import { HStack } from 'shared/ui/Stack/HStack/HStack'
 import { AddClientButton } from 'widgets/AddClientButton/ui/AddClientButton'
+import { VStack } from 'shared/ui/Stack'
 
 const reducers: ReducersList = {
     clientsPage: ClientsPageReducer
@@ -37,7 +38,7 @@ const ClientsPage = memo(() => {
     const error = useSelector(getClientsError)
     const [page, setPage] = useState(1)
     const limit = useSelector(getClientPageLimit) || 25
-    const inited = useSelector(getClientPageInited)
+    const initiated = useSelector(getClientPageInited)
 
     const limitsValue: ToggleButtonValue[]  = [
         {title: '15', value: 15},
@@ -60,13 +61,13 @@ const ClientsPage = memo(() => {
     useEffect(() => {
         if(__PROJECT__ !== 'storybook') {
             if (userData) {
-                if(!inited) {
+                if(!initiated) {
                     dispatch(ClientsPageActions.initState())
                     dispatch(fetchClients())
                 }
             }
         }
-    }, [dispatch, inited, limit, page, userData, userData?._id])
+    }, [dispatch, initiated, limit, page, userData, userData?._id])
 
    
     if (error) {
@@ -75,31 +76,32 @@ const ClientsPage = memo(() => {
     
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={true}>
-            <h1 className={cls.header}>
-                {t('Клиенты')}
-            </h1>
-            <HStack className={cls.top_menu}>
-                <AddClientButton />
-                <div className={cls.searchBlock}>
-                    <Searchbar onChange={handleSearch} placeholder={t('Введите имя, фамилию, email или номер телефона')} />
-                </div>
-                <div className={cls.toggle_item}>
-                    {t('Записей на странице:')} <ToggleButtons onChange={handleChangeLimit} currentValue={limit} values={limitsValue} />
-                </div>
-            </HStack>
-            <Box className={cls.client_list}>
-                {!isLoading ?
-                    (<ClientsList clients={filterClients} />)
-                    : ( <PageLoader />)}
-            </Box>
-            <Pagination 
-                onPageChange={handlePageChange} 
-                currentPage={page} 
-                itemsPerPage={limit} 
-                itemsLength={clients?.length || 0} 
-                totalItems={!isLoading} 
-                pages={!isLoading}
-            />
+            <VStack max gap='20' align='center'>
+                <h1>{t('Клиенты')} </h1>
+                <HStack max justify='between' align='center' gap='20' className={cls.top_menu}>
+                    <AddClientButton />
+                    <div className={cls.searchBlock}>
+                        <Searchbar onChange={handleSearch} placeholder={t('Введите имя, фамилию, email или номер телефона')} />
+                    </div>
+                    <div className={cls.toggle_item}>
+                        {t('Записей на странице:')} <ToggleButtons onChange={handleChangeLimit} currentValue={limit} values={limitsValue} />
+                    </div>
+                </HStack>
+                <Box>
+                    {!isLoading ?
+                        (<ClientsList clients={filterClients} />)
+                        : ( <PageLoader />)}
+                </Box>
+                <Pagination 
+                    onPageChange={handlePageChange} 
+                    currentPage={page} 
+                    itemsPerPage={limit} 
+                    itemsLength={clients?.length || 0} 
+                    totalItems={!isLoading} 
+                    pages={!isLoading}
+                />
+            </VStack>
+            
         </DynamicModuleLoader>
         
     )

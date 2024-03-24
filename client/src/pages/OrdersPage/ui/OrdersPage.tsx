@@ -10,7 +10,7 @@ import { ordersPageAction, ordersPageReducer } from '../model/slice/OrdersPageSl
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { fetchAllOrders } from '../model/services/fetchAllOrders/fetchAllOrders'
 import { Box } from 'shared/ui/Box'
-import { HStack } from 'shared/ui/HStack/HStack'
+import { HStack } from 'shared/ui/Stack/HStack/HStack'
 import { ButtonTheme } from 'shared/ui/AppButton/AppButton'
 import { Searchbar } from 'widgets/Searchbar'
 import { ToggleButtonValue, ToggleButtons } from 'shared/ui/ToggleButtons'
@@ -20,10 +20,7 @@ import { orderStatusReducer } from 'entities/OrderStatus'
 import { fetchOrderStatuses } from 'entities/OrderStatus/model/services/fetchOrderStatuses/fetchOrderStatuses'
 import { Pagination } from 'shared/ui/Pagination'
 import { AddOrderButton } from 'widgets/AddOrderButton'
-
-// interface OrdersPageProps {
-//   className?: string;
-// }
+import { VStack } from 'shared/ui/Stack'
 
 const reducers: ReducersList = {
     ordersPage: ordersPageReducer,
@@ -60,7 +57,7 @@ const OrdersPage = memo(() => {
     useEffect(() => {
         if (__PROJECT__ !== 'storybook') {
             dispatch(ordersPageAction.initState())
-            dispatch(fetchAllOrders({text:'', resParams: 'total title status { _id color name } orderNumber createdAt _id'}))
+            dispatch(fetchAllOrders({text: search, resParams: 'total title status { _id color name } orderNumber createdAt _id'}))
             dispatch(fetchOrderStatuses())
         }
         
@@ -68,28 +65,31 @@ const OrdersPage = memo(() => {
     
     return ( 
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={true} >
-            <h1 className={cls.header}>{t('Заказы')}</h1>
-            <HStack className={cls.top_menu}>
-                <div>
-                    <AddOrderButton withClient={true} buttonTheme={ButtonTheme.SOLID}/>
-                </div>
-                <div className={cls.searchBlock}>
-                    <Searchbar onChange={handleSearch} placeholder={t('Введите номер заказа или название')} />
-                </div>
-                <div className={cls.toggle_item}>
-                    {t('Записей на странице:')} <ToggleButtons onChange={handleChangeLimit} currentValue={limit} values={limitsValue} />
-                </div>
-            </HStack>
-            <Box className={cls.orders_list}>
-                <OrderList orders={filteredOrders} isLoading={isLoading} />
-            </Box>
-            <Pagination 
-                itemsLength={orders?.length || 0} 
-                itemsPerPage={limit} 
-                currentPage={page} 
-                onPageChange={handleChangePage }
-                totalItems={!isLoading} 
-                pages={!isLoading} />
+            <VStack max gap='20'>
+                <h1 className={cls.header}>{t('Заказы')}</h1>
+                <HStack max gap='20' justify='between' align='center' className={cls.top_menu}>
+                    <div>
+                        <AddOrderButton withClient={true} buttonTheme={ButtonTheme.SOLID}/>
+                    </div>
+                    <div className={cls.searchBlock}>
+                        <Searchbar onChange={handleSearch} placeholder={t('Введите номер заказа или название')} />
+                    </div>
+                    <div className={cls.toggle_item}>
+                        {t('Записей на странице:')} <ToggleButtons onChange={handleChangeLimit} currentValue={limit} values={limitsValue} />
+                    </div>
+                </HStack>
+                <Box className={cls.orders_list}>
+                    <OrderList orders={filteredOrders} isLoading={isLoading} />
+                </Box>
+                <Pagination 
+                    itemsLength={orders?.length || 0} 
+                    itemsPerPage={limit} 
+                    currentPage={page} 
+                    onPageChange={handleChangePage }
+                    totalItems={!isLoading} 
+                    pages={!isLoading} />
+            </VStack>
+            
                 
         </DynamicModuleLoader>
         

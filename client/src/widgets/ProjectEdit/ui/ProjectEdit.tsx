@@ -15,6 +15,7 @@ import { useTranslation } from 'react-i18next'
 import { Modal } from 'shared/ui/Modal'
 import { Input } from 'shared/ui/Input/Input'
 import { getEditProjectData } from '../model/selectors/getEditProjectData/getEditProjectData'
+import { VStack } from 'shared/ui/Stack'
 
 interface ProjectEditProps {
   className?: string
@@ -157,7 +158,11 @@ const ProjectEdit = memo(({className} : ProjectEditProps) => {
     }
     return ( 
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={true}>
-            <div className={classNames(cls.ProjectEdit, {}, [className])}>
+            <VStack max gap='20'  className={classNames(cls.ProjectEdit, {}, [className])}>
+                <h2>{t('Проекты')}</h2>
+                <p>{t('Добавляйте свои проекты, разбивайте их на стадии и шаги. Отслеживайте состояние проекта на каждом этапе.')}</p>
+                <p>
+                    {t('Для изменения названия проекта, стадии или шага: кликнете по названию, введите новое. Изменение применится, когда редактирование закончится (кликнете за пределами блока с редактируемым названием)')}</p>
                 {
                     data?.map((project) => {
                         return <ProjectBlock 
@@ -174,7 +179,7 @@ const ProjectEdit = memo(({className} : ProjectEditProps) => {
                 >
                     {t('Добавить новый проект')}
                 </AppButton>
-            </div> 
+            </VStack> 
             <Modal 
                 isOpen={open.project} 
                 onClose={resetAll}>

@@ -34,7 +34,10 @@ export const userSlice = createSlice({
             state.mounted = true
         },
         logout: (state) => {
-            state.authData = undefined
+            state.authData = {
+                _id: '',
+                email: ''
+            },
             localStorage.removeItem(USERID_KEY)
             state.isLogged = false
 

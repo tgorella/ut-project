@@ -8,6 +8,7 @@ import { bulletMenuItemSchema } from 'shared/ui/BulletMenu/model/types/bulletMen
 import { ProfilePage } from 'pages/ProfilePage'
 import { EventTypesEdit } from 'widgets/EventTypesEdit'
 import { ProjectEdit } from 'widgets/ProjectEdit'
+import { VStack } from 'shared/ui/Stack/VStack/VStack'
 
 
 interface SettingPageProps {
@@ -57,14 +58,14 @@ const SettingPage = memo(({className} : SettingPageProps) => {
         }
     }
     return ( 
-        <div className={classNames(cls.SettingPage, {}, [className])}>
+        <VStack gap='20' className={classNames(cls.SettingPage, {}, [className])}>
             <h1>{t('Настройки')}</h1>
             <BulletMenu  
                 items={items} 
                 path={path} 
                 onClick={togglePages}/>
             {pageContent}
-        </div>
+        </VStack>
         
     )
 })

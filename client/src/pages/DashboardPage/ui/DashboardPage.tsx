@@ -23,7 +23,9 @@ import { ordersPageReducer } from 'pages/OrdersPage/model/slice/OrdersPageSlice'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { fetchAllOrders } from 'pages/OrdersPage/model/services/fetchAllOrders/fetchAllOrders'
 import { Box } from 'shared/ui/Box'
-import { Vstack } from 'shared/ui/Vstack/Vstack'
+import { VStack } from 'shared/ui/Stack/VStack/VStack'
+import { HStack } from 'shared/ui/Stack'
+import { useTranslation } from 'react-i18next'
 
 interface DashboardPageProps {
   className?: string;
@@ -34,6 +36,7 @@ const reducers: ReducersList = {
     ordersPage: ordersPageReducer
 }
 const DashboardPage = memo(({className} : DashboardPageProps) => {
+    const {t} = useTranslation()
     const dispatch = useAppDispatch()
     const userInfo = useSelector(getProfileData)
     const orders = useSelector(getOrdersPageData)
@@ -112,15 +115,26 @@ const DashboardPage = memo(({className} : DashboardPageProps) => {
 
     return ( 
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
-            <Vstack className={classNames(cls.DashboardPage, {}, [className])}>
+            <VStack max align='center' className={classNames(cls.DashboardPage, {}, [className])}>
                 <p className={cls.greeting}>{greeting()+ ', ' + userInfo?.firstname + ' '+ userInfo?.lastname}</p>
                 <p className={cls.sentence}>{randomSentence}</p>
-                <Box>
-                    {orders && Chart()}
-                </Box>
+                <HStack max gap='20'>
+                    <Box>
+                        {orders && Chart()}
+                    </Box>
+                    <VStack gap='20' className={cls.statsCol}>
+                        <Box>
+                            <p>{t('Всего заказов')}</p>
+                            <p className={cls.numbers}>
+                                {orders?.length}
+                            </p>
+                        </Box>
+
+                    </VStack>
+                </HStack>
                 
                     
-            </Vstack>
+            </VStack>
         </DynamicModuleLoader>
     )
 })

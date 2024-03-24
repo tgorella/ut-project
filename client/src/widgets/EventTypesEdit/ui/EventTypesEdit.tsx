@@ -16,6 +16,7 @@ import { PageLoader } from 'widgets/PageLoader'
 import { Alert, AlertTheme } from 'shared/ui/Alert'
 import { Box } from 'shared/ui/Box'
 import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
+import { VStack } from 'shared/ui/Stack'
 
 interface EventTypesEditProps {
   className?: string;
@@ -104,8 +105,8 @@ const EventTypesEdit = memo(({className} : EventTypesEditProps) => {
   
     return ( 
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={true}>
-            <div className={classNames(cls.EventTypesEdit, {}, [className])}>
-                <h2>{t('Типы событий')}</h2>
+            <VStack gap='20' align='center' className={classNames(cls.EventTypesEdit, {}, [className])}>
+                <h2>{t('Категории событий')}</h2>
                 <p>{t('В этом разделе Вы можете добавить свои категории для событий. Например: "учеба", "ребенок", "личное"')}</p>
                 <Box header={t('Управление типами событий')}>
 
@@ -134,7 +135,7 @@ const EventTypesEdit = memo(({className} : EventTypesEditProps) => {
                     {!showNewInput &&
                     <AppButton theme={ButtonTheme.SOLID} className={cls.button} onClick={toggleAddNewType}>{t('Добавить новую категорию')}</AppButton>}
                 </Box>
-            </div>
+            </VStack>
         </DynamicModuleLoader>
     )
         
