@@ -47,9 +47,7 @@ export const Sidebar = memo(({ className = ''}: SidebarProps) => {
 
 
     return (
-        <VStack
-            max
-            gap='10'
+        <div
             data-testid='sidebar'
             className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [
                 className
@@ -80,6 +78,7 @@ export const Sidebar = memo(({ className = ''}: SidebarProps) => {
                 onClick={toggleSidebar} >
                 {!collapsed ? '«': '»'}
             </AppButton>
-        </VStack>
+        </div>
+        
     )
 })

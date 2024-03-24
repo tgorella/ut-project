@@ -159,6 +159,10 @@ const ProjectEdit = memo(({className} : ProjectEditProps) => {
     return ( 
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={true}>
             <VStack max gap='20'  className={classNames(cls.ProjectEdit, {}, [className])}>
+                <h2>{t('Проекты')}</h2>
+                <p>{t('Добавляйте свои проекты, разбивайте их на стадии и шаги. Отслеживайте состояние проекта на каждом этапе.')}</p>
+                <p>
+                    {t('Для изменения названия проекта, стадии или шага: кликнете по названию, введите новое. Изменение применится, когда редактирование закончится (кликнете за пределами блока с редактируемым названием)')}</p>
                 {
                     data?.map((project) => {
                         return <ProjectBlock 

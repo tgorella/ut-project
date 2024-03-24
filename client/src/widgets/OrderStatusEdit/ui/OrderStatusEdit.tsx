@@ -16,6 +16,7 @@ import { orderStatusEditAction, orderStatusEditReducer } from '../model/slice/Or
 import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
 import { getOrderStatusEdiNewStatusData } from '../model/selectors/getOrderStatusEditNewStatusData/getOrderStatusEditNewStatusData'
 import { getOrderStatusEditId } from '../model/selectors/getOrderStatusEditId/getOrderStatusEditId'
+import { VStack } from 'shared/ui/Stack'
 
 interface OrderStatusEditProps {
   className?: string;
@@ -116,7 +117,7 @@ const OrderStatusEdit = memo(({className} : OrderStatusEditProps) => {
     }
     return ( 
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={true}>
-            <div className={classNames(cls.OrderStatusEdit, {}, [className])}>
+            <VStack gap='20'align='center' className={classNames(cls.OrderStatusEdit, {}, [className])}>
                 <h2>{t('Статусы заказов')}</h2>
                 <p>{t('В этот разделе Вы можете добавить свои статусы к заказам. Например: "В ожидании оплаты". Или же если Вы часть работы над проектом делигируете членам команды, то можно создать статус с именем человека, кому поручено выполнение работы (например: "менеджер Мария").')}</p>
                 <p>{t('Статусы "Новый", "Завершен", "Отменен" и "Архив" - это статусы по умолчанию, удалить или изменить их нельзя. Они необходимы для корректной работы приложения.')}</p>
@@ -146,7 +147,7 @@ const OrderStatusEdit = memo(({className} : OrderStatusEditProps) => {
                     {!showNewInput  &&
                     <AppButton theme={ButtonTheme.SOLID} className={cls.button} onClick={toggleAddNewStatus}>{t('Добавить новый статус')}</AppButton>}
                 </Box>
-            </div>
+            </VStack>
         </DynamicModuleLoader>
     )
 })
