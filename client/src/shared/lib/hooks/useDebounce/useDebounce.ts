@@ -4,7 +4,7 @@ import { MutableRefObject, useCallback, useRef } from 'react'
 export function useDebounce<T extends (...args: any[]) => any>(callback: T, delay: number) {
 
     const timer = useRef(null) as MutableRefObject<ReturnType<typeof setTimeout> | null>
-
+    // @ts-ignore
     const debouncedCallback = useCallback((...args) => {
         if (timer.current) {
             clearTimeout(timer.current)

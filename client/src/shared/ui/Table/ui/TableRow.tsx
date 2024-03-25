@@ -16,8 +16,10 @@ export const TableRow = memo(({className, columns, data, index} : TableRowProps)
             {columns.map((column) => {
                 return (
                     <td key={column.path+index}>
-                        {!column.element && data[column.path]}
-                        {column.element && column.element}
+                        <>
+                            {!column.element && data[column.path]}
+                            {column.element && column.element}
+                        </>
 
                     </td>
                 )
