@@ -64,7 +64,7 @@ export const OrderListItem = ({className, order, columns, onDelete} : OrderListI
             onClick = () => navigate('/orders/' + order._id)
             break
         }
-
+        // @ts-ignore
         return <td className={itemClass} key={order._id + '_' + column.path} onClick={onClick}>{itemContent}</td>
     }
     

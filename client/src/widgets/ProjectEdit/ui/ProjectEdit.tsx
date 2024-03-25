@@ -17,6 +17,7 @@ import { Input } from 'shared/ui/Input/Input'
 import { getEditProjectData } from '../model/selectors/getEditProjectData/getEditProjectData'
 import { VStack } from 'shared/ui/Stack'
 
+
 interface ProjectEditProps {
   className?: string
 }
