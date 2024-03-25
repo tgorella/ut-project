@@ -8,13 +8,15 @@ const schema = new Schema(
     currency: {type: String},
     country: { type: String},
     city: {type: String},
-    username: { type: String, unique: true},
+    username: { type: String},
     avatar: { type: String},
     email: { type: String, unique: true },
     password: { type: String },
     acceptTerms: { type: Boolean },
 		lastOrderNumber: { type: Number},
-    modules: {clients: Boolean, orders: Boolean}
+    modules: {clients: Boolean, orders: Boolean},
+    roles: [String],
+    ownerId: {type: Schema.Types.ObjectId, ref: "User" }
   },
   {
     timestamps: true,

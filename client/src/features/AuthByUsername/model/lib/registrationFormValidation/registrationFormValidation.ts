@@ -15,6 +15,8 @@ const registrationFormValidation = (data: RegistrationFormSchema) => {
         email: '',
         password: '',
         repeatPassword: '',
+        lastname: '',
+        firstname: ''
     }
    
     const config : Record<string, Method>= {
@@ -44,6 +46,16 @@ const registrationFormValidation = (data: RegistrationFormSchema) => {
             equalPass: {
                 message: i18n.t('Пароли должны совпадать')
             }
+        },
+        firstname: {
+            isRequired: {
+                message: i18n.t('Поле не может быть пустым')
+            },
+        },
+        lastname: {
+            isRequired: {
+                message: i18n.t('Поле не может быть пустым')
+            },
         }
     }
 
@@ -80,14 +92,14 @@ const registrationFormValidation = (data: RegistrationFormSchema) => {
                 return config.message
             }
             break
-        // case 'isRequired':
-        //     if (!value) {
-        //         return config.message
-        //     }
-        //     if (typeof value === 'string' && value.trim() === '') {
-        //         return config.message
-        //     }
-        //     break
+        case 'isRequired':
+            if (!value) {
+                return config.message
+            }
+            if (typeof value === 'string' && value.trim() === '') {
+                return config.message
+            }
+            break
         default:
             break
         }

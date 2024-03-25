@@ -37,7 +37,7 @@ type Query {
 },
 
 type Mutation {
-  signUp(data: UserInput): User
+  signUp(data: UserInput): AuthData
   updateUser(data: UserNewDataInput): User,
   updatePass(pass: String): String
   deleteUser(id: ID): String

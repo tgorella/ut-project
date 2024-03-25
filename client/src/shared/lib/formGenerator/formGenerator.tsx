@@ -25,7 +25,7 @@ export interface FormItem {
 
 export default function formGenerator (
     schema: Array<FormItem>, 
-    data: Record<string, string>, 
+    data: Record<string, string | string[]>, 
     errors: Record<string, string>
 ): JSX.Element {
     function setElement (item: FormItem) {
@@ -37,7 +37,7 @@ export default function formGenerator (
                 onChange={item.onChange} 
                 rounded={item.rounded}
                 type={item.type}
-                value={data[item.valuePath as keyof typeof data]}
+                value={data[item.valuePath as keyof typeof data] as string}
                 name={item.name}
                 key= {item.name}
                 {...item?.otherProps}
@@ -48,7 +48,7 @@ export default function formGenerator (
             component = <Select 
                 label={item.label} 
                 onChange={item.onChange} 
-                value={data[item.valuePath as keyof typeof data]}
+                value={data[item.valuePath as keyof typeof data] as string}
                 options={item.selectOptions || []}
                 key= {item.name}
                 {...item?.otherProps}

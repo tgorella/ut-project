@@ -20,6 +20,8 @@
   "E": "E",
   "E;t?": "E;t?",
   "Email": "Email",
+  "Firstane": "Firstane",
+  "Lastname": "Lastname",
   "Loading": {
     "": {
       "": {
@@ -28,6 +30,7 @@
     }
   },
   "Menu": "Menu",
+  "Nam": "Nam",
   "Not found": "Not found",
   "Profile page": "Profile page",
   "Projects": "Projects",

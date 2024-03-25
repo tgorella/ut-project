@@ -6,6 +6,7 @@ import OrdersIcon from 'shared/assets/img/orders.svg'
 import Calendar from 'shared/assets/img/calendar.svg'
 import ProjectIcon from 'shared/assets/img/projects.svg'
 import { LucideIcon } from 'lucide-react'
+import { UserRole } from 'entities/Profile/model/types/profileSchema'
 
 export interface SidebarItemType {
   path: string,
@@ -13,7 +14,8 @@ export interface SidebarItemType {
   icon: React.VFC<React.SVGProps<SVGSVGElement>> | LucideIcon,
   isAuth: boolean,
   module: boolean,
-  moduleName?: string
+  moduleName?: string,
+  roles?: UserRole[]
 }
 
 export const SidebarItemsList: SidebarItemType[] = [
@@ -69,6 +71,7 @@ export const SidebarItemsList: SidebarItemType[] = [
         text: 'Проекты',
         isAuth: true,
         module: true,
-        moduleName: 'projects'
+        moduleName: 'projects',
+        
     }
 ]

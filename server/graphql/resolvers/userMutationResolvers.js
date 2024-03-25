@@ -7,23 +7,27 @@ import { checkAuth, throwServerError } from './helpers.js'
 const userMutationResolvers = {
   signUp: async (_, args) => {
     try {
-      const { password } = args.data
       const existingUser = await User.findOne({ email: args.data.email })
 
       if (existingUser) {
         throw new GraphQLError('EMAIL_EXISTS')
       }
-      const hashedPassword = await bcryptjs.hash(password, 12)
+      const hashedPassword = await bcryptjs.hash(args.data.password, 12)
       const newUser = await User.create({
         ...args.data,
         password: hashedPassword,
         lastOrderNumber: '1',
+        username: args.data.email.split('@')[0]
       })
+      if (!newUser.ownerId) {
+        newUser.ownerId = newUser._id
+        newUser.save()
+      }
 
       const tokens = tokenService.generate({ _id: newUser._id })
       await tokenService.save(newUser._id, tokens.refreshToken)
       newUser.password = null
-      return newUser
+      return {...newUser, ...tokens}
     } catch (error) {
       throwServerError()
     }

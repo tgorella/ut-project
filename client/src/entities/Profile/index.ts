@@ -1,26 +1,12 @@
-import { getProfileData } from './model/selectors/getProfileData/getProfileData'
-import { getProfileForm } from './model/selectors/getProfileForm/getProfileForm'
-import { getProfileLastOrderNumber } from './model/selectors/getProfileLastOrderNumber/getProfileLastOrderNumber'
-import { getProfileLoadingError } from './model/selectors/getProfileLoadingError/getProfileLoadingError'
-import { getProfileLoadingStatus } from './model/selectors/getProfileLoadingStatus/getProfileLoadingStatus'
-import { getProfileReadOnly } from './model/selectors/getProfileReadOnly/getProfileReadOnly'
-import { fetchProfileData } from './model/services/fetchProfileData/fetchProfileData'
-import { updateProfileData } from './model/services/updateProfileData/updateProfileData'
-import { profileAction, profileReducer } from './model/slice/profileSlice'
+export { getProfileRoles, isUserManager, isUserOwner } from './model/selectors/getProfileRoles/getProfileRoles'
+export { getProfileData } from './model/selectors/getProfileData/getProfileData'
+export { getProfileForm } from './model/selectors/getProfileForm/getProfileForm'
+export { getProfileLastOrderNumber } from './model/selectors/getProfileLastOrderNumber/getProfileLastOrderNumber'
+export { getProfileLoadingError } from './model/selectors/getProfileLoadingError/getProfileLoadingError'
+export { getProfileLoadingStatus } from './model/selectors/getProfileLoadingStatus/getProfileLoadingStatus'
+export { getProfileReadOnly } from './model/selectors/getProfileReadOnly/getProfileReadOnly'
+export { fetchProfileData } from './model/services/fetchProfileData/fetchProfileData'
+export { updateProfileData } from './model/services/updateProfileData/updateProfileData'
+export { profileAction, profileReducer } from './model/slice/profileSlice'
 export type { Profile, ProfileSchema } from './model/types/profileSchema'
-import { ProfileCardLazy as ProfileCard } from './ui/ProfileCard/ProfileCard.lazy'
-
-export {
-    profileAction, 
-    profileReducer, 
-    fetchProfileData, 
-    ProfileCard, 
-    getProfileLastOrderNumber,
-    getProfileData, 
-    getProfileLoadingError, 
-    getProfileLoadingStatus,
-    getProfileReadOnly,
-    getProfileForm,
-    updateProfileData
-}
-
+export { ProfileCardLazy as ProfileCard } from './ui/ProfileCard/ProfileCard.lazy'

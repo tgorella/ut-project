@@ -10,7 +10,7 @@ export const fetchProfileData = createAsyncThunk<Profile, void,ThunkConfig<strin
         const {rejectWithValue, extra} = thunkAPI
         try {
             const {data} = await extra.api.post('/', {
-                'query': 'query Query { user { _id avatar city country currency email firstname lastOrderNumber lastname username } }',
+                'query': 'query Query { user { _id avatar city country currency email firstname lastOrderNumber lastname username roles } }',
                 'operationName': 'Query'
             })
             if (!data) {
