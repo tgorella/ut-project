@@ -9,7 +9,7 @@ email: string,
 password: string,
 firstname: string,
 lastname: string
-
+roles: string[]
 }
 
 export const signUp = createAsyncThunk<User, signUpProps,ThunkConfig<string>>(
@@ -26,7 +26,9 @@ export const signUp = createAsyncThunk<User, signUpProps,ThunkConfig<string>>(
                   'password': newUserData.password,
                   'email': newUserData.email,
                   'firstname': newUserData.firstname,
-                  'lastname': newUserData.lastname }}
+                  'lastname': newUserData.lastname ,
+                  'roles': newUserData.roles
+              }}
           }
 
             const response = await extra.api.post('/',reqBody)

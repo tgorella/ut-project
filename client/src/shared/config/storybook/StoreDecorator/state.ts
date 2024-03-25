@@ -1,6 +1,7 @@
 import { StateSchema } from 'app/providers/StoreProvider'
 import { Country } from 'entities/Country'
 import { Currency } from 'entities/Currency'
+import { UserRole } from 'entities/Profile/model/types/profileSchema'
 import { Project } from 'entities/Project'
 
 const projectsArr: Project[] = [
@@ -71,7 +72,8 @@ export const stateAllIn: StateSchema = {
             country:Country.Russia,
             city:'Zvenigorod',
             username:'tratata',
-            avatar:'https://avatars.githubusercontent.com/u/107557323?v=4'
+            avatar:'https://avatars.githubusercontent.com/u/107557323?v=4',
+            roles: [UserRole.OWNER]
         },
         form: {
             firstname:'Tatiana',

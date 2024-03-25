@@ -19,6 +19,10 @@ const userMutationResolvers = {
         lastOrderNumber: '1',
         username: args.data.email.split('@')[0]
       })
+      if (!newUser.ownerId) {
+        newUser.ownerId = newUser._id
+        newUser.save()
+      }
 
       const tokens = tokenService.generate({ _id: newUser._id })
       await tokenService.save(newUser._id, tokens.refreshToken)

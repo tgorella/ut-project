@@ -1,3 +1,4 @@
+import { UserRole } from 'entities/Profile/model/types/profileSchema'
 import { AboutPage } from 'pages/AboutPage'
 import { CalendarPage } from 'pages/CalendarPage'
 import { ClientDetailPageLazy } from 'pages/ClientDetailPage/ui/ClientDetailPage/ClientDetailPage.lazy'
@@ -14,7 +15,8 @@ import { SettingPage } from 'pages/SettingPage'
 import { RouteProps } from 'react-router-dom'
 
 export type AppRoutesProp = RouteProps & {
-  authOnly?: boolean
+  authOnly?: boolean,
+  roles?: UserRole[]
 }
 
 export enum AppRoutes {

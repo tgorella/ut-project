@@ -25,6 +25,7 @@ const profileFormValidation = (data: ProfileWithPass) => {
         modules: '',
         newPassword: '',
         repeatPassword: '',
+        roles: ''
     }
    
     const config : Record<string, Method>= {
@@ -91,7 +92,7 @@ const profileFormValidation = (data: ProfileWithPass) => {
         }
     }
 
-    function validate(method: string, value: string | number , config: MethodInfo): string | undefined {
+    function validate(method: string, value: string | number | string[] , config: MethodInfo): string | undefined {
         switch (method) {
         case 'isRequired':
             if (!value) {
@@ -112,7 +113,7 @@ const profileFormValidation = (data: ProfileWithPass) => {
             }
             break
         case 'onlyLetters':
-            if (typeof value !== 'number' && notLetters.test(value)) {
+            if (typeof value !== 'number' && typeof value !== 'object' && notLetters.test(value)) {
                 return config.message
             }
             break
@@ -122,12 +123,12 @@ const profileFormValidation = (data: ProfileWithPass) => {
             }
             break
         case 'isLink':
-            if (typeof value !== 'number' && !linkRegEx.test(value) && value) {
+            if (typeof value !== 'number' && typeof value !== 'object' && !linkRegEx.test(value) && value) {
                 return config.message
             }
             break
         case 'onlyLettersNumbers': 
-            if (typeof value !== 'number' && notLettersNumbers.test(value)) {
+            if (typeof value !== 'number' && typeof value !== 'object'  && notLettersNumbers.test(value)) {
                 return config.message
             }
             break

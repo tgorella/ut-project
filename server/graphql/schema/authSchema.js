@@ -22,14 +22,18 @@ type User {
   email: String,
   avatar: String,
   password: String,
-  lastOrderNumber: String
+  lastOrderNumber: String,
+  roles: [String],
+  ownerId: String
 }
+
 input UserInput {
   email: String,
   password: String,
   username: String,
   lastname: String,
-  firstname: String
+  firstname: String,
+  roles: [String]
  }
 
  input UserNewDataInput {
@@ -43,7 +47,8 @@ input UserInput {
   email: String,
   avatar: String,
   password: String,
-  lastOrderNumber: String
+  lastOrderNumber: String,
+  roles: [String]
  }
 
  input UserSignInInput {

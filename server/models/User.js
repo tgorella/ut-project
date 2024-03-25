@@ -14,7 +14,9 @@ const schema = new Schema(
     password: { type: String },
     acceptTerms: { type: Boolean },
 		lastOrderNumber: { type: Number},
-    modules: {clients: Boolean, orders: Boolean}
+    modules: {clients: Boolean, orders: Boolean},
+    roles: [String],
+    ownerId: {type: Schema.Types.ObjectId, ref: "User" }
   },
   {
     timestamps: true,

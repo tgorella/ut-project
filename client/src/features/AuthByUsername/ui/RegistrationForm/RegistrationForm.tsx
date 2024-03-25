@@ -7,6 +7,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { useTranslation } from 'react-i18next'
 import { signUp } from '../../model/services/signUp/signUp'
 import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
+import { UserRole } from 'entities/Profile/model/types/profileSchema'
 
 
 interface RegistrationFormProps {
@@ -45,7 +46,8 @@ export const RegistrationForm = memo(({className, onSuccess} : RegistrationFormP
                 email: regData.email, 
                 password: regData.password, 
                 firstname: regData.firstname, 
-                lastname: regData.lastname
+                lastname: regData.lastname,
+                roles: [UserRole.OWNER]
             }))
             if (result.meta.requestStatus === 'fulfilled') {
                 onSuccess()
