@@ -8,9 +8,9 @@ const eventInitialState: EventExtended = {
     title: '',
     userId: '',
     eventType: {
-        _id: '643e58efaba80539138865d2',
-        name: 'Личное',
-        color: '#ff759f',
+        _id: '',
+        name: '',
+        color: '',
         isDefault: false
     },
     startTime: '',
