@@ -21,7 +21,7 @@ describe('profileSlice.test', () => {
     })
     test('test chancel edit', () => {
         const state: DeepPartial<ProfileSchema> = {data, form: {lastname: '', firstname: ''} }
-        expect(profileReducer(state as ProfileSchema, profileAction.chancelEdit())).toEqual({
+        expect(profileReducer(state as ProfileSchema, profileAction.cancelEdit())).toEqual({
             readonly: true,
             data,
             form: data

@@ -22,7 +22,7 @@ export const updateOrderSteps = createAsyncThunk<Order, newStepData,ThunkConfig<
             if (!data) {
                 throw new Error('err')
             }
-            return data
+            return data.data.updateOrder
         } catch (error) {
             return rejectWithValue(i18n.t('Неправильные логин или пароль'))
         }

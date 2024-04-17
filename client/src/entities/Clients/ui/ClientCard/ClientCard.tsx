@@ -141,13 +141,13 @@ export const ClientCard = memo((props : ClientCardProps) => {
         toggleNoteEditMode()
     }, [dispatch, id, toggleNoteEditMode])
 
-    const handleChancelEdit = useCallback(() => {
-        dispatch(clientDetailsAction.chancelEdit())
+    const handleCancelEdit = useCallback(() => {
+        dispatch(clientDetailsAction.cancelEdit())
         toggleEditMode()
     }, [dispatch, toggleEditMode])
 
-    const handleNotesChancelEdit = useCallback(() => {
-        dispatch(clientDetailsAction.chancelEdit())
+    const handleNotesCancelEdit = useCallback(() => {
+        dispatch(clientDetailsAction.cancelEdit())
         toggleNoteEditMode()
     }, [dispatch, toggleNoteEditMode])
 
@@ -183,7 +183,7 @@ export const ClientCard = memo((props : ClientCardProps) => {
                     </div>
    
                     <div className={cls.edit_icon}>
-                        <EditSwitcher editMode={edit} onChancelEdit={handleChancelEdit} onEdit={toggleEditMode} />
+                        <EditSwitcher editMode={edit} onCancelEdit={handleCancelEdit} onEdit={toggleEditMode} />
                     </div>
                 </>
                 }
@@ -209,7 +209,7 @@ export const ClientCard = memo((props : ClientCardProps) => {
             { withNotes && <NoteBlock 
                 onlyRead={onlyRead}
                 value={data?.notes || ''} 
-                onChancelEdit={handleNotesChancelEdit} 
+                onCancelEdit={handleNotesCancelEdit} 
                 onChange={handleChangeClientNotes} 
                 onSave={saveNotes}/>}
         </div>

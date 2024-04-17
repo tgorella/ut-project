@@ -22,7 +22,7 @@ type Story = StoryObj<typeof NoteBlock>;
 export const Default: Story = {
     args: {
         value: 'Few [b]words[/b] to remember',
-        onChancelEdit: ()=> {},
+        onCancelEdit: ()=> {},
         onChange: () => {},
         onSave: () => {}
     },

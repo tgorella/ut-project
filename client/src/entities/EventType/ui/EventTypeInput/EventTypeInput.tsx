@@ -16,13 +16,13 @@ interface EventTypeInputProps {
   onNameChange: (val: string) => void,
   onSave: () => void,
   onEdit: (id: string, name: string, color: string) => void,
-  onChancelEdit: () => void,
+  onCancelEdit: () => void,
   onDelete?: (val: string) => void
 }
 export const EventTypeInput = memo(({
     itemData = {_id: 'new', name: '', color: '#000', isDefault: false }, 
     editInputId, 
-    onChancelEdit, 
+    onCancelEdit, 
     onEdit, 
     onColorChange, 
     onNameChange, 
@@ -53,7 +53,7 @@ export const EventTypeInput = memo(({
                     {editMode && 
                     <>
                         <button onClick={onSave}><CHECK_ICON className={cls.icon}/></button>
-                        <button onClick={onChancelEdit}><CLOSE_ICON className={cls.icon}/></button>
+                        <button onClick={onCancelEdit}><CLOSE_ICON className={cls.icon}/></button>
                     </>}
                     {!editMode && <button onClick={handleEdit}><EDIT_ICON className={cls.icon}/></button>}
                     {onDelete && <button onClick={handleDelete}><DELETE_ICON className={cls.icon}/></button>}

@@ -36,7 +36,7 @@ export const clientDetailsSlice = createSlice({
                 ...action.payload
             }
         },
-        chancelEdit: (state) => {
+        cancelEdit: (state) => {
             state.form = state.data
         },
         newClient: (state) => {

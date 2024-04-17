@@ -26,7 +26,7 @@ describe('eventSlice.test', () => {
         }
         expect(eventReducer(
   state as EventSchema,
-  eventAction.chancelEdit()
+  eventAction.cancelEdit()
         )).toEqual({
             formData: {
                 title: ''

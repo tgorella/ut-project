@@ -17,7 +17,7 @@ export const profileSlice = createSlice({
         setReadOnly: (state, action: PayloadAction<boolean>) => {
             state.readonly = action.payload
         },
-        chancelEdit: (state) => {
+        cancelEdit: (state) => {
             state.readonly = true
             state.form = state.data
         },

@@ -56,7 +56,7 @@ const OrderStatusEdit = memo(({className} : OrderStatusEditProps) => {
         dispatch(orderStatusEditAction.updateStatusData({ name: name, color: color, _id: id }))
     }
 
-    const handleChancelEdit = () => {
+    const handleCancelEdit = () => {
         dispatch(orderStatusEditAction.clearStatusId())
         dispatch(orderStatusEditAction.clearStatusData())
         setShowNewInput(false)
@@ -132,7 +132,7 @@ const OrderStatusEdit = memo(({className} : OrderStatusEditProps) => {
                             onNameChange={handleChangeName} 
                             onSave={handleSaveStatus} 
                             onEdit={toggleInput} 
-                            onChancelEdit={handleChancelEdit} 
+                            onCancelEdit={handleCancelEdit} 
                             onDelete={handleDelete}  />
                     })}
                     {showNewInput && <OrderStatusInput  
@@ -142,7 +142,7 @@ const OrderStatusEdit = memo(({className} : OrderStatusEditProps) => {
                         onNameChange={handleChangeNewOrderStatusName} 
                         onSave={addNewStatus} 
                         onEdit={toggleInput} 
-                        onChancelEdit={handleChancelEdit} 
+                        onCancelEdit={handleCancelEdit} 
                     />}
                     {!showNewInput  &&
                     <AppButton theme={ButtonTheme.SOLID} className={cls.button} onClick={toggleAddNewStatus}>{t('Добавить новый статус')}</AppButton>}
