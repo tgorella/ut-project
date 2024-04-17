@@ -72,7 +72,6 @@ const ProfileCard = memo((props : ProfileCardProps) => {
         dispatch(profileAction.chancelEdit())
     }
 
-
     useEffect(() => {
         if (data) {
             setErrors(profileFormValidation(data))   

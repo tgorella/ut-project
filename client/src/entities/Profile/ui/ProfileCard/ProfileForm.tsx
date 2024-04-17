@@ -56,10 +56,11 @@ export const ProfileForm = ({
             valuePath: 'email',
             onChange: onChangeProfileEmail,
             name: 'email',
-            type: 'email',
+            
             component: FromComponent.INPUT,
             otherProps: {
-                autoComplete: 'email'
+                autoComplete: 'email',
+                type: 'email',
             }
         },
         {
@@ -67,10 +68,10 @@ export const ProfileForm = ({
             valuePath: '',
             onChange: onChangePassword,
             name: 'newPassword',
-            type: 'password',
             component: FromComponent.INPUT,
             otherProps: {
-                autoComplete: 'new-password'
+                autoComplete: 'new-password',
+                type: 'password'
             }
         },
         {
@@ -78,10 +79,10 @@ export const ProfileForm = ({
             valuePath: '',
             onChange: onRepeatPassword,
             name: 'repeatPassword',
-            type: 'password',
             component: FromComponent.INPUT,
             otherProps: {
-                autoComplete: 'new-password'
+                autoComplete: 'new-password',
+                type: 'password'
             }
         }
     ]
@@ -94,25 +95,35 @@ export const ProfileForm = ({
                 onChange: onChangeProfileName,
                 name: 'name',
                 component: FromComponent.INPUT,
+                otherProps: {
+                    autoComplete: 'given-name',
+                    type: 'text'
+                }
             },
             {
                 label: t('Фамилия'),
                 valuePath: 'lastname',
                 onChange: onChangeProfileLastName,
                 name: 'lastname',
-                component: FromComponent.INPUT
+                component: FromComponent.INPUT,
+                otherProps: {
+                    autoComplete: 'family-name',
+                    type: 'text'
+                }
             },
             {
                 label: t('Ссылка на аватар'),
                 valuePath: 'avatar',
                 onChange: onChangeAvatar,
                 name: 'avatar',
-                component: FromComponent.INPUT
+                component: FromComponent.INPUT,
+                otherProps: {
+                    autoComplete: 'photo'
+                }
             },
             {
                 label: t('Страна'),
                 valuePath: 'country',
-                // @ts-ignore
                 onChange: onChangeCountry,
                 name: 'country',
                 component: FromComponent.COUNTRY
@@ -121,14 +132,15 @@ export const ProfileForm = ({
                 valuePath: 'city',
                 onChange: onChangeProfileCity,
                 name: 'city',
-                type: 'city',
-                component: FromComponent.INPUT
+                component: FromComponent.INPUT,
+                otherProps: {
+                    autoComplete: 'address-level2'
+                }
             },
             {
                 valuePath: 'currency',
                 component: FromComponent.CURRENCY,
                 name: 'currency',
-                // @ts-ignore
                 onChange: onChangeCurrency
             }  )
     }
@@ -141,6 +153,7 @@ export const ProfileForm = ({
                     theme={ButtonTheme.OUTLINED} 
                     stretch={true}
                     onClick={saveProfile} 
+                    type='button'
                     disabled={Object.values(errors).filter((item) => item !== '').length > 0 ? true : false}
                 >{t('Сохранить')}</AppButton>
             </form>

@@ -15,8 +15,6 @@ export interface FormItem {
     label?: string,
     valuePath?: string,
     selectOptions?: Option[],
-    type?: string,
-    rounded?: boolean,
     onChange: (val: string | Country | Currency) => void, 
     name: string,
     component: FromComponent,
@@ -35,8 +33,6 @@ export default function formGenerator (
             component = <Input 
                 label={item.label} 
                 onChange={item.onChange} 
-                rounded={item.rounded}
-                type={item.type}
                 value={data[item.valuePath as keyof typeof data] as string}
                 name={item.name}
                 key= {item.name}
