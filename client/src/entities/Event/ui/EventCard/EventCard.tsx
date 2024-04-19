@@ -34,16 +34,16 @@ export const EventCard = memo(({className, event, onDelete} : EventCardProps) =>
             <p><b>{t('Адрес')}:</b> {event.place}</p>
             <p className={cls.notes_title}><b>{t('Заметки')}:</b></p>
             <p className={cls.notes}>{event.notes}</p>
-            {event.eventType.name === 'wfworket' && <Alert className={cls.alert} theme={AlertTheme.INFO} text={t('Это событие относится к заказам')} />}
+            {event.eventType?.name === 'wfworket' && <Alert className={cls.alert} theme={AlertTheme.INFO} text={t('Это событие относится к заказам')} />}
 
-            {event.eventType.name !== 'wfworket' &&
+            {event.eventType?.name !== 'wfworket' &&
             <div className={cls.button_wrapper}>
                 <AppButton theme={ButtonTheme.OUTLINED} stretch={true} onClick={() => handleDeleteEvent(event._id)} >{t('Удалить')}</AppButton>
                 <Link to={'/events/'+event._id}><AppButton theme={ButtonTheme.SOLID} stretch={true} >{t('Редактировать')}</AppButton></Link>
             </div>
             }
 
-            {event.eventType.name === 'wfworket' &&
+            {event.eventType?.name === 'wfworket' &&
             <div className={cls.button_wrapper}>
                 <Link to={'/orders/'+event._id}><AppButton theme={ButtonTheme.SOLID} stretch={true} >{t('Редактировать')}</AppButton></Link>
             </div>
