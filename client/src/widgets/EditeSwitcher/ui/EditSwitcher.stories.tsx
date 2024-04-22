@@ -17,7 +17,7 @@ let mode = false
 const onEdit = () => {
     mode = true
 }
-const onChancelEdit = () => {
+const onCancelEdit = () => {
     mode = false
 }
 export default meta
@@ -29,7 +29,7 @@ export const Edit: Story = {
         onEdit: () => {
             mode = true
         },
-        onChancelEdit: () => {
+        onCancelEdit: () => {
             mode = false
         }
     },
@@ -47,7 +47,7 @@ export const Close: Story = {
     args: {
         editMode: true,
         onEdit,
-        onChancelEdit
+        onCancelEdit
     },
     decorators: [
         WithColorsTheme

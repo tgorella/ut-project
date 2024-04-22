@@ -7,16 +7,15 @@ export type FilterProps = {
   orderId: string,
   currentUserId: string
 }
-export const getOrderById = createAsyncThunk<OrderExtended, FilterProps ,ThunkConfig<string>>(
+export const getOrderById = createAsyncThunk<OrderExtended, string ,ThunkConfig<string>>(
     'orderDetails/getOrderById',
-    async (filter, thunkAPI) => {
+    async (id, thunkAPI) => {
         const {rejectWithValue, extra} = thunkAPI
-        const {orderId} = filter
         try {
             const {data} = await extra.api.post('/', {
                 'query': 'query Query($orderId: ID) { order(id: $orderId) { clientId {_id address avatarUrls email isFav name notes phone profession } createdAt endTime eventDate notes orderNumber place projectType { _id name } startTime status { _id color name } title total } }',
                 'operation-name': 'Query',
-                'variables': {'orderId': orderId}
+                'variables': {'orderId': id}
             })
             
             if (!data) {

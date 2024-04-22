@@ -14,7 +14,7 @@ const data = {
 describe('clientDetailsSlice.test', () => {
     test('test chancel edit', () => {
         const state: DeepPartial<ClientDetailsSchema> = {data, form: {name: '', profession: ''} }
-        expect(clientDetailsReducer(state as ClientDetailsSchema, clientDetailsAction.chancelEdit())).toEqual({
+        expect(clientDetailsReducer(state as ClientDetailsSchema, clientDetailsAction.cancelEdit())).toEqual({
             data,
             form: data
         })

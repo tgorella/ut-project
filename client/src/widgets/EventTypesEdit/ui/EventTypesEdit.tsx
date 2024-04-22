@@ -58,7 +58,7 @@ const EventTypesEdit = memo(({className} : EventTypesEditProps) => {
         dispatch(eventTypesEditAction.updateEventData({name: name, color: color, _id: id}))
     }
 
-    const handleChancelEdit = () => {
+    const handleCancelEdit = () => {
         clearNewDataState()
     }
 
@@ -119,7 +119,7 @@ const EventTypesEdit = memo(({className} : EventTypesEditProps) => {
                             onNameChange={handleChangeName}
                             onSave={handleSaveEventType}
                             onEdit={toggleInput}
-                            onChancelEdit={handleChancelEdit}
+                            onCancelEdit={handleCancelEdit}
                             onDelete={handleDelete}
                         />
                     })}
@@ -130,7 +130,7 @@ const EventTypesEdit = memo(({className} : EventTypesEditProps) => {
                         onNameChange={handleChangeName}
                         onSave={addNewType}
                         onEdit={toggleInput}
-                        onChancelEdit={handleChancelEdit}
+                        onCancelEdit={handleCancelEdit}
                     />}
                     {!showNewInput &&
                     <AppButton theme={ButtonTheme.SOLID} className={cls.button} onClick={toggleAddNewType}>{t('Добавить новую категорию')}</AppButton>}

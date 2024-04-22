@@ -11,7 +11,7 @@ interface EventBlockProps  extends HTMLAttributes<HTMLDivElement>{
 export const EventBlock = memo(({className, event, ...props} : EventBlockProps) => {
     
     return ( 
-        <div className={classNames(cls.eventBlock, {}, [className])} style={{backgroundColor: event.eventType.color}} {...props} >
+        <div className={classNames(cls.eventBlock, {}, [className])} style={{backgroundColor: event.eventType?.color ? event.eventType?.color : 'white'}} {...props} >
             {event.title}
         </div>
     )

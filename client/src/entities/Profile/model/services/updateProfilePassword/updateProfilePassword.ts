@@ -20,7 +20,7 @@ export const updateProfilePassword = createAsyncThunk<Profile, string,ThunkConfi
             if (!data) {
                 throw new Error('err')
             }
-            return data.data.updateUser
+            return data.data.updatePass
         } catch (error) {
             return rejectWithValue(i18n.t('Неправильные логин или пароль'))
         }

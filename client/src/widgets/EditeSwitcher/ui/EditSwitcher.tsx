@@ -8,14 +8,14 @@ interface EditSwitcherProps {
   className?: string;
   editMode: boolean;
   onEdit: () => void;
-  onChancelEdit: () => void
+  onCancelEdit: () => void
 }
-export const EditSwitcher = memo(({className, editMode, onEdit, onChancelEdit} : EditSwitcherProps) => {
+export const EditSwitcher = memo(({className, editMode, onEdit, onCancelEdit} : EditSwitcherProps) => {
   
     return ( 
         <div className={classNames(cls.EditSwitcher, {}, [className])} >
             {editMode 
-                ? <CloseIcon className={cls.icon} onClick={onChancelEdit} />
+                ? <CloseIcon className={cls.icon} onClick={onCancelEdit} />
                 : <EditIcon className={cls.icon} onClick={onEdit} />
             }
         </div>

@@ -1,7 +1,7 @@
 import {memo, useEffect, useState} from 'react'
 import { EventForm } from 'entities/Event/ui/EventForm/EventForm'
 import { useSelector } from 'react-redux'
-import { getEventFormData } from 'entities/Event/model/selectors/getEventFormData/fetEventFormData'
+import { getEventFormData } from 'entities/Event/model/selectors/getEventFormData/getEventFormData'
 import { getEventError } from 'entities/Event/model/selectors/getEventError/getEventError'
 import { getEventIsLoading } from 'entities/Event/model/selectors/getEventIsLoading/getEventIsLoading'
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'

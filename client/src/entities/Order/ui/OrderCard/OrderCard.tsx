@@ -64,7 +64,7 @@ export const OrderCard = memo(({className, id, children} : OrderProps) => {
     useEffect(() => {
         if (__PROJECT__ !== 'storybook') {
             if (authData) {
-                dispatch(getOrderById({orderId: id, currentUserId: authData._id}))
+                dispatch(getOrderById(id))
                 dispatch(fetchOrderStatuses())
                 dispatch(fetchProjects())
             }
@@ -80,12 +80,12 @@ export const OrderCard = memo(({className, id, children} : OrderProps) => {
 
     const toggleStatusEditMode = useCallback(() => setStatusEdit(!statusEdit) , [statusEdit])
     const toggleEditMode = useCallback(() =>setEdit(!edit), [edit])
-    const handleChancelEdit = () => {
-        dispatch(orderDetailsAction.chancelEdit())
+    const handleCancelEdit = () => {
+        dispatch(orderDetailsAction.cancelEdit())
         toggleEditMode()
     }
     const handleChancelNoteEdit = useCallback(() => {
-        dispatch(orderDetailsAction.chancelEdit())
+        dispatch(orderDetailsAction.cancelEdit())
     }, [dispatch])
 
     const handleNoteEdit = useCallback((value: string) => {
@@ -150,7 +150,7 @@ export const OrderCard = memo(({className, id, children} : OrderProps) => {
             <div className={cls.status}>
                 {!statusEdit && <>{t('Статус')}: <OrderStatusBlock status={data?.status}/></>}
                 {statusEdit && data.status && <OrderStatusSelect onChange={handleChangeStatus} value={data?.status?._id}/>}
-                <EditSwitcher  editMode={statusEdit} onEdit={toggleStatusEditMode} onChancelEdit={toggleStatusEditMode} className={cls.status_edit_btn}/>
+                <EditSwitcher  editMode={statusEdit} onEdit={toggleStatusEditMode} onCancelEdit={toggleStatusEditMode} className={cls.status_edit_btn}/>
             </div>
             <div className={classNames(cls.OrderDetailsPage, {}, [className])}>
                 <div className={cls.small_column} >
@@ -164,7 +164,7 @@ export const OrderCard = memo(({className, id, children} : OrderProps) => {
                         className={classNames(cls.Order, {}, [className])}
                         header={data?.title}
                         footer={<Text title={t('Стоимость')+': '+data?.total} />}>
-                        <EditSwitcher  editMode={edit} onEdit={toggleEditMode} onChancelEdit={handleChancelEdit}  className={cls.edit_btn}/>
+                        <EditSwitcher  editMode={edit} onEdit={toggleEditMode} onCancelEdit={handleCancelEdit}  className={cls.edit_btn}/>
                         {!edit && <OrderInfo orderInfo={data} />}
                         {edit && <OrderForm  
                             data={data}
@@ -179,7 +179,7 @@ export const OrderCard = memo(({className, id, children} : OrderProps) => {
                             OnSaveOrder={handleSaveOrder}
                         />}
                     </Box>
-                    <NoteBlock value={data?.notes} onChancelEdit={handleChancelNoteEdit} onChange={handleNoteEdit} onSave={handleSaveNotes} />
+                    <NoteBlock value={data?.notes} onCancelEdit={handleChancelNoteEdit} onChange={handleNoteEdit} onSave={handleSaveNotes} />
                 </div>
             </div>
         </>

@@ -68,8 +68,8 @@ const ProfileCard = memo((props : ProfileCardProps) => {
         dispatch(profileAction.setReadOnly(false))
     }
 
-    const onChancelEdit = () => {
-        dispatch(profileAction.chancelEdit())
+    const onCancelEdit = () => {
+        dispatch(profileAction.cancelEdit())
     }
 
     useEffect(() => {
@@ -97,7 +97,7 @@ const ProfileCard = memo((props : ProfileCardProps) => {
         <div className={classNames(cls.ProfileCard, {}, [className])}>
             <Box className={cls.box}>
                 <div className={cls.edit_icon}>
-                    <EditSwitcher editMode={edit} onChancelEdit={onChancelEdit} onEdit={onEdit} />
+                    <EditSwitcher editMode={edit} onCancelEdit={onCancelEdit} onEdit={onEdit} />
                 </div>
                 <Avatar className={cls.avatar} src={data?.avatar} size={AvatarSize.XL} alt={data?.firstname + ' '+data?.lastname}/>
                 {!edit && (

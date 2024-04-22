@@ -35,7 +35,7 @@ export const editEventSlice = createSlice({
                 ...action.payload
             }
         },
-        chancelEdit: (state) => {
+        cancelEdit: (state) => {
             state.form = state.data
         },
         newEvent: (state) => {
