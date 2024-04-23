@@ -5,6 +5,7 @@ import { eventsSchema } from './eventsSchema.js'
 import { modulesSchema } from './modulesSchema.js'
 import { orderSchema } from './orderSchema.js'
 import { orderStatusSchema } from './orderStatusSchema.js'
+import { productSchema } from './productSchema.js'
 import { projectSchema } from './projectSchema.js'
 
 const graphqlSchema = `#graphql
@@ -16,6 +17,7 @@ ${modulesSchema}
 ${orderStatusSchema}
 ${orderSchema}
 ${projectSchema}
+${productSchema}
 
 type Query {
   user: User
@@ -33,7 +35,11 @@ type Query {
   event(id: ID): Event
   eventTypes: [EventType]
   orderStatuses: [OrderStatus]
-  modules: ModulesStatus
+  modules: ModulesStatus,
+  products: [Product],
+  product(id: ID): Product,
+  productsByCategory(category: String): [Product],
+  filteredProducts(data: String): [Product]
 },
 
 type Mutation {
@@ -67,7 +73,10 @@ type Mutation {
   updateProjectStep(data: ProjectStepNewDataInput): Step
   deleteProjectStep(id: ID): ProjectData
   addModules: ModulesStatus
-  updateModules(data: ModulesNewDataInput): ModulesStatus
+  updateModules(data: ModulesNewDataInput): ModulesStatus,
+  addProduct(data: ProductInput): Product,
+  updateProduct(data: ProductNewDataInput): Product,
+  deleteProduct(id: ID): String
 }
 `
 export default graphqlSchema

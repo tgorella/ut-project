@@ -17,6 +17,8 @@ import projectStepMutationResolvers from './projectStepMutationResolvers.js';
 import projectMutationResolvers from './projectMutationResolvers.js';
 import projectStageMutationResolvers from './projectStageMutationResolvers.js';
 import modulesMutationResolvers from './modulesMutationResolvers.js';
+import productQueryResolvers from './productQueryResolvers.js';
+import productMutationResolvers from './productMutationResolvers.js';
 
 const resolvers =  {
   Query: {
@@ -27,7 +29,8 @@ const resolvers =  {
     ...eventQueryResolvers,
     ...eventTypesQueryResolvers,
     ...orderStatusesQueryResolvers,
-    ...modulesStatusQueryResolvers
+    ...modulesStatusQueryResolvers,
+    ...productQueryResolvers,
   },
   Mutation: {
     ...userMutationResolvers,
@@ -40,7 +43,8 @@ const resolvers =  {
     ...projectMutationResolvers,
     ...projectStageMutationResolvers,
     ...projectStepMutationResolvers,
-    ...modulesMutationResolvers
+    ...modulesMutationResolvers,
+    ...productMutationResolvers,
   }
 }
 
