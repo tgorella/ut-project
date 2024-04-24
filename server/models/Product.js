@@ -8,7 +8,7 @@ const schema = new Schema({
   productType: {type: String, required: true},
   description: {type: String, required: true},
   img: {type: String},
-  category: {type: String, required: true},
+  category: [{type: String}],
   subcategory: {type: String},
   userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
 },

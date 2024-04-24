@@ -1,0 +1,7 @@
+export { addProduct } from './model/services/addProduct/addProduct'
+export { deleteProduct } from './model/services/deleteProduct/deleteProduct'
+export { fetchAllProducts } from './model/services/fetchAllProduct.ts/fetchAllProducts'
+export { getProductById } from './model/services/getProductById/getProductById'
+export { getProductsByCategory } from './model/services/getProductsByCategory/getProductsByCategory'
+export { updateProduct } from './model/services/updateProduct/updateProduct'
+export {Product} from './ui/Product'

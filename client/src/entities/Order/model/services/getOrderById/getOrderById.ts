@@ -19,7 +19,7 @@ export const getOrderById = createAsyncThunk<OrderExtended, string ,ThunkConfig<
             })
             
             if (!data) {
-                throw new Error('err')
+                throw new Error('Заказ не найден')
             }
             return data.data.order
         } catch (error) {
