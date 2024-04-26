@@ -4,4 +4,5 @@ export { fetchAllProducts } from './model/services/fetchAllProduct.ts/fetchAllPr
 export { getProductById } from './model/services/getProductById/getProductById'
 export { getProductsByCategory } from './model/services/getProductsByCategory/getProductsByCategory'
 export { updateProduct } from './model/services/updateProduct/updateProduct'
-export {Product} from './ui/Product'
+export {ProductCard} from './ui/ProductCard/ProductCard'
+export type {Product, ProductType} from './model/types/Product'

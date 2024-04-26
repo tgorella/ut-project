@@ -10,7 +10,7 @@ export interface Product {
   count: number,
   productType: ProductType,
   description: string,
-  img: string,
+  img: string[],
   category: string,
   subcategory: string,
   userId: string,
