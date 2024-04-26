@@ -1,0 +1,33 @@
+.ProductListItem {
+width: 100%;
+display: grid;
+grid-template-columns: 40px minmax(200px, 1fr) 80px 80px 80px 100px 150px 40px;
+gap: 10px;
+align-items: center;
+font-size: 14px;
+line-height: 130%;
+padding: 10px 0;
+}
+
+.ProductListItem div {
+  display: flex;
+  align-items: center;
+}
+.ProductListItem:not(:last-child) {
+  border-bottom: 1px solid var(--darker-bg-color)
+}
+.item_img {
+  width: 40px;
+  aspect-ratio: 1/1;
+  border-radius: 6px;
+}
+.product_name a {
+  color: var(--primary-text)
+}
+.icon {
+  fill: var(--primary-text);
+}
+
+.del_btn {
+  cursor: pointer;
+}
