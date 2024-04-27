@@ -2,7 +2,7 @@ import cls from './Flex.module.scss'
 import classNames, { Mods } from 'shared/lib/classNames/ClassNames'
 import {ReactNode, memo} from 'react'
 
-export type FlexJustify = 'end' | 'start' | 'center' | 'between'
+export type  FlexJustify = 'end' | 'start' | 'center' | 'between'
 export type FlexAlign = 'end' | 'start' | 'center'
 export type FlexDirection = 'column' | 'row'
 export type FlexGap = '10' | '20' | '30'

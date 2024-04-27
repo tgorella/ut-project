@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import 'app/styles/index.scss'
 import { WithColorsTheme } from 'shared/config/storybook/ThemeDecorator/WithColorsTheme'
 import { ProductType } from '../../model/types/Product'
-import ProductList from './ProductList'
+import {ProductList} from './ProductList'
 
 const meta: Meta<typeof ProductList> = {
     title: 'entities/ProductList',

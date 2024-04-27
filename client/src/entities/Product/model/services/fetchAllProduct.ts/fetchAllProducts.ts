@@ -4,7 +4,8 @@ import { Product } from '../../types/Product'
 import { ThunkConfig } from 'app/providers/StoreProvider'
 
 interface FetchProps {
-  resParams: string
+  resParams: string,
+  search: string
 }
 
 export const fetchAllProducts = createAsyncThunk<Product[], FetchProps, ThunkConfig<string>>(
@@ -14,14 +15,15 @@ export const fetchAllProducts = createAsyncThunk<Product[], FetchProps, ThunkCon
         const {rejectWithValue, extra} = thunkAPI
         try {
             const {data} = await extra.api.post('/', {
-                'query': `query Query { products { ${props.resParams} } }`,
-                'operation-name': 'Query'
+                'query': `query Query($data: String) { filteredProducts(data: $data) { ${props.resParams} } }`,
+                'operation-name': 'Query',
+                'variables': {'data': props.search}
             })
   
             if (!data) {
                 return rejectWithValue(i18n.t('Заказы не найдены'))
             }
-            return data.data.products
+            return data.data.filteredProducts
         } catch (error) {
             return rejectWithValue(i18n.t('Неправильные логин или пароль'))
         }

@@ -30,7 +30,7 @@ describe('addProduct.test', () => {
             discount: 0,
             count: 150,
             productType: ProductType.PRODUCT,
-            img: '',
+            img: [],
             category: '',
             subcategory: '',
             userId: ''

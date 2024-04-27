@@ -1,0 +1,13 @@
+{
+  "Введите название товара": "Enter product's name",
+  "Категория": "Category",
+  "Описание": "Description",
+  "Стоимость": "Price",
+  "Товаров для отображения нет": "No items to display",
+  "Товары": "Products",
+  "Что-то пошло не так. Не удалось загрузить список товаров ":  "Something went wrong. Couldn't load products. ",
+  "товар": "Product",
+  "услуга": "Service",
+  "шт": "items",
+  "Записей на странице:": "Items per page:"
+}

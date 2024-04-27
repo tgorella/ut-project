@@ -9,6 +9,7 @@ import { MainPage } from 'pages/MainPage'
 import { NotFoundPage } from 'pages/NotFoundPage'
 import { OrderDetailsPage } from 'pages/OrderDetailsPage'
 import { OrdersPage } from 'pages/OrdersPage'
+import { ProductsPage } from 'pages/ProductsPage'
 import { ProfilePage } from 'pages/ProfilePage'
 import { ProjectsPage } from 'pages/ProjectsPage'
 import { SettingPage } from 'pages/SettingPage'
@@ -32,6 +33,8 @@ export enum AppRoutes {
   PROJECTS = 'projects',
   CALENDAR = 'calendar',
   DASHBOARD = 'dashboard',
+  PRODUCTS = 'products',
+  PRODUCT_DETAILS = 'product_details',
   NOTFOUND = 'not_found',
 }
 export const RoutePath: Record<AppRoutes, string> = {
@@ -47,6 +50,8 @@ export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.CALENDAR]: '/calendar',
     [AppRoutes.EVENT_EDIT]: '/events/',
     [AppRoutes.DASHBOARD]: '/dashboard',
+    [AppRoutes.PRODUCTS]: '/products',
+    [AppRoutes.PRODUCT_DETAILS]: '/products/',
     [AppRoutes.NOTFOUND]: '*'
 }
 
@@ -82,14 +87,24 @@ export const routeConfig: Record<AppRoutes, AppRoutesProp> = {
         element: <OrdersPage />,
         authOnly: true
     },
-    [AppRoutes.PROJECTS]: {
-        path: RoutePath.projects,
-        element: <ProjectsPage />,
-        authOnly: true
-    },
     [AppRoutes.ORDERS_DETAILS]: {
         path: RoutePath.order_details+':id',
         element: <OrderDetailsPage />,
+        authOnly: true
+    },
+    [AppRoutes.PRODUCTS]: {
+        path: RoutePath.products,
+        element: <ProductsPage />,
+        authOnly: true
+    },
+    [AppRoutes.PRODUCT_DETAILS]: {
+        path: RoutePath.product_details+':id',
+        element: <ProductsPage />,
+        authOnly: true
+    },
+    [AppRoutes.PROJECTS]: {
+        path: RoutePath.projects,
+        element: <ProjectsPage />,
         authOnly: true
     },
     [AppRoutes.EVENT_EDIT]: {

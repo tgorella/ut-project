@@ -1,4 +1,16 @@
 .ProductList {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
+.list_header {
+  width: 100%;
+display: grid;
+grid-template-columns: 40px minmax(200px, 1fr) 80px 80px 80px 100px 150px 40px;
+gap: 10px;
+align-items: center;
+font-size: 14px;
+font-weight: bold;
+text-align: center;
+}
+
