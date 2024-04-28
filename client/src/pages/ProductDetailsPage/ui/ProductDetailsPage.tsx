@@ -1,7 +1,7 @@
 import cls from './ProductDetailsPage.module.scss'
 import {memo} from 'react'
-import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
-import { HStack, VStack } from 'shared/ui/Stack'
+import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
+import { HStack, VStack } from '@/shared/ui/Stack'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
@@ -9,12 +9,12 @@ import { productDetailsPageReducer } from '../model/slice/ProductDetailsPageSlic
 import { getProductDetailsError } from '../model/selectors/getProductDetailsError/getProductDetailsError'
 import { getProductDetailsIsLoading } from '../model/selectors/getProductDetailsIsLoading/getProductDetailsIsLoading'
 import { getProductDetailsForm } from '../model/selectors/getProductDetailsForm/getProductDetailsForm'
-import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
-import { Box } from 'shared/ui/Box'
-import BACK_ICON from 'shared/assets/img/undo.svg'
-import { DeleteProductButton } from 'features/DeleteProductButton'
-import { ProductCard, ProductType } from 'entities/Product'
-import { PageLoader } from 'widgets/PageLoader'
+import { AppButton, ButtonTheme } from '@/shared/ui/AppButton/AppButton'
+import { Box } from '@/shared/ui/Box'
+import BACK_ICON from '@/shared/assets/img/undo.svg'
+import { DeleteProductButton } from '@/features/DeleteProductButton'
+import { ProductCard, ProductType } from '@/entities/Product'
+import { PageLoader } from '@/widgets/PageLoader'
 
 const reducers: ReducersList = {
     productDetailsPage: productDetailsPageReducer

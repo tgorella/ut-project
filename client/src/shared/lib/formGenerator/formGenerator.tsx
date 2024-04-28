@@ -1,7 +1,7 @@
-import { Country, CountrySelect } from 'entities/Country'
-import { Currency, CurrencySelect } from 'entities/Currency'
-import { Input } from 'shared/ui/Input/Input'
-import { Option, Select } from 'shared/ui/Select'
+import { Country, CountrySelect } from '@/entities/Country'
+import { Currency, CurrencySelect } from '@/entities/Currency'
+import { Input } from '@/shared/ui/Input/Input'
+import { Option, Select } from '@/shared/ui/Select'
 
 export enum FromComponent {
   INPUT = 'input',

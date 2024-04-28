@@ -1,7 +1,7 @@
 import { Product } from '../../model/types/Product'
 import { memo } from 'react'
 import ProductListItem from '../ProductListItem/ProductListItem'
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames from '@/shared/lib/classNames/ClassNames'
 import cls from './ProductList.modules.scss'
 import { useTranslation } from 'react-i18next'
 

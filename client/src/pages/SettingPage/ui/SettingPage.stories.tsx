@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import 'app/styles/index.scss'
-import { WithColorsTheme } from 'shared/config/storybook/ThemeDecorator/WithColorsTheme'
+import '@/app/styles/index.scss'
+import { WithColorsTheme } from '@/shared/config/storybook/ThemeDecorator/WithColorsTheme'
 import SettingPage from './SettingPage'
-import { EditPageStoreDecorator } from 'shared/config/storybook/StoreDecorator/settingPageStoreDecorator'
-import { TeamMemberStoreDecorator } from 'shared/config/storybook/StoreDecorator/teamMemberStoreDecorator'
+import { EditPageStoreDecorator } from '@/shared/config/storybook/StoreDecorator/settingPageStoreDecorator'
+import { TeamMemberStoreDecorator } from '@/shared/config/storybook/StoreDecorator/teamMemberStoreDecorator'
 
 const meta: Meta<typeof SettingPage> = {
     title: 'pages/SettingPage',

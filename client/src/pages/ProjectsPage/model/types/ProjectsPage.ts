@@ -1,6 +1,6 @@
-import { Client } from 'entities/Clients'
-import { OrderExtended } from 'entities/Order'
-import { Project } from 'entities/Project'
+import { Client } from '@/entities/Clients'
+import { OrderExtended } from '@/entities/Order'
+import { Project } from '@/entities/Project'
 
 export interface ProjectsPageSchema {
   isLoading: boolean,

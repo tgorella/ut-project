@@ -1,8 +1,8 @@
 import { memo } from 'react'
 import cls from './PageError.module.scss'
 import { useTranslation } from 'react-i18next'
-import classNames from 'shared/lib/classNames/ClassNames'
-import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
+import classNames from '@/shared/lib/classNames/ClassNames'
+import { AppButton, ButtonTheme } from '@/shared/ui/AppButton/AppButton'
 
 interface PageErrorProps {
   className?: string

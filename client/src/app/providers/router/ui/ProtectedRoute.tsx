@@ -1,10 +1,10 @@
-import { getProfileRoles } from 'entities/Profile'
-import { UserRole } from 'entities/Profile/model/types/profileSchema'
-import { getIsLogged } from 'entities/User'
+import { getProfileRoles } from '@/entities/Profile'
+import { UserRole } from '@/entities/Profile/model/types/profileSchema'
+import { getIsLogged } from '@/entities/User'
 import { useMemo } from 'react'
 import { useSelector } from 'react-redux'
 import { Navigate, useLocation } from 'react-router-dom'
-import { RoutePath } from 'shared/config/routeConfig/routeConfig'
+import { RoutePath } from '@/shared/config/routeConfig/routeConfig'
 
 interface ProtectedRouteProps {
   children: JSX.Element,

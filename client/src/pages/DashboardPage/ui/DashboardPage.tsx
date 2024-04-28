@@ -1,11 +1,11 @@
 import cls from './DashboardPage.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames from '@/shared/lib/classNames/ClassNames'
 import {memo, useEffect} from 'react'
 import { useSelector } from 'react-redux'
-import { getProfileData, profileReducer } from 'entities/Profile'
-import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
-import greeting from 'shared/lib/greeting/greeting'
-import randomSentence from 'shared/lib/randomSentence/randomSentence'
+import { getProfileData, profileReducer } from '@/entities/Profile'
+import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
+import greeting from '@/shared/lib/greeting/greeting'
+import randomSentence from '@/shared/lib/randomSentence/randomSentence'
 import { Line } from 'react-chartjs-2'
 import {
     Chart as ChartJS,
@@ -17,14 +17,14 @@ import {
     Tooltip,
     Legend,
 } from 'chart.js'
-import { Order, OrderExtended } from 'entities/Order'
-import { getOrdersPageData } from 'pages/OrdersPage/model/selectors/getOrdersPageData/getOrdersPageData'
-import { ordersPageReducer } from 'pages/OrdersPage/model/slice/OrdersPageSlice'
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
-import { fetchAllOrders } from 'pages/OrdersPage/model/services/fetchAllOrders/fetchAllOrders'
-import { Box } from 'shared/ui/Box'
-import { VStack } from 'shared/ui/Stack/VStack/VStack'
-import { HStack } from 'shared/ui/Stack'
+import { Order, OrderExtended } from '@/entities/Order'
+import { getOrdersPageData } from '@/pages/OrdersPage/model/selectors/getOrdersPageData/getOrdersPageData'
+import { ordersPageReducer } from '@/pages/OrdersPage/model/slice/OrdersPageSlice'
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
+import { fetchAllOrders } from '@/pages/OrdersPage/model/services/fetchAllOrders/fetchAllOrders'
+import { Box } from '@/shared/ui/Box'
+import { VStack } from '@/shared/ui/Stack/VStack/VStack'
+import { HStack } from '@/shared/ui/Stack'
 import { useTranslation } from 'react-i18next'
 
 interface DashboardPageProps {

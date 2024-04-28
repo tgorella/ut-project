@@ -1,6 +1,6 @@
-import { Theme, useTheme } from 'app/providers/ThemeProvider'
+import { Theme, useTheme } from '@/app/providers/ThemeProvider'
 import cls from './ThemeSwitcher.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames from '@/shared/lib/classNames/ClassNames'
 import { memo } from 'react'
 
 interface ThemeSwitcherProps {

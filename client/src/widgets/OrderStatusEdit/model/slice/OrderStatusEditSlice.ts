@@ -1,6 +1,6 @@
 import {PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { OrderStatusEditSchema } from '../types/OrderStatusEdit'
-import { OrderStatusDetails, addOrderStatus, deleteStatus, fetchOrderStatuses, updateStatus } from 'entities/OrderStatus'
+import { OrderStatusDetails, addOrderStatus, deleteStatus, fetchOrderStatuses, updateStatus } from '@/entities/OrderStatus'
 
 const initialState: OrderStatusEditSchema = {
     isLoading: false,

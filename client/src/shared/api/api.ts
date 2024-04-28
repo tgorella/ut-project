@@ -1,4 +1,4 @@
-import { tokenService } from 'entities/Token'
+import { tokenService } from '@/entities/Token'
 import axios from 'axios'
 
 export const $api = axios.create({

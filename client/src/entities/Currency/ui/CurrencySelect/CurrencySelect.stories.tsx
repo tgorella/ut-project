@@ -1,5 +1,5 @@
 import type {  Meta, StoryObj } from '@storybook/react'
-import { WithColorsTheme } from 'shared/config/storybook/ThemeDecorator/WithColorsTheme'
+import { WithColorsTheme } from '@/shared/config/storybook/ThemeDecorator/WithColorsTheme'
 import { CurrencySelect } from './CurrencySelect'
 import { Currency } from '../../model/types/сurrency'
 

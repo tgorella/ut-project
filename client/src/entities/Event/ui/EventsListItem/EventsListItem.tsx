@@ -1,10 +1,10 @@
 import cls from './EventsListItem.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames from '@/shared/lib/classNames/ClassNames'
 import {memo} from 'react'
 import { Event } from '../../model/types/Event'
-import { Order } from 'entities/Order'
-import { getDayName } from 'shared/lib/getDayName/getDayName'
-import { getMonthName } from 'shared/lib/getMonthName/getMonthName'
+import { Order } from '@/entities/Order'
+import { getDayName } from '@/shared/lib/getDayName/getDayName'
+import { getMonthName } from '@/shared/lib/getMonthName/getMonthName'
 
 
 interface EventListItemProps {

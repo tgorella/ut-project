@@ -1,6 +1,6 @@
 import {PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { AddClientSchema } from '../types/AddClientSchema'
-import { Client } from 'entities/Clients'
+import { Client } from '@/entities/Clients'
 
 const initialState: AddClientSchema = {
     data: {

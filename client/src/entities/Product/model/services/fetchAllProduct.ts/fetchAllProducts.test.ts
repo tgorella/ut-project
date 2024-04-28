@@ -1,10 +1,10 @@
-import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk'
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk'
 import { fetchAllProducts } from './fetchAllProducts'
 
 describe('fetchAllProducts.test', () => {
     test('success', async () => {
         const data = {data: {
-            products: [
+            filteredProducts: [
                 {
                     _id: '1',
                     name: 'Product 1'
@@ -23,7 +23,7 @@ describe('fetchAllProducts.test', () => {
 
         expect(thunk.api.post).toHaveBeenCalled()
         expect(result.meta.requestStatus).toBe('fulfilled')
-        expect(result.payload).toEqual(data.data.products)
+        expect(result.payload).toEqual(data.data.filteredProducts)
     })
     test('fetch error', async () => {
         const thunk = new TestAsyncThunk(fetchAllProducts)

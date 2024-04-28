@@ -1,16 +1,16 @@
 import cls from './RegistrationForm.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames from '@/shared/lib/classNames/ClassNames'
 import { memo, useState } from 'react'
 import formGenerator, {
     FormItem,
     FromComponent,
-} from 'shared/lib/formGenerator/formGenerator'
+} from '@/shared/lib/formGenerator/formGenerator'
 import registrationFormValidation from '../../model/lib/registrationFormValidation/registrationFormValidation'
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { useTranslation } from 'react-i18next'
 import { signUp } from '../../model/services/signUp/signUp'
-import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
-import { UserRole } from 'entities/Profile/model/types/profileSchema'
+import { AppButton, ButtonTheme } from '@/shared/ui/AppButton/AppButton'
+import { UserRole } from '@/entities/Profile/model/types/profileSchema'
 
 interface RegistrationFormProps {
   className?: string

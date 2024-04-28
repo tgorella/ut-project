@@ -1,7 +1,7 @@
 import { ReducersMapObject } from '@reduxjs/toolkit'
 import { Decorator } from '@storybook/react'
-import { StateSchema, StoreProvider } from 'app/providers/StoreProvider'
-import { orderStatusReducer } from 'entities/OrderStatus'
+import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider'
+import { orderStatusReducer } from '@/entities/OrderStatus'
 import { stateAllErrors, stateAllIn } from './state'
 
 export const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {

@@ -1,5 +1,5 @@
-import { EventExtended } from 'entities/Event'
-import { EventType } from 'entities/EventType'
+import { EventExtended } from '@/entities/Event'
+import { EventType } from '@/entities/EventType'
 
 export interface EventDetailPageSchema {
 isLoading: boolean,

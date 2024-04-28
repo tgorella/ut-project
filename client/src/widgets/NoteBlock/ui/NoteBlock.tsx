@@ -1,11 +1,10 @@
 import { memo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import cls from './NoteBlock.module.scss'
-import { Box } from 'shared/ui/Box'
-import { EditSwitcher } from 'widgets/EditeSwitcher'
-import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
-import classNames from 'shared/lib/classNames/ClassNames'
-
+import { Box } from '@/shared/ui/Box'
+import { EditSwitcher } from '@/widgets/EditeSwitcher'
+import { AppButton, ButtonTheme } from '@/shared/ui/AppButton/AppButton'
+import classNames from '@/shared/lib/classNames/ClassNames'
 interface NoteBlockProps {
   className?: string;
   value?: string;

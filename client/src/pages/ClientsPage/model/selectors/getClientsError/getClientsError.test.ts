@@ -1,4 +1,4 @@
-import { StateSchema } from 'app/providers/StoreProvider'
+import { StateSchema } from '@/app/providers/StoreProvider'
 import { getClientsError } from './getClientsError'
 
 describe('getClientsError.test', () => {

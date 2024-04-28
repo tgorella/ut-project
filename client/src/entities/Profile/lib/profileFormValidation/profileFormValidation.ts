@@ -1,5 +1,5 @@
 import { ProfileWithPass } from '../../model/types/profileSchema'
-import i18n from 'shared/config/i18n/i18n'
+import i18n from '@/shared/config/i18n/i18n'
 
 interface MethodInfo {
   message: string;

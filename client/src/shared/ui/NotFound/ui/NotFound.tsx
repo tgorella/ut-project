@@ -1,6 +1,6 @@
 import cls from './NotFound.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
-import ICON_404 from 'shared/assets/img/404.png'
+import classNames from '@/shared/lib/classNames/ClassNames'
+import ICON_404 from '@/shared/assets/img/404.png'
 import { useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 

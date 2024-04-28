@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import i18n from 'shared/config/i18n/i18n'
+import i18n from '@/shared/config/i18n/i18n'
 import { Product } from '../../types/Product'
-import { ThunkConfig } from 'app/providers/StoreProvider'
+import { ThunkConfig } from '@/app/providers/StoreProvider'
 
 interface FetchProps {
   resParams: string,

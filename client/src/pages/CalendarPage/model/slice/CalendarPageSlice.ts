@@ -1,6 +1,6 @@
 import {PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { CalendarPageSchema } from '../types/CalendarPage'
-import { EventExtended, deleteEvent, fetchEvents } from 'entities/Event'
+import { EventExtended, deleteEvent, fetchEvents } from '@/entities/Event'
 
 
 const initialState: CalendarPageSchema = {

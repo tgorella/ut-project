@@ -1,6 +1,6 @@
 import {PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { ProductDetailsPageSchema } from '../types/ProductDetailsPage'
-import { getProductById, Product, ProductType } from  'entities/Product'
+import { getProductById, Product, ProductType } from  '@/entities/Product'
 
 const initialState: ProductDetailsPageSchema = {
     isLoading: true,

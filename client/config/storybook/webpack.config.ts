@@ -12,6 +12,10 @@ export default ({ config }: { config: webpack.Configuration }) => {
     }
     config.resolve?.modules?.push(paths.src)
     config.resolve?.extensions?.push('.ts', '.tsx', '.js')
+    // @ts-ignore
+    config.resolve.alias = {
+        '@': paths.src
+    }
 
     if (config.module?.rules != undefined) {
         // @ts-ignore

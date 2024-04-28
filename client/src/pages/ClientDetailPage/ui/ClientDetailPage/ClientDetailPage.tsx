@@ -1,15 +1,15 @@
 import { useTranslation } from 'react-i18next'
 import cls from './ClientDetailPage.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames from '@/shared/lib/classNames/ClassNames'
 import { useNavigate, useParams } from 'react-router-dom'
-import { ClientCard, ClientOrdersList, getClientDetailsError, getClientDetailsIsLoading } from 'entities/Clients'
+import { ClientCard, ClientOrdersList, getClientDetailsError, getClientDetailsIsLoading } from '@/entities/Clients'
 import { memo } from 'react'
-import { Box } from 'shared/ui/Box'
-import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
-import BACK_ICON from 'shared/assets/img/undo.svg'
+import { Box } from '@/shared/ui/Box'
+import { AppButton, ButtonTheme } from '@/shared/ui/AppButton/AppButton'
+import BACK_ICON from '@/shared/assets/img/undo.svg'
 import { useSelector } from 'react-redux'
-import { AddOrderButton } from 'widgets/AddOrderButton'
-import { DelClientButton } from 'widgets/DelClientButton'
+import { AddOrderButton } from '@/widgets/AddOrderButton'
+import { DelClientButton } from '@/widgets/DelClientButton'
 
 interface ClientDetailPageProps {
   className?: string;

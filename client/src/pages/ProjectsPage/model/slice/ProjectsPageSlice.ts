@@ -1,8 +1,8 @@
 import {PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { Project, fetchProjects } from 'entities/Project'
+import { Project, fetchProjects } from '@/entities/Project'
 import { ProjectsPageSchema } from '../types/ProjectsPage'
-import { fetchClients } from 'entities/Clients/model/services/fetchAll/fetchClients'
-import { fetchOrders } from 'entities/Order'
+import { fetchClients } from '@/entities/Clients/model/services/fetchAll/fetchClients'
+import { fetchOrders } from '@/entities/Order'
 
 const initialState: ProjectsPageSchema = {
     isLoading: false,

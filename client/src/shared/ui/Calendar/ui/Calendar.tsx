@@ -1,14 +1,14 @@
 import cls from './Calendar.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames from '@/shared/lib/classNames/ClassNames'
 import {memo, useState} from 'react'
-import { VStack } from 'shared/ui/Stack/VStack/VStack'
+import { VStack } from '@/shared/ui/Stack/VStack/VStack'
 import { CalendarHeader } from './CalendarHeader'
 import { CurrentDate, monthInfo } from './lib/vars'
 import { genCalendarBodyObj } from './lib/genCalendarBodyObj'
 import { CalendarBody } from './CalendarBody'
 import { CalendarDaysNameRow } from './CakendarDaysNameRow'
 import { useTranslation } from 'react-i18next'
-import { getCalendarPageEvents } from 'pages/CalendarPage/model/selectors/getCalendarPageEvents/getCalendarPageEvents'
+import { getCalendarPageEvents } from '@/pages/CalendarPage/model/selectors/getCalendarPageEvents/getCalendarPageEvents'
 import { useSelector } from 'react-redux'
 
 const today: CurrentDate = { year: new Date().getFullYear(), month: new Date().getMonth(), day: new Date().getDay()}

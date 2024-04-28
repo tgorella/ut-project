@@ -1,8 +1,8 @@
 import { t } from 'i18next'
-import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
+import { AppButton, ButtonTheme } from '@/shared/ui/AppButton/AppButton'
 import cls from './ProfileCard.module.scss'
 import { Profile } from '../../model/types/profileSchema'
-import formGenerator, { FormItem, FromComponent } from 'shared/lib/formGenerator/formGenerator'
+import formGenerator, { FormItem, FromComponent } from '@/shared/lib/formGenerator/formGenerator'
 
 interface ProfileFormProps {
   className?: string;

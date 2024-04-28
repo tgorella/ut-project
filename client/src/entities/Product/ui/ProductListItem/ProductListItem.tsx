@@ -1,9 +1,9 @@
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames from '@/shared/lib/classNames/ClassNames'
 import { Product } from '../../model/types/Product'
 import cls from './ProductListItem.module.scss'
 import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
-import DeleteIcon from 'shared/assets/img/delete.svg'
+import DeleteIcon from '@/shared/assets/img/delete.svg'
 import { Link } from 'react-router-dom'
 interface ListItemProps {
   className?: string;

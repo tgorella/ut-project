@@ -1,10 +1,10 @@
 import cls from './Product.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames from '@/shared/lib/classNames/ClassNames'
 import {memo, useState} from 'react'
 import { Product } from '../../model/types/Product'
 import { useTranslation } from 'react-i18next'
-import { Box } from 'shared/ui/Box'
-import { EditSwitcher } from 'widgets/EditeSwitcher'
+import { Box } from '@/shared/ui/Box'
+import { EditSwitcher } from '@/widgets/EditeSwitcher'
 
 interface ProductProps {
   className?: string;

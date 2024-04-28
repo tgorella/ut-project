@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import { Column } from '../model/types/tableSchema'
 import cls from './Table.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames from '@/shared/lib/classNames/ClassNames'
 
 interface TableRowProps {
   className?: string;

@@ -1,6 +1,6 @@
 import { loginByEmail } from './loginByEmail'
 // import { userAction } from 'entities/User'
-import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk'
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk'
 
 describe('loginByEmail.test', () => {
     

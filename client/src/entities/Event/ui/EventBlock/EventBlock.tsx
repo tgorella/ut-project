@@ -1,5 +1,5 @@
 import cls from './EventBlock.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames from '@/shared/lib/classNames/ClassNames'
 import {HTMLAttributes, memo} from 'react'
 import { EventExtended } from '../../model/types/Event'
 

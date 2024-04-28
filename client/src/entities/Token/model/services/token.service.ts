@@ -1,4 +1,4 @@
-import { EXPIRES_KEY, REFRESH_KEY, TOKEN_KEY, USERID_KEY } from 'shared/const/localstorage'
+import { EXPIRES_KEY, REFRESH_KEY, TOKEN_KEY, USERID_KEY } from '@/shared/const/localstorage'
 
 interface setTokensProps {
   refreshToken: string,

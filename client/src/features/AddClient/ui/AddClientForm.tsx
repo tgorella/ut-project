@@ -1,14 +1,14 @@
 import cls from './AddClientForm.module.scss'
 import {memo, useCallback, useState} from 'react'
 import { t } from 'i18next'
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { useSelector } from 'react-redux'
 import { getNewClientData } from '../model/selectors/getNewClientData/getNewClientData'
 import { addClientAction } from '../model/slice/AddClientSlice'
-import { Alert, AlertTheme } from 'shared/ui/Alert'
-import { PageLoader } from 'widgets/PageLoader'
-import { ClientForm } from 'entities/Clients'
-import { Text } from 'shared/ui/Text'
+import { Alert, AlertTheme } from '@/shared/ui/Alert'
+import { PageLoader } from '@/widgets/PageLoader'
+import { ClientForm } from '@/entities/Clients'
+import { Text } from '@/shared/ui/Text'
 
 export interface AddClientProps {
   onAddClient: () => void;

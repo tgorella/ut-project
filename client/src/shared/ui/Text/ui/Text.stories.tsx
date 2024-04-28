@@ -1,5 +1,5 @@
 import type {  Meta, StoryObj } from '@storybook/react'
-import { WithColorsTheme } from 'shared/config/storybook/ThemeDecorator/WithColorsTheme'
+import { WithColorsTheme } from '@/shared/config/storybook/ThemeDecorator/WithColorsTheme'
 import { Text, TextTheme } from './Text'
 
 const meta: Meta<typeof Text> = {

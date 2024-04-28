@@ -1,5 +1,5 @@
-import { StateSchema } from 'app/providers/StoreProvider'
-import { Project } from 'entities/Project'
+import { StateSchema } from '@/app/providers/StoreProvider'
+import { Project } from '@/entities/Project'
 import { getProjectPageData } from './getProjectPageData'
 
 describe('getProjectPageData.test', () => {

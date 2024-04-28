@@ -1,4 +1,4 @@
-import { ProjectStage } from 'entities/Project'
+import { ProjectStage } from '@/entities/Project'
 
 export function countTotalSteps (stages: ProjectStage[]) {
     return stages.reduce((acc, val) => {

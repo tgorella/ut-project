@@ -1,4 +1,4 @@
-import i18n from 'shared/config/i18n/i18n'
+import i18n from '@/shared/config/i18n/i18n'
 import { RegistrationFormSchema } from '../../types/loginSchema'
 
 interface MethodInfo {

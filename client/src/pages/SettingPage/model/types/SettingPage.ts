@@ -1,4 +1,4 @@
-import { OrderStatusDetails } from 'entities/OrderStatus'
+import { OrderStatusDetails } from '@/entities/OrderStatus'
 
 export interface SettingPageSchema {
 isLoading: boolean,

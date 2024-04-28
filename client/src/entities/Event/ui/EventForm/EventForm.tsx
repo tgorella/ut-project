@@ -1,12 +1,12 @@
 import cls from './EventForm.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames from '@/shared/lib/classNames/ClassNames'
 import {memo} from 'react'
 import { Event, EventExtended } from '../../model/types/Event'
-import { Input } from 'shared/ui/Input/Input'
+import { Input } from '@/shared/ui/Input/Input'
 import { useTranslation } from 'react-i18next'
-import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
-import { Alert, AlertTheme } from 'shared/ui/Alert'
-import { EventType, EventTypeSelect } from 'entities/EventType'
+import { AppButton, ButtonTheme } from '@/shared/ui/AppButton/AppButton'
+import { Alert, AlertTheme } from '@/shared/ui/Alert'
+import { EventType, EventTypeSelect } from '@/entities/EventType'
 
 
 interface EventFormProps {

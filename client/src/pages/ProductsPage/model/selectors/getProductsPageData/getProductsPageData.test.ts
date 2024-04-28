@@ -1,5 +1,5 @@
-import { StateSchema } from 'app/providers/StoreProvider'
-import { ProductType } from 'entities/Product'
+import { StateSchema } from '@/app/providers/StoreProvider'
+import { ProductType } from '@/entities/Product'
 import { getProductsPageData } from './getProductsPageData'
 
 const data = [{

@@ -1,6 +1,6 @@
 import { memo } from 'react'
 import cls from './Box.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames from '@/shared/lib/classNames/ClassNames'
 
 interface BoxHeadProps {
   className?: string;

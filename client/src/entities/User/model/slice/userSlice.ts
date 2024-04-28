@@ -1,7 +1,7 @@
-import { USERID_KEY } from 'shared/const/localstorage'
+import { USERID_KEY } from '@/shared/const/localstorage'
 import type { User, UserSchema } from '../types/userSchema'
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { tokenService } from 'entities/Token'
+import { tokenService } from '@/entities/Token'
 
 const initialState: UserSchema = {
     authData: {

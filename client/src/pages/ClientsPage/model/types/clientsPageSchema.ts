@@ -1,5 +1,5 @@
 import { EntityState } from '@reduxjs/toolkit'
-import { Client } from 'entities/Clients'
+import { Client } from '@/entities/Clients'
 
 export interface ClientsPageSchema extends EntityState<Client> {
 isLoading?: boolean,

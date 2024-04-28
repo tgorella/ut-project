@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import 'app/styles/index.scss'
-import { WithColorsTheme } from 'shared/config/storybook/ThemeDecorator/WithColorsTheme'
+import '@/app/styles/index.scss'
+import { WithColorsTheme } from '@/shared/config/storybook/ThemeDecorator/WithColorsTheme'
 import { Dropdown } from './Dropdown'
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export

@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import 'app/styles/index.scss'
-import { WithColorsTheme } from 'shared/config/storybook/ThemeDecorator/WithColorsTheme'
+import '@/app/styles/index.scss'
+import { WithColorsTheme } from '@/shared/config/storybook/ThemeDecorator/WithColorsTheme'
 import { OrderStatusBlock } from './OrderStatusBlock'
-import { orderStatusesStoreDecorator } from 'shared/config/storybook/StoreDecorator/orderStatusStoreDecorator'
+import { orderStatusesStoreDecorator } from '@/shared/config/storybook/StoreDecorator/orderStatusStoreDecorator'
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof OrderStatusBlock> = {

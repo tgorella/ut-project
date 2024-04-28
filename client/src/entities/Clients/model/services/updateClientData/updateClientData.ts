@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { ThunkConfig } from 'app/providers/StoreProvider'
-import i18n from 'shared/config/i18n/i18n'
+import { ThunkConfig } from '@/app/providers/StoreProvider'
+import i18n from '@/shared/config/i18n/i18n'
 import { Client } from '../../types/clientSchema'
 import { getClientDetailsForm } from '../../selectors/getClientDetailsForm/getClientDetailsForm'
 

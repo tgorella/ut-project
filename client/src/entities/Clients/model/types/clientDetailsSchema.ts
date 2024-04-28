@@ -1,4 +1,4 @@
-import { Order, OrderExtended } from 'entities/Order'
+import { Order, OrderExtended } from '@/entities/Order'
 import { Client } from './clientSchema'
 
 export interface ClientDetailsSchema {

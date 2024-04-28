@@ -1,10 +1,10 @@
 import cls from './ClientListItem.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames from '@/shared/lib/classNames/ClassNames'
 import {memo} from 'react'
 import { Client } from '../../model/types/clientSchema'
-import { Avatar, AvatarSize } from 'shared/ui/Avatar/Avatar'
+import { Avatar, AvatarSize } from '@/shared/ui/Avatar/Avatar'
 import { Link } from 'react-router-dom'
-import FavIcon from 'shared/assets/img/fav.svg'
+import FavIcon from '@/shared/assets/img/fav.svg'
 
 
 interface ClientListItemProps {

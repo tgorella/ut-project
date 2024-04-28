@@ -1,12 +1,12 @@
 import cls from './ProjectRow.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames from '@/shared/lib/classNames/ClassNames'
 import {memo, useState} from 'react'
-import {OrderExtended, updateOrderSteps } from 'entities/Order'
-import { OrderStatusDetails } from 'entities/OrderStatus'
+import {OrderExtended, updateOrderSteps } from '@/entities/Order'
+import { OrderStatusDetails } from '@/entities/OrderStatus'
 import { ProjectStepSelect } from '../ProjectStepSelect/ProjectStepSelect'
 import { Link } from 'react-router-dom'
-import { Client } from 'entities/Clients'
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
+import { Client } from '@/entities/Clients'
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 
 
 interface ProjectRowProps {

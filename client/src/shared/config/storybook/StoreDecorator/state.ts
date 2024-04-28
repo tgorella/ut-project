@@ -1,8 +1,8 @@
-import { StateSchema } from 'app/providers/StoreProvider'
-import { Country } from 'entities/Country'
-import { Currency } from 'entities/Currency'
-import { UserRole } from 'entities/Profile/model/types/profileSchema'
-import { Project } from 'entities/Project'
+import { StateSchema } from '@/app/providers/StoreProvider'
+import { Country } from '@/entities/Country'
+import { Currency } from '@/entities/Currency'
+import { UserRole } from '@/entities/Profile/model/types/profileSchema'
+import { Project } from '@/entities/Project'
 
 const projectsArr: Project[] = [
     {

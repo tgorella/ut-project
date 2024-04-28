@@ -1,14 +1,14 @@
 import cls from './DeleteProductButton.module.scss'
-import classNames from  'shared/lib/classNames/ClassNames'
+import classNames from  '@/shared/lib/classNames/ClassNames'
 import {memo, useState} from 'react'
-import { AppButton, ButtonTheme } from  'shared/ui/AppButton/AppButton'
-import { Modal } from  'shared/ui/Modal'
-import { Text, TextAlign } from  'shared/ui/Text'
-import { useAppDispatch } from  'shared/lib/hooks/useAppDispatch/useAppDispatch'
-import DEL_ORDER from  'shared/assets/img/delete.svg'
+import { AppButton, ButtonTheme } from  '@/shared/ui/AppButton/AppButton'
+import { Modal } from  '@/shared/ui/Modal'
+import { Text, TextAlign } from  '@/shared/ui/Text'
+import { useAppDispatch } from  '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
+import DEL_ORDER from  '@/shared/assets/img/delete.svg'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { deleteProduct } from  'entities/Product'
+import { deleteProduct } from  '@/entities/Product'
 
 
 interface DelProductButtonProps {

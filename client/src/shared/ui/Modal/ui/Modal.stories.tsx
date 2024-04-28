@@ -1,7 +1,7 @@
 import type {  Meta, StoryObj } from '@storybook/react'
 import { Modal } from './Modal'
-import { DarkDecorator } from 'shared/config/storybook/ThemeDecorator/DarkDecorator'
-import { LightDecorator } from 'shared/config/storybook/ThemeDecorator/LightDecorator'
+import { DarkDecorator } from '@/shared/config/storybook/ThemeDecorator/DarkDecorator'
+import { LightDecorator } from '@/shared/config/storybook/ThemeDecorator/LightDecorator'
 
 const meta: Meta<typeof Modal> = {
     title: 'widgets/Modal',

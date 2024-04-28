@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import 'app/styles/index.scss'
-import { WithColorsTheme } from 'shared/config/storybook/ThemeDecorator/WithColorsTheme'
+import '@/app/styles/index.scss'
+import { WithColorsTheme } from '@/shared/config/storybook/ThemeDecorator/WithColorsTheme'
 import { Box } from './Box'
-import { Pagination } from 'shared/ui/Pagination'
-import { Text } from 'shared/ui/Text'
+import { Pagination } from '@/shared/ui/Pagination'
+import { Text } from '@/shared/ui/Text'
 
 
 const meta: Meta<typeof Box> = {

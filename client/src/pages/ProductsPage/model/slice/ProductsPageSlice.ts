@@ -1,5 +1,5 @@
 import {PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { fetchAllProducts, Product } from 'entities/Product'
+import { fetchAllProducts, Product } from '@/entities/Product'
 import { ProductsPageSchema } from '../types/ProductsPage'
 
 const initialState: ProductsPageSchema = {

@@ -1,7 +1,7 @@
 import {PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { OrdersPageSchema } from '../types/OrdersPageSchema'
 import { fetchAllOrders } from '../services/fetchAllOrders/fetchAllOrders'
-import { Order, OrderExtended } from 'entities/Order'
+import { Order, OrderExtended } from '@/entities/Order'
 
 const initialState: OrdersPageSchema = {
     isLoading: false,

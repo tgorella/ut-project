@@ -1,7 +1,7 @@
 import cls from './EditSwitcher.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
-import EditIcon from 'shared/assets/img/pencil.svg'
-import CloseIcon from 'shared/assets/img/close.svg'
+import classNames from '@/shared/lib/classNames/ClassNames'
+import EditIcon from '@/shared/assets/img/pencil.svg'
+import CloseIcon from '@/shared/assets/img/close.svg'
 import { memo } from 'react'
 
 interface EditSwitcherProps {

@@ -1,4 +1,4 @@
-import { EventExtended } from 'entities/Event'
+import { EventExtended } from '@/entities/Event'
 
 export interface CalendarPageSchema {
 isLoading: boolean,

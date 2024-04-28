@@ -1,4 +1,4 @@
-import { EventExtended } from 'entities/Event'
+import { EventExtended } from '@/entities/Event'
 import { CurrentDate } from './vars'
 
 interface BodyObjItem {

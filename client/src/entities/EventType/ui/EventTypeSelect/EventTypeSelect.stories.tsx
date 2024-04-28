@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import 'app/styles/index.scss'
-import { WithColorsTheme } from 'shared/config/storybook/ThemeDecorator/WithColorsTheme'
+import '@/app/styles/index.scss'
+import { WithColorsTheme } from '@/shared/config/storybook/ThemeDecorator/WithColorsTheme'
 import { EventTypeSelect } from './EventTypeSelect'
 import { EventType } from '../../model/types/EventType'
 

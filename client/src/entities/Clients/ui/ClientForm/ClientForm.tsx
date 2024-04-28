@@ -1,8 +1,8 @@
-import { Input } from 'shared/ui/Input/Input'
+import { Input } from '@/shared/ui/Input/Input'
 import cls from './ClientForm.module.scss'
 import { Client } from '../../model/types/clientSchema'
 import { useTranslation } from 'react-i18next'
-import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
+import { AppButton, ButtonTheme } from '@/shared/ui/AppButton/AppButton'
 
 interface ClientFormProps {
   errors: Client,
