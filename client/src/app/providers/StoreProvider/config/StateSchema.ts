@@ -15,6 +15,7 @@ import { CalendarPageSchema } from 'pages/CalendarPage'
 import { ClientsPageSchema } from 'pages/ClientsPage'
 import { EventDetailPageSchema } from 'pages/EventDetailPage'
 import { OrdersPageSchema } from 'pages/OrdersPage/model/types/OrdersPageSchema'
+import { ProductDetailsPageSchema } from 'pages/ProductDetailsPage'
 import { ProductsPageSchema } from 'pages/ProductsPage/model/types/ProductsPage'
 import { ProjectsPageSchema } from 'pages/ProjectsPage'
 import { AddClientButtonSchema } from 'widgets/AddClientButton/module/types/AddClientButtonSchema'
@@ -47,7 +48,8 @@ export interface StateSchema {
   ProjectSelect?: ProjectSelectSchema,
   CalendarPage?: CalendarPageSchema,
   EventDetailsPage?: EventDetailPageSchema,
-  productPage?: ProductsPageSchema
+  productPage?: ProductsPageSchema,
+  productDetailsPage?: ProductDetailsPageSchema
 }
 
 export type StateSchemaKey = keyof StateSchema

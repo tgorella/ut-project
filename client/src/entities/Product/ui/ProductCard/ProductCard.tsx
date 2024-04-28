@@ -4,6 +4,7 @@ import {memo, useState} from 'react'
 import { Product } from '../../model/types/Product'
 import { useTranslation } from 'react-i18next'
 import { Box } from 'shared/ui/Box'
+import { EditSwitcher } from 'widgets/EditeSwitcher'
 
 interface ProductProps {
   className?: string;
@@ -14,12 +15,21 @@ export const ProductCard = memo(({className, product} : ProductProps) => {
     const [largeImg, setLargeImg] = useState(product.img[0])
     const price = product.price - product.discount
     const currency = '₽'
+    const [editMode, setEditMode] = useState(false)
 
+    const toggleEditMode = () => {
+        setEditMode((prev) => !prev)
+    }
     const handleChangeLargeImage = (index: number) => {
         setLargeImg(product.img[index])
     }
     return ( 
         <Box>
+            <EditSwitcher 
+                className={cls.edit_switcher}
+                editMode={editMode} 
+                onEdit={toggleEditMode} 
+                onCancelEdit={toggleEditMode} />
             <div className={classNames(cls.Product, {}, [className])}>
                 <div className={cls.product_images_wrapper}>
                     <img src={largeImg} alt={product.name} className={cls.img_large}/>

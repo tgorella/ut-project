@@ -9,6 +9,7 @@ import { MainPage } from 'pages/MainPage'
 import { NotFoundPage } from 'pages/NotFoundPage'
 import { OrderDetailsPage } from 'pages/OrderDetailsPage'
 import { OrdersPage } from 'pages/OrdersPage'
+import { ProductDetailsPage } from 'pages/ProductDetailsPage'
 import { ProductsPage } from 'pages/ProductsPage'
 import { ProfilePage } from 'pages/ProfilePage'
 import { ProjectsPage } from 'pages/ProjectsPage'
@@ -99,7 +100,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesProp> = {
     },
     [AppRoutes.PRODUCT_DETAILS]: {
         path: RoutePath.product_details+':id',
-        element: <ProductsPage />,
+        element: <ProductDetailsPage />,
         authOnly: true
     },
     [AppRoutes.PROJECTS]: {
