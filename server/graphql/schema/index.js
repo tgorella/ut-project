@@ -2,11 +2,15 @@ import { authSchema } from './authSchema.js'
 import { clientSchema } from './clientSchema.js'
 import { eventTypesSchema } from './eventTypesSchema.js'
 import { eventsSchema } from './eventsSchema.js'
+import { fileSchema } from './fileSchema.js'
 import { modulesSchema } from './modulesSchema.js'
 import { orderSchema } from './orderSchema.js'
 import { orderStatusSchema } from './orderStatusSchema.js'
 import { productSchema } from './productSchema.js'
 import { projectSchema } from './projectSchema.js'
+import { paymentMethodSchema } from './paymentMethodSchema.js'
+import { paymentSchema } from './paymentSchema.js'
+import GraphQLUpload from "graphql-upload/GraphQLUpload.mjs";
 
 const graphqlSchema = `#graphql
 ${authSchema}
@@ -17,7 +21,10 @@ ${modulesSchema}
 ${orderStatusSchema}
 ${orderSchema}
 ${projectSchema}
-${productSchema}
+${productSchema},
+${fileSchema},
+${paymentMethodSchema},
+${paymentSchema}
 
 type Query {
   user: User
@@ -36,6 +43,11 @@ type Query {
   eventTypes: [EventType]
   orderStatuses: [OrderStatus]
   modules: ModulesStatus,
+  payments: [Payment],
+  paymentsByOrder(id: ID): [Payment],
+  payment(id: ID): Payment,
+  paymentMethods: [PaymentMethod],
+  paymentMethod(id: ID): PaymentMethod,
   products: [Product],
   product(id: ID): Product,
   productsByCategory(category: String): [Product],
@@ -76,7 +88,14 @@ type Mutation {
   updateModules(data: ModulesNewDataInput): ModulesStatus,
   addProduct(data: ProductInput): Product,
   updateProduct(data: ProductNewDataInput): Product,
-  deleteProduct(id: ID): String
+  deleteProduct(id: ID): String,
+  uploadManyFiles(files: [Upload]!): [String],
+  addPayment(data: PaymentInput): Payment,
+  updatePayment(data: PaymentNewDataInput): Payment,
+  deletePayment(id: ID): String,
+  addPaymentMethod(data: PaymentMethodInput): PaymentMethod,
+  updatePaymentMethod(data: PaymentMethodNewDataInput): PaymentMethod,
+  deletePaymentMethod(id: ID): String
 }
 `
 export default graphqlSchema
