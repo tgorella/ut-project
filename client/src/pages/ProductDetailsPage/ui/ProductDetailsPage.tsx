@@ -11,36 +11,35 @@ import { AppButton, ButtonTheme } from '@/shared/ui/AppButton/AppButton'
 import { Box } from '@/shared/ui/Box'
 import BACK_ICON from '@/shared/assets/img/undo.svg'
 import { DeleteProductButton } from '@/features/DeleteProductButton'
-import { getProductById, ProductCard, ProductType } from '@/entities/Product'
+import { getProductById, ProductCard } from '@/entities/Product'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { getProductDetailsIsLoading } from '../model/selectors/getProductDetailsIsLoading/getProductDetailsIsLoading'
 import { PageLoader } from '@/widgets/PageLoader'
-import { NotFound } from '@aws-sdk/client-s3'
 import { getProductDetailsForm } from '../model/selectors/getProductDetailsForm/getProductDetailsForm'
 
 const reducers: ReducersList = {
     productDetailsPage: productDetailsPageReducer
 }
 
-const mockData = {
-    _id: '1',
-    name: 'Product 1',
-    price: 100,
-    description: 'Диффузор для дома создаст приятную атмосферу и освежит любое помещение. Соленая карамель - это отличный декор и аромат вашего дома. Диффузор Terin House — ароматизатор воздуха на селективных французских ароматических маслах со стойкостью до 1-2 месяца. Композиция ароматизатора для квартиры «Соленая карамель» с насыщенными, но не приторными нотами создаут атмосферу свежести на площади до 30 м². Парфюм Представляет собой емкость с ароматическими маслами, в которую вставляются фибровые аромапалочки, мягко распространяющие аромат по всему пространству комнаты. Ароматизатор для дома подходит для любых помещений. Может не только наполнить туалет или ванную утонченным ароматом, но и сделать другие домашние комнаты более уютными. Тщательно продуманная формула яркого и интригующего нежного аромата освежителя для комнаты поможет нейтрализовать запахи еды на кухне. ',
-    discount: 10,
-    count: 150,
-    productType: ProductType.PRODUCT,
-    img: [
-        'https://basket-12.wbbasket.ru/vol1742/part174261/174261502/images/big/1.webp',
-        'https://basket-12.wbbasket.ru/vol1695/part169548/169548656/images/big/1.webp',
-        'https://basket-12.wbbasket.ru/vol1740/part174013/174013033/images/c516x688/1.webp',
-        'https://basket-13.wbbasket.ru/vol1921/part192181/192181377/images/big/1.webp',
-        'https://basket-14.wbbasket.ru/vol2187/part218782/218782248/images/c516x688/1.webp'
-    ],
-    category: 'Товары для дома',
-    subcategory: '',
-    userId: ''
-}     
+// const mockData = {
+//     _id: '1',
+//     name: 'Product 1',
+//     price: 100,
+//     description: 'Диффузор для дома создаст приятную атмосферу и освежит любое помещение. Соленая карамель - это отличный декор и аромат вашего дома. Диффузор Terin House — ароматизатор воздуха на селективных французских ароматических маслах со стойкостью до 1-2 месяца. Композиция ароматизатора для квартиры «Соленая карамель» с насыщенными, но не приторными нотами создаут атмосферу свежести на площади до 30 м². Парфюм Представляет собой емкость с ароматическими маслами, в которую вставляются фибровые аромапалочки, мягко распространяющие аромат по всему пространству комнаты. Ароматизатор для дома подходит для любых помещений. Может не только наполнить туалет или ванную утонченным ароматом, но и сделать другие домашние комнаты более уютными. Тщательно продуманная формула яркого и интригующего нежного аромата освежителя для комнаты поможет нейтрализовать запахи еды на кухне. ',
+//     discount: 10,
+//     count: 150,
+//     productType: ProductType.PRODUCT,
+//     img: [
+//         'https://basket-12.wbbasket.ru/vol1742/part174261/174261502/images/big/1.webp',
+//         'https://basket-12.wbbasket.ru/vol1695/part169548/169548656/images/big/1.webp',
+//         'https://basket-12.wbbasket.ru/vol1740/part174013/174013033/images/c516x688/1.webp',
+//         'https://basket-13.wbbasket.ru/vol1921/part192181/192181377/images/big/1.webp',
+//         'https://basket-14.wbbasket.ru/vol2187/part218782/218782248/images/c516x688/1.webp'
+//     ],
+//     category: 'Товары для дома',
+//     subcategory: '',
+//     userId: ''
+// }     
 export const ProductDetailsPage = memo(() => {
     const {t} = useTranslation('product')  
     let {id} = useParams()
