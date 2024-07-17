@@ -53,7 +53,7 @@ const LoginForm = memo(({className, onSuccess} : LoginFormProps) => {
             <form className={classNames(cls.LoginForm, {}, [className])}>
                 <h1>{t('Войти')}</h1>
                 <Input type='text' placeholder={t('Введите email')} autoFocus rounded onChange={handleChangeUsername} value={email}/>
-                <Input type='password' placeholder={t('Введите пароль')} rounded onChange={handleChangePassword} value={password}/>
+                <Input type='password' placeholder={t('Введите пароль')} rounded onChange={handleChangePassword} value={password} autoComplete='current-password'/>
                 {error && <Alert theme={AlertTheme.ERROR} text={error}/>}
                 <AppButton theme={ButtonTheme.OUTLINED} onClick={handleLogIn} disabled={isLoading}>
                     {t('Войти')}

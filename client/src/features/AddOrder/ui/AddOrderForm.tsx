@@ -77,6 +77,7 @@ export const AddOrderForm = ({onAddOrder, added, error, withButton} : AddOrderFo
         }))
     }, [dispatch])
 
+
     const handleAddOrder = () => {
         if (data) {
             onAddOrder(data)
@@ -103,7 +104,7 @@ export const AddOrderForm = ({onAddOrder, added, error, withButton} : AddOrderFo
                             onChangeEndTime={handleChangeEndTime} 
                             onChangeProjectType={handleChangeProjectType} 
                             onChangeTotal={handleChangeTotal} 
-                            OnSaveOrder={handleAddOrder}                            
+                            OnSaveOrder={handleAddOrder}      
                         />
                     </>)}
             </div>

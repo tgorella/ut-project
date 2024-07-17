@@ -28,6 +28,7 @@ import { projectSelectReducer } from '@/entities/Project/ui/ProjectSelect/model/
 import { getProjectSelectData } from '@/entities/Project/ui/ProjectSelect/model/selectors/getProjectSelectData/getProjectSelectData'
 import { fetchProjects } from '@/entities/Project'
 import { ClientInfo } from '@/entities/Clients/ui/ClientInfo/ClientInfo'
+import { HStack, VStack } from '@/shared/ui/Stack'
 
 interface OrderProps {
   className?: string;
@@ -58,7 +59,8 @@ export const OrderCard = memo(({className, id, children} : OrderProps) => {
         startTime: '',
         endTime: '',
         projectType: '',
-
+        paymentDate: '',
+        paymentMethod: ''
     })
 
     useEffect(() => {
@@ -116,6 +118,7 @@ export const OrderCard = memo(({className, id, children} : OrderProps) => {
         dispatch(orderDetailsAction.updateOrder({total: value}))
     }, [dispatch])
 
+   
     const handleChangeTitle = useCallback((value: string) => {
         dispatch(orderDetailsAction.updateOrder({title: value}))
     }, [dispatch])
@@ -147,19 +150,19 @@ export const OrderCard = memo(({className, id, children} : OrderProps) => {
     }
     else {
         content = <>
-            <div className={cls.status}>
+            <HStack mobile='row' max gap='20' align='center' justify='center'>
                 {!statusEdit && <>{t('Статус')}: <OrderStatusBlock status={data?.status}/></>}
-                {statusEdit && data.status && <OrderStatusSelect onChange={handleChangeStatus} value={data?.status?._id}/>}
+                {statusEdit && data.status && <OrderStatusSelect onChange={handleChangeStatus} value={data?.status?._id} />}
                 <EditSwitcher  editMode={statusEdit} onEdit={toggleStatusEditMode} onCancelEdit={toggleStatusEditMode} className={cls.status_edit_btn}/>
-            </div>
-            <div className={classNames(cls.OrderDetailsPage, {}, [className])}>
-                <div className={cls.small_column} >
+            </HStack>
+            <HStack mobile='column' max gap='20' align='start' justify='center'>
+                <VStack slim gap='20'>
                     {children}
                     <Box>
                         <ClientInfo data={data?.clientId as Client} />
                     </Box>
-                </div>
-                <div className={cls.big_column}>
+                </VStack>
+                <VStack wide gap='20'>
                     <Box 
                         className={classNames(cls.Order, {}, [className])}
                         header={data?.title}
@@ -179,9 +182,15 @@ export const OrderCard = memo(({className, id, children} : OrderProps) => {
                             OnSaveOrder={handleSaveOrder}
                         />}
                     </Box>
+                    <Box
+                        header={t('Платежная информация')}>
+                        <VStack max gap='20'>
+                            <p>{t('Платежей нет')}</p>
+                        </VStack>
+                    </Box>
                     <NoteBlock value={data?.notes} onCancelEdit={handleChancelNoteEdit} onChange={handleNoteEdit} onSave={handleSaveNotes} />
-                </div>
-            </div>
+                </VStack>
+            </HStack>
         </>
         
     }

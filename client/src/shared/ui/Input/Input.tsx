@@ -12,10 +12,10 @@ type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onC
 interface InputProps extends HTMLInputProps {
   className?: string,
   rounded?: boolean,
-  value?: string,
+  value?: string |number | undefined | string[],
   label?: string,
   error?: string,
-  onChange?: (el: string) => void
+  onChange?: (el: string ) => void
 }
 export const Input = memo((props:InputProps) => {
     const {

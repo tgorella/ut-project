@@ -18,12 +18,9 @@ export const fetchOrders = createAsyncThunk<OrderExtended[], FetchProps,ThunkCon
                 'operation-name': 'Query'
             })
         
-            if (!data) {
-                return rejectWithValue(i18n.t('Заказы не найдены'))
-            }
             return data.data.orders
         } catch (error) {
-            return rejectWithValue(i18n.t('Неправильные логин или пароль'))
+            return rejectWithValue(i18n.t('Что-то пошло не так. Попытайтесь позже'))
         }
     }
 )

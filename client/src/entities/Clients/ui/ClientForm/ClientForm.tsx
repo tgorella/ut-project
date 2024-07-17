@@ -3,6 +3,9 @@ import cls from './ClientForm.module.scss'
 import { Client } from '../../model/types/clientSchema'
 import { useTranslation } from 'react-i18next'
 import { AppButton, ButtonTheme } from '@/shared/ui/AppButton/AppButton'
+import { FileUploadArea } from '@/shared/ui/FileUpload'
+import { VStack } from '@/shared/ui/Stack'
+import { Avatar, AvatarSize } from '@/shared/ui/Avatar/Avatar'
 
 interface ClientFormProps {
   errors: Client,
@@ -35,17 +38,21 @@ export const ClientForm = ({
 
 } : ClientFormProps) => {
     const {t} = useTranslation('clients')
-
    
     return ( 
         <div className={cls.info_container}>
-            <Input 
-                label={t('Ссылка на аватар')} 
-                value={data?.avatarUrls}  
-                onChange={onChangeAvatar} 
-                name='avatar'
-                error={errors?.avatarUrls}
-            />
+            <VStack max gap='20'>
+                <Avatar
+                    size={AvatarSize.XL}
+                    src={data?.avatarUrls}>
+                </Avatar>
+                <FileUploadArea 
+                    multiple={false}
+                    onUpdateLinks={( link: string[]) => onChangeAvatar(link[0])}
+                    dropDownArea={false}
+                    label={t('Загрузить аватар')}
+                />
+            </VStack>
             <Input 
                 label={t('Имя')} 
                 value={data?.name}  

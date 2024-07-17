@@ -11,6 +11,7 @@ import { Box } from '@/shared/ui/Box'
 import BACK_ICON from '@/shared/assets/img/undo.svg'
 import { DelOrderButton } from '@/widgets/DelOrderButton'
 import { getOrderDetailsError } from '@/entities/Order/model/selectors/getOrderDetailsError/getOrderDetailsError'
+import {VStack } from '@/shared/ui/Stack'
 
 interface OrderDetailsPageProps {
   className?: string;
@@ -30,7 +31,7 @@ const OrderDetailsPage = memo(({className} : OrderDetailsPageProps) => {
     const error = useSelector(getOrderDetailsError)
 
    
-    const childrenConten = <Box className={cls.button_wrapper}>
+    const childrenContent = <Box className={cls.button_wrapper}>
         <AppButton theme={ButtonTheme.SOLID} onClick={backHandel}><BACK_ICON className={cls.icon}/> {t('Назад')}</AppButton>
         {!error && id &&
         <DelOrderButton 
@@ -43,14 +44,14 @@ const OrderDetailsPage = memo(({className} : OrderDetailsPageProps) => {
 
 
     return ( 
-        <div className={cls.page_wrapper}>
-            <h1 className={cls.title}>{t('Информация о заказе')} #{orderData?.orderNumber}</h1>
-            <div className={classNames(cls.OrderDetailsPage, {}, [className])}>
+        <VStack max gap='40' justify='center'>
+            <h1>{t('Информация о заказе')} #{orderData?.orderNumber}</h1>
+            <VStack max gap='20' align='start' className={classNames(cls.OrderDetailsPage, {}, [className])}>
                 {id && <OrderCard id={id}>
-                    {childrenConten}
+                    {childrenContent}
                 </OrderCard>}
-            </div>
-        </div>
+            </VStack>
+        </VStack>
     )
 })
 

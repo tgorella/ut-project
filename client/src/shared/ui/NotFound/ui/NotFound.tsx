@@ -23,6 +23,9 @@ export const NotFound = ({className} : NotFoundProps) => {
     case 'orders':
         text = 'Ой! Такого заказа не существует'
         break
+    case 'products':
+        text = 'Ой! Такого товара не существует'
+        break
     default:
         text = 'Такая страница не существует'
         break

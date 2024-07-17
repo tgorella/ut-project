@@ -30,7 +30,7 @@ export const OrderList = memo(({className, orders = [], isLoading} : OrderListPr
         { name: t('Статус'), path: 'status' },
         { name: t('Удалить'), path: 'del' },
     ]
-    if (window.screen.width <= 740) {
+    if (window.innerWidth <= 890) {
         columns = [
             { name: '№', path: 'orderNumber' },
             { name: t('Дата создания'), path: 'createdAt' },
