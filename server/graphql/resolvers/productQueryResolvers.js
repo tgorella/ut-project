@@ -18,9 +18,13 @@ const productQueryResolvers = {
     checkAuth(context)
     try {
       const product = await Product.findById(args.id)
+      if (!product) {
+        return null
+      }
       checkUserId(product, context)
       return product
     } catch (error) {
+      console.log(error)
       throwServerError()
     }
   },

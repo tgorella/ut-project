@@ -9,7 +9,7 @@ export const addProduct = createAsyncThunk<Product, Partial<Product>, ThunkConfi
         const {rejectWithValue, extra} = thunkAPI
         try {
             const {data} = await extra.api.post('/', {
-                'query': 'mutation Mutation($data: ProductInput) { addProduct(data: $data) { _id name price discount count productType description img category subcategory } }',
+                'query': 'mutation Mutation($data: ProductInput) { addProduct(data: $data) { _id name price discount count productType description img category productCode subcategory } }',
                 'operation-name': 'Mutation',
                 'variables': {'data': newProductData}
             })

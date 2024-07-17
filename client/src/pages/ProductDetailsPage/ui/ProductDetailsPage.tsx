@@ -1,5 +1,5 @@
 import cls from './ProductDetailsPage.module.scss'
-import {memo} from 'react'
+import {memo, useEffect} from 'react'
 import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { HStack, VStack } from '@/shared/ui/Stack'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -7,14 +7,12 @@ import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import { productDetailsPageReducer } from '../model/slice/ProductDetailsPageSlice'
 import { getProductDetailsError } from '../model/selectors/getProductDetailsError/getProductDetailsError'
-import { getProductDetailsIsLoading } from '../model/selectors/getProductDetailsIsLoading/getProductDetailsIsLoading'
-import { getProductDetailsForm } from '../model/selectors/getProductDetailsForm/getProductDetailsForm'
 import { AppButton, ButtonTheme } from '@/shared/ui/AppButton/AppButton'
 import { Box } from '@/shared/ui/Box'
 import BACK_ICON from '@/shared/assets/img/undo.svg'
 import { DeleteProductButton } from '@/features/DeleteProductButton'
-import { ProductCard, ProductType } from '@/entities/Product'
-import { PageLoader } from '@/widgets/PageLoader'
+import { getProductById, ProductCard, ProductType } from '@/entities/Product'
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 
 const reducers: ReducersList = {
     productDetailsPage: productDetailsPageReducer
@@ -41,16 +39,31 @@ const mockData = {
 }     
 export const ProductDetailsPage = memo(() => {
     const {t} = useTranslation('product')  
-    const {id} = useParams()
-    const isLoading = useSelector(getProductDetailsIsLoading)
+    let {id} = useParams()
+    const dispatch = useAppDispatch()
+    const resParams = '_id name price discount count productType description img category subcategory productCode'
+    // const isLoading = useSelector(getProductDetailsIsLoading)
     const error = useSelector(getProductDetailsError)
-    const data = useSelector(getProductDetailsForm)
+    const data = mockData
     const history = useNavigate()
     const goBack = () => history(-1)
+
+    if (__PROJECT__ === 'storybook') {
+        id = '64469ad32e53c6aa4c0746b6'
+    }
+
+    useEffect(() => {
+        if (__PROJECT__ !== 'storybook' && id) {
+            dispatch(getProductById({id, resParams}))
+        }
+    }, [dispatch, id])
     
     
     return ( 
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={true}>
+            {/* {isLoading && <PageLoader />}
+            {!data && <NotFound />} */}
+            
             <VStack max gap='20'>
                 <h1>{t('Информация о продукте')} {data?.name}</h1>
                 <HStack align='start'>
@@ -68,12 +81,11 @@ export const ProductDetailsPage = memo(() => {
                     </div>
                     <VStack max gap='20' className={cls.big_column}>
                         {/* {isLoading && <PageLoader />} */}
-                        {isLoading && <ProductCard product={mockData} />}
+                        { <ProductCard product={mockData} />}
                     </VStack>  
                 </HStack>
                 
             </VStack>
-            
             
         </DynamicModuleLoader>
     )

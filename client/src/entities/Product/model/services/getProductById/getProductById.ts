@@ -3,14 +3,20 @@ import { Product } from '../../types/Product'
 import { ThunkConfig } from '@/app/providers/StoreProvider'
 import i18n from '@/shared/config/i18n/i18n'
 
-export const getProductById = createAsyncThunk<Product, string, ThunkConfig<string>>(
+interface ProductProps {
+  id: string,
+  resParams: string
+}
+
+export const getProductById = createAsyncThunk<Product, ProductProps, ThunkConfig<string>>(
     'products/getProductById',
     // @ts-ignore
-    async (id, thunkAPI) => {
+    async (props, thunkAPI) => {
+        const {id, resParams} = props
         const {rejectWithValue, extra} = thunkAPI
         try {
             const {data} = await extra.api.post('/', {
-                'query': 'query Query($productId: ID) { product(id: $productId) { subcategory productType price name img discount description count category _id } }',
+                'query': `query Query($productId: ID) { product(id: $productId) { ${resParams} } }`,
                 'operation-name': 'Query',
                 'variables': {'productId': id}
             })

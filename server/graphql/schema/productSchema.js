@@ -10,7 +10,8 @@ type Product {
   description:String,
   img:String,
   category: String,
-  subcategory: String
+  subcategory: String,
+  productCode: String
 }
 
 input ProductInput {
@@ -23,7 +24,8 @@ input ProductInput {
   description:String,
   img:String,
   category: String,
-  subcategory: String
+  subcategory: String,
+  productCode: String
 }
 
 input ProductNewDataInput {
@@ -36,7 +38,8 @@ input ProductNewDataInput {
   description:String,
   img:String,
   category: String,
-  subcategory: String
+  subcategory: String,
+  productCode: String
 }
 
 input FilterProductInput {

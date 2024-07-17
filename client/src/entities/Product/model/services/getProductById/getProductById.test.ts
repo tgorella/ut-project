@@ -13,7 +13,7 @@ describe('getProductById.test', () => {
         const thunk = new TestAsyncThunk(getProductById)
         thunk.api.post.mockReturnValue(Promise.resolve({data}))
 
-        const result = await thunk.callThunk('1')
+        const result = await thunk.callThunk({id:'1', resParams: '_id, name'})
 
         expect(thunk.api.post).toHaveBeenCalled()
         expect(result.meta.requestStatus).toBe('fulfilled')
@@ -23,7 +23,7 @@ describe('getProductById.test', () => {
         const thunk = new TestAsyncThunk(getProductById)
         thunk.api.post.mockReturnValue(Promise.resolve({status: 403}))
 
-        const result = await thunk.callThunk('1')
+        const result = await thunk.callThunk({id:'1', resParams: '_id, name'})
 
         expect(thunk.api.post).toHaveBeenCalled()
         expect(result.meta.requestStatus).toBe('rejected')

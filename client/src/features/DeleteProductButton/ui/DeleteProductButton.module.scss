@@ -1,21 +1,21 @@
 .DelProductButton {
-  width: 100%;
+    width: 100%;
 }
 
 .icon {
-  fill: var(--primary-text);
-  margin-right: 5px;
-  transform: scale(0.8);
+    fill: var(--primary-text);
+    margin-right: 5px;
+    transform: scale(0.8);
 }
 
 .modal_btns_wrapper {
-  display: flex;
-  gap: 10px;
-  justify-content: space-between;
-  margin-top: 20px;
-  width: 100%;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    margin-top: 20px;
+    width: 100%;
 
-  button {
-      width: 100%;
-  }
+    button {
+        width: 100%;
+    }
 }

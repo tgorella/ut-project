@@ -26,7 +26,7 @@ export const ProductList = memo(({className, data, onDelete}: ProductListProps) 
                 <div>{t('Категория')}</div>
                 <div></div>
             </div>
-            {data.length === 0 && <p><center>{t('Товаров для отображения нет')}</center></p>}
+            {data.length === 0 && <p className={cls.center}>{t('Товаров для отображения нет')}</p>}
             {data.length > 0 && data.map((product: Product) => {
                 return <ProductListItem key={product._id} product={product} onDelete={onDelete} />
             })}

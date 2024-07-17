@@ -1,62 +1,102 @@
 .Product {
-  padding: 0;
-  display: flex;
-  width: 100%;
-  gap: 20px;
-  position: relative;
+    align-items: start;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    position: relative;
+    width: 100%;
+
+    @media screen and (max-width: 1200px) {
+        flex-direction: column;
+    }
 }
+
 .edit_switcher {
-  position: absolute;
-  top: 20px;
-  right: 20px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
 }
+
 .product_images_wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    @media screen and (max-width: 1200px) {
+        align-items: start;
+        flex-direction: row;
+    }
+
+    @media screen and (max-width: 800px) {
+        flex-direction: column;
+    }
 }
+
 .img_large {
-  max-width: 400px;
-  border-radius: 9px;
-  aspect-ratio: 6/8;
-  object-fit: cover;
+    aspect-ratio: 6/8;
+    border-radius: 9px;
+    object-fit: cover;
+    width: 350px;
+
+    @media screen and (max-width: 1200px) {
+        width: 80%;
+    }
+
+    @media screen and (max-width: 800px) {
+        width: 100%;
+    }
 }
+
 .img_preview_wrapper {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  max-width: 100%;
-  gap: 10px;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 100%;
+
+    @media screen and (max-width: 1200px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    @media screen and (max-width: 800px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
+
 .img_preview {
-  aspect-ratio: 1/1;
-  object-fit: cover;
-  border-radius: 6px;
-  width: 100%;
-  cursor: pointer;
+    aspect-ratio: 1/1;
+    border-radius: 6px;
+    cursor: pointer;
+    object-fit: cover;
+    width: 100%;
 }
+
 .description_wrapper {
-  display: flex;
-  gap: 20px;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
+
 .category {
-  font-size: 14px;
-  color: #666;
+    color: #666;
+    font-size: 14px;
 }
 
 .price {
-  font-weight: bold;
-  font-size: 28px;
+    font-size: 28px;
+    font-weight: bold;
 }
+
 .description_title {
-  font-weight: bold;
-  font-size: 20px;
+    font-size: 20px;
+    font-weight: bold;
 }
+
 .description {
-  line-height: 150%;
+    line-height: 150%;
 }
+
 .oldPrice {
-  text-decoration: line-through;
-  font-size: 18px;
-  color: #666;
+    color: #666;
+    font-size: 18px;
+    text-decoration: line-through;
 }

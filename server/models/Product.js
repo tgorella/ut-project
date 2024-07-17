@@ -10,6 +10,7 @@ const schema = new Schema({
   img: {type: String},
   category: [{type: String}],
   subcategory: {type: String},
+  productCode: {type: String},
   userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
 },
 {

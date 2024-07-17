@@ -5,6 +5,7 @@ import { Product } from '../../model/types/Product'
 import { useTranslation } from 'react-i18next'
 import { Box } from '@/shared/ui/Box'
 import { EditSwitcher } from '@/widgets/EditeSwitcher'
+import { VStack } from '@/shared/ui/Stack'
 
 interface ProductProps {
   className?: string;
@@ -31,7 +32,7 @@ export const ProductCard = memo(({className, product} : ProductProps) => {
                 onEdit={toggleEditMode} 
                 onCancelEdit={toggleEditMode} />
             <div className={classNames(cls.Product, {}, [className])}>
-                <div className={cls.product_images_wrapper}>
+                <VStack className={cls.product_images_wrapper}>
                     <img src={largeImg} alt={product.name} className={cls.img_large}/>
                     <div className={cls.img_preview_wrapper}>
                         {
@@ -39,7 +40,7 @@ export const ProductCard = memo(({className, product} : ProductProps) => {
                                 return <img key={index} src={img} alt={product.name} className={cls.img_preview} onClick={() => handleChangeLargeImage(index)}/>})
                         }
                     </div>
-                </div>
+                </VStack>
                 <div className={cls.description_wrapper}>
                     <p className={cls.category}>{t('Категория')}: {product.category}</p>
                     <h2>{product.name}</h2>
