@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import cls from './AppModules.module.scss'
 import { ModulesKey } from '../model/types/AppModules'
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames from '@/shared/lib/classNames/ClassNames'
 
 interface AppModulesItemProps {
   className?: string;

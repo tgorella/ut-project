@@ -1,7 +1,6 @@
 import User from "../../models/User.js";
 import { GraphQLError } from 'graphql'
 
-
 function isTokenInvalid(data, dbToken) {
   return !data || !dbToken || data._id !== dbToken?.user?.toString();
 }

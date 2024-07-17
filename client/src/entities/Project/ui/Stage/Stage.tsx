@@ -1,16 +1,16 @@
 import cls from './Stage.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames from '@/shared/lib/classNames/ClassNames'
 import {RefObject, memo, useState} from 'react'
 import { ProjectStage } from '../../model/types/Project'
 import ContentEditable, { ContentEditableEvent } from 'react-contenteditable'
 import { Step } from '../Step/Step'
 import { PlusCircle, Trash2 } from 'lucide-react'
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { useTranslation } from 'react-i18next'
 import React from 'react'
 import { updateStage } from '../../model/services/updateStage/updateStage'
 import { deleteProjectStage } from '../../model/services/deleteStage/deleteStage'
-import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
+import { AppButton, ButtonTheme } from '@/shared/ui/AppButton/AppButton'
 
 
 interface StageProps {

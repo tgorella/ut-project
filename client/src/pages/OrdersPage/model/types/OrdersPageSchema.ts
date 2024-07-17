@@ -1,4 +1,4 @@
-import { Order, OrderExtended } from 'entities/Order'
+import { Order, OrderExtended } from '@/entities/Order'
 
 export interface OrdersPageSchema {
 isLoading: boolean,

@@ -1,4 +1,4 @@
-import { StateSchema } from 'app/providers/StoreProvider'
+import { StateSchema } from '@/app/providers/StoreProvider'
 import { getProjectPageIsLoading } from './getProjectPageIsLoading'
 describe('getProjectPageIsLoading.test', () => {
     test('schould return value', () => {

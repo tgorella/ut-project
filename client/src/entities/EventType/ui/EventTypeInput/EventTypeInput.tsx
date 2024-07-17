@@ -1,11 +1,11 @@
 import cls from './EventTypeInput.module.scss'
 import {memo} from 'react'
 import { EventType } from '../../model/types/EventType'
-import { Input } from 'shared/ui/Input/Input'
-import EDIT_ICON from 'shared/assets/img/pencil.svg'
-import DELETE_ICON from 'shared/assets/img/delete.svg'
-import CHECK_ICON from 'shared/assets/img/check.svg'
-import CLOSE_ICON from 'shared/assets/img/close.svg'
+import { Input } from '@/shared/ui/Input/Input'
+import EDIT_ICON from '@/shared/assets/img/pencil.svg'
+import DELETE_ICON from '@/shared/assets/img/delete.svg'
+import CHECK_ICON from '@/shared/assets/img/check.svg'
+import CLOSE_ICON from '@/shared/assets/img/close.svg'
 
 
 interface EventTypeInputProps {

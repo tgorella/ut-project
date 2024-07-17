@@ -1,7 +1,7 @@
 /* eslint-disable i18next/no-literal-string */
 import { memo, useCallback } from 'react'
 import cls from './PreviewWindow.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames from '@/shared/lib/classNames/ClassNames'
 import { CloseBtn } from '../../CloseBtn'
 
 interface PreviewWindowProps {

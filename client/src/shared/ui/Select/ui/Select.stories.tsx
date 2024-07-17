@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import 'app/styles/index.scss'
-import { WithColorsTheme } from 'shared/config/storybook/ThemeDecorator/WithColorsTheme'
+import '@/app/styles/index.scss'
+import { WithColorsTheme } from '@/shared/config/storybook/ThemeDecorator/WithColorsTheme'
 import { Select } from './Select'
 import { Option } from '../model/types/option'
-import { Currency } from 'entities/Currency'
+import { Currency } from '@/entities/Currency'
 
 const meta: Meta<typeof Select> = {
     title: 'shared/Select',

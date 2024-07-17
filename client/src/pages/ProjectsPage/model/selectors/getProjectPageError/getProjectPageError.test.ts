@@ -1,4 +1,4 @@
-import { StateSchema } from 'app/providers/StoreProvider'
+import { StateSchema } from '@/app/providers/StoreProvider'
 import { getProjectPageError } from './getProjectPageError'
 
 describe('getProjectPageError.test', () => {

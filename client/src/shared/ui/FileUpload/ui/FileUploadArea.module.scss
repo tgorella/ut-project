@@ -1,0 +1,101 @@
+.uploadForm {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    max-width: 100%;
+    width: 100%;
+}
+
+.FileUploadArea {
+    border: 1px dashed var(--secondary-text);
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.dropArea,
+.dragArea {
+    align-items: center;
+    border-radius: 9px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 60px;
+    width: 100%;
+}
+
+.dropArea {
+    border: 2px dashed var(--secondary-text);
+    padding: 20px;
+}
+
+.label {
+    background-color: var(--box-bg-color);
+    color: var(--secondary-text);
+    font-size: 13px;
+    left: 20px;
+    line-height: 10px;
+    position: relative;
+    text-align: left;
+    width: 100%;
+    z-index: 1;
+}
+
+.input {
+    background: none;
+    background-color: var(--box-bg-color);
+    border: 1px solid var(--darker-bg-color);
+    border-radius: 5px;
+    color: var(--primary-text);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 10px;
+    margin-bottom: -12px;
+    padding: 15px;
+    position: relative;
+    top: -16px;
+    width: 97%;
+    z-index: 0;
+}
+
+.hidden {
+    height: 0;
+    line-height: 0;
+    margin: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 0;
+    z-index: -1;
+}
+
+.list {
+    width: 100%;
+}
+
+.list_item {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.ul {
+    list-style: none;
+}
+
+.image {
+    width: 400px;
+}
+
+.alert {
+    position: fixed;
+    right: 50px;
+    top: calc(50px + var(--navbar-height));
+    width: 320px;
+    z-index: 10000;
+}

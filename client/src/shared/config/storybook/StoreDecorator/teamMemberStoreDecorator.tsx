@@ -1,10 +1,10 @@
 import { ReducersMapObject } from '@reduxjs/toolkit'
 import { Decorator } from '@storybook/react'
-import { StateSchema, StoreProvider } from 'app/providers/StoreProvider'
-import { profileReducer } from 'entities/Profile'
-import { Country } from 'entities/Country'
-import { UserRole } from 'entities/Profile/model/types/profileSchema'
-import { Currency } from 'entities/Currency'
+import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider'
+import { profileReducer } from '@/entities/Profile'
+import { Country } from '@/entities/Country'
+import { UserRole } from '@/entities/Profile/model/types/profileSchema'
+import { Currency } from '@/entities/Currency'
 
 export const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
     profile: profileReducer,

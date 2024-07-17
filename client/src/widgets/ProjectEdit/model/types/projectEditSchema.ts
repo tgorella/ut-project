@@ -1,4 +1,4 @@
-import { Project } from 'entities/Project'
+import { Project } from '@/entities/Project'
 
 export interface ProjectEditSchema {
 isLoading: boolean,

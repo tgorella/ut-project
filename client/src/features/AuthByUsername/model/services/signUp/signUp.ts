@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { ThunkConfig } from 'app/providers/StoreProvider'
-import { tokenService } from 'entities/Token'
-import { User, userAction } from 'entities/User'
-import i18n from 'shared/config/i18n/i18n'
+import { ThunkConfig } from '@/app/providers/StoreProvider'
+import { tokenService } from '@/entities/Token'
+import { User, userAction } from '@/entities/User'
+import i18n from '@/shared/config/i18n/i18n'
 
 interface signUpProps {
 email: string,

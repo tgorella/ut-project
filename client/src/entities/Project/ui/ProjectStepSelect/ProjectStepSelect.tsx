@@ -1,8 +1,8 @@
 import cls from './ProjectStep.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames from '@/shared/lib/classNames/ClassNames'
 import {memo, useState} from 'react'
-import { Select } from 'shared/ui/Select'
-import { Option } from 'shared/ui/Select/model/types/option'
+import { Select } from '@/shared/ui/Select'
+import { Option } from '@/shared/ui/Select/model/types/option'
 import { useTranslation } from 'react-i18next'
 
 interface ProjectStepSelectProps {

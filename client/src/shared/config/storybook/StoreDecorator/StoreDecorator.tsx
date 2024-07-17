@@ -1,8 +1,8 @@
 /* eslint-disable react/display-name */
 import { ReducersMapObject } from '@reduxjs/toolkit'
 import { Decorator } from '@storybook/react'
-import { StateSchema, StoreProvider } from 'app/providers/StoreProvider'
-import { userReducer } from 'entities/User'
+import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider'
+import { userReducer } from '@/entities/User'
 import { stateAllIn } from './state'
 
 export const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {

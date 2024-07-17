@@ -1,11 +1,11 @@
 import cls from './EventCard.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames from '@/shared/lib/classNames/ClassNames'
 import {memo} from 'react'
 import { EventExtended } from '../../model/types/Event'
-import { transformDate } from 'shared/lib/transformDate/transformDate'
+import { transformDate } from '@/shared/lib/transformDate/transformDate'
 import { useTranslation } from 'react-i18next'
-import { Alert, AlertTheme } from 'shared/ui/Alert'
-import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
+import { Alert, AlertTheme } from '@/shared/ui/Alert'
+import { AppButton, ButtonTheme } from '@/shared/ui/AppButton/AppButton'
 import { Link } from 'react-router-dom'
 
 

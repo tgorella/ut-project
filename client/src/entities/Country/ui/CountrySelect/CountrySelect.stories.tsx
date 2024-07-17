@@ -1,5 +1,5 @@
 import type {  Meta, StoryObj } from '@storybook/react'
-import { WithColorsTheme } from 'shared/config/storybook/ThemeDecorator/WithColorsTheme'
+import { WithColorsTheme } from '@/shared/config/storybook/ThemeDecorator/WithColorsTheme'
 import { CountrySelect } from '../CountrySelect/CountrySelect'
 import { Country } from '../../model/types/country'
 

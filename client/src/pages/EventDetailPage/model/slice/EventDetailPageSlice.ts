@@ -1,7 +1,7 @@
 import {PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { EventExtended, getEventById, updateEventData } from 'entities/Event'
+import { EventExtended, getEventById, updateEventData } from '@/entities/Event'
 import { EventDetailPageSchema } from '../types/EventDetailPage'
-import { fetchEventTypes } from 'entities/EventType'
+import { fetchEventTypes } from '@/entities/EventType'
 
 const initialState: EventDetailPageSchema = {
     isLoading: false,

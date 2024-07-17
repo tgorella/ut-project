@@ -1,6 +1,6 @@
 import cls from './NotFound.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
-import ICON_404 from 'shared/assets/img/404.png'
+import classNames from '@/shared/lib/classNames/ClassNames'
+import ICON_404 from '@/shared/assets/img/404.png'
 import { useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
@@ -22,6 +22,9 @@ export const NotFound = ({className} : NotFoundProps) => {
         break
     case 'orders':
         text = 'Ой! Такого заказа не существует'
+        break
+    case 'products':
+        text = 'Ой! Такого товара не существует'
         break
     default:
         text = 'Такая страница не существует'

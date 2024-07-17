@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import cls from './PageLoader.module.scss'
-import { Spinner } from 'shared/ui/Spinner/Spinner'
-import classNames from 'shared/lib/classNames/ClassNames'
+import { Spinner } from '@/shared/ui/Spinner/Spinner'
+import classNames from '@/shared/lib/classNames/ClassNames'
 import { memo } from 'react'
 
 interface PageLoaderProps {

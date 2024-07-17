@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { Client } from '../../model/types/clientSchema'
 import cls from './ClientInfo.module.scss'
-import { Avatar, AvatarSize } from 'shared/ui/Avatar/Avatar'
+import { Avatar, AvatarSize } from '@/shared/ui/Avatar/Avatar'
 
 interface ClientInfoProps {
   data: Client

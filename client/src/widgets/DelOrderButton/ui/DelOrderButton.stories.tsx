@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import 'app/styles/index.scss'
-import { WithColorsTheme } from 'shared/config/storybook/ThemeDecorator/WithColorsTheme'
+import '@/app/styles/index.scss'
+import { WithColorsTheme } from '@/shared/config/storybook/ThemeDecorator/WithColorsTheme'
 import { DelOrderButton } from './DelOrderButton'
-import { ButtonTheme } from 'shared/ui/AppButton/AppButton'
-import { orderDetailsStoreDecorator } from 'shared/config/storybook/StoreDecorator/OrderDetailsStoreDecorator'
+import { ButtonTheme } from '@/shared/ui/AppButton/AppButton'
+import { orderDetailsStoreDecorator } from '@/shared/config/storybook/StoreDecorator/OrderDetailsStoreDecorator'
 
 const meta: Meta<typeof DelOrderButton> = {
     title: 'widgets/DelOrderButton',

@@ -1,12 +1,13 @@
-import { RoutePath } from 'shared/config/routeConfig/routeConfig'
-import MainIcon from 'shared/assets/img/home.svg'
-import AboutIcon from 'shared/assets/img/about.svg'
-import ClientsIcon from 'shared/assets/img/client_icon.svg'
-import OrdersIcon from 'shared/assets/img/orders.svg'
-import Calendar from 'shared/assets/img/calendar.svg'
-import ProjectIcon from 'shared/assets/img/projects.svg'
+import { RoutePath } from '@/shared/config/routeConfig/routeConfig'
+import MainIcon from '@/shared/assets/img/home.svg'
+import AboutIcon from '@/shared/assets/img/about.svg'
+import ClientsIcon from '@/shared/assets/img/client_icon.svg'
+import ProductIcon from '@/shared/assets/img/orders.svg'
+import OrdersIcon from '@/shared/assets/img/order.svg'
+import Calendar from '@/shared/assets/img/calendar.svg'
+import ProjectIcon from '@/shared/assets/img/projects.svg'
 import { LucideIcon } from 'lucide-react'
-import { UserRole } from 'entities/Profile/model/types/profileSchema'
+import { UserRole } from '@/entities/Profile/model/types/profileSchema'
 
 export interface SidebarItemType {
   path: string,
@@ -47,7 +48,14 @@ export const SidebarItemsList: SidebarItemType[] = [
         isAuth: true,
         module: true,
         moduleName: 'clients'
-
+    },
+    {
+        path: RoutePath.products,
+        icon: ProductIcon,
+        text: 'Товары',
+        isAuth: true,
+        module: false,
+        moduleName: 'products'
     },
     {
         path: RoutePath.orders,

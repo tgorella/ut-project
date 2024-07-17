@@ -1,4 +1,4 @@
-import { StateSchema } from 'app/providers/StoreProvider'
+import { StateSchema } from '@/app/providers/StoreProvider'
 import { UserRole } from '../../types/profileSchema'
 import { getProfileRoles } from './getProfileRoles'
 

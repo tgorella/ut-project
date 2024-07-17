@@ -1,6 +1,6 @@
-import { Client } from 'entities/Clients'
-import { OrderStatusDetails } from 'entities/OrderStatus'
-import { Project } from 'entities/Project'
+import { Client } from '@/entities/Clients'
+import { OrderStatusDetails } from '@/entities/OrderStatus'
+import { Project } from '@/entities/Project'
 
 export interface OrderDefault {
   _id?: string,

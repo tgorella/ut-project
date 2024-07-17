@@ -1,7 +1,7 @@
 import { ChangeEvent, memo } from 'react'
 import { Option } from '../model/types/option'
 import cls from './Select.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames from '@/shared/lib/classNames/ClassNames'
 
 interface SelectorProps {
   className?: string;

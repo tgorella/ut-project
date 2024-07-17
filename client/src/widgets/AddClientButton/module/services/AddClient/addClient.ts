@@ -1,10 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { ThunkConfig } from 'app/providers/StoreProvider'
-import i18n from 'shared/config/i18n/i18n'
-import { Client } from 'entities/Clients'
-import { getUserAuthData } from 'entities/User'
+import { ThunkConfig } from '@/app/providers/StoreProvider'
+import i18n from '@/shared/config/i18n/i18n'
+import { Client } from '@/entities/Clients'
+import { getUserAuthData } from '@/entities/User'
 import { addClientButtonAction } from '../../slice/AddClientButtonSlice'
-import { getNewClientData } from 'features/AddClient/model/selectors/getNewClientData/getNewClientData'
+import { getNewClientData } from '@/features/AddClient/model/selectors/getNewClientData/getNewClientData'
 
 
 export const addClient = createAsyncThunk<Client, void,ThunkConfig<string>>(

@@ -1,4 +1,4 @@
-import { EventType } from 'entities/EventType'
+import { EventType } from '@/entities/EventType'
 
 export interface EventSchema {
 isLoading: boolean,

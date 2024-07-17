@@ -6,20 +6,23 @@
   "scripts": {
     "start": "cross-env NODE_ENV=production node app.js",
     "serve": "cross-env NODE_ENV=development nodemon app.js",
-    "start:graph":"nodemon server.mjs"
+    "start:graph": "nodemon server.mjs"
   },
   "author": "Tatiana Gorelova",
   "license": "ISC",
   "dependencies": {
     "@apollo/server": "^4.10.0",
+    "apollo-upload-server": "^7.1.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
     "chalk": "^4.1.2",
     "config": "^3.3.9",
     "cors": "^2.8.5",
+    "easy-yandex-s3": "^2.0.0",
     "express": "^4.18.2",
     "express-validator": "^7.0.1",
     "graphql": "^16.8.1",
+    "graphql-upload": "^16.0.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.3"
   },

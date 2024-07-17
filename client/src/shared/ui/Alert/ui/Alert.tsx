@@ -1,9 +1,9 @@
 import cls from './Alert.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
-import ErrorIcon from 'shared/assets/img/error.svg'
-import WarningIcon from 'shared/assets/img/warning.svg'
-import InfoIcon from 'shared/assets/img/info.svg'
-import SuccessIcon from 'shared/assets/img/success.svg'
+import classNames from '@/shared/lib/classNames/ClassNames'
+import ErrorIcon from '@/shared/assets/img/error.svg'
+import WarningIcon from '@/shared/assets/img/warning.svg'
+import InfoIcon from '@/shared/assets/img/info.svg'
+import SuccessIcon from '@/shared/assets/img/success.svg'
 import { memo } from 'react'
 
 

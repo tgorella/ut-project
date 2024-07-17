@@ -1,6 +1,6 @@
 import { Column } from '../model/types/tableSchema'
 import cls from './Table.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames from '@/shared/lib/classNames/ClassNames'
 import { TableHeader } from './TableHeader'
 import { TableBody } from './TableBody'
 import { memo } from 'react'

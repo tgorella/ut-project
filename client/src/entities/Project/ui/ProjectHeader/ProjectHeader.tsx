@@ -1,8 +1,8 @@
 import cls from './ProjectHeader.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames from '@/shared/lib/classNames/ClassNames'
 import {memo} from 'react'
 import { ProjectStage } from '../../model/types/Project'
-import { countTotalSteps } from 'pages/ProjectsPage/model/lib/countTotalSteps'
+import { countTotalSteps } from '@/pages/ProjectsPage/model/lib/countTotalSteps'
 
 
 interface ProjectHeaderProps {

@@ -17,12 +17,14 @@ export const CalendarHeader = ({currentDate, onNextMont, onPrevMonth, onToday} :
 
     return ( 
         <HStack 
+            max
+            mobile='column'
             justify='between' 
             className={cls.navWrapper}>
             <div className={cls.monthName}>
                 {monthInfo(currentDate.year)[currentDate.month as keyof typeof monthInfo].name} {currentDate.year}
             </div>
-            <HStack justify='end'>
+            <HStack justify='end' mobile='row'>
                 <AppButton title={t('Назад')} onClick={onPrevMonth}><ChevronLeft size={32} /></AppButton>
                 <AppButton title={t('Вперед')} onClick={onNextMont}><ChevronRight size={32} /></AppButton>
                 <AppButton title={t('Сегодня')} onClick={onToday}>{t('Сегодня')}</AppButton>

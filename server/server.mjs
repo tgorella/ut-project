@@ -9,16 +9,22 @@ import config from 'config'
 import mongoose from 'mongoose'
 import chalk from 'chalk'
 import initDatabase from './startUp/initDatabase.js'
+// import { apolloUploadExpress } from 'apollo-upload-server'
 
 import graphqlSchema from './graphql/schema/index.js'
 import resolvers from './graphql/resolvers/index.js'
 import tokenService from './services/token.service.js'
+import graphqlUploadExpress from 'graphql-upload/graphqlUploadExpress.mjs'
 
 // The GraphQL schema
 const typeDefs = graphqlSchema
+// const upload = multer({ dest: 'uploads/' })
 
 const app = express()
 const PORT = config.get('port') ?? 8080
+
+app.use(graphqlUploadExpress({ maxFileSize: 10000000, maxFiles: 10 }));
+// app.use(apolloUploadExpress({ maxFileSize: 10000000, maxFiles: 10 }))
 
 const httpServer = http.createServer(app)
 
@@ -26,13 +32,17 @@ const httpServer = http.createServer(app)
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+  uploads: false,
+  plugins: [ApolloServerPluginDrainHttpServer({ httpServer })]
 })
+
 await server.start()
 
 app.use(
-  cors(),
-  bodyParser.json(),
+  '/',
+  cors({
+    origin: 'http://localhost:3000'}),
+  express.json({ limit: '50mb' }),
   expressMiddleware(server, {
     context: async ({ req }) => {
       const token = req.headers.authorization?.split(' ')[1] || undefined

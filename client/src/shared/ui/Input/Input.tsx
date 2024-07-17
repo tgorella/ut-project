@@ -1,9 +1,9 @@
 /* eslint-disable react/display-name */
 import React, { InputHTMLAttributes, memo, useState } from 'react'
 import cls from './Input.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
-import ShowIcon from 'shared/assets/img/show.svg'
-import HideIcon from 'shared/assets/img/hide.svg'
+import classNames from '@/shared/lib/classNames/ClassNames'
+import ShowIcon from '@/shared/assets/img/show.svg'
+import HideIcon from '@/shared/assets/img/hide.svg'
 import { Alert, AlertTheme, AlertVariant } from '../Alert'
 
 
@@ -12,10 +12,10 @@ type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onC
 interface InputProps extends HTMLInputProps {
   className?: string,
   rounded?: boolean,
-  value?: string,
+  value?: string |number | undefined | string[],
   label?: string,
   error?: string,
-  onChange?: (el: string) => void
+  onChange?: (el: string ) => void
 }
 export const Input = memo((props:InputProps) => {
     const {

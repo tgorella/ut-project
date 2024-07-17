@@ -1,7 +1,7 @@
 import {PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { AddOrderSchema } from '../types/addOrderSchema'
-import { OrderExtended } from 'entities/Order'
-import { fetchProjects } from 'entities/Project'
+import { OrderExtended } from '@/entities/Order'
+import { fetchProjects } from '@/entities/Project'
 
 const initialState: AddOrderSchema = {
     data: {

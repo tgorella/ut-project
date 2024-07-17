@@ -1,0 +1,28 @@
+.Textarea {
+    background-color: var(--box-bg-color);
+    border: 1px solid var(--darker-bg-color);
+    border-radius: 5px;
+    color: var(--primary-text);
+    outline: none;
+    padding: 12px 15px;
+    width: 100%;
+}
+
+.group {
+    border: 0;
+    padding: 5px;
+    position: relative;
+    width: 100%;
+}
+
+.legend {
+    background-color: var(--box-bg-color);
+    color: var(--secondary-text);
+    font-size: 13px;
+    left: 20px;
+    line-height: 10px;
+    padding: 0 5px;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+}

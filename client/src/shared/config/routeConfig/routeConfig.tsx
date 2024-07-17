@@ -1,17 +1,19 @@
-import { UserRole } from 'entities/Profile/model/types/profileSchema'
-import { AboutPage } from 'pages/AboutPage'
-import { CalendarPage } from 'pages/CalendarPage'
-import { ClientDetailPageLazy } from 'pages/ClientDetailPage/ui/ClientDetailPage/ClientDetailPage.lazy'
-import { ClientsPage } from 'pages/ClientsPage'
-import { DashboardPage } from 'pages/DashboardPage'
-import { EventDetailPage } from 'pages/EventDetailPage'
-import { MainPage } from 'pages/MainPage'
-import { NotFoundPage } from 'pages/NotFoundPage'
-import { OrderDetailsPage } from 'pages/OrderDetailsPage'
-import { OrdersPage } from 'pages/OrdersPage'
-import { ProfilePage } from 'pages/ProfilePage'
-import { ProjectsPage } from 'pages/ProjectsPage'
-import { SettingPage } from 'pages/SettingPage'
+import { UserRole } from '@/entities/Profile/model/types/profileSchema'
+import { AboutPage } from '@/pages/AboutPage'
+import { CalendarPage } from '@/pages/CalendarPage'
+import { ClientDetailPageLazy } from '@/pages/ClientDetailPage/ui/ClientDetailPage/ClientDetailPage.lazy'
+import { ClientsPage } from '@/pages/ClientsPage'
+import { DashboardPage } from '@/pages/DashboardPage'
+import { EventDetailPage } from '@/pages/EventDetailPage'
+import { MainPage } from '@/pages/MainPage'
+import { NotFoundPage } from '@/pages/NotFoundPage'
+import { OrderDetailsPage } from '@/pages/OrderDetailsPage'
+import { OrdersPage } from '@/pages/OrdersPage'
+import { ProductDetailsPage } from '@/pages/ProductDetailsPage'
+import { ProductsPage } from '@/pages/ProductsPage'
+import { ProfilePage } from '@/pages/ProfilePage'
+import { ProjectsPage } from '@/pages/ProjectsPage'
+import { SettingPage } from '@/pages/SettingPage'
 import { RouteProps } from 'react-router-dom'
 
 export type AppRoutesProp = RouteProps & {
@@ -32,6 +34,8 @@ export enum AppRoutes {
   PROJECTS = 'projects',
   CALENDAR = 'calendar',
   DASHBOARD = 'dashboard',
+  PRODUCTS = 'products',
+  PRODUCT_DETAILS = 'product_details',
   NOTFOUND = 'not_found',
 }
 export const RoutePath: Record<AppRoutes, string> = {
@@ -47,6 +51,8 @@ export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.CALENDAR]: '/calendar',
     [AppRoutes.EVENT_EDIT]: '/events/',
     [AppRoutes.DASHBOARD]: '/dashboard',
+    [AppRoutes.PRODUCTS]: '/products',
+    [AppRoutes.PRODUCT_DETAILS]: '/products/',
     [AppRoutes.NOTFOUND]: '*'
 }
 
@@ -82,14 +88,24 @@ export const routeConfig: Record<AppRoutes, AppRoutesProp> = {
         element: <OrdersPage />,
         authOnly: true
     },
-    [AppRoutes.PROJECTS]: {
-        path: RoutePath.projects,
-        element: <ProjectsPage />,
-        authOnly: true
-    },
     [AppRoutes.ORDERS_DETAILS]: {
         path: RoutePath.order_details+':id',
         element: <OrderDetailsPage />,
+        authOnly: true
+    },
+    [AppRoutes.PRODUCTS]: {
+        path: RoutePath.products,
+        element: <ProductsPage />,
+        authOnly: true
+    },
+    [AppRoutes.PRODUCT_DETAILS]: {
+        path: RoutePath.product_details+':id',
+        element: <ProductDetailsPage />,
+        authOnly: true
+    },
+    [AppRoutes.PROJECTS]: {
+        path: RoutePath.projects,
+        element: <ProjectsPage />,
         authOnly: true
     },
     [AppRoutes.EVENT_EDIT]: {

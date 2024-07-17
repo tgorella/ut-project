@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { ThunkConfig } from 'app/providers/StoreProvider'
-import i18n from 'shared/config/i18n/i18n'
+import { ThunkConfig } from '@/app/providers/StoreProvider'
+import i18n from '@/shared/config/i18n/i18n'
 import { OrderExtended } from '../../types/OrderSchema'
 
 export type FilterProps = {
@@ -19,7 +19,7 @@ export const getOrderById = createAsyncThunk<OrderExtended, string ,ThunkConfig<
             })
             
             if (!data) {
-                throw new Error('err')
+                throw new Error('Заказ не найден')
             }
             return data.data.order
         } catch (error) {

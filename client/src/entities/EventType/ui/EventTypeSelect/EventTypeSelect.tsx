@@ -1,8 +1,8 @@
 import {memo} from 'react'
 import { EventType } from '../../model/types/EventType'
 import { useTranslation } from 'react-i18next'
-import { Select } from 'shared/ui/Select'
-import { Option } from 'shared/ui/Select/model/types/option'
+import { Select } from '@/shared/ui/Select'
+import { Option } from '@/shared/ui/Select/model/types/option'
 
 
 interface EventTypeSelectProps {

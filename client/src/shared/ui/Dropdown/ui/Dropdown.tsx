@@ -1,9 +1,9 @@
 import cls from './Dropdown.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames from '@/shared/lib/classNames/ClassNames'
 import { Fragment, ReactNode, memo } from 'react'
 import { Menu } from '@headlessui/react'
-import { DropdownDirection } from 'shared/types/ui'
-import { AppLink } from 'shared/ui/AppLink/AppLink'
+import { DropdownDirection } from '@/shared/types/ui'
+import { AppLink } from '@/shared/ui/AppLink/AppLink'
 
 export interface DropDownItem {
   content: ReactNode

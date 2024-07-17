@@ -1,5 +1,5 @@
 import cls from './OrderStatus.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames from '@/shared/lib/classNames/ClassNames'
 import {memo} from 'react'
 import { useTranslation } from 'react-i18next'
 import { OrderStatusDetails } from '../../model/types/OrderStatus'

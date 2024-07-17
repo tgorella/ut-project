@@ -1,5 +1,5 @@
 import cls from './Box.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames from '@/shared/lib/classNames/ClassNames'
 import { BoxHead } from './BoxHead'
 import { BoxFooter } from './BoxFooter'
 import { HTMLAttributes, memo } from 'react'

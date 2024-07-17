@@ -1,6 +1,6 @@
 import {PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { ProjectEditSchema } from '../types/projectEditSchema'
-import { Project, addProject, addStage, addStep, deleteProject, deleteProjectStage, deleteProjectStep, fetchProjects, updateProject, updateStage, updateStep } from 'entities/Project'
+import { Project, addProject, addStage, addStep, deleteProject, deleteProjectStage, deleteProjectStep, fetchProjects, updateProject, updateStage, updateStep } from '@/entities/Project'
 
 const initialState: ProjectEditSchema = {
     isLoading: false,

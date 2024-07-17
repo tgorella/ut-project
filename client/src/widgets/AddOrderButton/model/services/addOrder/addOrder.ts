@@ -1,12 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { ThunkConfig } from 'app/providers/StoreProvider'
-import i18n from 'shared/config/i18n/i18n'
-import { getUserAuthData } from 'entities/User'
-import { Order } from 'entities/Order'
+import { ThunkConfig } from '@/app/providers/StoreProvider'
+import i18n from '@/shared/config/i18n/i18n'
+import { getUserAuthData } from '@/entities/User'
+import { Order } from '@/entities/Order'
 import { addOrderButtonAction } from '../../slice/AddOrderButtonSlice'
-import { getProfileLastOrderNumber, profileAction, updateProfileData } from 'entities/Profile'
-import { getClientDetailsData } from 'entities/Clients'
-import { getNewOrderData } from 'features/AddOrder/model/selectors/getNewOrderData/getNewOrderData'
+import { getProfileLastOrderNumber, profileAction, updateProfileData } from '@/entities/Profile'
+import { getClientDetailsData } from '@/entities/Clients'
+import { getNewOrderData } from '@/features/AddOrder/model/selectors/getNewOrderData/getNewOrderData'
 
 interface addOrderProps {
  isClientPage: boolean,

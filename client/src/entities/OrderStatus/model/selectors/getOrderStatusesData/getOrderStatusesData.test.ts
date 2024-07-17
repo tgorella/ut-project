@@ -1,4 +1,4 @@
-import { StateSchema } from 'app/providers/StoreProvider'
+import { StateSchema } from '@/app/providers/StoreProvider'
 import { getOrderStatusesData } from './getOrderStatusesData'
 
 describe('getOrderStatusesData.test', () => {

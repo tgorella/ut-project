@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import 'app/styles/index.scss'
-import { WithColorsTheme } from 'shared/config/storybook/ThemeDecorator/WithColorsTheme'
-import { orderDetailsStoreDecorator } from 'shared/config/storybook/StoreDecorator/OrderDetailsStoreDecorator'
+import '@/app/styles/index.scss'
+import { WithColorsTheme } from '@/shared/config/storybook/ThemeDecorator/WithColorsTheme'
+import { orderDetailsStoreDecorator } from '@/shared/config/storybook/StoreDecorator/OrderDetailsStoreDecorator'
 import { OrderCard } from './OrderCard'
 
 const meta: Meta<typeof OrderCard> = {

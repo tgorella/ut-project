@@ -1,8 +1,8 @@
 import {memo} from 'react'
 import { useSelector } from 'react-redux'
 import { getOrderStatusesData } from '../../model/selectors/getOrderStatusesData/getOrderStatusesData'
-import { Option } from 'shared/ui/Select/model/types/option'
-import { Select } from 'shared/ui/Select'
+import { Option } from '@/shared/ui/Select/model/types/option'
+import { Select } from '@/shared/ui/Select'
 import { useTranslation } from 'react-i18next'
 
 interface OrderStatusSelectProps {

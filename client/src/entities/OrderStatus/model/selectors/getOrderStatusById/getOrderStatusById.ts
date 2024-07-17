@@ -1,4 +1,4 @@
-import { StateSchema } from 'app/providers/StoreProvider'
+import { StateSchema } from '@/app/providers/StoreProvider'
 import { OrderStatusDetails } from '../../types/OrderStatus'
 
 export const getOrderStatusById = (id: string) => (state: StateSchema) => {

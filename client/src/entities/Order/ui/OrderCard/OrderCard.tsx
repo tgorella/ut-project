@@ -1,33 +1,34 @@
 /* eslint-disable i18next/no-literal-string */
 import cls from './OrderCard.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames from '@/shared/lib/classNames/ClassNames'
 import {ReactNode, memo, useCallback, useEffect, useState} from 'react'
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { getOrderById } from '../../model/services/getOrderById/getOrderById'
-import { getUserAuthData } from 'entities/User'
+import { getUserAuthData } from '@/entities/User'
 import { useSelector } from 'react-redux'
 import { getOrderDetailsIsLoading } from '../../model/selectors/getOrderDetailsIsLoading/getOrderDetailsIsLoading'
 import { getOrderDetailsError } from '../../model/selectors/getOrderDetailsError/getOrderDetailsError'
 import { getOrderDetailsForm } from '../../model/selectors/getOrderDetailsForm/getOrderDetailsForm'
-import { Box } from 'shared/ui/Box'
-import { EditSwitcher } from 'widgets/EditeSwitcher'
+import { Box } from '@/shared/ui/Box'
+import { EditSwitcher } from '@/widgets/EditeSwitcher'
 import { orderDetailsAction, orderDetailsReducer } from '../../model/slice/OrderDetailsSlice'
-import { PageLoader } from 'widgets/PageLoader'
-import { Text } from 'shared/ui/Text'
-import { NotFound } from 'shared/ui/NotFound'
-import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
-import { Client } from 'entities/Clients'
-import { NoteBlock } from 'widgets/NoteBlock'
+import { PageLoader } from '@/widgets/PageLoader'
+import { Text } from '@/shared/ui/Text'
+import { NotFound } from '@/shared/ui/NotFound'
+import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
+import { Client } from '@/entities/Clients'
+import { NoteBlock } from '@/widgets/NoteBlock'
 import { updateOrderData } from '../../model/services/updateOrderData/updateOrderData'
 import { OrderForm } from '../OrderForm/OrderForm'
-import { OrderStatusBlock, OrderStatusSelect, orderStatusReducer } from 'entities/OrderStatus'
-import { fetchOrderStatuses } from 'entities/OrderStatus/model/services/fetchOrderStatuses/fetchOrderStatuses'
+import { OrderStatusBlock, OrderStatusSelect, orderStatusReducer } from '@/entities/OrderStatus'
+import { fetchOrderStatuses } from '@/entities/OrderStatus/model/services/fetchOrderStatuses/fetchOrderStatuses'
 import { OrderInfo } from '../OrderInfo/OrderInfo'
 import { useTranslation } from 'react-i18next'
-import { projectSelectReducer } from 'entities/Project/ui/ProjectSelect/model/slice/projectSelectSlice'
-import { getProjectSelectData } from 'entities/Project/ui/ProjectSelect/model/selectors/getProjectSelectData/getProjectSelectData'
-import { fetchProjects } from 'entities/Project'
-import { ClientInfo } from 'entities/Clients/ui/ClientInfo/ClientInfo'
+import { projectSelectReducer } from '@/entities/Project/ui/ProjectSelect/model/slice/projectSelectSlice'
+import { getProjectSelectData } from '@/entities/Project/ui/ProjectSelect/model/selectors/getProjectSelectData/getProjectSelectData'
+import { fetchProjects } from '@/entities/Project'
+import { ClientInfo } from '@/entities/Clients/ui/ClientInfo/ClientInfo'
+import { HStack, VStack } from '@/shared/ui/Stack'
 
 interface OrderProps {
   className?: string;
@@ -58,7 +59,8 @@ export const OrderCard = memo(({className, id, children} : OrderProps) => {
         startTime: '',
         endTime: '',
         projectType: '',
-
+        paymentDate: '',
+        paymentMethod: ''
     })
 
     useEffect(() => {
@@ -116,6 +118,7 @@ export const OrderCard = memo(({className, id, children} : OrderProps) => {
         dispatch(orderDetailsAction.updateOrder({total: value}))
     }, [dispatch])
 
+   
     const handleChangeTitle = useCallback((value: string) => {
         dispatch(orderDetailsAction.updateOrder({title: value}))
     }, [dispatch])
@@ -147,19 +150,19 @@ export const OrderCard = memo(({className, id, children} : OrderProps) => {
     }
     else {
         content = <>
-            <div className={cls.status}>
+            <HStack mobile='row' max gap='20' align='center' justify='center'>
                 {!statusEdit && <>{t('Статус')}: <OrderStatusBlock status={data?.status}/></>}
-                {statusEdit && data.status && <OrderStatusSelect onChange={handleChangeStatus} value={data?.status?._id}/>}
+                {statusEdit && data.status && <OrderStatusSelect onChange={handleChangeStatus} value={data?.status?._id} />}
                 <EditSwitcher  editMode={statusEdit} onEdit={toggleStatusEditMode} onCancelEdit={toggleStatusEditMode} className={cls.status_edit_btn}/>
-            </div>
-            <div className={classNames(cls.OrderDetailsPage, {}, [className])}>
-                <div className={cls.small_column} >
+            </HStack>
+            <HStack mobile='column' max gap='20' align='start' justify='center'>
+                <VStack slim gap='20'>
                     {children}
                     <Box>
                         <ClientInfo data={data?.clientId as Client} />
                     </Box>
-                </div>
-                <div className={cls.big_column}>
+                </VStack>
+                <VStack wide gap='20'>
                     <Box 
                         className={classNames(cls.Order, {}, [className])}
                         header={data?.title}
@@ -179,9 +182,15 @@ export const OrderCard = memo(({className, id, children} : OrderProps) => {
                             OnSaveOrder={handleSaveOrder}
                         />}
                     </Box>
+                    <Box
+                        header={t('Платежная информация')}>
+                        <VStack max gap='20'>
+                            <p>{t('Платежей нет')}</p>
+                        </VStack>
+                    </Box>
                     <NoteBlock value={data?.notes} onCancelEdit={handleChancelNoteEdit} onChange={handleNoteEdit} onSave={handleSaveNotes} />
-                </div>
-            </div>
+                </VStack>
+            </HStack>
         </>
         
     }

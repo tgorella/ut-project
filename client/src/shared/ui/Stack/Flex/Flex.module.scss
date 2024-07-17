@@ -6,6 +6,36 @@
     width: 100%;
 }
 
+.slim {
+    max-width: 100%;
+    width: 350px;
+
+    @media screen and (max-width: 1450px) {
+        width: 250px;
+    }
+
+    @media screen and (max-width: 1099px) {
+        width: 100%;
+    }
+}
+
+.wide {
+    max-width: 100%;
+    width: 800px;
+
+    @media screen and (max-width: 1450px) {
+        width: clamp(400px, 600px, 800px);
+    }
+
+    @media screen and (max-width: 1099px) {
+        width: 100%;
+    }
+}
+
+.center {
+    margin: 0 auto;
+}
+
 .justifyStart {
     justify-content: flex-start;
 }
@@ -52,4 +82,8 @@
 
 .gap30 {
     gap: 30px;
+}
+
+.gap40 {
+    gap: 40px;
 }

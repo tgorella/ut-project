@@ -1,8 +1,8 @@
 /* eslint-disable i18next/no-literal-string */
 import type {  Meta, StoryObj } from '@storybook/react'
 import { CloseBtn } from './CloseBtn'
-import { DarkDecorator } from 'shared/config/storybook/ThemeDecorator/DarkDecorator'
-import { LightDecorator } from 'shared/config/storybook/ThemeDecorator/LightDecorator'
+import { DarkDecorator } from '@/shared/config/storybook/ThemeDecorator/DarkDecorator'
+import { LightDecorator } from '@/shared/config/storybook/ThemeDecorator/LightDecorator'
 
 const meta: Meta<typeof CloseBtn> = {
     title: 'shared/CloseBtn',

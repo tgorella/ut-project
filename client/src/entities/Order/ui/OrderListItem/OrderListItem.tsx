@@ -1,10 +1,10 @@
 import { Order, OrderExtended } from '../../model/types/OrderSchema'
 import cls from './OrderListItem.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
-import { Column } from 'shared/ui/Table/model/types/tableSchema'
+import classNames from '@/shared/lib/classNames/ClassNames'
+import { Column } from '@/shared/ui/Table/model/types/tableSchema'
 import { useNavigate } from 'react-router-dom'
-import DELETE_ICON from 'shared/assets/img/delete.svg'
-import { transformDate } from 'shared/lib/transformDate/transformDate'
+import DELETE_ICON from '@/shared/assets/img/delete.svg'
+import { transformDate } from '@/shared/lib/transformDate/transformDate'
 import { useTranslation } from 'react-i18next'
 
 interface OrderListItemProps {

@@ -1,13 +1,13 @@
 /* eslint-disable react/display-name */
-import { AppLink } from 'shared/ui/AppLink/AppLink'
+import { AppLink } from '@/shared/ui/AppLink/AppLink'
 import cls from './SidebarItem.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames from '@/shared/lib/classNames/ClassNames'
 import { SidebarItemType } from '../../model/items'
 import { useTranslation } from 'react-i18next'
 import { memo } from 'react'
 import { useSelector } from 'react-redux'
-import { isUserManager, isUserOwner } from 'entities/Profile'
-import { UserRole } from 'entities/Profile/model/types/profileSchema'
+import { isUserManager, isUserOwner } from '@/entities/Profile'
+import { UserRole } from '@/entities/Profile/model/types/profileSchema'
 
 interface SidebarItemProps {
   item: SidebarItemType

@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import 'app/styles/index.scss'
-import { WithColorsTheme } from 'shared/config/storybook/ThemeDecorator/WithColorsTheme'
+import '@/app/styles/index.scss'
+import { WithColorsTheme } from '@/shared/config/storybook/ThemeDecorator/WithColorsTheme'
 import { OrderStatusSelect } from './OrderStatusSelect'
-import { orderStatusesStoreDecorator } from 'shared/config/storybook/StoreDecorator/orderStatusStoreDecorator'
+import { orderStatusesStoreDecorator } from '@/shared/config/storybook/StoreDecorator/orderStatusStoreDecorator'
 
 const meta: Meta<typeof OrderStatusSelect> = {
     title: 'entities/OrderStatusSelect',

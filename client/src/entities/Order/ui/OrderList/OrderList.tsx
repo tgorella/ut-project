@@ -1,18 +1,18 @@
 import cls from './OrderList.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames from '@/shared/lib/classNames/ClassNames'
 import {memo, useCallback, useState} from 'react'
 import { Order, OrderExtended } from '../../model/types/OrderSchema'
-import { Text, TextAlign } from 'shared/ui/Text'
+import { Text, TextAlign } from '@/shared/ui/Text'
 import { useTranslation } from 'react-i18next'
-import { Column } from 'shared/ui/Table/model/types/tableSchema'
+import { Column } from '@/shared/ui/Table/model/types/tableSchema'
 import { OrderListItem } from '../OrderListItem/OrderListItem'
-import { PageLoader } from 'widgets/PageLoader'
-import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
-import { Modal } from 'shared/ui/Modal'
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
+import { PageLoader } from '@/widgets/PageLoader'
+import { AppButton, ButtonTheme } from '@/shared/ui/AppButton/AppButton'
+import { Modal } from '@/shared/ui/Modal'
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { deleteOrder } from '../../model/services/deleteOrder/deleteOrder'
-import { ordersPageAction } from 'pages/OrdersPage/model/slice/OrdersPageSlice'
-import { clientDetailsAction } from 'entities/Clients'
+import { ordersPageAction } from '@/pages/OrdersPage/model/slice/OrdersPageSlice'
+import { clientDetailsAction } from '@/entities/Clients'
 
 interface OrderListProps {
   className?: string;
@@ -30,7 +30,7 @@ export const OrderList = memo(({className, orders = [], isLoading} : OrderListPr
         { name: t('Статус'), path: 'status' },
         { name: t('Удалить'), path: 'del' },
     ]
-    if (window.screen.width <= 740) {
+    if (window.innerWidth <= 890) {
         columns = [
             { name: '№', path: 'orderNumber' },
             { name: t('Дата создания'), path: 'createdAt' },

@@ -1,9 +1,9 @@
-import { Input } from 'shared/ui/Input/Input'
+import { Input } from '@/shared/ui/Input/Input'
 import cls from './Searchbar.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
-import SearchIcon from 'shared/assets/img/search.svg'
+import classNames from '@/shared/lib/classNames/ClassNames'
+import SearchIcon from '@/shared/assets/img/search.svg'
 import { memo } from 'react'
-import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce'
+import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce'
 
 interface SearchbarProps {
   className?: string;

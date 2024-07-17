@@ -1,10 +1,10 @@
 import cls from './ClientsList.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames from '@/shared/lib/classNames/ClassNames'
 import {memo} from 'react'
 import { Client } from '../../model/types/clientSchema'
 import { ClientListItem } from '../ClientListItem/ClientListItem'
-import {Text} from 'shared/ui/Text'
-import { TextAlign } from 'shared/ui/Text/ui/Text'
+import {Text} from '@/shared/ui/Text'
+import { TextAlign } from '@/shared/ui/Text/ui/Text'
 import { useTranslation } from 'react-i18next'
 
 interface ClientsListProps {

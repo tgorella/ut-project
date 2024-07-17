@@ -1,4 +1,4 @@
-import { StateSchema } from 'app/providers/StoreProvider'
+import { StateSchema } from '@/app/providers/StoreProvider'
 import { AppModules } from '../../types/AppModules'
 import { getUserModulesData } from './getUserModulesData'
 

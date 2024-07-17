@@ -1,6 +1,6 @@
 import {PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { EventTypesEditSchema } from '../types/EventTypesEdit'
-import { EventType, addEventType, deleteEventType, fetchEventTypes, updateEventType } from 'entities/EventType'
+import { EventType, addEventType, deleteEventType, fetchEventTypes, updateEventType } from '@/entities/EventType'
 
 const initialState: EventTypesEditSchema = {
     isLoading: false,

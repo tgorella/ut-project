@@ -1,14 +1,14 @@
 import cls from './DelOrderButton.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames from '@/shared/lib/classNames/ClassNames'
 import {memo, useState} from 'react'
-import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
+import { AppButton, ButtonTheme } from '@/shared/ui/AppButton/AppButton'
 import { t } from 'i18next'
-import { Modal } from 'shared/ui/Modal'
-import { Text, TextAlign } from 'shared/ui/Text'
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
-import DEL_ORDER from 'shared/assets/img/delete.svg'
+import { Modal } from '@/shared/ui/Modal'
+import { Text, TextAlign } from '@/shared/ui/Text'
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
+import DEL_ORDER from '@/shared/assets/img/delete.svg'
 import { useNavigate } from 'react-router-dom'
-import { deleteOrder } from 'entities/Order'
+import { deleteOrder } from '@/entities/Order'
 
 
 interface DelOrderButtonProps {

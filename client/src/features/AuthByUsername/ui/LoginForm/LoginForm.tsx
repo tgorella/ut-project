@@ -1,20 +1,20 @@
 /* eslint-disable i18next/no-literal-string */
 /* eslint-disable react/display-name */
 import cls from './LoginForm.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames from '@/shared/lib/classNames/ClassNames'
 import { useTranslation } from 'react-i18next'
-import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
-import { Input } from 'shared/ui/Input/Input'
+import { AppButton, ButtonTheme } from '@/shared/ui/AppButton/AppButton'
+import { Input } from '@/shared/ui/Input/Input'
 import { useSelector } from 'react-redux'
 import { memo, useCallback } from 'react'
 import { loginAction, loginReducer } from '../../model/slice/loginSlice'
-import { Alert, AlertTheme } from 'shared/ui/Alert'
+import { Alert, AlertTheme } from '@/shared/ui/Alert'
 import { getLoginEmail } from '../../model/selectors/getLoginEmail/getLoginEmail'
 import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword'
 import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading'
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError'
-import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
+import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { loginByEmail } from '../../model/services/loginByEmail/loginByEmail'
 
 export interface LoginFormProps {
@@ -53,7 +53,7 @@ const LoginForm = memo(({className, onSuccess} : LoginFormProps) => {
             <form className={classNames(cls.LoginForm, {}, [className])}>
                 <h1>{t('Войти')}</h1>
                 <Input type='text' placeholder={t('Введите email')} autoFocus rounded onChange={handleChangeUsername} value={email}/>
-                <Input type='password' placeholder={t('Введите пароль')} rounded onChange={handleChangePassword} value={password}/>
+                <Input type='password' placeholder={t('Введите пароль')} rounded onChange={handleChangePassword} value={password} autoComplete='current-password'/>
                 {error && <Alert theme={AlertTheme.ERROR} text={error}/>}
                 <AppButton theme={ButtonTheme.OUTLINED} onClick={handleLogIn} disabled={isLoading}>
                     {t('Войти')}

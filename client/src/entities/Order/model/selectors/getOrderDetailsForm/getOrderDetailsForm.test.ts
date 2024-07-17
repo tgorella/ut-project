@@ -1,4 +1,4 @@
-import { StateSchema } from 'app/providers/StoreProvider'
+import { StateSchema } from '@/app/providers/StoreProvider'
 import { getOrderDetailsForm } from './getOrderDetailsForm'
 
 describe('getOrderDetailsForm.test', () => {

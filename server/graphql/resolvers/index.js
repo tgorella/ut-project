@@ -17,8 +17,17 @@ import projectStepMutationResolvers from './projectStepMutationResolvers.js';
 import projectMutationResolvers from './projectMutationResolvers.js';
 import projectStageMutationResolvers from './projectStageMutationResolvers.js';
 import modulesMutationResolvers from './modulesMutationResolvers.js';
+import productQueryResolvers from './productQueryResolvers.js';
+import productMutationResolvers from './productMutationResolvers.js';
+import fileMutationResolvers from './fileMutationResolvers.js';
+import GraphQlUpload from 'graphql-upload/GraphQLUpload.mjs';
+import paymentQueryResolvers from './paymentQueryResolvers.js';
+import paymentMutationResolvers from './PaymentMutationResolvers.js';
+import paymentMethodQueryResolvers from './paymentMethodQueryResolvers.js';
+import paymentMethodMutationResolvers from './paymentMethodMutationResolvers.js';
 
 const resolvers =  {
+  Upload: GraphQlUpload,
   Query: {
     ...userQueryResolvers,
     ...orderQueryResolvers,
@@ -27,7 +36,10 @@ const resolvers =  {
     ...eventQueryResolvers,
     ...eventTypesQueryResolvers,
     ...orderStatusesQueryResolvers,
-    ...modulesStatusQueryResolvers
+    ...modulesStatusQueryResolvers,
+    ...productQueryResolvers,
+    ...paymentMethodQueryResolvers,
+    ...paymentQueryResolvers
   },
   Mutation: {
     ...userMutationResolvers,
@@ -40,7 +52,11 @@ const resolvers =  {
     ...projectMutationResolvers,
     ...projectStageMutationResolvers,
     ...projectStepMutationResolvers,
-    ...modulesMutationResolvers
+    ...modulesMutationResolvers,
+    ...productMutationResolvers,
+    ...fileMutationResolvers,
+    ...paymentMutationResolvers,
+    ...paymentMethodMutationResolvers
   }
 }
 

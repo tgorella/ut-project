@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { ThunkConfig } from 'app/providers/StoreProvider'
-import i18n from 'shared/config/i18n/i18n'
+import { ThunkConfig } from '@/app/providers/StoreProvider'
+import i18n from '@/shared/config/i18n/i18n'
 import { OrderExtended } from '../../types/OrderSchema'
 
 interface FetchProps {
@@ -18,12 +18,9 @@ export const fetchOrders = createAsyncThunk<OrderExtended[], FetchProps,ThunkCon
                 'operation-name': 'Query'
             })
         
-            if (!data) {
-                return rejectWithValue(i18n.t('Заказы не найдены'))
-            }
             return data.data.orders
         } catch (error) {
-            return rejectWithValue(i18n.t('Неправильные логин или пароль'))
+            return rejectWithValue(i18n.t('Что-то пошло не так. Попытайтесь позже'))
         }
     }
 )

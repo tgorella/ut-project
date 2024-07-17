@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import 'app/styles/index.scss'
-import { WithColorsTheme } from 'shared/config/storybook/ThemeDecorator/WithColorsTheme'
+import '@/app/styles/index.scss'
+import { WithColorsTheme } from '@/shared/config/storybook/ThemeDecorator/WithColorsTheme'
 import { ProjectBlock } from './ProjectBlock'
-import { UserStoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator'
+import { UserStoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator'
 import { Project } from '../../model/types/Project'
 
 const meta: Meta<typeof ProjectBlock> = {

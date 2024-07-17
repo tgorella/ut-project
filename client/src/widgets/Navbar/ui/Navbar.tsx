@@ -1,8 +1,8 @@
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames from '@/shared/lib/classNames/ClassNames'
 import cls from './Navbar.module.scss'
-import { ThemeSwitcher } from 'widgets/ThemeSwitcher'
-import { LangSwitcher } from 'widgets/LangSwitcher'
-import { AuthButton } from 'widgets/AuthButton'
+import { ThemeSwitcher } from '@/widgets/ThemeSwitcher'
+import { LangSwitcher } from '@/widgets/LangSwitcher'
+import { AuthButton } from '@/widgets/AuthButton'
 import { memo } from 'react'
 
 interface NavbarProps {

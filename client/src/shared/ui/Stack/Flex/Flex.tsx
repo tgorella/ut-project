@@ -1,11 +1,11 @@
 import cls from './Flex.module.scss'
-import classNames, { Mods } from 'shared/lib/classNames/ClassNames'
+import classNames, { Mods } from '@/shared/lib/classNames/ClassNames'
 import {ReactNode, memo} from 'react'
 
 export type FlexJustify = 'end' | 'start' | 'center' | 'between'
 export type FlexAlign = 'end' | 'start' | 'center'
 export type FlexDirection = 'column' | 'row'
-export type FlexGap = '10' | '20' | '30'
+export type FlexGap = '10' | '20' | '30' | '40'
 
 const justifyClasses: Record<FlexJustify, string> = {
     start: cls.justifyStart,
@@ -28,7 +28,8 @@ const directionClasses: Record<FlexDirection, string> = {
 const gapClasses: Record<FlexGap, string> = {
     10: cls.gap10,
     20: cls.gap20,
-    30: cls.gap30
+    30: cls.gap30,
+    40: cls.gap40
 }
 
 export interface FlexProps {
@@ -38,7 +39,10 @@ export interface FlexProps {
   align?: FlexAlign;
   direction: FlexDirection,
   gap?: FlexGap,
-  max?: boolean
+  max?: boolean,
+  slim?: boolean,
+  wide?: boolean,
+  center?: boolean
 }
 export const Flex = memo(({
     className, 
@@ -47,7 +51,10 @@ export const Flex = memo(({
     align = 'center', 
     direction = 'row',
     gap,
-    max
+    max,
+    slim,
+    wide,
+    center
 } : FlexProps) => {
 
     const classes = [
@@ -59,7 +66,10 @@ export const Flex = memo(({
     ]
 
     const mods: Mods = {
-        [cls.max]: max
+        [cls.max]: max,
+        [cls.slim]: slim,
+        [cls.wide]: wide,
+        [cls.center]: center
     }
     return ( 
         <div className={classNames(cls.Flex, mods, [...classes])}>

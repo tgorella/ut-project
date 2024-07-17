@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import 'app/styles/index.scss'
-import { WithColorsTheme } from 'shared/config/storybook/ThemeDecorator/WithColorsTheme'
+import '@/app/styles/index.scss'
+import { WithColorsTheme } from '@/shared/config/storybook/ThemeDecorator/WithColorsTheme'
 import ProjectEdit  from './ProjectEdit'
-import { EditProjectStoreDecorator, orderStatusesErrorStoreDecorator } from 'shared/config/storybook/StoreDecorator/ProjectStoreDecorator'
+import { EditProjectStoreDecorator, orderStatusesErrorStoreDecorator } from '@/shared/config/storybook/StoreDecorator/ProjectStoreDecorator'
 
 const meta: Meta<typeof ProjectEdit> = {
     title: 'widgets/ProjectEdit',

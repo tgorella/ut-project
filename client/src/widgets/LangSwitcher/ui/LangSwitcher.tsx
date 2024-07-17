@@ -1,4 +1,4 @@
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames from '@/shared/lib/classNames/ClassNames'
 import cls from './LangSwitcher.module.scss'
 import { useTranslation } from 'react-i18next'
 import { memo, useState } from 'react'

@@ -1,10 +1,10 @@
 import { CombinedState, Reducer, ReducersMapObject, configureStore } from '@reduxjs/toolkit'
 import { StateSchema } from './StateSchema'
-import { userReducer } from 'entities/User'
+import { userReducer } from '@/entities/User'
 import { createReducerManager } from './reducerManager'
-import { http } from 'shared/api/api'
-import { profileReducer } from 'entities/Profile'
-import { appModulesReducer } from 'entities/AppModules/model/slice/AppModulesSlice'
+import { http } from '@/shared/api/api'
+import { profileReducer } from '@/entities/Profile'
+import { appModulesReducer } from '@/entities/AppModules/model/slice/AppModulesSlice'
 
 export function createReduxStore(
     initialState?: StateSchema,

@@ -1,5 +1,5 @@
 import cls from './Avatar.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames from '@/shared/lib/classNames/ClassNames'
 import AVATAR from '../../assets/img/default-avatar.png'
 import { memo } from 'react'
 

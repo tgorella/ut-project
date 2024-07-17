@@ -1,8 +1,9 @@
 import { t } from 'i18next'
-import { AppButton, ButtonTheme } from 'shared/ui/AppButton/AppButton'
+import { AppButton, ButtonTheme } from '@/shared/ui/AppButton/AppButton'
 import cls from './ProfileCard.module.scss'
 import { Profile } from '../../model/types/profileSchema'
-import formGenerator, { FormItem, FromComponent } from 'shared/lib/formGenerator/formGenerator'
+import formGenerator, { FormItem, FromComponent } from '@/shared/lib/formGenerator/formGenerator'
+import { FileUploadArea } from '@/shared/ui/FileUpload'
 
 interface ProfileFormProps {
   className?: string;
@@ -112,16 +113,6 @@ export const ProfileForm = ({
                 }
             },
             {
-                label: t('Ссылка на аватар'),
-                valuePath: 'avatar',
-                onChange: onChangeAvatar,
-                name: 'avatar',
-                component: FromComponent.INPUT,
-                otherProps: {
-                    autoComplete: 'photo'
-                }
-            },
-            {
                 label: t('Страна'),
                 valuePath: 'country',
                 onChange: onChangeCountry,
@@ -148,6 +139,12 @@ export const ProfileForm = ({
     return ( 
         <div  className={cls.info_container}>
             <form>
+                <FileUploadArea 
+                    multiple={false}
+                    onUpdateLinks={( link: string[]) =>onChangeAvatar(link[0])}
+                    dropDownArea={false}
+                    label={t('Загрузить аватар')}
+                />
                 {formGenerator(formSchema, data, errors)}
                 <AppButton 
                     theme={ButtonTheme.OUTLINED} 
@@ -157,7 +154,6 @@ export const ProfileForm = ({
                     disabled={Object.values(errors).filter((item) => item !== '').length > 0 ? true : false}
                 >{t('Сохранить')}</AppButton>
             </form>
-         
         </div>
     )
 }

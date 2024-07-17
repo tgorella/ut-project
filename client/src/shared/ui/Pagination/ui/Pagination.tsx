@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import cls from './Pagination.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames from '@/shared/lib/classNames/ClassNames'
 import { memo } from 'react'
 
 interface PaginationProps {
@@ -14,7 +14,8 @@ interface PaginationProps {
 }
 export const Pagination = memo(({className, itemsLength, itemsPerPage, currentPage, totalItems = true, pages = true, onPageChange} : PaginationProps) => {
     const {t} = useTranslation()
-    const totalPages = Math.ceil(itemsLength / itemsPerPage)
+    const totalPages = Math.ceil(itemsLength / itemsPerPage) === 0 ? 1 : Math.ceil(itemsLength / itemsPerPage)
+    
     return ( 
         <div className={classNames(cls.Pagination, {}, [className])}>
             <div className={cls.wrapper}>
