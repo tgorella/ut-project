@@ -1,5 +1,5 @@
 import cls from './Payment.module.scss'
-import classNames from 'shared/lib/classNames/ClassNames'
+import classNames from '@/shared/lib/classNames/ClassNames'
 import {memo} from 'react'
 
 interface PaymentProps {
