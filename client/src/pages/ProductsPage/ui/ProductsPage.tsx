@@ -17,6 +17,7 @@ import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/Dynam
 import { Searchbar } from '@/widgets/Searchbar'
 import { Pagination } from '@/shared/ui/Pagination'
 import { Alert, AlertTheme } from '@/shared/ui/Alert'
+import { PageLoader } from '@/widgets/PageLoader'
 
 const reducers: ReducersList = {
     productPage: productsPageReducer
@@ -70,9 +71,9 @@ export const ProductsPage = memo(() => {
                     </HStack>
                 </HStack>
                 <Box>
-                  
+                    {isLoading && <PageLoader/>}
                     {error && <Alert theme={AlertTheme.ERROR} text={t('Что-то пошло не так. Не удалось загрузить список товаров')}/>}
-                    {!error && <ProductList 
+                    {!error && !isLoading && <ProductList 
                         data={products || []}
                         onDelete={() => {}}
                     />}

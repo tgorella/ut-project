@@ -13,6 +13,10 @@ import BACK_ICON from '@/shared/assets/img/undo.svg'
 import { DeleteProductButton } from '@/features/DeleteProductButton'
 import { getProductById, ProductCard, ProductType } from '@/entities/Product'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
+import { getProductDetailsIsLoading } from '../model/selectors/getProductDetailsIsLoading/getProductDetailsIsLoading'
+import { PageLoader } from '@/widgets/PageLoader'
+import { NotFound } from '@aws-sdk/client-s3'
+import { getProductDetailsForm } from '../model/selectors/getProductDetailsForm/getProductDetailsForm'
 
 const reducers: ReducersList = {
     productDetailsPage: productDetailsPageReducer
@@ -42,9 +46,9 @@ export const ProductDetailsPage = memo(() => {
     let {id} = useParams()
     const dispatch = useAppDispatch()
     const resParams = '_id name price discount count productType description img category subcategory productCode'
-    // const isLoading = useSelector(getProductDetailsIsLoading)
+    const isLoading = useSelector(getProductDetailsIsLoading)
     const error = useSelector(getProductDetailsError)
-    const data = mockData
+    const data = useSelector(getProductDetailsForm)
     const history = useNavigate()
     const goBack = () => history(-1)
 
@@ -61,9 +65,6 @@ export const ProductDetailsPage = memo(() => {
     
     return ( 
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={true}>
-            {/* {isLoading && <PageLoader />}
-            {!data && <NotFound />} */}
-            
             <VStack max gap='20'>
                 <h1>{t('Информация о продукте')} {data?.name}</h1>
                 <HStack align='start'>
@@ -80,8 +81,8 @@ export const ProductDetailsPage = memo(() => {
                         </Box>
                     </div>
                     <VStack max gap='20' className={cls.big_column}>
-                        {/* {isLoading && <PageLoader />} */}
-                        { <ProductCard product={mockData} />}
+                        {isLoading && <Box><PageLoader /></Box>}
+                        {data && <ProductCard product={data} />}
                     </VStack>  
                 </HStack>
                 
