@@ -20,7 +20,8 @@ module.exports = {
     'overrides': [
         {
             'rules': {
-                'i18next/no-literal-string': 'off'
+                'i18next/no-literal-string': 'off',
+                'complexity': ['error', {max: 50}]
             },
             'env': {
                 'node': true
@@ -71,7 +72,7 @@ module.exports = {
         'react/require-default-props': 'off',
         'react/react-in-jsx-scope': 'off',
         '@typescript-eslint/ban-ts-comment': 'off',
-        'i18next/no-literal-string': ['error', { markupOnly: true, ignoreAttribute: ['data-testid', 'to', 'name', 'as', 'direction', 'justify', 'align', 'gap']}],
+        'i18next/no-literal-string': ['error', { markupOnly: true, ignoreAttribute: ['data-testid', 'to', 'name', 'as', 'direction', 'justify', 'align', 'gap', 'mobile']}],
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'error',
         '@typescript-eslint/no-var-requires': 'off',

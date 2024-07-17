@@ -3,6 +3,7 @@ import { RouteDecorator } from './../../src/shared/config/storybook/RouteDecorat
 import { styleDecorator } from './../../src/shared/config/storybook/StyleDecorator/StyleDecorator'
 import type { Preview } from '@storybook/react'
 import 'app/styles/index.scss'
+import { MockedProvider } from '@apollo/client/testing'
 
 
 export const globalTypes = {
@@ -23,6 +24,12 @@ export const globalTypes = {
 }
 const preview: Preview = {
     parameters: {
+        apolloClient: {
+            MockedProvider,
+            globalMocks: [
+                // whatever mocks you want here
+            ],
+        },
         actions: { argTypesRegex: '^on[A-Z].*' },
         controls: {
             matchers: {
