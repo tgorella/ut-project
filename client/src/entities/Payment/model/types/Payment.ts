@@ -4,7 +4,6 @@ export interface Payment {
   date: string,
   method: string,
   order: string,
-  type: string,
   amount: string,
   notes?: string
 }
