@@ -5,7 +5,7 @@ import { ProjectHeader } from './ProjectHeader'
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof ProjectHeader> = {
-    title: 'entities/ProjectHeader',
+    title: 'entities/Project/Header',
     component: ProjectHeader,
     argTypes: {
     // backgroundColor: { control: 'color' },

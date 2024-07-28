@@ -5,7 +5,7 @@ import { ProductType } from '../../model/types/Product'
 import {ProductList} from './ProductList'
 
 const meta: Meta<typeof ProductList> = {
-    title: 'entities/ProductList',
+    title: 'entities/Product/List',
     component: ProductList,
     argTypes: {
     },

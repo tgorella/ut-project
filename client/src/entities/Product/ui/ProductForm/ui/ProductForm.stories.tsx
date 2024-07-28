@@ -5,7 +5,7 @@ import { ProductForm } from './ProductForm'
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof ProductForm> = {
-    title: 'entities/ProductForm',
+    title: 'entities/Product/Form',
     component: ProductForm,
     argTypes: {
     // backgroundColor: { control: 'color' },

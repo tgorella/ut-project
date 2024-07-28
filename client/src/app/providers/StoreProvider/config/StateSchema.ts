@@ -23,6 +23,7 @@ import { AddOrderButtonSchema } from '@/widgets/AddOrderButton/model/types/AddOr
 import { EventTypesEditSchema } from '@/widgets/EventTypesEdit'
 import { OrderStatusEditSchema } from '@/widgets/OrderStatusEdit'
 import { ProjectEditSchema } from '@/widgets/ProjectEdit'
+import { PaymentMethodsSchema } from '@/entities/PaymentMethod/model/types/PaymentMethod'
 
 export interface StateSchema {
   user: UserSchema,
@@ -49,7 +50,8 @@ export interface StateSchema {
   CalendarPage?: CalendarPageSchema,
   EventDetailsPage?: EventDetailPageSchema,
   productPage?: ProductsPageSchema,
-  productDetailsPage?: ProductDetailsPageSchema
+  productDetailsPage?: ProductDetailsPageSchema,
+  paymentMethods?: PaymentMethodsSchema
 }
 
 export type StateSchemaKey = keyof StateSchema

@@ -7,7 +7,7 @@ import { UserStoreDecorator } from '@/shared/config/storybook/StoreDecorator/Sto
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Stage> = {
-    title: 'entities/Stage',
+    title: 'entities/Project/Stage',
     component: Stage,
     argTypes: {
     // backgroundColor: { control: 'color' },

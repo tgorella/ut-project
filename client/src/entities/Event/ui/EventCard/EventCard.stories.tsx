@@ -5,7 +5,7 @@ import { EventCard } from './EventCard'
 import { EventExtended } from '../../model/types/Event'
 
 const meta: Meta<typeof EventCard> = {
-    title: 'entities/EventCard',
+    title: 'entities/Event/Card',
     component: EventCard,
     argTypes: {
     },

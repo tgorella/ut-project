@@ -6,7 +6,7 @@ import { EditProjectStoreDecorator } from '@/shared/config/storybook/StoreDecora
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof ProjectSelect> = {
-    title: 'entities/ProjectSelect',
+    title: 'entities/Project/Select',
     component: ProjectSelect,
     argTypes: {
     // backgroundColor: { control: 'color' },

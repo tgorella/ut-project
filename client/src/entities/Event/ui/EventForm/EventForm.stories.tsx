@@ -5,7 +5,7 @@ import { EventExtended } from '../../model/types/Event'
 import { EventForm } from './EventForm'
 
 const meta: Meta<typeof EventForm> = {
-    title: 'entities/EventForm',
+    title: 'entities/Event/Form',
     component: EventForm,
     argTypes: {
     },

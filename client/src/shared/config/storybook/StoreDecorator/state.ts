@@ -5,6 +5,7 @@ import { ProductType } from '@/entities/Product'
 import { UserRole } from '@/entities/Profile/model/types/profileSchema'
 import { Project } from '@/entities/Project'
 
+
 const projectsArr: Project[] = [
     {
         _id: 'jhmgjh54rhre',
@@ -600,6 +601,32 @@ export const stateAllIn: StateSchema = {
             subcategory: '',
             userId: ''
         }
+    },
+    paymentMethods: {
+        isLoading: false,
+        data: [
+            {
+                _id: '1',
+                name: 'Альфа Банк',
+                icon_url: 'https://storage.yandexcloud.net/gte-image-thing/banks/alfabank.svg'
+            },
+            {
+                _id: '2',
+                name: 'Сбербанк',
+                icon_url: 'https://storage.yandexcloud.net/gte-image-thing/banks/sberbank.svg'
+            },
+            {
+                _id: '3',
+                name: 'Т Банк',
+                icon_url: 'https://storage.yandexcloud.net/gte-image-thing/banks/t-bank.svg'
+            },
+            {
+                _id: '4',
+                name: 'ВТБ',
+                icon_url: 'https://storage.yandexcloud.net/gte-image-thing/banks/vtbbank.svg'
+            },
+            
+        ]
     }
 
 }
@@ -641,6 +668,9 @@ export const stateAllIsLoading: DeepPartial<StateSchema> = {
         isLoading: true
     },
     productDetailsPage: {
+        isLoading: true
+    },
+    paymentMethods: {
         isLoading: true
     }
     
@@ -697,6 +727,9 @@ export const stateAllErrors: DeepPartial<StateSchema> = {
     },
     productDetailsPage: {
         isLoading: false,
+        error: 'error'
+    },
+    paymentMethods: {
         error: 'error'
     }
 }

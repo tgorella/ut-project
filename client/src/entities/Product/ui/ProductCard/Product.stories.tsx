@@ -5,7 +5,7 @@ import { ProductCard } from './ProductCard'
 import { ProductType } from '../../model/types/Product'
 
 const meta: Meta<typeof ProductCard> = {
-    title: 'entities/ProductCard',
+    title: 'entities/Product/Card',
     component: ProductCard,
     argTypes: {
     },

@@ -4,7 +4,7 @@ import { WithColorsTheme } from '@/shared/config/storybook/ThemeDecorator/WithCo
 import { ProjectStepSelect } from './ProjectStepSelect'
 
 const meta: Meta<typeof ProjectStepSelect> = {
-    title: 'entities/ProjectStepStatusSelect',
+    title: 'entities/Project/StepStatusSelect',
     component: ProjectStepSelect,
     argTypes: {
     // backgroundColor: { control: 'color' },

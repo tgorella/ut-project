@@ -5,7 +5,7 @@ import { EventTypeInput } from './EventTypeInput'
 import { EventType } from '../../model/types/EventType'
 
 const meta: Meta<typeof EventTypeInput> = {
-    title: 'entities/EventTypeInput',
+    title: 'entities/EventType/Input',
     component: EventTypeInput,
     argTypes: {
     },

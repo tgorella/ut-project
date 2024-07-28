@@ -5,7 +5,7 @@ import { Event } from '../../model/types/Event'
 import { EventsList } from './EventsList'
 
 const meta: Meta<typeof EventsList> = {
-    title: 'entities/EventsList',
+    title: 'entities/Event/List',
     component: EventsList,
     argTypes: {
     },

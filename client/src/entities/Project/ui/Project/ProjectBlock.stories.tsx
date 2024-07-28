@@ -6,7 +6,7 @@ import { UserStoreDecorator } from '@/shared/config/storybook/StoreDecorator/Sto
 import { Project } from '../../model/types/Project'
 
 const meta: Meta<typeof ProjectBlock> = {
-    title: 'entities/ProjectBlock',
+    title: 'entities/Project/Block',
     component: ProjectBlock,
     argTypes: {
     },
