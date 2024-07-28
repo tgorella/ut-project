@@ -7,9 +7,9 @@ interface PaymentMethodProps {
 }
 export const PaymentMethod = memo(({className} : PaymentMethodProps) => {
 
-  return ( 
-    <div className={classNames(cls.PaymentMethod, {}, [className])}>
+    return ( 
+        <div className={classNames(cls.PaymentMethod, {}, [className])}>
       
-    </div>
-   );
+        </div>
+    )
 })
