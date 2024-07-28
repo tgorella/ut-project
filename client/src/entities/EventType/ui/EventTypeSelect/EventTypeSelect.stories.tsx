@@ -5,7 +5,7 @@ import { EventTypeSelect } from './EventTypeSelect'
 import { EventType } from '../../model/types/EventType'
 
 const meta: Meta<typeof EventTypeSelect> = {
-    title: 'entities/EventTypeSelect',
+    title: 'entities/EventType/Select',
     component: EventTypeSelect,
     argTypes: {
     },
