@@ -625,6 +625,11 @@ export const stateAllIn: StateSchema = {
                 name: 'ВТБ',
                 icon_url: 'https://storage.yandexcloud.net/gte-image-thing/banks/vtbbank.svg'
             },
+            {
+                _id: '5',
+                name: 'Наличные',
+                icon_url: ''
+            }
             
         ]
     }

@@ -48,7 +48,7 @@ export const PaymentMethodSelector = memo(({onChange, value}: PaymentMethodSelec
             {filteredVariants?.map((item) => {
                 return (
                     <div key={item._id} className={cls.list_item} onClick={() => handleChooseVariant(item)} >
-                        <img src={item.icon_url} alt={item.name}  className={cls.item__image}/>
+                        {item.icon_url ? (<img src={item.icon_url} alt={item.name}  className={cls.item__image}/>) : (<span></span>)}
                         <span>{item.name}</span>
                     </div>
                 )
