@@ -1,63 +1,49 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import '@/app/styles/index.scss'
-import { WithColorsTheme } from '@/shared/config/storybook/ThemeDecorator/WithColorsTheme'
-import  OrderStatusEdit  from './OrderStatusEdit'
-import { orderStatusesEditErrorStoreDecorator, orderStatusesEditIsLoadingStoreDecorator, orderStatusesEditStoreDecorator } from '@/shared/config/storybook/StoreDecorator/OrderStatusesEditDecorator'
+import type { Meta, StoryObj } from "@storybook/react";
+import "@/app/styles/index.scss";
+import { WithColorsTheme } from "@/shared/config/storybook/ThemeDecorator/WithColorsTheme";
+import OrderStatusEdit from "./OrderStatusEdit";
+import {
+  orderStatusesEditErrorStoreDecorator,
+  orderStatusesEditIsLoadingStoreDecorator,
+  orderStatusesEditStoreDecorator,
+} from "@/shared/config/storybook/StoreDecorator/OrderStatusesEditDecorator";
 
 const meta: Meta<typeof OrderStatusEdit> = {
-    title: 'widgets/OrderStatusEdit',
-    component: OrderStatusEdit,
-    argTypes: {
-    },
-    tags: ['autodocs']
-}
+  title: "widgets/OrderStatusEdit",
+  component: OrderStatusEdit,
+  argTypes: {},
+  tags: ["autodocs"],
+};
 
-
-export default meta
+export default meta;
 type Story = StoryObj<typeof OrderStatusEdit>;
 
-
 export const Default: Story = {
-    args: {
-                                                                                                                                                          
+  args: {},
+  decorators: [WithColorsTheme, orderStatusesEditStoreDecorator],
+  parameters: {
+    docs: {
+      canvas: { sourceState: "shown" },
     },
-    decorators: [
-        WithColorsTheme,
-        orderStatusesEditStoreDecorator
-    ],
-    parameters: {
-        docs: {
-            canvas: {sourceState: 'shown'}
-        },
-    }
-}
+  },
+};
 
 export const WithError: Story = {
-    args: {
-                                                                                                                                                        
+  args: {},
+  decorators: [WithColorsTheme, orderStatusesEditErrorStoreDecorator],
+  parameters: {
+    docs: {
+      canvas: { sourceState: "shown" },
     },
-    decorators: [
-        WithColorsTheme,
-        orderStatusesEditErrorStoreDecorator
-    ],
-    parameters: {
-        docs: {
-            canvas: {sourceState: 'shown'}
-        },
-    }
-}
+  },
+};
 
 export const Loading: Story = {
-    args: {
-                                                                                                                                                      
+  args: {},
+  decorators: [WithColorsTheme, orderStatusesEditIsLoadingStoreDecorator],
+  parameters: {
+    docs: {
+      canvas: { sourceState: "shown" },
     },
-    decorators: [
-        WithColorsTheme,
-        orderStatusesEditIsLoadingStoreDecorator
-    ],
-    parameters: {
-        docs: {
-            canvas: {sourceState: 'shown'}
-        },
-    }
-}
+  },
+};

@@ -4,5 +4,5 @@ export { getEventDetailError } from './model/selectors/getEventDetailError/getEv
 export { getEventDetailIsLoading } from './model/selectors/getEventDetailIsLoading/getEventDetailIsLoading'
 export { getEventDetailsEventTypes } from './model/selectors/getEventDetailsEventTypes/getEventDetailsEventTypes'
 export { getEventDetailsForm } from './model/selectors/getEventDetailsForm/getEventDetailsForm'
-export { EventDetailPageSchema } from './model/types/EventDetailPage'
+export type { EventDetailPageSchema } from './model/types/EventDetailPage'
 export {EventDetailPage} from './ui/EventDetailPage'

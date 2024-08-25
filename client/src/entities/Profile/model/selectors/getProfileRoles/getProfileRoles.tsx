@@ -6,3 +6,4 @@ export const getProfileRoles = (state: StateSchema) => state.profile?.data?.role
 
 export const isUserOwner = createSelector(getProfileRoles, (roles) => Boolean(roles?.includes(UserRole.OWNER)))
 export const isUserManager = createSelector(getProfileRoles, (roles) => Boolean(roles?.includes(UserRole.OWNER)))
+export const isUserDeveloper = createSelector(getProfileRoles, (roles) => Boolean(roles?.includes(UserRole.CRM_DEVELOPER)))

@@ -11,6 +11,7 @@ import { ProjectEdit } from '@/widgets/ProjectEdit'
 import { VStack } from '@/shared/ui/Stack/VStack/VStack'
 import { useSelector } from 'react-redux'
 import { isUserManager, isUserOwner } from '@/entities/Profile'
+import { PaymentMethodEditLazy } from '@/widgets/PaymentMethodEdit/ui/PaymentMethodEdit.lazy'
 
 
 interface SettingPageProps {
@@ -44,6 +45,10 @@ const SettingPage = memo(({className} : SettingPageProps) => {
             text: 'Категории событий',
             elementName: 'events'
         },
+        {
+            text: 'Методы платежей',
+            elementName: 'paymentMethods'
+        },
     ] : [])
     ]
     const togglePages = (name: string) => {
@@ -62,6 +67,10 @@ const SettingPage = memo(({className} : SettingPageProps) => {
   
         if (name === 'profile') {
             setPageContent(<ProfilePage />)
+            setPath(name)
+        }
+        if (name === 'paymentMethods') {
+            setPageContent(<PaymentMethodEditLazy />)
             setPath(name)
         }
     }

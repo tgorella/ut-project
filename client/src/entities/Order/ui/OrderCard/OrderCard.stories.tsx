@@ -1,41 +1,35 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import '@/app/styles/index.scss'
-import { WithColorsTheme } from '@/shared/config/storybook/ThemeDecorator/WithColorsTheme'
-import { orderDetailsStoreDecorator } from '@/shared/config/storybook/StoreDecorator/OrderDetailsStoreDecorator'
-import { OrderCard } from './OrderCard'
+import type { Meta, StoryObj } from "@storybook/react";
+import "@/app/styles/index.scss";
+import { WithColorsTheme } from "@/shared/config/storybook/ThemeDecorator/WithColorsTheme";
+import { orderDetailsStoreDecorator } from "@/shared/config/storybook/StoreDecorator/OrderDetailsStoreDecorator";
+import { OrderCard } from "./OrderCard";
 
 const meta: Meta<typeof OrderCard> = {
-    title: 'entities/OrderCard',
-    component: OrderCard,
-    argTypes: {
-    },
-    tags: ['autodocs']
-}
+  title: "entities/OrderCard",
+  component: OrderCard,
+  argTypes: {},
+  tags: ["autodocs"],
+};
 
-
-export default meta
+export default meta;
 type Story = StoryObj<typeof OrderCard>;
 
-
 export const Default: Story = {
-    args: {
-        id: '64469ad32e53c6aa4c0746b6'                                                                                                                                         
+  args: {
+    id: "64469ad32e53c6aa4c0746b6",
+  },
+  decorators: [WithColorsTheme, orderDetailsStoreDecorator],
+  parameters: {
+    docs: {
+      canvas: { sourceState: "shown" },
     },
-    decorators: [
-        WithColorsTheme,
-        orderDetailsStoreDecorator,
-    ],
-    parameters: {
-        docs: {
-            canvas: {sourceState: 'shown'}
-        },
-    }
-}
+  },
+};
 
 // export const OnlyRead: Story = {
 //     args: {
 //         id: '643c5fe7013e22868a6eb63c',
-//         onlyRead: true                                                                                                                                           
+//         onlyRead: true
 //     },
 //     decorators: [
 //         WithColorsTheme,
@@ -51,7 +45,7 @@ export const Default: Story = {
 // export const WithoutNotes: Story = {
 //     args: {
 //         id: '643c5fe7013e22868a6eb63c',
-//         withNotes: false                                                                                                                                          
+//         withNotes: false
 //     },
 //     decorators: [
 //         WithColorsTheme,
@@ -66,7 +60,7 @@ export const Default: Story = {
 
 // export const NotFound: Story = {
 //     args: {
-//         id: '000'                                                                                                                                           
+//         id: '000'
 //     },
 //     decorators: [
 //         WithColorsTheme,
@@ -81,7 +75,7 @@ export const Default: Story = {
 
 // export const IsLoading: Story = {
 //     args: {
-//         id: '000'                                                                                                                                           
+//         id: '000'
 //     },
 //     decorators: [
 //         WithColorsTheme,

@@ -6,13 +6,13 @@ import ADD_CLIENT from '@/shared/assets/img/add-client.svg'
 import { useCallback, useState } from 'react'
 import { AddClientForm } from '@/features/AddClient'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
-import { useSelector } from 'react-redux'
-import { getAddClientAddedStatus, getAddClientError } from '../module/selectors/addClient/addClient'
 import { addClient } from '../module/services/AddClient/addClient'
 import { addClientReducer } from '@/features/AddClient/model/slice/AddClientSlice'
 import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { addClientButtonReducer } from '../module/slice/AddClientButtonSlice'
 import { PreviewWindow } from '@/shared/ui/PreviewWindow'
+import { aLertInformerAction } from '@/widgets/ALertInformer'
+import { AlertTheme } from '@/shared/ui/Alert'
 
 const reducers: ReducersList = {
     addClient: addClientReducer,
@@ -27,11 +27,32 @@ export const AddClientButton = ({className} : AddClientButtonProps) => {
     const [openPreview, setOpenPreview] = useState(false)
     const togglePreview = () => setOpenPreview(!openPreview)
     const dispatch = useAppDispatch()
-    const added = useSelector(getAddClientAddedStatus)
-    const newClientError = useSelector(getAddClientError)
     
     const handleAddClient = useCallback(() => {
-        dispatch(addClient())
+        dispatch(addClient()).then((data) => {
+            console.log(data.meta.requestStatus)
+            const id = Date.now().toString()
+            if( data.meta.requestStatus === 'fulfilled') {
+                dispatch(aLertInformerAction.addMessage({
+                    message: 'Клиент успешно добавлен',
+                    type: AlertTheme.SUCCESS,
+                    id: id
+                }))
+                setTimeout(() => {
+                    dispatch(aLertInformerAction.removeMessage(id))
+                }, 10000)
+            }
+            if(data.meta.requestStatus === 'rejected') {
+                dispatch(aLertInformerAction.addMessage({
+                    message: 'Клиент не добавлен',
+                    type: AlertTheme.ERROR,
+                    id: id
+                }))
+                setTimeout(() => {
+                    dispatch(aLertInformerAction.removeMessage(id))
+                }, 10000)
+            }
+        })
     }, [dispatch])
 
     return ( 
@@ -46,9 +67,8 @@ export const AddClientButton = ({className} : AddClientButtonProps) => {
                 </AppButton>
                 <PreviewWindow onClose={togglePreview} isOpen={openPreview}>
                     <AddClientForm
-                        onAddClient={handleAddClient} 
-                        added={added} 
-                        error={newClientError}/>
+                        onAddClient={handleAddClient}
+                    />
                 </PreviewWindow>
             </div>
         </DynamicModuleLoader>

@@ -1,48 +1,38 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import '@/app/styles/index.scss'
-import { WithColorsTheme } from '@/shared/config/storybook/ThemeDecorator/WithColorsTheme'
-import ProjectEdit  from './ProjectEdit'
-import { EditProjectStoreDecorator, orderStatusesErrorStoreDecorator } from '@/shared/config/storybook/StoreDecorator/ProjectStoreDecorator'
+import type { Meta, StoryObj } from "@storybook/react";
+import "@/app/styles/index.scss";
+import { WithColorsTheme } from "@/shared/config/storybook/ThemeDecorator/WithColorsTheme";
+import ProjectEdit from "./ProjectEdit";
+import {
+  EditProjectStoreDecorator,
+  orderStatusesErrorStoreDecorator,
+} from "@/shared/config/storybook/StoreDecorator/ProjectStoreDecorator";
 
 const meta: Meta<typeof ProjectEdit> = {
-    title: 'widgets/ProjectEdit',
-    component: ProjectEdit,
-    argTypes: {
-    },
-    tags: ['autodocs']
-}
+  title: "widgets/ProjectEdit",
+  component: ProjectEdit,
+  argTypes: {},
+  tags: ["autodocs"],
+};
 
-
-export default meta
+export default meta;
 type Story = StoryObj<typeof ProjectEdit>;
 
-
 export const Default: Story = {
-    args: {
-                                                                                                                                                          
+  args: {},
+  decorators: [WithColorsTheme, EditProjectStoreDecorator],
+  parameters: {
+    docs: {
+      canvas: { sourceState: "shown" },
     },
-    decorators: [
-        WithColorsTheme,
-        EditProjectStoreDecorator
-    ],
-    parameters: {
-        docs: {
-            canvas: {sourceState: 'shown'}
-        },
-    }
-}
+  },
+};
 
 export const Error: Story = {
-    args: {
-                                                                                                                                                        
+  args: {},
+  decorators: [WithColorsTheme, orderStatusesErrorStoreDecorator],
+  parameters: {
+    docs: {
+      canvas: { sourceState: "shown" },
     },
-    decorators: [
-        WithColorsTheme,
-        orderStatusesErrorStoreDecorator
-    ],
-    parameters: {
-        docs: {
-            canvas: {sourceState: 'shown'}
-        },
-    }
-}
+  },
+};

@@ -3,5 +3,5 @@ export { getProjectPageData } from './model/selectors/getProjectPageData/getProj
 export { getProjectPageError } from './model/selectors/getProjectPageError/getProjectPageError'
 export { getProjectPageIsLoading } from './model/selectors/getProjectPageIsLoading/getProjectPageIsLoading'
 export { projectsPageAction, projectsPageReducer } from './model/slice/ProjectsPageSlice'
-export { ProjectsPageSchema } from './model/types/ProjectsPage'
+export type { ProjectsPageSchema } from './model/types/ProjectsPage'
 export {ProjectsPage} from './ui/ProjectsPage'

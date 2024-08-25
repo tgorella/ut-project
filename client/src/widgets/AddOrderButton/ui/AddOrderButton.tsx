@@ -12,15 +12,17 @@ import { AddOrderForm } from '@/features/AddOrder'
 import { clientDetailsAction, getClientDetailsData } from '@/entities/Clients'
 import { addOrderAction, addOrderReducer } from '@/features/AddOrder/model/slice/AddOrderSlice'
 import { addOrder } from '../model/services/addOrder/addOrder'
-import { getAddOrderAddedStatus, getAddOrderError } from '../model/selectors/addOrderButton'
+import { getAddOrderError } from '../model/selectors/addOrderButton'
 import { PreviewWindow } from '@/shared/ui/PreviewWindow'
-import { getAddClientAddedStatus, getAddClientError } from '@/widgets/AddClientButton/module/selectors/addClient/addClient'
+import {  getAddClientError } from '@/widgets/AddClientButton/module/selectors/addClient/addClient'
 import { AddClientForm } from '@/features/AddClient'
 import { addClient } from '@/widgets/AddClientButton/module/services/AddClient/addClient'
 import { addClientAction, addClientReducer } from '@/features/AddClient/model/slice/AddClientSlice'
 import { addClientButtonReducer } from '@/widgets/AddClientButton/module/slice/AddClientButtonSlice'
 import { ordersPageAction } from '@/pages/OrdersPage/model/slice/OrdersPageSlice'
 import { projectSelectReducer } from '@/entities/Project/ui/ProjectSelect/model/slice/projectSelectSlice'
+import { aLertInformerAction } from '@/widgets/ALertInformer'
+import { AlertTheme } from '@/shared/ui/Alert'
 
 const reducers: ReducersList = {
     addOrderButton: addOrderButtonReducer,
@@ -41,16 +43,24 @@ export const AddOrderButton = memo(({className, withClient = false, buttonTheme}
     const [openPreview, setOpenPreview] = useState(false)
     const togglePreview = () => setOpenPreview(!openPreview)
     const dispatch = useAppDispatch()
-    const added = useSelector(getAddOrderAddedStatus)
     const newOrderError = useSelector(getAddOrderError) || ''
     const client = useSelector(getClientDetailsData)
-    const clientAdded = useSelector(getAddClientAddedStatus)
     const newClientError = useSelector(getAddClientError) || ''
+
   
     const handleAddOrder = useCallback(() => {
         if (withClient) {
             dispatch(addClient())
                 .then(({payload}) => {
+                    const id = Date.now().toString()
+                    dispatch(aLertInformerAction.addMessage({
+                        message: 'Клиент успешно добавлен',
+                        type: AlertTheme.SUCCESS,
+                        id: id
+                    }))
+                    setTimeout(() => {
+                        dispatch(aLertInformerAction.removeMessage(id))
+                    }, 10000)
                     dispatch(addOrder({
                         isClientPage: !withClient,
                         //@ts-ignore
@@ -59,7 +69,16 @@ export const AddOrderButton = memo(({className, withClient = false, buttonTheme}
                     }))
                         .then((data) => {
                             if (data.meta.requestStatus === 'fulfilled' && data.payload !== undefined) {
+                                const id = Date.now().toString()
                                 dispatch(ordersPageAction.orderAdded(data.payload))
+                                dispatch(aLertInformerAction.addMessage({
+                                    message: 'Заказ успешно добавлен',
+                                    type: AlertTheme.SUCCESS,
+                                    id: id
+                                }))
+                                setTimeout(() => {
+                                    dispatch(aLertInformerAction.removeMessage(id))
+                                }, 10000)
                             }
                         })
                 }).then(() => {
@@ -73,9 +92,18 @@ export const AddOrderButton = memo(({className, withClient = false, buttonTheme}
             }))
                 .then((data) => {
                     if (data.meta.requestStatus === 'fulfilled' && data.payload !== undefined) {
+                      
                         dispatch(ordersPageAction.orderAdded(data.payload))
                         dispatch(clientDetailsAction.orderAdded(data.payload))
-
+                        const id = Date.now().toString()
+                        dispatch(aLertInformerAction.addMessage({
+                            message: 'Заказ успешно добавлен',
+                            type: AlertTheme.SUCCESS,
+                            id: id
+                        }))
+                        setTimeout(() => {
+                            dispatch(aLertInformerAction.removeMessage(id))
+                        }, 10000)
                     }
                 }).then(() => {
                     dispatch(addClientAction.resetState())
@@ -106,15 +134,11 @@ export const AddOrderButton = memo(({className, withClient = false, buttonTheme}
                     {withClient &&
                     <AddClientForm
                         onAddClient={() => {}} 
-                        added={clientAdded} 
-                        error={newClientError}
                         withButton={false}
                     />
                     }
                     <AddOrderForm 
                         onAddOrder={() => {}} 
-                        added={added} 
-                        error={newOrderError}
                         withButton={false}
                     />
                     <AppButton 
