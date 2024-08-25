@@ -18,12 +18,13 @@ import { Searchbar } from '@/widgets/Searchbar'
 import { Pagination } from '@/shared/ui/Pagination'
 import { Alert, AlertTheme } from '@/shared/ui/Alert'
 import { PageLoader } from '@/widgets/PageLoader'
+import { PreviewWindow } from '@/shared/ui/PreviewWindow'
+import { ProductForm } from '@/entities/Product/ui/ProductForm'
+import { AppButton, ButtonTheme } from '@/shared/ui/AppButton/AppButton'
 
 const reducers: ReducersList = {
     productPage: productsPageReducer
 }
-// interface ProductsPageProps {
-// }
 
 export const ProductsPage = memo(() => {
     const {t} = useTranslation('product')
@@ -34,6 +35,7 @@ export const ProductsPage = memo(() => {
     const limit = useSelector(getProductsPageLimit) || 25
     const [page, setPage] = useState(1)
     const search = useSelector(getProductsPageSearch) || ''
+    const [openPreview, setOpenPreview] = useState(false)
 
     const limitsValue: ToggleButtonValue[]  = [
         {title: '15', value: 15},
@@ -42,6 +44,9 @@ export const ProductsPage = memo(() => {
         {title: '100', value: 100}
     ]
 
+    const togglePreview = () => {
+        setOpenPreview(!openPreview)
+    }
     const handleChangePage = useCallback((num: number) => setPage(num), [])
 
     const handleSearch = useCallback((val: string) => {
@@ -55,7 +60,7 @@ export const ProductsPage = memo(() => {
     useEffect(() => {
         if (__PROJECT__ !== 'storybook') {
             dispatch(productsPageAction.initState())
-            dispatch(fetchAllProducts({search: search, resParams: 'img _id name price discount count productType category' }))
+            dispatch(fetchAllProducts({search: search, resParams: 'img _id name price discount count productType category productCode' }))
         }
     }, [dispatch, search])
     return ( 
@@ -63,7 +68,8 @@ export const ProductsPage = memo(() => {
             <VStack max gap='20'>
                 <h1>{t('Товары')}</h1>
                 <HStack max gap='20' justify='between' align='center'>
-                    <div>
+                    <AppButton theme={ButtonTheme.SOLID} onClick={togglePreview}>{t('Добавить')}</AppButton>
+                    <div className={cls.searchBlock}>
                         <Searchbar onChange={handleSearch} placeholder={t('Введите название товара')}/>
                     </div>
                     <HStack className={cls.toggle_item}>
@@ -85,6 +91,22 @@ export const ProductsPage = memo(() => {
                     onPageChange={handleChangePage }
                     totalItems={!isLoading} 
                     pages={!isLoading} />
+                <PreviewWindow isOpen={openPreview} onClose={togglePreview}>
+                    <ProductForm isNew={true} 
+                        errors={{}} 
+                        onChangeName={() => {} } 
+                        onChangeDescription={() => {}  } 
+                        onChangeProductCode={() => {} } 
+                        onChangeProductType={() => {} } 
+                        onChangePrice={() => {} } 
+                        onChangeCount={() => {} } 
+                        onChangeDiscount={() => {} } 
+                        onChangeImage={() => {} } 
+                        onChangeCategory={() => {} } 
+                        onChangeSubcategory={() => {} } 
+                        onChancelEdit={() => {} } 
+                        onSaveProduct={() => {} } />
+                </PreviewWindow>
             </VStack>
         </DynamicModuleLoader>
     )

@@ -1,5 +1,6 @@
 import { Country, CountrySelect } from '@/entities/Country'
 import { Currency, CurrencySelect } from '@/entities/Currency'
+import { PaymentMethodSelector } from '@/entities/PaymentMethod'
 import { Input } from '@/shared/ui/Input/Input'
 import { Option, Select } from '@/shared/ui/Select'
 import { Textarea } from '@/shared/ui/Textarea'
@@ -11,7 +12,8 @@ export enum FromComponent {
   BUTTON = 'button',
   COUNTRY = 'country',
   CURRENCY = 'currency',
-  CHECKBOX = 'checkbox'
+  CHECKBOX = 'checkbox',
+  PAYMENT_METHOD = 'paymentMethod'
   }
 
 export interface FormItem {
@@ -89,6 +91,14 @@ export default function formGenerator (
                 label={item.label}
                 {...item?.otherProps}
             />
+            break
+        case FromComponent.PAYMENT_METHOD:
+            component = <PaymentMethodSelector
+                value={data[item.valuePath as keyof typeof data] as string} 
+                onChange={item.onChange}
+                key={item.name}
+            />
+            break
         }
         return component 
     }

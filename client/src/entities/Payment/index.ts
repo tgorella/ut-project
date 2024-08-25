@@ -1,1 +1,1 @@
-export {Payment} from './ui/Payment'
+export type { Payment, PaymentsSchema} from './model/types/Payment'

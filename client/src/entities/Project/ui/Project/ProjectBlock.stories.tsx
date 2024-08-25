@@ -6,11 +6,10 @@ import { UserStoreDecorator } from '@/shared/config/storybook/StoreDecorator/Sto
 import { Project } from '../../model/types/Project'
 
 const meta: Meta<typeof ProjectBlock> = {
-    title: 'entities/ProjectBlock',
+    title: 'entities/Project/Block',
     component: ProjectBlock,
-    argTypes: {
-    },
-    tags: ['autodocs']
+    argTypes: {},
+    tags: ['autodocs'],
 }
 const project: Project = {
     _id: 'jhmgjh54rhre',
@@ -24,47 +23,46 @@ const project: Project = {
             projectId: '',
             index: 0,
             steps: [
-                {_id: 'skjfsh',
+                {
+                    _id: 'skjfsh',
                     name: 'Подписать договор',
                     projectId: '',
                     userId: '',
                     stageId: '',
                     index: 1,
                 },
-                {_id: 'wrwerr453',
+                {
+                    _id: 'wrwerr453',
                     name: 'Заполнить бриф / ТЗ',
                     projectId: '',
                     userId: '',
                     stageId: '',
                     index: 2,
                 },
-                {_id: 's3443ghfhsh',
+                {
+                    _id: 's3443ghfhsh',
                     name: 'Аванс',
                     projectId: '',
                     userId: '',
                     stageId: '',
                     index: 3,
-                }
-            ]
-        }
-    ]
+                },
+            ],
+        },
+    ],
 }
 
 export default meta
 type Story = StoryObj<typeof ProjectBlock>;
 
-
 export const Default: Story = {
     args: {
-        project: project                                                                                                                                                
+        project: project,
     },
-    decorators: [
-        WithColorsTheme,
-        UserStoreDecorator
-    ],
+    decorators: [WithColorsTheme, UserStoreDecorator],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }

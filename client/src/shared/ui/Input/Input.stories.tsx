@@ -10,9 +10,8 @@ const meta: Meta<typeof Input> = {
     argTypes: {
     // backgroundColor: { control: 'color' },
     },
-    tags: ['autodocs']
+    tags: ['autodocs'],
 }
-
 
 export default meta
 type Story = StoryObj<typeof Input>;
@@ -21,59 +20,51 @@ type Story = StoryObj<typeof Input>;
 
 export const Default: Story = {
     args: {
-        placeholder: 'Enter username'
+        placeholder: 'Enter username',
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }
 
 export const WithLabel: Story = {
     args: {
         placeholder: 'Enter username',
-        label: 'Username'
+        label: 'Username',
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }
 
 export const Rounded: Story = {
     args: {
         placeholder: 'Enter username',
-        rounded: true
+        rounded: true,
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }
 
 export const Password: Story = {
     args: {
-        type:'password',
-        value: 'password_here'
+        type: 'password',
+        value: 'password_here',
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }

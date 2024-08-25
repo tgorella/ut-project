@@ -9,6 +9,8 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { deleteClient } from '@/entities/Clients'
 import DEL_CLIENT from '@/shared/assets/img/delete.svg'
 import { useNavigate } from 'react-router-dom'
+import { AlertTheme } from '@/shared/ui/Alert'
+import { aLertInformerAction } from '@/widgets/ALertInformer'
 
 
 interface DelClientButtonProps {
@@ -25,8 +27,19 @@ export const DelClientButton = memo(({buttonTheme, clientId, warningText = 'Эт
 
     const handleDelete = () => {
         if (clientId) {
-            dispatch(deleteClient(clientId)).then(() => {
-                history('/clients/')
+            dispatch(deleteClient(clientId)).then((data) => {
+                const id = Date.now().toString()
+                if( data.meta.requestStatus === 'fulfilled') {
+                    dispatch(aLertInformerAction.addMessage({
+                        message: 'Клиент успешно удален',
+                        type: AlertTheme.SUCCESS,
+                        id: id
+                    }))
+                    setTimeout(() => {
+                        dispatch(aLertInformerAction.removeMessage(id))
+                    }, 10000)
+                    history('/clients/')
+                }
             })
         }
     }

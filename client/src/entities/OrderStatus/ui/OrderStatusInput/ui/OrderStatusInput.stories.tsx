@@ -11,14 +11,14 @@ const meta: Meta<typeof OrderStatusInput> = {
     argTypes: {
     // backgroundColor: { control: 'color' },
     },
-    tags: ['autodocs']
+    tags: ['autodocs'],
 }
 
-const status : OrderStatusDetails = {
+const status: OrderStatusDetails = {
     _id: 'sdfsd4dfg5467fgrgf',
     color: '#fe67ce',
     name: 'In progress',
-    isDefault: false
+    isDefault: false,
 }
 export default meta
 type Story = StoryObj<typeof OrderStatusInput>;
@@ -27,28 +27,24 @@ type Story = StoryObj<typeof OrderStatusInput>;
 
 export const Default: Story = {
     args: {
-        itemData: status                                                                                                                        
+        itemData: status,
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }
 export const EditMode: Story = {
     args: {
         itemData: status,
-        editInputId: status._id                                                                                                                        
+        editInputId: status._id,
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }

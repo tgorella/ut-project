@@ -10,9 +10,8 @@ const meta: Meta<typeof NoteBlock> = {
     argTypes: {
     // backgroundColor: { control: 'color' },
     },
-    tags: ['autodocs']
+    tags: ['autodocs'],
 }
-
 
 export default meta
 type Story = StoryObj<typeof NoteBlock>;
@@ -22,16 +21,14 @@ type Story = StoryObj<typeof NoteBlock>;
 export const Default: Story = {
     args: {
         value: 'Few [b]words[/b] to remember',
-        onCancelEdit: ()=> {},
+        onCancelEdit: () => {},
         onChange: () => {},
-        onSave: () => {}
+        onSave: () => {},
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }

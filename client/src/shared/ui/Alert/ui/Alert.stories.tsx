@@ -10,9 +10,8 @@ const meta: Meta<typeof Alert> = {
     argTypes: {
     // backgroundColor: { control: 'color' },
     },
-    tags: ['autodocs']
+    tags: ['autodocs'],
 }
-
 
 export default meta
 type Story = StoryObj<typeof Alert>;
@@ -22,79 +21,68 @@ type Story = StoryObj<typeof Alert>;
 export const Default: Story = {
     args: {
         text: 'Some information here',
-        description: 'please click here for more information'
+        description: 'please click here for more information',
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }
 
 export const OnlyText: Story = {
     args: {
         text: 'Some information here',
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }
 
 export const Warning: Story = {
     args: {
         text: 'Some information here',
         description: 'please click here for more information',
-        theme: AlertTheme.WARNING
+        theme: AlertTheme.WARNING,
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }
-
 
 export const Error: Story = {
     args: {
         text: 'Some information here',
         description: 'please click here for more information',
-        theme: AlertTheme.ERROR
+        theme: AlertTheme.ERROR,
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }
 
 export const Success: Story = {
     args: {
         text: 'Some information here',
         description: 'please click here for more information',
-        theme: AlertTheme.SUCCESS
+        theme: AlertTheme.SUCCESS,
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }
 
 export const Outlined: Story = {
@@ -102,14 +90,12 @@ export const Outlined: Story = {
         text: 'Some information here',
         description: 'please click here for more information',
         theme: AlertTheme.ERROR,
-        variant: AlertVariant.OUTLINED
+        variant: AlertVariant.OUTLINED,
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }

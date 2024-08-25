@@ -6,14 +6,13 @@ import { UserStoreDecorator } from '@/shared/config/storybook/StoreDecorator/Sto
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Step> = {
-    title: 'entities/Step',
+    title: 'entities/Project/Step',
     component: Step,
     argTypes: {
     // backgroundColor: { control: 'color' },
     },
-    tags: ['autodocs']
+    tags: ['autodocs'],
 }
-
 
 export default meta
 type Story = StoryObj<typeof Step>;
@@ -29,15 +28,12 @@ export const Default: Story = {
             userId: '',
             stageId: '',
             index: 1,
-        }                                                                                                                                               
+        },
     },
-    decorators: [
-        WithColorsTheme,
-        UserStoreDecorator
-    ],
+    decorators: [WithColorsTheme, UserStoreDecorator],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }

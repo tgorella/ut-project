@@ -19,6 +19,7 @@ export const ProductList = memo(({className, data, onDelete}: ProductListProps) 
             <div className={cls.list_header}>
                 <div></div>
                 <div>{t('Наименование')}</div>
+                <div>{t('Артикул')}</div>
                 <div>{t('Количество')}</div>
                 <div>{t('Цена')}</div>
                 <div>{t('Скидка')}</div>

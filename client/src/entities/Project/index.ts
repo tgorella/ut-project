@@ -9,4 +9,4 @@ export { fetchProjects } from './model/services/fetchAllProjects/fetchAllProject
 export { updateProject } from './model/services/updateProject/updateProject'
 export { updateStage } from './model/services/updateStage/updateStage'
 export { updateStep } from './model/services/updateStep/updateStep'
-export {Project, ProjectStage, ProjectStep} from './model/types/Project'
+export type {Project, ProjectStage, ProjectStep} from './model/types/Project'

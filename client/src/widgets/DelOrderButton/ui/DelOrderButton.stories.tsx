@@ -8,11 +8,9 @@ import { orderDetailsStoreDecorator } from '@/shared/config/storybook/StoreDecor
 const meta: Meta<typeof DelOrderButton> = {
     title: 'widgets/DelOrderButton',
     component: DelOrderButton,
-    argTypes: {
-    },
-    tags: ['autodocs']
+    argTypes: {},
+    tags: ['autodocs'],
 }
-
 
 export default meta
 type Story = StoryObj<typeof DelOrderButton>;
@@ -20,17 +18,15 @@ type Story = StoryObj<typeof DelOrderButton>;
 export const Default: Story = {
     args: {
         buttonTheme: ButtonTheme.OUTLINED,
-        buttonText:'Удалить заказ',
+        buttonText: 'Удалить заказ',
         orderId: '13235',
-        warningText: 'Внимание! Это действие необратимо. Все еще хотите удалить заказ?'                                                                                                                                               
+        warningText:
+      'Внимание! Это действие необратимо. Все еще хотите удалить заказ?',
     },
-    decorators: [
-        WithColorsTheme,
-        orderDetailsStoreDecorator
-    ],
+    decorators: [WithColorsTheme, orderDetailsStoreDecorator],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }

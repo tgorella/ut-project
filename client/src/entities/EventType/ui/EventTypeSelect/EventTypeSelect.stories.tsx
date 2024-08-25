@@ -5,13 +5,11 @@ import { EventTypeSelect } from './EventTypeSelect'
 import { EventType } from '../../model/types/EventType'
 
 const meta: Meta<typeof EventTypeSelect> = {
-    title: 'entities/EventTypeSelect',
+    title: 'entities/EventType/Select',
     component: EventTypeSelect,
-    argTypes: {
-    },
-    tags: ['autodocs']
+    argTypes: {},
+    tags: ['autodocs'],
 }
-
 
 export default meta
 type Story = StoryObj<typeof EventTypeSelect>;
@@ -21,34 +19,32 @@ const types: EventType[] = [
         _id: 'sjfgdhkjs8437gsdk39',
         name: 'Личное',
         color: '#EA93FE',
-        isDefault: false
+        isDefault: false,
     },
     {
         _id: 'kjhds52m23l843',
         name: 'Семья',
         color: '#9693fe',
-        isDefault: false
+        isDefault: false,
     },
     {
         _id: 'sdfsdf347hjk899234v',
         name: 'Друзья',
         color: '#9ddf70',
-        isDefault: false
-    }
+        isDefault: false,
+    },
 ]
 
 export const Default: Story = {
     args: {
         eventTypes: types,
         value: 'sdfsdf347hjk899234v',
-        onChange: () => {}
+        onChange: () => {},
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }

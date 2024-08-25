@@ -10,9 +10,8 @@ const meta: Meta<typeof AppButton> = {
     argTypes: {
     // backgroundColor: { control: 'color' },
     },
-    tags: ['autodocs']
+    tags: ['autodocs'],
 }
-
 
 export default meta
 type Story = StoryObj<typeof AppButton>;
@@ -24,52 +23,44 @@ export const Default: Story = {
         theme: ButtonTheme.SOLID,
         children: 'Text',
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }
 
 export const Rounded: Story = {
     args: {
         theme: ButtonTheme.SOLID,
         children: 'Text',
-        rounded: true
+        rounded: true,
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }
 
 export const LargeSize: Story = {
     args: {
         theme: ButtonTheme.SOLID,
         children: 'Text',
-        size: ButtonSize.L
+        size: ButtonSize.L,
     },
-    decorators: [
-        WithColorsTheme
-    ]
+    decorators: [WithColorsTheme],
 }
 
 export const XLargeSize: Story = {
     args: {
         theme: ButtonTheme.SOLID,
         children: 'Text',
-        size: ButtonSize.XL
+        size: ButtonSize.XL,
     },
-    decorators: [
-        WithColorsTheme
-    ]
+    decorators: [WithColorsTheme],
 }
 
 export const SquareMedium: Story = {
@@ -78,9 +69,7 @@ export const SquareMedium: Story = {
         children: '+',
         square: true,
     },
-    decorators: [
-        WithColorsTheme
-    ]
+    decorators: [WithColorsTheme],
 }
 
 export const SquareLarge: Story = {
@@ -88,11 +77,9 @@ export const SquareLarge: Story = {
         theme: ButtonTheme.SOLID,
         children: '+',
         square: true,
-        size: ButtonSize.L
+        size: ButtonSize.L,
     },
-    decorators: [
-        WithColorsTheme
-    ]
+    decorators: [WithColorsTheme],
 }
 
 export const SquareXLarge: Story = {
@@ -100,23 +87,17 @@ export const SquareXLarge: Story = {
         theme: ButtonTheme.SOLID,
         children: '+',
         square: true,
-        size: ButtonSize.XL
+        size: ButtonSize.XL,
     },
-    decorators: [
-        WithColorsTheme
-    ]
+    decorators: [WithColorsTheme],
 }
-
-
 
 export const Solid: Story = {
     args: {
         theme: ButtonTheme.SOLID,
         children: 'Button',
     },
-    decorators: [
-        WithColorsTheme
-    ]
+    decorators: [WithColorsTheme],
 }
 
 export const Clear: Story = {
@@ -124,9 +105,7 @@ export const Clear: Story = {
         theme: ButtonTheme.CLEAR,
         children: 'Button',
     },
-    decorators: [
-        WithColorsTheme
-    ]
+    decorators: [WithColorsTheme],
 }
 
 export const Outlined: Story = {
@@ -134,18 +113,14 @@ export const Outlined: Story = {
         theme: ButtonTheme.OUTLINED,
         children: 'Button',
     },
-    decorators: [
-        WithColorsTheme
-    ]
+    decorators: [WithColorsTheme],
 }
 
 export const Disabled: Story = {
     args: {
         theme: ButtonTheme.SOLID,
         children: 'Button',
-        disabled: true
+        disabled: true,
     },
-    decorators: [
-        WithColorsTheme
-    ]
+    decorators: [WithColorsTheme],
 }

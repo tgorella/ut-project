@@ -10,9 +10,8 @@ const meta: Meta<typeof Payment> = {
     argTypes: {
     // backgroundColor: { control: 'color' },
     },
-    tags: ['autodocs']
+    tags: ['autodocs'],
 }
-
 
 export default meta
 type Story = StoryObj<typeof Payment>;
@@ -20,15 +19,11 @@ type Story = StoryObj<typeof Payment>;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 
 export const Default: Story = {
-    args: {
-                                                                                                                                                          
-    },
-    decorators: [
-        WithColorsTheme
-    ],
+    args: {},
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }

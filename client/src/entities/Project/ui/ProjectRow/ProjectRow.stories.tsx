@@ -7,18 +7,19 @@ import { EditProjectStoreDecorator } from '@/shared/config/storybook/StoreDecora
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof ProjectRow> = {
-    title: 'entities/ProjectStatusRow',
+    title: 'entities/Project/StatusRow',
     component: ProjectRow,
     argTypes: {
     // backgroundColor: { control: 'color' },
     },
-    tags: ['autodocs']
+    tags: ['autodocs'],
 }
 
 const order: OrderExtended = {
     clientId: {
-        _id:'sdjldsjflsdjk',
-        name: 'Kristina Gold'},
+        _id: 'sdjldsjflsdjk',
+        name: 'Kristina Gold',
+    },
     total: '20000',
     notes: '',
     eventDate: '',
@@ -28,7 +29,7 @@ const order: OrderExtended = {
         _id: 'sdlk89ftgd7jskgfrdfk',
         name: 'В процессе',
         color: '#ffd129',
-        isDefault: false
+        isDefault: false,
     },
     title: 'Брендбук Vaf work',
     userId: '',
@@ -36,8 +37,21 @@ const order: OrderExtended = {
         _id: '',
         name: '',
         userId: '',
-        stages: []},
-    steps: ['done','done','in_progress','in_progress','','','','','','','']
+        stages: [],
+    },
+    steps: [
+        'done',
+        'done',
+        'in_progress',
+        'in_progress',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+    ],
 }
 
 export default meta
@@ -47,17 +61,14 @@ type Story = StoryObj<typeof ProjectRow>;
 
 export const Default: Story = {
     args: {
-        status: order.status,      
+        status: order.status,
         client: order.clientId,
-        order: order                                                                                                                                     
+        order: order,
     },
-    decorators: [
-        WithColorsTheme,
-        EditProjectStoreDecorator
-    ],
+    decorators: [WithColorsTheme, EditProjectStoreDecorator],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }

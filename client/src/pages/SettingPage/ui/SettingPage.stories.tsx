@@ -8,43 +8,29 @@ import { TeamMemberStoreDecorator } from '@/shared/config/storybook/StoreDecorat
 const meta: Meta<typeof SettingPage> = {
     title: 'pages/SettingPage',
     component: SettingPage,
-    argTypes: {
-    },
-    tags: ['autodocs']
+    argTypes: {},
+    tags: ['autodocs'],
 }
-
-
 
 export default meta
 type Story = StoryObj<typeof SettingPage>;
 
-
 export const OwnerAndManager: Story = {
-    args: {
-                                                                                                                                                          
-    },
-    decorators: [
-        WithColorsTheme,
-        EditPageStoreDecorator,
-    ],
+    args: {},
+    decorators: [WithColorsTheme, EditPageStoreDecorator],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }
 
 export const TeamMember: Story = {
-    args: {
-                                                                                                                                                        
-    },
-    decorators: [
-        WithColorsTheme,
-        TeamMemberStoreDecorator,
-    ],
+    args: {},
+    decorators: [WithColorsTheme, TeamMemberStoreDecorator],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }

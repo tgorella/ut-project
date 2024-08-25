@@ -6,12 +6,12 @@ import { EditProjectStoreDecorator } from '@/shared/config/storybook/StoreDecora
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof ProjectSelect> = {
-    title: 'entities/ProjectSelect',
+    title: 'entities/Project/Select',
     component: ProjectSelect,
     argTypes: {
     // backgroundColor: { control: 'color' },
     },
-    tags: ['autodocs']
+    tags: ['autodocs'],
 }
 
 export default meta
@@ -22,15 +22,12 @@ type Story = StoryObj<typeof ProjectSelect>;
 export const Default: Story = {
     args: {
         value: 'ksjdhfhdf343',
-        onChange: () => {}                                                                                                           
+        onChange: () => {},
     },
-    decorators: [
-        WithColorsTheme,
-        EditProjectStoreDecorator
-    ],
+    decorators: [WithColorsTheme, EditProjectStoreDecorator],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }

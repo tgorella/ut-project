@@ -11,25 +11,18 @@ const meta: Meta<typeof AuthButton> = {
     argTypes: {
     // backgroundColor: { control: 'color' },
     },
-    tags: ['autodocs']
+    tags: ['autodocs'],
 }
-
 
 export default meta
 type Story = StoryObj<typeof AuthButton>;
 
-
 export const Default: Story = {
-    args: {
-                                                                                                                                                          
-    },
-    decorators: [
-        WithColorsTheme,
-        UserStoreDecorator
-    ],
+    args: {},
+    decorators: [WithColorsTheme, UserStoreDecorator],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }

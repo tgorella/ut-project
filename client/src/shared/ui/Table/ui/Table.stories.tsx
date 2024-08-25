@@ -8,38 +8,33 @@ import { Column } from '../model/types/tableSchema'
 const meta: Meta<typeof Table> = {
     title: 'shared/Table',
     component: Table,
-    argTypes: {
-    },
-    tags: ['autodocs']
+    argTypes: {},
+    tags: ['autodocs'],
 }
-
 
 export default meta
 type Story = StoryObj<typeof Table>;
 
 const columns: Column[] = [
-    {name: 'Имя', path: 'name'},
-    {name: 'Фамилия', path: 'lastname'},
-    {name: 'Возраст', path: 'age'}
+    { name: 'Имя', path: 'name' },
+    { name: 'Фамилия', path: 'lastname' },
+    { name: 'Возраст', path: 'age' },
 ]
 
 const data: Array<Record<string, boolean | string | undefined>> = [
-    {name: 'John', lastname: 'Doe', age: '28'},
-    {name: 'Merry', lastname: 'Poppins', age: '34'},
-    {name: 'Tom', lastname: 'Sower', age: '12'},
-
+    { name: 'John', lastname: 'Doe', age: '28' },
+    { name: 'Merry', lastname: 'Poppins', age: '34' },
+    { name: 'Tom', lastname: 'Sower', age: '12' },
 ]
 export const Default: Story = {
     args: {
         columns: columns,
-        data: data
+        data: data,
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }

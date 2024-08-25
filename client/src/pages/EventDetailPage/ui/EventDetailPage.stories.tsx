@@ -11,9 +11,8 @@ const meta: Meta<typeof EventDetailPage> = {
     argTypes: {
     // backgroundColor: { control: 'color' },
     },
-    tags: ['autodocs']
+    tags: ['autodocs'],
 }
-
 
 export default meta
 type Story = StoryObj<typeof EventDetailPage>;
@@ -21,16 +20,11 @@ type Story = StoryObj<typeof EventDetailPage>;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 
 export const Default: Story = {
-    args: {
-                                                                                                                                                          
-    },
-    decorators: [
-        WithColorsTheme,
-        eventDetailStoreDecorator
-    ],
+    args: {},
+    decorators: [WithColorsTheme, eventDetailStoreDecorator],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }

@@ -5,6 +5,7 @@ export enum UserRole {
 OWNER = 'OWNER',
 MANAGER = 'MANAGER',
 TEAM_MEMBER = 'TEAM_MEMBER',
+CRM_DEVELOPER = 'CRM_DVPR'
 }
 
 export interface Profile {

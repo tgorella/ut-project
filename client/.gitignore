@@ -3,3 +3,6 @@
 .fttemplates
 /reports
 objectStorage
+/src/shared/assets/img/banks
+/chromatic.config.json
+/storybook-static

@@ -5,10 +5,8 @@ import { Searchbar } from './Searchbar'
 const meta: Meta<typeof Searchbar> = {
     title: 'widgets/Searchbar',
     component: Searchbar,
-    argTypes: {
-    },
+    argTypes: {},
 }
-
 
 export default meta
 type Story = StoryObj<typeof Searchbar>;
@@ -16,9 +14,7 @@ type Story = StoryObj<typeof Searchbar>;
 export const Default: Story = {
     args: {
         placeholder: 'Введите имя, фамилию или email для поиска',
-        onChange: () => {}
+        onChange: () => {},
     },
-    decorators: [
-        WithColorsTheme
-    ]
+    decorators: [WithColorsTheme],
 }

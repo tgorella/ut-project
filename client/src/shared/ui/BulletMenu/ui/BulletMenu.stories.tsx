@@ -11,40 +11,37 @@ const meta: Meta<typeof BulletMenu> = {
     argTypes: {
     // backgroundColor: { control: 'color' },
     },
-    tags: ['autodocs']
+    tags: ['autodocs'],
 }
 
 const items: bulletMenuItemSchema[] = [
     {
         elementName: 'link1',
-        text: 'Ссылка 1'
+        text: 'Ссылка 1',
     },
     {
         elementName: 'link2',
-        text: 'Ссылка 2'
+        text: 'Ссылка 2',
     },
     {
         elementName: 'link3',
-        text: 'Ссылка 3'
-    }
+        text: 'Ссылка 3',
+    },
 ]
 
 export default meta
 type Story = StoryObj<typeof BulletMenu>;
 
-
 export const Default: Story = {
     args: {
         items: items,
         path: 'link1',
-        onClick: () => {}                                                                                                                                                  
+        onClick: () => {},
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }

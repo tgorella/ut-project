@@ -8,14 +8,27 @@ const config: StorybookConfig = {
         '@storybook/addon-essentials',
         '@storybook/addon-onboarding',
         '@storybook/addon-interactions',
-        'storybook-addon-apollo-client'
+        'storybook-addon-apollo-client',
+        '@storybook/addon-webpack5-compiler-swc',
+        '@chromatic-com/storybook'
     ],
     framework: {
         name: '@storybook/react-webpack5',
-        options: {},
+        options: {
+            builder: {
+                useSWC: true
+            }
+        }
     },
-    docs: {
-        autodocs: 'tag',
-    },
+    swc: () => ({
+        jsc: {
+            transform: {
+                react: {
+                    runtime: 'automatic'
+                }
+            }
+        }
+    }),
+    docs: {},
 }
 export default config

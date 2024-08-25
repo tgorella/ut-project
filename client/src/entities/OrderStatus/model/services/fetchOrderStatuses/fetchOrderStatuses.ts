@@ -20,7 +20,7 @@ export const fetchOrderStatuses = createAsyncThunk<OrderStatusDetails[], void,Th
             
             return list.data.data.orderStatuses
         } catch (error) {
-            return rejectWithValue(i18n.t('Неправильные логин или пароль'))
+            return rejectWithValue(i18n.t('Что-то пошло не так. Попробуйте позже'))
         }
     }
 )

@@ -5,13 +5,11 @@ import { Event } from '../../model/types/Event'
 import { EventListItem } from './EventsListItem'
 
 const meta: Meta<typeof EventListItem> = {
-    title: 'entities/EventListItem',
+    title: 'entities/Event/ListItem',
     component: EventListItem,
-    argTypes: {
-    },
-    tags: ['autodocs']
+    argTypes: {},
+    tags: ['autodocs'],
 }
-
 
 export default meta
 type Story = StoryObj<typeof EventListItem>;
@@ -25,20 +23,18 @@ const event: Event = {
     eventType: 'personal',
     _id: 'sldjlsdj893945mnbxwe8',
     notes: 'Не забыть с собой документы',
-    userId: '9348kjr873l34'
+    userId: '9348kjr873l34',
 }
 
 export const Default: Story = {
     args: {
         event: event,
-        color: 'rgb(255, 209, 41)'
+        color: 'rgb(255, 209, 41)',
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }

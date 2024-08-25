@@ -5,49 +5,43 @@ import { EventTypeInput } from './EventTypeInput'
 import { EventType } from '../../model/types/EventType'
 
 const meta: Meta<typeof EventTypeInput> = {
-    title: 'entities/EventTypeInput',
+    title: 'entities/EventType/Input',
     component: EventTypeInput,
-    argTypes: {
-    },
-    tags: ['autodocs']
+    argTypes: {},
+    tags: ['autodocs'],
 }
-
 
 export default meta
 type Story = StoryObj<typeof EventTypeInput>;
 
-const type : EventType = {
+const type: EventType = {
     _id: 'sdfsd4dfg5467fgrgf',
     color: '#9ddf70',
     name: 'Друзья',
-    isDefault: false
+    isDefault: false,
 }
 
 export const Default: Story = {
     args: {
-        itemData: type
+        itemData: type,
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }
 
 export const EditMode: Story = {
     args: {
         itemData: type,
-        editInputId: type._id                                                                                                                        
+        editInputId: type._id,
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }

@@ -11,9 +11,9 @@ const meta: Meta<typeof Flex> = {
     argTypes: {
     // backgroundColor: { control: 'color' },
     },
-    tags: ['autodocs']
+    tags: ['autodocs'],
 }
-     
+
 export default meta
 type Story = StoryObj<typeof Flex>;
 
@@ -30,16 +30,14 @@ export const Row: Story = {
         ),
         direction: 'row',
         justify: 'start',
-        align: 'start'                                                                             
+        align: 'start',
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }
 export const RowSpaceBetween: Story = {
     args: {
@@ -52,11 +50,9 @@ export const RowSpaceBetween: Story = {
         ),
         direction: 'row',
         justify: 'between',
-        align: 'start'                                                                             
+        align: 'start',
     },
-    decorators: [
-        WithColorsTheme
-    ]
+    decorators: [WithColorsTheme],
 }
 export const RowGap10: Story = {
     args: {
@@ -70,11 +66,9 @@ export const RowGap10: Story = {
         direction: 'row',
         justify: 'start',
         align: 'start',
-        gap: '10'                                                                               
+        gap: '10',
     },
-    decorators: [
-        WithColorsTheme
-    ]
+    decorators: [WithColorsTheme],
 }
 
 export const RowGap20: Story = {
@@ -89,11 +83,9 @@ export const RowGap20: Story = {
         direction: 'row',
         justify: 'start',
         align: 'start',
-        gap: '20'                                                                               
+        gap: '20',
     },
-    decorators: [
-        WithColorsTheme
-    ]
+    decorators: [WithColorsTheme],
 }
 
 export const Column: Story = {
@@ -107,11 +99,9 @@ export const Column: Story = {
         ),
         direction: 'column',
         justify: 'start',
-        align: 'start'                                                                              
+        align: 'start',
     },
-    decorators: [
-        WithColorsTheme
-    ]
+    decorators: [WithColorsTheme],
 }
 
 export const ColumnGap30: Story = {
@@ -126,10 +116,7 @@ export const ColumnGap30: Story = {
         ),
         direction: 'column',
         justify: 'start',
-        align: 'start'                                                                              
+        align: 'start',
     },
-    decorators: [
-        WithColorsTheme
-    ]
+    decorators: [WithColorsTheme],
 }
-

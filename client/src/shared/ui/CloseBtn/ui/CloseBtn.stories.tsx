@@ -1,5 +1,5 @@
 /* eslint-disable i18next/no-literal-string */
-import type {  Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { CloseBtn } from './CloseBtn'
 import { DarkDecorator } from '@/shared/config/storybook/ThemeDecorator/DarkDecorator'
 import { LightDecorator } from '@/shared/config/storybook/ThemeDecorator/LightDecorator'
@@ -7,8 +7,7 @@ import { LightDecorator } from '@/shared/config/storybook/ThemeDecorator/LightDe
 const meta: Meta<typeof CloseBtn> = {
     title: 'shared/CloseBtn',
     component: CloseBtn,
-    argTypes: {
-    }
+    argTypes: {},
 }
 
 export default meta
@@ -16,28 +15,24 @@ type Story = StoryObj<typeof CloseBtn>;
 
 export const Dark: Story = {
     args: {
-        onClose: () => {}
+        onClose: () => {},
     },
-    decorators: [
-        DarkDecorator
-    ],
+    decorators: [DarkDecorator],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }
 
 export const DarLightk: Story = {
     args: {
-        onClose: () => {}
+        onClose: () => {},
     },
-    decorators: [
-        LightDecorator
-    ],
+    decorators: [LightDecorator],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }

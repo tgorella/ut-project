@@ -8,11 +8,9 @@ import { DelClientButton } from './DelClientButton'
 const meta: Meta<typeof DelClientButton> = {
     title: 'widgets/DelClientButton',
     component: DelClientButton,
-    argTypes: {
-    },
-    tags: ['autodocs']
+    argTypes: {},
+    tags: ['autodocs'],
 }
-
 
 export default meta
 type Story = StoryObj<typeof DelClientButton>;
@@ -20,17 +18,15 @@ type Story = StoryObj<typeof DelClientButton>;
 export const Default: Story = {
     args: {
         buttonTheme: ButtonTheme.OUTLINED,
-        buttonText:'Удалить клиента',
+        buttonText: 'Удалить клиента',
         clientId: '13235',
-        warningText: 'Внимание! Это действие необратимо. Все еще хотите удалить клиента?'                                                                                                                                               
+        warningText:
+      'Внимание! Это действие необратимо. Все еще хотите удалить клиента?',
     },
-    decorators: [
-        WithColorsTheme,
-        orderDetailsStoreDecorator
-    ],
+    decorators: [WithColorsTheme, orderDetailsStoreDecorator],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }

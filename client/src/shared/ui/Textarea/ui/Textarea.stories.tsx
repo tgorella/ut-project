@@ -10,9 +10,8 @@ const meta: Meta<typeof Textarea> = {
     argTypes: {
     // backgroundColor: { control: 'color' },
     },
-    tags: ['autodocs']
+    tags: ['autodocs'],
 }
-
 
 export default meta
 type Story = StoryObj<typeof Textarea>;
@@ -25,14 +24,12 @@ export const Default: Story = {
         rows: 5,
         name: 'name',
         value: 'Text here \n and another row',
-        label: 'description'                                                                                                                                       
+        label: 'description',
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }

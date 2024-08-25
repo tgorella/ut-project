@@ -8,7 +8,8 @@ export enum ButtonTheme {
   SOLID = 'solid',
   OUTLINED = 'outlined',
   GRAY = 'gray',
-  OUTLINED_GRAY = 'outlined_gray'
+  OUTLINED_GRAY = 'outlined_gray',
+  OUTLINED_LIGHT = 'outlined_light',
 }
 
 export enum ButtonSize {

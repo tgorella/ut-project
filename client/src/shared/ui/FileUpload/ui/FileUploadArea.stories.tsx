@@ -4,31 +4,28 @@ import { WithColorsTheme } from '@/shared/config/storybook/ThemeDecorator/WithCo
 import { FileUploadArea } from './FileUploadArea'
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-const meta: Meta<typeof  FileUploadArea> = {
+const meta: Meta<typeof FileUploadArea> = {
     title: 'shared/ FileUploadArea',
-    component:  FileUploadArea,
+    component: FileUploadArea,
     argTypes: {
     // backgroundColor: { control: 'color' },
     },
-    tags: ['autodocs']
+    tags: ['autodocs'],
 }
 
-
 export default meta
-type Story = StoryObj<typeof  FileUploadArea>;
+type Story = StoryObj<typeof FileUploadArea>;
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 
 export const Default: Story = {
     args: {
-        multiple: true                                                                                                                                               
+        multiple: true,
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }

@@ -10,17 +10,17 @@ const meta: Meta<typeof Dropdown> = {
     argTypes: {
     // backgroundColor: { control: 'color' },
     },
-    tags: ['autodocs']
+    tags: ['autodocs'],
 }
 
 const items = [
     {
-        content: 'Item 1'
+        content: 'Item 1',
     },
     {
-        content: 'Item 2'
-    }
-]      
+        content: 'Item 2',
+    },
+]
 export default meta
 type Story = StoryObj<typeof Dropdown>;
 
@@ -30,61 +30,53 @@ export const TopRight: Story = {
     args: {
         position: 'top-right',
         trigger: 'Click me',
-        items: items                                                                                                                          
+        items: items,
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }
 
 export const TopLeft: Story = {
     args: {
         position: 'top-left',
         trigger: 'Click me',
-        items: items                                                                                                         
+        items: items,
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }
 
 export const BottomRight: Story = {
     args: {
         position: 'bottom-right',
         trigger: 'Click me',
-        items: items                                                                                                         
+        items: items,
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }
 export const BottomLeft: Story = {
     args: {
         position: 'bottom-left',
         trigger: 'Click me',
-        items: items                                                                                                         
+        items: items,
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }

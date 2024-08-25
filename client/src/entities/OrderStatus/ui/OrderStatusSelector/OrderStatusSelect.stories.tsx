@@ -7,9 +7,8 @@ import { orderStatusesStoreDecorator } from '@/shared/config/storybook/StoreDeco
 const meta: Meta<typeof OrderStatusSelect> = {
     title: 'entities/OrderStatusSelect',
     component: OrderStatusSelect,
-    argTypes: {
-    },
-    tags: ['autodocs']
+    argTypes: {},
+    tags: ['autodocs'],
 }
 
 export default meta
@@ -18,15 +17,12 @@ type Story = StoryObj<typeof OrderStatusSelect>;
 export const Default: Story = {
     args: {
         value: '64492fd3d206f2a8b5f4298e',
-        onChange: () => {},                                                                                                                                
+        onChange: () => {},
     },
-    decorators: [
-        WithColorsTheme,
-        orderStatusesStoreDecorator
-    ],
+    decorators: [WithColorsTheme, orderStatusesStoreDecorator],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }

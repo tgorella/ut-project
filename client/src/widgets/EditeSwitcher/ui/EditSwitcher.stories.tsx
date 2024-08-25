@@ -3,13 +3,11 @@ import '@/app/styles/index.scss'
 import { WithColorsTheme } from '@/shared/config/storybook/ThemeDecorator/WithColorsTheme'
 import { EditSwitcher } from './EditSwitcher'
 
-
 const meta: Meta<typeof EditSwitcher> = {
     title: 'widgets/EditSwitcher',
     component: EditSwitcher,
-    argTypes: {
-    },
-    tags: ['autodocs']
+    argTypes: {},
+    tags: ['autodocs'],
 }
 
 let mode = false
@@ -31,30 +29,26 @@ export const Edit: Story = {
         },
         onCancelEdit: () => {
             mode = false
-        }
+        },
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }
 
 export const Close: Story = {
     args: {
         editMode: true,
         onEdit,
-        onCancelEdit
+        onCancelEdit,
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }

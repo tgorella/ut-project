@@ -5,19 +5,16 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { useSelector } from 'react-redux'
 import { getNewClientData } from '../model/selectors/getNewClientData/getNewClientData'
 import { addClientAction } from '../model/slice/AddClientSlice'
-import { Alert, AlertTheme } from '@/shared/ui/Alert'
 import { PageLoader } from '@/widgets/PageLoader'
 import { ClientForm } from '@/entities/Clients'
 import { Text } from '@/shared/ui/Text'
 
 export interface AddClientProps {
   onAddClient: () => void;
-  added?: boolean,
-  error?: string,
   withButton?: boolean
 }
 
-const AddClientForm = memo(({onAddClient, added, error, withButton = true} : AddClientProps) => {
+const AddClientForm = memo(({onAddClient, withButton = true} : AddClientProps) => {
     const dispatch = useAppDispatch()
     const [errors] = useState({
         name: '',
@@ -72,8 +69,6 @@ const AddClientForm = memo(({onAddClient, added, error, withButton = true} : Add
         <div>
             <Text title={t('Добавить нового клиента')} />
             <div className={cls.info_container}>
-                {added && <Alert theme={AlertTheme.SUCCESS} text={t('Клиент успешно добавлен')} />}
-                {error && <Alert theme={AlertTheme.ERROR} text={t('Что-то пошло не так... Клиент не добавлен')} />}
                 {data === undefined 
                     ? <PageLoader />
                     :(<>

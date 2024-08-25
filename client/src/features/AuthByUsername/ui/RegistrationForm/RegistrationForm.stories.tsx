@@ -11,9 +11,8 @@ const meta: Meta<typeof RegistrationForm> = {
     argTypes: {
     // backgroundColor: { control: 'color' },
     },
-    tags: ['autodocs']
+    tags: ['autodocs'],
 }
-
 
 export default meta
 type Story = StoryObj<typeof RegistrationForm>;
@@ -21,16 +20,11 @@ type Story = StoryObj<typeof RegistrationForm>;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 
 export const Default: Story = {
-    args: {
-                                                                                                                                                          
-    },
-    decorators: [
-        WithColorsTheme,
-        UserStoreDecorator
-    ],
+    args: {},
+    decorators: [WithColorsTheme, UserStoreDecorator],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }

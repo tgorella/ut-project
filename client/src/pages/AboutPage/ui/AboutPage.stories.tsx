@@ -1,4 +1,4 @@
-import type {  Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import AboutPage from './AboutPage'
 import { WithColorsTheme } from '@/shared/config/storybook/ThemeDecorator/WithColorsTheme'
 
@@ -10,19 +10,15 @@ const meta: Meta<typeof AboutPage> = {
     },
     args: {
         to: '/',
-        children: 'Text'
-    }
+        children: 'Text',
+    },
 }
-
 
 export default meta
 type Story = StoryObj<typeof AboutPage>;
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: Story = {
-    args: {
-    },
-    decorators: [
-        WithColorsTheme
-    ]
+    args: {},
+    decorators: [WithColorsTheme],
 }

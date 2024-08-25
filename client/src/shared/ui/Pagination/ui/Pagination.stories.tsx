@@ -1,13 +1,12 @@
-import type {  Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { Pagination } from './Pagination'
 import { WithColorsTheme } from '@/shared/config/storybook/ThemeDecorator/WithColorsTheme'
 
 const meta: Meta<typeof Pagination> = {
     title: 'shared/Pagination',
     component: Pagination,
-    argTypes: {
-    },
-    tags: ['autodocs']
+    argTypes: {},
+    tags: ['autodocs'],
 }
 
 export default meta
@@ -18,16 +17,14 @@ export const Default: Story = {
         currentPage: 2,
         itemsLength: 64,
         itemsPerPage: 30,
-        onPageChange: () => {}
+        onPageChange: () => {},
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }
 
 export const FirstPage: Story = {
@@ -35,16 +32,14 @@ export const FirstPage: Story = {
         currentPage: 1,
         itemsLength: 64,
         itemsPerPage: 30,
-        onPageChange: () => {}
+        onPageChange: () => {},
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }
 
 export const LastPage: Story = {
@@ -52,16 +47,14 @@ export const LastPage: Story = {
         currentPage: 3,
         itemsLength: 64,
         itemsPerPage: 30,
-        onPageChange: () => {}
+        onPageChange: () => {},
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }
 
 export const WithoutTotalPages: Story = {
@@ -70,16 +63,14 @@ export const WithoutTotalPages: Story = {
         itemsLength: 64,
         itemsPerPage: 30,
         pages: false,
-        onPageChange: () => {}
+        onPageChange: () => {},
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }
 
 export const WithoutTotalItems: Story = {
@@ -88,14 +79,12 @@ export const WithoutTotalItems: Story = {
         itemsLength: 64,
         itemsPerPage: 30,
         totalItems: false,
-        onPageChange: () => {}
+        onPageChange: () => {},
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }

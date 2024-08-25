@@ -11,9 +11,8 @@ const meta: Meta<typeof OrderStatusBlock> = {
     argTypes: {
     // backgroundColor: { control: 'color' },
     },
-    tags: ['autodocs']
+    tags: ['autodocs'],
 }
-
 
 export default meta
 type Story = StoryObj<typeof OrderStatusBlock>;
@@ -22,19 +21,16 @@ type Story = StoryObj<typeof OrderStatusBlock>;
 
 export const Default: Story = {
     args: {
-        status:{
-            _id:'643e58efaba80539138865d2',
+        status: {
+            _id: '643e58efaba80539138865d2',
             name: 'Test status',
-            color: 'gold'}
-                                                                                                                                     
+            color: 'gold',
+        },
     },
-    decorators: [
-        WithColorsTheme,
-        orderStatusesStoreDecorator
-    ],
+    decorators: [WithColorsTheme, orderStatusesStoreDecorator],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }

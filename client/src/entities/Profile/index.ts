@@ -1,4 +1,4 @@
-export { getProfileRoles, isUserManager, isUserOwner } from './model/selectors/getProfileRoles/getProfileRoles'
+export { getProfileRoles, isUserManager, isUserOwner, isUserDeveloper } from './model/selectors/getProfileRoles/getProfileRoles'
 export { getProfileData } from './model/selectors/getProfileData/getProfileData'
 export { getProfileForm } from './model/selectors/getProfileForm/getProfileForm'
 export { getProfileLastOrderNumber } from './model/selectors/getProfileLastOrderNumber/getProfileLastOrderNumber'

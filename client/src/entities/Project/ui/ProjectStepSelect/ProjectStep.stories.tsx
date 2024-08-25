@@ -4,81 +4,69 @@ import { WithColorsTheme } from '@/shared/config/storybook/ThemeDecorator/WithCo
 import { ProjectStepSelect } from './ProjectStepSelect'
 
 const meta: Meta<typeof ProjectStepSelect> = {
-    title: 'entities/ProjectStepStatusSelect',
+    title: 'entities/Project/StepStatusSelect',
     component: ProjectStepSelect,
     argTypes: {
     // backgroundColor: { control: 'color' },
     },
-    tags: ['autodocs']
+    tags: ['autodocs'],
 }
-
 
 export default meta
 type Story = StoryObj<typeof ProjectStepSelect>;
 
-
 export const Default: Story = {
     args: {
-        stepValue: ''                                                                                                                                                 
+        stepValue: '',
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }
 export const InProgress: Story = {
     args: {
-        stepValue: 'in_progress'                                                                                                                                                 
+        stepValue: 'in_progress',
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }
 export const Pause: Story = {
     args: {
-        stepValue: 'paused'                                                                                                                                                 
+        stepValue: 'paused',
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }
 export const Done: Story = {
     args: {
-        stepValue: 'done'                                                                                                                                                 
+        stepValue: 'done',
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }
 export const Warning: Story = {
     args: {
-        stepValue: 'warning'                                                                                                                                                 
+        stepValue: 'warning',
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }

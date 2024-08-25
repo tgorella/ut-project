@@ -11,9 +11,8 @@ const meta: Meta<typeof CalendarPage> = {
     argTypes: {
     // backgroundColor: { control: 'color' },
     },
-    tags: ['autodocs']
+    tags: ['autodocs'],
 }
-
 
 export default meta
 type Story = StoryObj<typeof CalendarPage>;
@@ -21,17 +20,11 @@ type Story = StoryObj<typeof CalendarPage>;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 
 export const Default: Story = {
-    args: {
-                                                                                                                                                          
-    },
-    decorators: [
-        WithColorsTheme,
-        CalendarStoreDecorator
-        
-    ],
+    args: {},
+    decorators: [WithColorsTheme, CalendarStoreDecorator],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }

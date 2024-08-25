@@ -89,8 +89,6 @@ const OrdersPage = memo(() => {
                     totalItems={!isLoading} 
                     pages={!isLoading} />
             </VStack>
-            
-                
         </DynamicModuleLoader>
         
     )

@@ -7,25 +7,39 @@ import { AppButton, ButtonTheme } from '@/shared/ui/AppButton/AppButton'
 import { gql, useMutation } from '@apollo/client'
 import { Alert, AlertTheme } from '../../Alert'
 import { HStack, VStack } from '../../Stack'
+import { tokenService } from '@/entities/Token'
 
 interface  FileUploadAreaProps {
   className?: string,
   multiple?: boolean,
   dropDownArea: boolean,
   label: string,
+  folder?: 'avatars' | 'products' | 'banks',
+  limit?: number
+  disabled?: boolean
   onUpdateLinks?: (link: string[]) => void
 }
-export const  FileUploadArea = memo(({className, multiple, onUpdateLinks, dropDownArea = true, label} :  FileUploadAreaProps) => {
+export const  FileUploadArea = memo(({className, multiple,folder = 'avatars', onUpdateLinks, dropDownArea = true, label, limit = 10, disabled = false} :  FileUploadAreaProps) => {
     const [drag, setDrag] = useState(false)
     const {t} = useTranslation()
     const filePicker = useRef<HTMLInputElement>(null)
     const [selectedFiles, setSelectedFiles] = useState<Array<File>>([])
     const [errorText, setErrorText] = useState<string>('')
     const [successText, setSuccessText] = useState<string>('')
+    const accessToken = tokenService.getAccessToken()
 
-    const MUTATION = gql`
-mutation uploadManyFiles($files: [Upload]!) { uploadManyFiles(files: $files) }`
+    let MUTATION = gql `mutation uploadManyFiles($files: [Upload]!) { uploadManyFiles(files: $files) }`
 
+    switch (folder) {
+    case 'banks':
+        MUTATION = gql `mutation UploadBankLogo($files: [Upload]!) { uploadBankLogo(files: $files) }`
+        break
+    case 'products':
+        MUTATION = gql `mutation UploadProductImages($files: [Upload]!) { uploadProductImages(files: $files) }`
+        break
+    }
+
+    
     const [mutate, { data }] = useMutation(MUTATION)
     useEffect(() => {
         if (data) {
@@ -93,7 +107,7 @@ mutation uploadManyFiles($files: [Upload]!) { uploadManyFiles(files: $files) }`
             return
         }
 
-        if (selectedFiles.length > 10) {
+        if (selectedFiles.length > limit) {
             handleSetError('Слишком много файлов') 
             return
         }
@@ -103,13 +117,26 @@ mutation uploadManyFiles($files: [Upload]!) { uploadManyFiles(files: $files) }`
                 context: {
                     headers: {
                         'x-apollo-operation-name': 'FileUpload',
+                        'Authorization': `Bearer ${accessToken}`
                     }
                 },
                 variables: {
                     files: selectedFiles,
                 },
             })
-            onUpdateLinks?.(result.data.uploadManyFiles)
+
+            switch (folder) {
+            case 'banks':
+                onUpdateLinks?.(result.data.uploadBankLogo)
+                break
+            case 'products':
+                onUpdateLinks?.(result.data.uploadProductImages)
+                break
+            case 'avatars':
+                onUpdateLinks?.(result.data.uploadManyFiles)
+                break
+            }
+            // onUpdateLinks?.(result.data.uploadManyFiles)
             handleSetSuccess(t('Файл(ы) успешно загружены'))
         } catch (e) {
             // @ts-ignore\
@@ -165,7 +192,9 @@ mutation uploadManyFiles($files: [Upload]!) { uploadManyFiles(files: $files) }`
             </VStack>
             <AppButton
                 onClick={handleSubmit}
-                theme={ButtonTheme.SOLID}>
+                theme={ButtonTheme.SOLID}
+                disabled={disabled}
+            >
                 {t('Загрузить')}
             </AppButton>
         </div>}

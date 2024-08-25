@@ -1,4 +1,3 @@
-import { Alert, AlertTheme } from '@/shared/ui/Alert'
 import { PageLoader } from '@/widgets/PageLoader'
 import cls from './AddOrderForm.module.scss'
 import { OrderExtended, OrderForm } from '@/entities/Order'
@@ -12,11 +11,10 @@ import { addOrderAction } from '../model/slice/AddOrderSlice'
 
 interface AddOrderFormProps {
   onAddOrder: (newOrder: OrderExtended) => void;
-  added?: boolean,
-  error?: string,
+
   withButton: boolean
 }
-export const AddOrderForm = ({onAddOrder, added, error, withButton} : AddOrderFormProps) => {
+export const AddOrderForm = ({onAddOrder, withButton} : AddOrderFormProps) => {
     const dispatch = useAppDispatch()
     const {t} = useTranslation('orders')
     const [errors] = useState({
@@ -88,8 +86,6 @@ export const AddOrderForm = ({onAddOrder, added, error, withButton} : AddOrderFo
         <div>
             <Text title={t('Добавить новый заказ')} />
             <div className={cls.info_container}>
-                {added && <Alert theme={AlertTheme.SUCCESS} text={t('Заказ успешно добавлен')} />}
-                {error && <Alert theme={AlertTheme.ERROR} text={t('Что-то пошло не так... Заказ не добавлен')} />}
                 {data === undefined 
                     ? <PageLoader />
                     :(<>

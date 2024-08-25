@@ -5,13 +5,11 @@ import { EventCard } from './EventCard'
 import { EventExtended } from '../../model/types/Event'
 
 const meta: Meta<typeof EventCard> = {
-    title: 'entities/EventCard',
+    title: 'entities/Event/Card',
     component: EventCard,
-    argTypes: {
-    },
-    tags: ['autodocs']
+    argTypes: {},
+    tags: ['autodocs'],
 }
-
 
 export default meta
 type Story = StoryObj<typeof EventCard>;
@@ -26,23 +24,21 @@ const event: EventExtended = {
         _id: '6467834500aba6813881d4',
         name: 'Друзья',
         color: 'blue',
-        isDefault: false
+        isDefault: false,
     },
     _id: 'sldjlsdj893945mnbxwe8',
     notes: 'Не забыть с собой документы',
-    userId: '9348kjr873l34'
+    userId: '9348kjr873l34',
 }
 
 export const Default: Story = {
     args: {
-        event: event                                                                                                                                          
+        event: event,
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }
