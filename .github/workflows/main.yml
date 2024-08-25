@@ -34,7 +34,7 @@ jobs:
         if: always()
       - name: Publish to Chromatic
         if: always()
-        uses: chromaui/action@v1
+        uses: chromaui/action@latest
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           workingDir: client/
