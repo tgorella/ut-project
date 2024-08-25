@@ -53,7 +53,7 @@ export const ProductForm = memo(({
     onSaveProduct,
     onChangeName,
     onChangeCategory,
-    onChangeSubcategory,
+    // onChangeSubcategory,
     onChangeCount,
     onChangeDescription,
     onChangeDiscount,
