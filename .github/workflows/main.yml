@@ -33,8 +33,6 @@ jobs:
         run: cd client && npm run test:unit
         if: always()
       - name: Publish to Chromatic
+        run: cd client && npx chromatic --project-token ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
         if: always()
-        uses: chromaui/action@latest
-        with:
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          workingDir: client/
+        
