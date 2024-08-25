@@ -5,6 +5,7 @@ import { createReducerManager } from './reducerManager'
 import { http } from '@/shared/api/api'
 import { profileReducer } from '@/entities/Profile'
 import { appModulesReducer } from '@/entities/AppModules/model/slice/AppModulesSlice'
+import { aLertInformerReducer } from '@/widgets/ALertInformer'
 
 export function createReduxStore(
     initialState?: StateSchema,
@@ -14,7 +15,8 @@ export function createReduxStore(
         ...asyncReducers,
         user: userReducer,
         profile: profileReducer,
-        userModules: appModulesReducer
+        userModules: appModulesReducer,
+        alertInformer: aLertInformerReducer
     }
 
     const reducerManager = createReducerManager(rootReducer)

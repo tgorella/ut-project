@@ -5,6 +5,7 @@ export enum ProductType {
 export interface Product {
   _id: string,
   name: string,
+  productCode: string,
   price: number,
   discount: number,
   count: number,
@@ -14,4 +15,11 @@ export interface Product {
   category: string,
   subcategory: string,
   userId: string,
+}
+
+export interface ProductDetailsSchema {
+  isLoading: boolean,
+  error?: string,
+  data?: Product,
+  form?: Product
 }

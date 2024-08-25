@@ -8,10 +8,11 @@ type Product {
   count: Int,
   productType:String,
   description:String,
-  img:String,
+  img:[String],
   category: String,
   subcategory: String,
-  productCode: String
+  productCode: String,
+  active: Boolean
 }
 
 input ProductInput {
@@ -22,10 +23,10 @@ input ProductInput {
   count: Int,
   productType:String,
   description:String,
-  img:String,
+  img:[String],
   category: String,
   subcategory: String,
-  productCode: String
+  productCode: String,
 }
 
 input ProductNewDataInput {
@@ -36,10 +37,11 @@ input ProductNewDataInput {
   count: Int,
   productType:String,
   description:String,
-  img:String,
+  img:[String],
   category: String,
   subcategory: String,
-  productCode: String
+  productCode: String,
+  active: Boolean
 }
 
 input FilterProductInput {

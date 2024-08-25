@@ -7,10 +7,11 @@ const schema = new Schema({
   count: {type: Number},
   productType: {type: String, required: true},
   description: {type: String, required: true},
-  img: {type: String},
-  category: [{type: String}],
+  img: {type: [String]},
+  category:{type: String},
   subcategory: {type: String},
   productCode: {type: String},
+  active: {type: Boolean, default: false},
   userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
 },
 {

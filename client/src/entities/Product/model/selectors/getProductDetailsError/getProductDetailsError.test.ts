@@ -4,7 +4,7 @@ import { getProductDetailsError } from './getProductDetailsError'
 describe('getProductDetailsError.test', () => {
     test('should return value', () => {
         const state: DeepPartial<StateSchema> = {
-            productDetailsPage: {
+            productDetails: {
                 error: 'error'
             }
         }

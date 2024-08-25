@@ -98,6 +98,9 @@ export const stateAllIn: StateSchema = {
             projects: false
         }
     },
+    alertInformer: {
+        messages: []
+    },
     OrderStatusEditSchema: {
         isLoading: false,
         editStatusId: '64492fd3d206f2a8b5f4298e',
@@ -536,6 +539,7 @@ export const stateAllIn: StateSchema = {
             discount: 10,
             count: 150,
             productType: ProductType.PRODUCT,
+            productCode: 'CA001',
             img: [
                 'https://basket-12.wbbasket.ru/vol1742/part174261/174261502/images/big/1.webp',
             ],
@@ -551,6 +555,7 @@ export const stateAllIn: StateSchema = {
             discount: 20,
             count: 450,
             productType: ProductType.PRODUCT,
+            productCode: 'CA002',
             img: [
                 'https://basket-12.wbbasket.ru/vol1695/part169548/169548656/images/big/1.webp',
             ],
@@ -561,7 +566,7 @@ export const stateAllIn: StateSchema = {
         ]      
 
     },
-    productDetailsPage: {
+    productDetails: {
         isLoading: false,
         data: {
             _id: '1',
@@ -571,6 +576,7 @@ export const stateAllIn: StateSchema = {
             discount: 10,
             count: 150,
             productType: ProductType.PRODUCT,
+            productCode: 'CA009',
             img: [
                 'https://basket-12.wbbasket.ru/vol1742/part174261/174261502/images/big/1.webp',
                 'https://basket-12.wbbasket.ru/vol1695/part169548/169548656/images/big/1.webp',
@@ -590,6 +596,7 @@ export const stateAllIn: StateSchema = {
             discount: 10,
             count: 150,
             productType: ProductType.PRODUCT,
+            productCode: 'CA009',
             img: [
                 'https://basket-12.wbbasket.ru/vol1742/part174261/174261502/images/big/1.webp',
                 'https://basket-12.wbbasket.ru/vol1695/part169548/169548656/images/big/1.webp',
@@ -602,37 +609,7 @@ export const stateAllIn: StateSchema = {
             userId: ''
         }
     },
-    paymentMethods: {
-        isLoading: false,
-        data: [
-            {
-                _id: '1',
-                name: 'Альфа Банк',
-                icon_url: 'https://storage.yandexcloud.net/gte-image-thing/banks/alfabank.svg'
-            },
-            {
-                _id: '2',
-                name: 'Сбербанк',
-                icon_url: 'https://storage.yandexcloud.net/gte-image-thing/banks/sberbank.svg'
-            },
-            {
-                _id: '3',
-                name: 'Т Банк',
-                icon_url: 'https://storage.yandexcloud.net/gte-image-thing/banks/t-bank.svg'
-            },
-            {
-                _id: '4',
-                name: 'ВТБ',
-                icon_url: 'https://storage.yandexcloud.net/gte-image-thing/banks/vtbbank.svg'
-            },
-            {
-                _id: '5',
-                name: 'Наличные',
-                icon_url: ''
-            }
-            
-        ]
-    }
+    
 
 }
 
@@ -641,6 +618,7 @@ export const stateAllIsLoading: DeepPartial<StateSchema> = {
     user: undefined,
     profile: undefined,
     userModules: undefined,
+    alertInformer: undefined,
     CalendarPage: {
         isLoading: true
     },
@@ -672,7 +650,7 @@ export const stateAllIsLoading: DeepPartial<StateSchema> = {
     productPage: {
         isLoading: true
     },
-    productDetailsPage: {
+    productDetails: {
         isLoading: true
     },
     paymentMethods: {
@@ -685,6 +663,7 @@ export const stateAllErrors: DeepPartial<StateSchema> = {
     user: undefined,
     profile: undefined,
     userModules: undefined,
+    alertInformer: undefined,
     CalendarPage: {
         isLoading: false,
         error: 'error'
@@ -730,7 +709,7 @@ export const stateAllErrors: DeepPartial<StateSchema> = {
         isLoading: false,
         error: 'error'
     },
-    productDetailsPage: {
+    productDetails: {
         isLoading: false,
         error: 'error'
     },

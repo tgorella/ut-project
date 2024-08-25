@@ -7,6 +7,7 @@ import { getIsMounted, getUserAuthData, userAction } from '@/entities/User'
 import { Navbar } from '@/widgets/Navbar'
 import { fetchProfileData } from '@/entities/Profile'
 import { fetchUserModules } from '@/entities/AppModules/model/services/fetchUserModules/fetchUserModules'
+import { ALertInformer } from '@/widgets/ALertInformer'
 
 const App = () => {
     const dispatch = useDispatch()
@@ -30,6 +31,7 @@ const App = () => {
                     {mounted && <AppRouter />}
                 </div>
             </Suspense>
+            <ALertInformer />
         </div>
     )
 }

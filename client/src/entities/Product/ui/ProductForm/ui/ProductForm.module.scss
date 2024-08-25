@@ -1,3 +1,26 @@
 .ProductForm {
     width: 100%;
 }
+.img {
+  max-width: 100%;
+  object-fit: cover;
+  aspect-ratio: 1;
+}
+.image_wrapper {
+  display: grid;
+  gap: 10px;
+ grid-template-columns: repeat(5, 1fr);
+ width: 100%;
+margin-bottom: 40px;
+}
+.item {
+  position: relative;
+}
+.icon {
+  fill: var(--primary-text);
+}
+.item_del-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}

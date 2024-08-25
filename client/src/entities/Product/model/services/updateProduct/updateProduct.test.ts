@@ -22,9 +22,7 @@ describe('UpdateProduct.test', () => {
         const thunk = new TestAsyncThunk(updateProduct)
         thunk.api.post.mockReturnValue(Promise.resolve({data}))
 
-        const result = await thunk.callThunk({
-            name: 'Product 1',
-        })
+        const result = await thunk.callThunk('1')
 
         expect(thunk.api.post).toHaveBeenCalled()
         expect(result.meta.requestStatus).toBe('fulfilled')
@@ -34,7 +32,7 @@ describe('UpdateProduct.test', () => {
         const thunk = new TestAsyncThunk(updateProduct)
         thunk.api.post.mockReturnValue(Promise.resolve({status: 403}))
 
-        const result = await thunk.callThunk({})
+        const result = await thunk.callThunk('1')
 
         expect(thunk.api.post).toHaveBeenCalled()
         expect(result.meta.requestStatus).toBe('rejected')

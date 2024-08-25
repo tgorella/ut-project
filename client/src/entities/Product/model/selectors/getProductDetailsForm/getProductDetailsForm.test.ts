@@ -4,7 +4,7 @@ import { getProductDetailsForm } from './getProductDetailsForm'
 describe('getProductDetailsForm.test', () => {
     test('should return value', () => {
         const state: DeepPartial<StateSchema> = {
-            productDetailsPage: {
+            productDetails: {
                 form: {
                     _id: '1',
                     name: 'test'

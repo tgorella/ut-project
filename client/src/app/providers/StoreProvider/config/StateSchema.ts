@@ -15,7 +15,6 @@ import { CalendarPageSchema } from '@/pages/CalendarPage'
 import { ClientsPageSchema } from '@/pages/ClientsPage'
 import { EventDetailPageSchema } from '@/pages/EventDetailPage'
 import { OrdersPageSchema } from '@/pages/OrdersPage/model/types/OrdersPageSchema'
-import { ProductDetailsPageSchema } from '@/pages/ProductDetailsPage'
 import { ProductsPageSchema } from '@/pages/ProductsPage/model/types/ProductsPage'
 import { ProjectsPageSchema } from '@/pages/ProjectsPage'
 import { AddClientButtonSchema } from '@/widgets/AddClientButton/module/types/AddClientButtonSchema'
@@ -24,12 +23,14 @@ import { EventTypesEditSchema } from '@/widgets/EventTypesEdit'
 import { OrderStatusEditSchema } from '@/widgets/OrderStatusEdit'
 import { ProjectEditSchema } from '@/widgets/ProjectEdit'
 import { PaymentMethodsSchema } from '@/entities/PaymentMethod/model/types/PaymentMethod'
+import { ALertInformerSchema } from '@/widgets/ALertInformer'
+import { ProductDetailsSchema } from '@/entities/Product/model/types/Product'
 
 export interface StateSchema {
   user: UserSchema,
   profile: ProfileSchema,
   userModules: AppModulesSchema
-
+  alertInformer: ALertInformerSchema
   // Async reducers
   loginForm?: LoginSchema,
   clientDetails?: ClientDetailsSchema,
@@ -50,7 +51,7 @@ export interface StateSchema {
   CalendarPage?: CalendarPageSchema,
   EventDetailsPage?: EventDetailPageSchema,
   productPage?: ProductsPageSchema,
-  productDetailsPage?: ProductDetailsPageSchema,
+  productDetails?: ProductDetailsSchema,
   paymentMethods?: PaymentMethodsSchema
 }
 

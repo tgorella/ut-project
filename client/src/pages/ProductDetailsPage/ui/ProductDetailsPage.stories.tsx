@@ -1,65 +1,52 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import  '@/app/styles/index.scss'
-import { WithColorsTheme } from  '@/shared/config/storybook/ThemeDecorator/WithColorsTheme'
-import { ProductDetailsPage } from './ProductDetailsPage'
-import { productDetailsErrorStoreDecorator, productDetailsIsLoadingStoreDecorator, productDetailsStoreDecorator } from '@/shared/config/storybook/StoreDecorator/ProductDetailStoreDecorator'
+import type { Meta, StoryObj } from "@storybook/react";
+import "@/app/styles/index.scss";
+import { WithColorsTheme } from "@/shared/config/storybook/ThemeDecorator/WithColorsTheme";
+import { ProductDetailsPage } from "./ProductDetailsPage";
+import {
+  productDetailsErrorStoreDecorator,
+  productDetailsIsLoadingStoreDecorator,
+  productDetailsStoreDecorator,
+} from "@/shared/config/storybook/StoreDecorator/ProductDetailStoreDecorator";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof ProductDetailsPage> = {
-    title: 'pages/ProductDetailsPage',
-    component: ProductDetailsPage,
-    argTypes: {
+  title: "pages/ProductDetailsPage",
+  component: ProductDetailsPage,
+  argTypes: {
     // backgroundColor: { control: 'color' },
-    },
-    tags: ['autodocs']
-}
+  },
+  tags: ["autodocs"],
+};
 
-
-export default meta
+export default meta;
 type Story = StoryObj<typeof ProductDetailsPage>;
 
-
 export const Default: Story = {
-    args: {
-                                                                                                                                                          
+  args: {},
+  decorators: [WithColorsTheme, productDetailsStoreDecorator],
+  parameters: {
+    docs: {
+      canvas: { sourceState: "shown" },
     },
-    decorators: [
-        WithColorsTheme,
-        productDetailsStoreDecorator
-    ],
-    parameters: {
-        docs: {
-            canvas: {sourceState: 'shown'}
-        },
-    }
-}
+  },
+};
 
 export const IsLoading: Story = {
-    args: {
-                                                                                                                                                          
+  args: {},
+  decorators: [WithColorsTheme, productDetailsIsLoadingStoreDecorator],
+  parameters: {
+    docs: {
+      canvas: { sourceState: "shown" },
     },
-    decorators: [
-        WithColorsTheme,
-        productDetailsIsLoadingStoreDecorator
-    ],
-    parameters: {
-        docs: {
-            canvas: {sourceState: 'shown'}
-        },
-    }
-}
+  },
+};
 
 export const WithError: Story = {
-    args: {
-                                                                                                                                                          
+  args: {},
+  decorators: [WithColorsTheme, productDetailsErrorStoreDecorator],
+  parameters: {
+    docs: {
+      canvas: { sourceState: "shown" },
     },
-    decorators: [
-        WithColorsTheme,
-        productDetailsErrorStoreDecorator
-    ],
-    parameters: {
-        docs: {
-            canvas: {sourceState: 'shown'}
-        },
-    }
-}
+  },
+};

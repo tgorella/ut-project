@@ -1,8 +1,9 @@
 import {PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { ProductDetailsPageSchema } from '../types/ProductDetailsPage'
-import { getProductById, Product, ProductType, updateProduct } from  '@/entities/Product'
+import { Product, ProductDetailsSchema, ProductType } from '../types/Product'
+import { updateProduct } from '../services/updateProduct/updateProduct'
+import { getProductById } from '../services/getProductById/getProductById'
 
-const initialState: ProductDetailsPageSchema = {
+const initialState: ProductDetailsSchema = {
     isLoading: true,
     error: undefined,
     data: undefined,
@@ -24,8 +25,8 @@ const newProduct: Product = {
     productCode: 'CA009'
 } 
 
-export const productDetailsPageSlice = createSlice({
-    name: 'productDetailsPage',
+export const productDetailsSlice = createSlice({
+    name: 'productDetails',
     initialState,
     reducers: {
         updateProduct: (state, action) => {
@@ -58,8 +59,11 @@ export const productDetailsPageSlice = createSlice({
                 state.data = action.payload
                 state.form = action.payload
             })
+            .addCase(updateProduct.rejected, (state, action) => {
+                state.error = action.payload
+            })
     }
 })
 
-export const {actions: productDetailsPageAction} = productDetailsPageSlice
-export const {reducer: productDetailsPageReducer} = productDetailsPageSlice
+export const {actions: productDetailsAction} = productDetailsSlice
+export const {reducer: productDetailsReducer} = productDetailsSlice

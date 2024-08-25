@@ -1,5 +1,5 @@
 import Product from "../../models/Product.js"
-import { checkAuth, throwServerError } from "./helpers.js"
+import { checkAuth, throwServerError, checkUserId } from "./helpers.js"
 
 const productMutationResolvers = {
   addProduct: async(_, args, context) => {
@@ -34,9 +34,7 @@ const productMutationResolvers = {
     try {
       const product = await Product.findById(args.data._id)
       checkUserId(product, context)
-      const updatedProduct = await Product.findByIdAndUpdate(args.data._id, args.data, {
-        new: true,
-      })
+      const updatedProduct = await Product.findByIdAndUpdate(args.data._id, args.data, { new: true })
       return updatedProduct
     } catch (error) {
       throwServerError()

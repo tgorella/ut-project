@@ -18,6 +18,7 @@ const ProductListItem = memo(({className, product, onDelete}: ListItemProps) => 
         <div className={classNames(cls.ProductListItem, {}, [className])} >
             <img className={cls.item_img} src={product?.img?.[0]} alt={product.name} />
             <div className={cls.product_name}><Link to={'/products/' + product._id}>{product.name}</Link></div>
+            <div>{product.productCode}</div>
             <div>{product.count} {t('шт.')}</div>
             <div>{product.price}</div>
             <div>{product.discount}</div>

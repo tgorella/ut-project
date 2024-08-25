@@ -4,7 +4,7 @@ import {getProductDetailsIsLoading } from './getProductDetailsIsLoading'
 describe('getProductDetailIsLoading.test', () => {
     test('should return value', () => {
         const state : DeepPartial<StateSchema> = {
-            productDetailsPage: {
+            productDetails: {
                 isLoading: false
             }
         }

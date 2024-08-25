@@ -4,7 +4,7 @@ import { getProductDetailsData } from './getProductDetailsData'
 describe('getProductDetailsData.tets', () => {
     test('should return value', () => {
         const state: DeepPartial<StateSchema> = {
-            productDetailsPage: {
+            productDetails: {
                 data: {
                     _id: '1',
                     name: 'test'
