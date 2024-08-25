@@ -1,0 +1,32 @@
+.icon {
+  fill: var(--primary-text);
+  scale: 0.8;
+}
+
+.icon_not-selected {
+  fill: var(--primary-text);
+  scale: 0.8;
+  opacity: 0.4;
+
+}
+.list_item {
+  align-items: center;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 30px 1fr 30px 30px;
+  padding: 5px 15px;
+  width: 100%;
+
+  &:hover {
+      background-color: var(--darker-bg-color);
+  }
+}
+.dev_mode {
+  grid-template-columns: 30px 1fr 30px 30px 30px;
+
+}
+
+.item__image {
+  width: 20px;
+  aspect-ratio: 1/1;
+}

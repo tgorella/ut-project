@@ -1,75 +1,77 @@
 .Selector {
-  background-color: var(--box-bg-color);
-  border: 1px solid var(--darker-bg-color);
-  border-radius: 5px;
-  color: var(--primary-text);
-  outline: none;
-  padding: 12px 15px;
-  width: 100%;
+    background-color: var(--box-bg-color);
+    border: 1px solid var(--darker-bg-color);
+    border-radius: 5px;
+    color: var(--primary-text);
+    outline: none;
+    padding: 12px 15px;
+    width: 100%;
 }
 
 .group {
-  border: 0;
-  padding: 5px;
-  position: relative;
-  width: 100%;
+    border: 0;
+    padding: 5px;
+    position: relative;
+    width: 100%;
 }
 
 .list_wrapper {
-  position: absolute;
-  top: 50px;
-  left: 0;
-  right: 0;
-  z-index: 10;
-  height: 200px;
-  overflow-y: auto;
-  background-color: var(--box-bg-color);
-  padding: 15px;
-  width: 100%;
-
+    background-color: var(--box-bg-color);
+    height: 200px;
+    left: 6px;
+    overflow-y: auto;
+    padding: 15px;
+    position: absolute;
+    right: 6px;
+    top: 50px;
+    z-index: 10;
 }
+
 .list_wrapper::-webkit-scrollbar {
-  height: 100%;
-  width: 5px;
+    height: 100%;
+    width: 5px;
 }
 
 .list_wrapper::-webkit-scrollbar-track {
-  background-color: var(--darker-bg-color);    /* цвет плашки */
+    background-color: var(--darker-bg-color);    /* цвет плашки */
 }
 
 .list_wrapper::-webkit-scrollbar-thumb {
-  background: var(--secondary-text);        /* цвет дорожки */
-  border-radius: 20px;       /* закругления плашки */
+    background: var(--secondary-text);        /* цвет дорожки */
+    border-radius: 20px;       /* закругления плашки */
 }
 
 .list_item {
-  display: grid;
-  width: 100%;
-  grid-template-columns: 20px 1fr;
-  align-items: center;
-  gap: 10px;
-  padding: 10px;
-  cursor: pointer;
-  &:hover {
-    background-color: var(--darker-bg-color);
-  }
+    align-items: center;
+    cursor: pointer;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 20px 1fr;
+    padding: 10px;
+    width: 100%;
+
+    &:hover {
+        background-color: var(--darker-bg-color);
+    }
 }
 
 .item__image {
-  width: 20px;
-  height: 20px;
+    height: 20px;
+    width: 20px;
 }
+
 .hidden {
-  display: none;
+    display: none;
 }
+
 .legend {
-  background-color: var(--box-bg-color);
-  color: var(--secondary-text);
-  font-size: 13px;
-  left: 20px;
-  line-height: 10px;
-  padding: 0 5px;
-  position: absolute;
-  top: 0;
-  z-index: 2;
+    background-color: var(--box-bg-color);
+    color: var(--secondary-text);
+    font-size: 13px;
+    left: 20px;
+    line-height: 10px;
+    padding: 0 5px;
+    position: absolute;
+    top: 0;
+    z-index: 2;
 }

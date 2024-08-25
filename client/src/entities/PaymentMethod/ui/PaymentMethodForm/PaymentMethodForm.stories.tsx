@@ -5,38 +5,34 @@ import { PaymentMethodForm } from './PaymentMethodForm'
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof PaymentMethodForm> = {
-    title: 'entities/PaymentMethod/Form',
+    title: 'entities/PaymentMethodForm',
     component: PaymentMethodForm,
     argTypes: {
     // backgroundColor: { control: 'color' },
     },
-    tags: ['autodocs']
+    tags: ['autodocs'],
 }
-
 
 export default meta
 type Story = StoryObj<typeof PaymentMethodForm>;
-
 
 export const Default: Story = {
     args: {
         data: {
             name: 'Банк',
-            icon_url: ''
+            icon_url: '',
         },
         errors: {
             name: '',
-            icon_url: ''
+            icon_url: '',
         },
         onChangeLogoLink: () => {},
-        onChangeName: () => {},                                                                                             
+        onChangeName: () => {},
     },
-    decorators: [
-        WithColorsTheme
-    ],
+    decorators: [WithColorsTheme],
     parameters: {
         docs: {
-            canvas: {sourceState: 'shown'}
+            canvas: { sourceState: 'shown' },
         },
-    }
+    },
 }

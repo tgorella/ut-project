@@ -17,8 +17,7 @@ const paymentMethodMutationResolvers = {
   deletePaymentMethod: async (_, args, context) => {
     checkAuth(context)
     try {
-      const paymentMethod = await PaymentMethod.findById(args.id)
-      checkUserId(paymentMethod, context)
+      // const paymentMethod = await PaymentMethod.findById(args.id)
       await PaymentMethod.deleteOne({ _id: args.id })
       return args.id
     } catch (error) {

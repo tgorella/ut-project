@@ -28,6 +28,7 @@ export const PaymentMethodForm = ({data, errors, onChangeLogoLink, onChangeName,
                 multiple={false}
                 onUpdateLinks={( link: string[]) => onChangeLogoLink(link[0])}
                 dropDownArea={false}
+                folder='banks'
                 label={t('Загрузить логотип')}
             />
             <Input 
