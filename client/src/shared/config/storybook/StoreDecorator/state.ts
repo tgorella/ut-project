@@ -609,7 +609,16 @@ export const stateAllIn: StateSchema = {
             userId: ''
         }
     },
-    
+    paymentMethods: {
+        isLoading: false,
+        data: [
+            {
+                _id:'66a789077437f957c3d4fc63',
+                name:'Альфа Банк',
+                icon_url:'https://gte-image-thing.storage.yandexcloud.net/banks/a23622d7-a715-4728-9d9c-ffc7fe32d1f9.png'
+            }
+        ]
+    }
 
 }
 
@@ -714,6 +723,7 @@ export const stateAllErrors: DeepPartial<StateSchema> = {
         error: 'error'
     },
     paymentMethods: {
+        isLoading: false,
         error: 'error'
     }
 }

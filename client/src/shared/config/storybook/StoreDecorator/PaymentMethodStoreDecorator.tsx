@@ -10,29 +10,18 @@ const state:Partial<StateSchema> = {
             {
                 _id: '1',
                 name: 'Альфа Банк',
-                icon_url: 'https://storage.yandexcloud.net/gte-image-thing/banks/alfabank.svg'
+                icon_url: 'https://gte-image-thing.storage.yandexcloud.net/banks/a23622d7-a715-4728-9d9c-ffc7fe32d1f9.png'
             },
             {
                 _id: '2',
                 name: 'Сбербанк',
-                icon_url: 'https://storage.yandexcloud.net/gte-image-thing/banks/sberbank.svg'
+                icon_url: 'https://gte-image-thing.storage.yandexcloud.net/banks/bd2d928c-36a5-4bd0-95d3-0f793e1323c4.png'
             },
             {
                 _id: '3',
                 name: 'Т Банк',
-                icon_url: 'https://storage.yandexcloud.net/gte-image-thing/banks/t-bank.svg'
-            },
-            {
-                _id: '4',
-                name: 'ВТБ',
-                icon_url: 'https://storage.yandexcloud.net/gte-image-thing/banks/vtbbank.svg'
-            },
-            {
-                _id: '5',
-                name: 'Наличные',
-                icon_url: ''
+                icon_url: 'https://gte-image-thing.storage.yandexcloud.net/banks/554af621-7a47-4601-a128-b0bc041e99c4.png'
             }
-        
         ]
     }
 }

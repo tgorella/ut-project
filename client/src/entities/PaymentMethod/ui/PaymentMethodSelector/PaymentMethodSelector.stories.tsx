@@ -6,7 +6,7 @@ import { paymentMethodsStoreDecorator } from '@/shared/config/storybook/StoreDec
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof PaymentMethodSelector> = {
-    title: 'entities/PaymentMethodSelector',
+    title: 'entities/PaymentMethod/Selector',
     component: PaymentMethodSelector,
     argTypes: {
     // backgroundColor: { control: 'color' },

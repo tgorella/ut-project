@@ -24,8 +24,8 @@ const initialState = {
 export const PaymentMethod = memo(() => {
 
     const {t} = useTranslation('main')
-    const methods = useSelector(getPaymentMethodsData || [])
     const dispatch = useAppDispatch()
+    const methods = useSelector(getPaymentMethodsData || [])
     const [newMethod, setNewMethod] = useState(initialState)
     const [selectedMethod, setSelectedMethod] = useState('')
 
@@ -56,7 +56,7 @@ export const PaymentMethod = memo(() => {
     return (<DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
         <div>
             <h1>
-                {t('Главная страница')}
+                {t('Методы оплаты')}
             </h1>
             <div>
                 {methods?.map(method => <div key={method._id}> {method.icon_url && <img src={method.icon_url} alt={method.name}/>} {method.name} <button onClick={() => handleDeleteMethod(method._id)}>{t('Удалить')}</button></div>)}

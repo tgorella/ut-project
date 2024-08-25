@@ -17,7 +17,8 @@ interface ImageSliderProps {
 export const ImageSlider = memo(({
     images, 
     withPreview = true, 
-    className, previewSide, 
+    className, 
+    previewSide = 'right', 
     autoplay = false, 
     changeTime = 3000
 } : ImageSliderProps) => {

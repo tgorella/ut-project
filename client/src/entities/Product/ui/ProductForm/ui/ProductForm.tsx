@@ -16,7 +16,7 @@ import { addProduct } from '../../../model/services/addProduct/addProduct'
 
 
 const initialState: Partial<Product> = {
-    name: '',
+    name: 'Test',
     price: 0,
     discount: 0,
     count: 0,
